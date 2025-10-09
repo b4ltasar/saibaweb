@@ -1,13 +1,14 @@
-# SAIBA Website - Deployment Guide
+# SAIBA Website - Professional Deployment Guide
 
-## 🚀 Workflow for Testing og Live Deployment
+## 🚀 Professional Workflow med Pull Requests
 
 ### 📋 Setup Oversigt
 
 - **Develop Branch**: Test site på `https://b4ltasar.github.io/saibaweb-develop`
-- **Main Branch**: Live site på `https://b4ltasar.github.io/saibaweb` (eller dit custom domæne)
+- **Main Branch**: Live site på dit eget domæne (f.eks. `saiba.dk`)
+- **Pull Request Workflow**: Review før merge til main
 
-### 🔄 Workflow
+### 🔄 Professional Workflow
 
 #### 1. **Development & Testing**
 ```bash
@@ -19,32 +20,63 @@ git checkout develop
 
 # Commit og push til develop
 git add .
-git commit -m "Describe your changes"
+git commit -m "feat: tilføj ny sektion til services"
 git push origin develop
 ```
 
 **Resultat**: Automatisk deployment til test site med rød "DEVELOPMENT" banner
 
-#### 2. **Go Live**
+#### 2. **Create Pull Request**
 ```bash
-# Når du er tilfreds med ændringerne
-git checkout main
-git merge develop
-git push origin main
+# Opret en feature branch fra develop (optional, men anbefalet)
+git checkout -b feature/new-section
+git push origin feature/new-section
 ```
 
-**Resultat**: Automatisk deployment til live site uden development banner
+**Eller direkte fra develop:**
+- Gå til GitHub repository
+- Klik "Compare & pull request" fra develop → main
+- Skriv beskrivelse af ændringerne
+- Assign reviewers hvis nødvendigt
+
+#### 3. **Review & Merge**
+- Review ændringerne på GitHub
+- Test på development site først
+- Når godkendt: Merge PR til main
+
+**Resultat**: Automatisk deployment til live domæne
 
 ### 🌐 URLs
 
 - **Development**: https://b4ltasar.github.io/saibaweb-develop
-- **Production**: https://b4ltasar.github.io/saibaweb
+- **Production**: https://saiba.dk (dit eget domæne)
 
 ### 🎯 GitHub Pages Setup
 
 1. Gå til **Settings** > **Pages** i dit repository
 2. Vælg **Source**: "GitHub Actions"
-3. Workflow filerne er allerede konfigureret!
+3. Under **Custom domain**: Indtast dit domæne (f.eks. `saiba.dk`)
+4. Check "Enforce HTTPS"
+
+### 🔧 Custom Domain Setup
+
+#### DNS Konfiguration:
+```
+Type: CNAME
+Name: www (eller @)
+Value: b4ltasar.github.io
+TTL: 3600
+```
+
+#### Alternativ (A records):
+```
+Type: A
+Name: @
+Value: 185.199.108.153
+Value: 185.199.109.153
+Value: 185.199.110.153
+Value: 185.199.111.153
+```
 
 ### 📝 Features
 
@@ -56,6 +88,7 @@ git push origin main
 
 #### Production Mode:
 - ✅ Ren, professionel hjemmeside
+- ✅ Dit eget domæne
 - ✅ Optimaliseret til SEO
 - ✅ Ingen development indikatorer
 
@@ -66,7 +99,7 @@ git push origin main
 bundle install
 
 # Test production build
-bundle exec jekyll serve
+bundle exec jekyll serve --config _config.yml,_config_production.yml
 
 # Test development build
 bundle exec jekyll serve --config _config.yml,_config_develop.yml
@@ -74,18 +107,44 @@ bundle exec jekyll serve --config _config.yml,_config_develop.yml
 
 ### 📁 Branch Strategy
 
+- **main**: Live production site (dit domæne)
 - **develop**: Development og testing
-- **main**: Live production site
-- **feature/***: Feature branches (optional)
+- **feature/***: Feature branches for specifikke ændringer
 
 ### 🚨 Vigtige Noter
 
 1. **Altid test på develop først**
-2. **Merge kun til main når du er tilfreds**
+2. **Brug Pull Requests for alle ændringer til main**
 3. **Development site har rød banner for klarhed**
-4. **Automatic deployment via GitHub Actions**
+4. **Custom domæne kun aktiv på main branch**
+5. **Automatic deployment via GitHub Actions**
+
+### 🔄 Complete Workflow Example
+
+```bash
+# 1. Start development
+git checkout develop
+# ... lav ændringer ...
+git add .
+git commit -m "feat: tilføj kontaktformular validering"
+git push origin develop
+
+# 2. Test på: https://b4ltasar.github.io/saibaweb-develop
+
+# 3. Opret Pull Request
+# Gå til GitHub → "Compare & pull request" develop → main
+
+# 4. Review og merge PR
+
+# 5. Live på: https://saiba.dk
+```
 
 ### 🆘 Troubleshooting
+
+**Custom domain virker ikke**:
+- Check DNS settings (kan tage 24-48 timer)
+- Verify CNAME file er korrekt
+- Check GitHub Pages settings
 
 **Site vises ikke**:
 - Check GitHub Actions tab for build errors
@@ -100,3 +159,13 @@ bundle exec jekyll serve --config _config.yml,_config_develop.yml
 - Check Jekyll syntax in your files
 - Verify all required images are uploaded
 - Check GitHub Actions logs
+
+### 📋 Checklist for Go-Live
+
+- [ ] Test alle ændringer på develop site
+- [ ] Review Pull Request grundigt
+- [ ] Verify custom domain DNS settings
+- [ ] Check GitHub Pages settings
+- [ ] Test HTTPS redirect
+- [ ] Verify SEO settings
+- [ ] Test på forskellige enheder
