@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Interactive AI Facts Section
     const interactiveButton = document.querySelector('.interactive-button');
     const factPopup = document.querySelector('.fact-popup');
+    const aiFactsSection = document.querySelector('.ai-facts');
     
     // AI Facts data
     const aiFacts = [
@@ -120,6 +121,41 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (interactiveButton) {
         interactiveButton.addEventListener('click', showRandomFact);
+    }
+    
+    // Mouse Trail for AI Facts Section Only
+    let mouseTrailEnabled = false;
+    
+    function createMouseTrail(e) {
+        if (!mouseTrailEnabled) return;
+        
+        const trail = document.createElement('div');
+        trail.className = 'mouse-trail';
+        trail.style.left = e.clientX - 10 + 'px';
+        trail.style.top = e.clientY - 10 + 'px';
+        
+        document.body.appendChild(trail);
+        
+        setTimeout(() => {
+            trail.remove();
+        }, 500);
+    }
+    
+    function enableMouseTrail() {
+        mouseTrailEnabled = true;
+        aiFactsSection.style.cursor = 'none';
+    }
+    
+    function disableMouseTrail() {
+        mouseTrailEnabled = false;
+        aiFactsSection.style.cursor = 'default';
+    }
+    
+    // Add mouse trail only in AI Facts section
+    if (aiFactsSection) {
+        aiFactsSection.addEventListener('mouseenter', enableMouseTrail);
+        aiFactsSection.addEventListener('mouseleave', disableMouseTrail);
+        aiFactsSection.addEventListener('mousemove', createMouseTrail);
     }
     
     // Smooth scrolling for navigation links
