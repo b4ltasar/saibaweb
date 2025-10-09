@@ -4,8 +4,8 @@
 # Site settings
 title: "SAIBA (Development)"
 description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI for dine medarbejdere - DEVELOPMENT VERSION"
-baseurl: "/saibaweb-develop"
-url: "https://b4ltasar.github.io"
+baseurl: ""
+url: "https://b4ltasar.github.io/saibaweb-develop"
 
 # Build settings
 markdown: kramdown
