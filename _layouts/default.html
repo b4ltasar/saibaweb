@@ -1,157 +1,65 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'da' }}">
+<html lang="da">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000000">
-    
-    <title>
-        {%- if page.title -%}
-            {{ page.title }} | {{ site.title }}
-        {%- else -%}
-            {{ site.title }}
-        {%- endif -%}
-        {%- if site.development_mode -%}
-            [DEVELOPMENT]
-        {%- endif -%}
-    </title>
-    
-    <meta name="description" content="{{ page.description | default: site.description }}">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    
-    <!-- SEO -->
-    {% seo %}
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Theme script -->
-    <script>
-        // Set theme before page loads to prevent flash
-        (function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        })();
-    </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0a0a0a;
+      --muted: #6b7280;
+      --card: #f9fafb;
+      --border: rgba(0, 0, 0, 0.12);
+      --accent: #0ea5e9;
+    }
+  </style>
 </head>
-
 <body>
-    {%- if site.development_mode -%}
-    <!-- Development Banner -->
-    <div class="development-banner" style="background: #ff6b6b; color: white; text-align: center; padding: 8px; font-weight: bold; position: fixed; top: 0; left: 0; right: 0; z-index: 1000;">
-        🚧 DEVELOPMENT VERSION - Test site for changes before going live 🚧
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="/" class="logo">SAIBA</a>
+        <div class="nav-links">
+          <a href="#services">Ydelser</a>
+          <a href="#team">Team</a>
+          <a href="#clients">Kunder</a>
+          <a href="#contact">Kontakt</a>
+        </div>
+      </nav>
     </div>
-    {%- endif -%}
-    
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-inner">
-                <div class="brand">
-                    <a href="{{ '/' | relative_url }}">
-                        <div style="font-size: 24px; font-weight: 900; color: var(--text);">
-                            SAIBA
-                        </div>
-                    </a>
-                </div>
-                
-                <nav class="nav">
-                    <a href="#services">Ydelser</a>
-                    <a href="#clients">Kunder</a>
-                    <a href="#team">Team</a>
-                    <a href="#contact">Kontakt</a>
-                </nav>
-                
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                    <span class="theme-icon theme-icon--light">🌞</span>
-                    <span class="theme-icon theme-icon--dark">🌙</span>
-                </button>
-                
-                <button class="burger" id="burger" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </header>
+  </header>
 
-    <!-- Main Content -->
-    <main class="main">
-        {{ content }}
-    </main>
+  <main>
+    {{ content }}
+  </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-inner">
-                <div class="footer-brand">
-                    <div class="brand">
-                        <div style="font-size: 24px; font-weight: 900; color: var(--text);">
-                            SAIBA
-                        </div>
-                    </div>
-                    <p class="footer-description">
-                        Vi gentænker måden, vi arbejder på. Med mennesker i centrum og teknologi som motor.
-                    </p>
-                </div>
-                
-                <div class="footer-contact">
-                    <h4>Kontakt</h4>
-                    <p>+45 3141 2829</p>
-                    <p>Copenhagen, Denmark</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">LinkedIn</a>
-                    </div>
-                </div>
-                
-                <div class="footer-legal">
-                    <p>&copy; {{ 'now' | date: '%Y' }} SAIBA ApS. Alle rettigheder forbeholdes.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mobile Navigation Drawer -->
-    <div class="drawer" id="drawer" aria-hidden="true">
-        <div class="drawer-backdrop"></div>
-        <div class="drawer-panel">
-            <div class="drawer-head">
-                <div class="brand">
-                    <div style="font-size: 24px; font-weight: 900; color: var(--text);">
-                        SAIBA
-                    </div>
-                </div>
-                <button class="drawer-close" id="drawer-close" aria-label="Close menu">
-                    ×
-                </button>
-            </div>
-            
-            <nav class="drawer-nav">
-                <a href="#services">Ydelser</a>
-                <a href="#clients">Kunder</a>
-                <a href="#team">Team</a>
-                <a href="#contact">Kontakt</a>
-            </nav>
-            
-            <div class="drawer-tools">
-                <span>Skift tema:</span>
-                <button class="theme-toggle" id="drawer-theme-toggle" aria-label="Toggle theme">
-                    <span class="theme-icon theme-icon--light">🌞</span>
-                    <span class="theme-icon theme-icon--dark">🌙</span>
-                </button>
-            </div>
-        </div>
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; {{ 'now' | date: "%Y" }} SAIBA. All rights reserved.</p>
     </div>
+  </footer>
 
-    <!-- Scripts -->
-    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  <script>
+    // AI Facts interactive button
+    document.addEventListener('DOMContentLoaded', function() {
+      const button = document.querySelector('.interactive-button');
+      const popup = document.querySelector('.fact-popup');
+      
+      if (button && popup) {
+        button.addEventListener('click', function() {
+          popup.classList.toggle('show');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
