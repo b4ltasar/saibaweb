@@ -11,6 +11,9 @@
         {%- else -%}
             {{ site.title }}
         {%- endif -%}
+        {%- if site.development_mode -%}
+            [DEVELOPMENT]
+        {%- endif -%}
     </title>
     
     <meta name="description" content="{{ page.description | default: site.description }}">
@@ -40,6 +43,13 @@
 </head>
 
 <body>
+    {%- if site.development_mode -%}
+    <!-- Development Banner -->
+    <div class="development-banner" style="background: #ff6b6b; color: white; text-align: center; padding: 8px; font-weight: bold; position: fixed; top: 0; left: 0; right: 0; z-index: 1000;">
+        🚧 DEVELOPMENT VERSION - Test site for changes before going live 🚧
+    </div>
+    {%- endif -%}
+    
     <!-- Header -->
     <header class="header">
         <div class="container">

@@ -88,6 +88,16 @@ body {
   -webkit-backdrop-filter: blur(10px);
 }
 
+/* Development banner spacing */
+body:has(.header) .header {
+  top: 40px;
+}
+
+/* Fallback for browsers without :has support */
+.development-banner + .header {
+  top: 40px;
+}
+
 .header-inner {
   display: flex;
   align-items: center;
