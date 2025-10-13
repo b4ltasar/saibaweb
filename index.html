@@ -42,7 +42,36 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                 <h3 class="service-title">{{ service.title }}</h3>
                 <p class="service-description">{{ service.description }}</p>
                 <div class="service-icon-container">
-                    <div class="service-icon">{{ service.icon }}</div>
+                    <div class="service-icon" data-icon="{{ service.icon }}">
+                        {% case service.icon %}
+                        {% when 'strategy' %}
+                            <svg viewBox="0 0 40 40" class="icon-svg">
+                                <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 20h16M20 12v16M16 16l8 8M24 16l-8 8" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            </svg>
+                        {% when 'implementation' %}
+                            <svg viewBox="0 0 40 40" class="icon-svg">
+                                <rect x="8" y="8" width="24" height="24" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="14" cy="14" r="2" fill="currentColor"/>
+                                <circle cx="26" cy="14" r="2" fill="currentColor"/>
+                                <circle cx="14" cy="26" r="2" fill="currentColor"/>
+                                <circle cx="26" cy="26" r="2" fill="currentColor"/>
+                                <path d="M18 20h4M20 18v4" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        {% when 'education' %}
+                            <svg viewBox="0 0 40 40" class="icon-svg">
+                                <path d="M20 8l-12 6v8l12 6 12-6v-8l-12-6z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M8 14l12 6 12-6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                <circle cx="20" cy="20" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        {% when 'consulting' %}
+                            <svg viewBox="0 0 40 40" class="icon-svg">
+                                <path d="M20 4l16 12v16H4V16l16-12z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 20h16M20 12v16" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                <circle cx="20" cy="20" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        {% endcase %}
+                    </div>
                 </div>
             </div>
             {% endfor %}

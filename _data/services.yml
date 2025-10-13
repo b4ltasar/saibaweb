@@ -1,4 +1,4 @@
-- icon: "🎯"
+- icon: "strategy"
   title: "Workshops & Bootcamps"
   description: "Få overblik og indsigt i AI-teknologiens potentiale"
   features:
@@ -9,7 +9,7 @@
     - "Avanceret prompting teknikker"
   link: "#contact"
   
-- icon: "⚙️"
+- icon: "implementation"
   title: "Skræddersyede Forløb"
   description: "Fra viden til konkrete use cases i din virksomhed"
   features:
@@ -20,7 +20,7 @@
     - "Implementering og opfølgning"
   link: "#contact"
   
-- icon: "📊"
+- icon: "education"
   title: "Strategi & Implementering"
   description: "Omsæt teknologi til konkrete resultater og værdi"
   features:
@@ -31,7 +31,7 @@
     - "ROI måling og evaluering"
   link: "#contact"
   
-- icon: "🚀"
+- icon: "consulting"
   title: "Produktudvikling"
   description: "Vi udvikler og bygger AI-løsninger med jer"
   features:
