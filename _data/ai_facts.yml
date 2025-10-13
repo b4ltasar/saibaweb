@@ -1,29 +1,19 @@
-- text: "61% af virksomheder der implementerer AI rapporterer betydelige omkostningsbesparelser"
-  source: "MIT Sloan Management Review"
+- title: "Produktivitet"
+  text: "AI kan øge produktiviteten med op til 40% i administrative opgaver"
+  source: "McKinsey Global Institute 2023"
 
-- text: "AI kan øge produktiviteten med op til 40% i administrative opgaver"
-  source: "McKinsey Global Institute"
+- title: "Omkostninger"
+  text: "61% af virksomheder rapporterer betydelige omkostningsbesparelser efter AI-implementering"
+  source: "MIT Sloan Management Review 2023"
 
-- text: "Virksomheder med AI-integration har 23% højere kundetilfredshed"
-  source: "Salesforce Research"
+- title: "Kundetilfredshed"
+  text: "Virksomheder med AI-integration har 23% højere kundetilfredshed"
+  source: "Salesforce Research 2024"
 
-- text: "AI reducerer fejlraten med 85% i dataanalyse og rapportering"
-  source: "IBM Institute for Business Value"
+- title: "Beslutninger"
+  text: "AI accelererer beslutningsprocesser med op til 25% hurtigere workflows"
+  source: "Deloitte Insights 2023"
 
-- text: "Virksomheder der bruger AI har 25% hurtigere beslutningsprocesser"
-  source: "Deloitte Insights"
-
-- text: "AI kan identificere mønstre i data 1000x hurtigere end mennesker"
-  source: "Harvard Business Review"
-
-- text: "AI-automation kan frigøre op til 30% af medarbejdernes tid til kreative opgaver"
-  source: "World Economic Forum"
-
-- text: "Virksomheder med AI har 35% bedre ROI på deres digitale investeringer"
-  source: "Accenture Research"
-
-- text: "AI kan forudsige kundeadfærd med 95% nøjagtighed"
-  source: "Forrester Research"
-
-- text: "Implementering af AI resulterer i 20% reduktion i operationelle omkostninger"
-  source: "PwC Global AI Survey"
+- title: "Tidsbesparelse"
+  text: "AI-automation kan frigøre op til 30% af medarbejdernes tid til strategiske opgaver"
+  source: "World Economic Forum 2024"
