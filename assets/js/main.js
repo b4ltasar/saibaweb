@@ -113,13 +113,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Smart positioning to avoid clipping
         const boxWidth = 280;
         const boxHeight = 160;
-        const padding = 20;
+        const padding = 15;
         
-        // Calculate optimal position
+        // Calculate optimal position (center on click)
         let finalX = relativeX - boxWidth / 2;
         let finalY = relativeY - boxHeight / 2;
         
-        // Smart boundary adjustment
+        // Smart boundary adjustment - allow closer to edges
         if (finalX < padding) {
             finalX = padding;
         } else if (finalX + boxWidth > rect.width - padding) {
@@ -132,9 +132,9 @@ document.addEventListener('DOMContentLoaded', function() {
             finalY = rect.height - boxHeight - padding;
         }
         
-        // If still clipping, try alternative positions
-        if (finalY < 100) { // Too close to title box
-            finalY = 100;
+        // Ensure fact box doesn't overlap with title box
+        if (finalY < 120) {
+            finalY = 120;
         }
         
         factBox.style.left = finalX + 'px';

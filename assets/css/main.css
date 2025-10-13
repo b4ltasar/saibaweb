@@ -43,6 +43,24 @@ body {
   font-weight: 800;
   color: var(--text);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+}
+
+.drawer-logo-img {
+  height: 30px;
+  width: auto;
+}
+
+.footer-logo {
+  height: 50px;
+  width: auto;
+  margin-bottom: 16px;
 }
 
 .nav-links {
@@ -214,6 +232,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
 }
 
 .interactive-area {
@@ -226,6 +245,7 @@ body {
   padding-top: 40px;
   cursor: crosshair;
   width: 100%;
+  min-height: 100%;
 }
 
 .main-click-box {
@@ -820,6 +840,18 @@ body {
   
   .click-text {
     font-size: 18px;
+  }
+  
+  .logo-img {
+    height: 35px;
+  }
+  
+  .drawer-logo-img {
+    height: 25px;
+  }
+  
+  .footer-logo {
+    height: 40px;
   }
   
   .fact-box {
