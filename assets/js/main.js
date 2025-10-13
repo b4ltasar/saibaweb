@@ -2,25 +2,24 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // Theme Management
-    const themeToggle = document.getElementById('theme-toggle');
-    const drawerThemeToggle = document.getElementById('drawer-theme-toggle');
+    const darkModeToggle = document.getElementById('darkModeToggle');
     const html = document.documentElement;
     
     // Initialize theme from localStorage
     const savedTheme = localStorage.getItem('theme') || 'light';
-    html.setAttribute('data-theme', savedTheme);
+    html.classList.toggle('dark-mode', savedTheme === 'dark');
     
     // Theme toggle functionality
     function toggleTheme() {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        const isDark = html.classList.contains('dark-mode');
+        const newTheme = isDark ? 'light' : 'dark';
         
-        html.setAttribute('data-theme', newTheme);
+        html.classList.toggle('dark-mode', newTheme === 'dark');
         localStorage.setItem('theme', newTheme);
     }
     
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleTheme);
     }
     
     if (drawerThemeToggle) {
