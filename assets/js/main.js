@@ -110,11 +110,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const relativeX = x - rect.left;
         const relativeY = y - rect.top;
         
-        // Ensure the fact box stays within bounds
+        // Smart positioning to avoid clipping
         const boxWidth = 280;
-        const boxHeight = 150;
-        const finalX = Math.max(10, Math.min(relativeX - boxWidth/2, rect.width - boxWidth - 10));
-        const finalY = Math.max(10, Math.min(relativeY - boxHeight/2, rect.height - boxHeight - 10));
+        const boxHeight = 160;
+        const padding = 20;
+        
+        // Calculate optimal position
+        let finalX = relativeX - boxWidth / 2;
+        let finalY = relativeY - boxHeight / 2;
+        
+        // Smart boundary adjustment
+        if (finalX < padding) {
+            finalX = padding;
+        } else if (finalX + boxWidth > rect.width - padding) {
+            finalX = rect.width - boxWidth - padding;
+        }
+        
+        if (finalY < padding) {
+            finalY = padding;
+        } else if (finalY + boxHeight > rect.height - padding) {
+            finalY = rect.height - boxHeight - padding;
+        }
+        
+        // If still clipping, try alternative positions
+        if (finalY < 100) { // Too close to title box
+            finalY = 100;
+        }
         
         factBox.style.left = finalX + 'px';
         factBox.style.top = finalY + 'px';
@@ -131,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         currentFactBox = factBox;
         
-        // Auto-remove after 5 seconds
+        // Auto-remove after 6 seconds
         setTimeout(() => {
             if (factBox && factBox.parentNode) {
                 factBox.classList.remove('show');
@@ -141,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }, 500);
             }
-        }, 5000);
+        }, 6000);
     }
     
     function showFactAtPosition(x, y) {

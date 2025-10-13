@@ -2,7 +2,8 @@
   initials: "PH"
   role: "Co-Founder & Partner"
   bio: "AI strategi og teknologisk innovation"
-  linkedin: ""
+  image: "/assets/images/team:peter-humaidan.jpg"
+  linkedin: "https://www.linkedin.com/in/jp-al-humaidan"
   email: ""
   color: "gradient-1"
   
@@ -10,7 +11,8 @@
   initials: "JJ"
   role: "Co-Founder & Partner"
   bio: "Produktudvikling og implementering"
-  linkedin: ""
+  image: "/assets/images/team:jens-jepsen.jpg"
+  linkedin: "https://www.linkedin.com/in/jens-jepsen-5664a9240"
   email: ""
   color: "gradient-2"
   
@@ -18,7 +20,8 @@
   initials: "GF"
   role: "Co-Founder & Partner"
   bio: "Forretningsudvikling og kundeoplevelse"
-  linkedin: ""
+  image: "/assets/images/team:gustav-friis.jpg"
+  linkedin: "https://www.linkedin.com/in/gustav-friis-20201086"
   email: ""
   color: "gradient-3"
   
@@ -26,7 +29,8 @@
   initials: "FH"
   role: "Co-Founder & Partner"
   bio: "Teknisk arkitektur og skalerbarhed"
-  linkedin: ""
+  image: "/assets/images/team:frederik-hansson.jpg"
+  linkedin: "https://www.linkedin.com/in/frederikhansson"
   email: ""
   color: "gradient-4"
 

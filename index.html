@@ -79,11 +79,18 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
             {% for member in site.data.team %}
             <div class="team-member">
                 <div class="team-photo team-photo-{{ forloop.index }}">
-                    <span>{{ member.initials }}</span>
+                    {% if member.image %}
+                        <img src="{{ member.image }}" alt="{{ member.name }}" class="team-photo-img">
+                    {% else %}
+                        <span>{{ member.initials }}</span>
+                    {% endif %}
                 </div>
                 <h3 class="team-name">{{ member.name }}</h3>
                 <p class="team-role">{{ member.role }}</p>
                 <p class="team-bio">{{ member.bio }}</p>
+                {% if member.linkedin %}
+                    <a href="{{ member.linkedin }}" target="_blank" class="team-linkedin">LinkedIn</a>
+                {% endif %}
             </div>
             {% endfor %}
         </div>
