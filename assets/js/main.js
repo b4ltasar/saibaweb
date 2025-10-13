@@ -26,6 +26,39 @@ document.addEventListener('DOMContentLoaded', function() {
         drawerThemeToggle.addEventListener('click', toggleTheme);
     }
     
+    // Nordic Reveal Animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                
+                // Stagger card animations
+                if (entry.target.classList.contains('services-grid')) {
+                    const cards = entry.target.querySelectorAll('.service-card');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('revealed');
+                        }, index * 150);
+                    });
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe sections and cards
+    document.querySelectorAll('.section').forEach(section => {
+        revealObserver.observe(section);
+    });
+    
+    document.querySelectorAll('.service-card').forEach(card => {
+        revealObserver.observe(card);
+    });
+    
     // Mobile Navigation
     const burger = document.getElementById('burger');
     const drawer = document.getElementById('drawer');
