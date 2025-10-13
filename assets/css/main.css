@@ -6,10 +6,15 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .container {
@@ -344,32 +349,87 @@ body {
 }
 
 .service-card:hover .icon-svg {
-  animation: iconPulse 1.5s ease-in-out infinite;
   transform: scale(1.1);
 }
 
-.service-card:hover .icon-svg circle,
-.service-card:hover .icon-svg path {
-  animation: iconRotate 2s linear infinite;
+.service-card:hover .organic-circle {
+  animation: organicBreathe 2s ease-in-out infinite alternate;
 }
 
-@keyframes iconPulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.2);
-  }
+.service-card:hover .organic-path {
+  animation: organicFlow 2.5s ease-in-out infinite alternate;
 }
 
-@keyframes iconRotate {
+.service-card:hover .organic-rect {
+  animation: organicExpand 1.8s ease-in-out infinite alternate;
+}
+
+.service-card:hover .organic-shape {
+  animation: organicMorph 2.2s ease-in-out infinite alternate;
+}
+
+.service-card:hover .organic-dot {
+  animation: organicPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes organicBreathe {
   0% {
-    transform: rotate(0deg);
+    r: 18;
+    stroke-width: 2;
+    opacity: 1;
   }
   100% {
-    transform: rotate(360deg);
+    r: 24;
+    stroke-width: 4;
+    opacity: 0.8;
+  }
+}
+
+@keyframes organicFlow {
+  0% {
+    stroke-width: 1.5;
+    stroke-dasharray: 0, 100;
+  }
+  100% {
+    stroke-width: 3;
+    stroke-dasharray: 50, 50;
+  }
+}
+
+@keyframes organicExpand {
+  0% {
+    width: 24;
+    height: 24;
+    rx: 4;
+    stroke-width: 2;
+  }
+  100% {
+    width: 32;
+    height: 32;
+    rx: 8;
+    stroke-width: 3;
+  }
+}
+
+@keyframes organicMorph {
+  0% {
+    stroke-width: 2;
+    transform: scale(1);
+  }
+  100% {
+    stroke-width: 4;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes organicPulse {
+  0% {
+    r: 2;
+    opacity: 1;
+  }
+  100% {
+    r: 4;
+    opacity: 0.6;
   }
 }
 
