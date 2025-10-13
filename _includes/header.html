@@ -2,7 +2,8 @@
   <div class="container">
     <nav class="nav">
       <a href="{{ '/' | relative_url }}" class="logo">
-        <img src="{{ '/assets/images/saiba-logo-black.png' | relative_url }}" alt="{{ site.title }}" class="logo-img">
+        <img src="{{ '/assets/images/saiba-logo-black.png' | relative_url }}" alt="{{ site.title }}" class="logo-img logo-light">
+        <img src="{{ '/assets/images/saiba-logo-white.png' | relative_url }}" alt="{{ site.title }}" class="logo-img logo-dark">
       </a>
       
       <button class="burger" id="burger" aria-label="Toggle menu">
@@ -32,7 +33,8 @@
   <div class="drawer-content">
     <div class="drawer-header">
       <span class="drawer-logo">
-        <img src="{{ '/assets/images/saiba-logo-black.png' | relative_url }}" alt="{{ site.title }}" class="drawer-logo-img">
+        <img src="{{ '/assets/images/saiba-logo-black.png' | relative_url }}" alt="{{ site.title }}" class="drawer-logo-img logo-light">
+        <img src="{{ '/assets/images/saiba-logo-white.png' | relative_url }}" alt="{{ site.title }}" class="drawer-logo-img logo-dark">
       </span>
       <button class="drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
     </div>
@@ -40,6 +42,13 @@
       {% for item in site.data.navigation %}
       <a href="{{ item.url }}">{{ item.title }}</a>
       {% endfor %}
+      <button class="dark-mode-toggle drawer-dark-toggle" id="drawerDarkModeToggle" aria-label="Toggle dark mode">
+        <svg class="nordic-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 8v8M8 12h8" stroke-linecap="round"/>
+        </svg>
+        <span class="toggle-label">Dark Mode</span>
+      </button>
     </nav>
   </div>
 </div>

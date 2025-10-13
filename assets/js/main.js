@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Theme Management
     const darkModeToggle = document.getElementById('darkModeToggle');
+    const drawerDarkModeToggle = document.getElementById('drawerDarkModeToggle');
     const html = document.documentElement;
     
     // Initialize theme from localStorage
@@ -22,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
         darkModeToggle.addEventListener('click', toggleTheme);
     }
     
-    if (drawerThemeToggle) {
-        drawerThemeToggle.addEventListener('click', toggleTheme);
+    if (drawerDarkModeToggle) {
+        drawerDarkModeToggle.addEventListener('click', toggleTheme);
     }
     
     // Nordic Reveal Animations

@@ -68,6 +68,59 @@ body {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
 }
 
+.dark-mode .site-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.dark-mode .drawer-content {
+  background: var(--bg);
+}
+
+.dark-mode .drawer-backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .hero {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+.dark-mode .services {
+  background: #0a0a0a;
+}
+
+.dark-mode .service-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.dark-mode .service-card:hover {
+  border-color: var(--accent);
+}
+
+.dark-mode .team {
+  background: #0a0a0a;
+}
+
+.dark-mode .clients {
+  background: #0a0a0a;
+}
+
+.dark-mode .contact {
+  background: var(--bg);
+}
+
+.dark-mode .contact-form input,
+.dark-mode .contact-form textarea {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.dark-mode .contact-form input::placeholder,
+.dark-mode .contact-form textarea::placeholder {
+  color: var(--muted);
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -114,6 +167,22 @@ body {
 .logo-img {
   height: 32px;
   width: auto;
+}
+
+.logo-light {
+  display: block;
+}
+
+.logo-dark {
+  display: none;
+}
+
+.dark-mode .logo-light {
+  display: none;
+}
+
+.dark-mode .logo-dark {
+  display: block;
 }
 
 .drawer-logo-img {
@@ -1069,6 +1138,28 @@ body {
 
 .drawer-nav a:hover {
   background: var(--card);
+}
+
+.drawer-dark-toggle {
+  margin-top: 20px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  justify-content: flex-start;
+  transition: background 0.2s;
+}
+
+.drawer-dark-toggle:hover {
+  background: var(--card);
+}
+
+.drawer-dark-toggle .toggle-label {
+  font-weight: 500;
+  color: var(--text);
 }
 
 /* Footer */
