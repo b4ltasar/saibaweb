@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SAIBA Test</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">SAIBA</a>
+                <button class="burger" id="burger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-links">
+                    <a href="#services">Ydelser</a>
+                    <a href="#team">Team</a>
+                    <a href="#contact">Kontakt</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="container">
+            <h1>Hero Section</h1>
+            <p>This is a test</p>
+        </div>
+    </section>
+
+    <section class="services section" id="services">
+        <div class="container">
+            <h2>Services Section</h2>
+            <p>Test services</p>
+        </div>
+    </section>
+
+    <section class="ai-facts section" id="ai-facts">
+        <div class="container">
+            <div class="ai-facts-container">
+                <h2 class="ai-facts-title" id="aiFactsTitle">AI Facts Section TEST</h2>
+                <div class="interactive-area">
+                    <p style="color: red; font-size: 24px; font-weight: bold;">IF YOU SEE THIS, AI FACTS WORKS!</p>
+                    <div class="fact-boxes-container"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact section" id="contact">
+        <div class="container">
+            <h2>Contact Section</h2>
+            <p>End of page</p>
+        </div>
+    </section>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer" id="drawer" aria-hidden="true">
+        <div class="drawer-backdrop"></div>
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <span class="drawer-logo">SAIBA</span>
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+            </div>
+            <nav class="drawer-nav">
+                <a href="#services">Ydelser</a>
+                <a href="#team">Team</a>
+                <a href="#contact">Kontakt</a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
