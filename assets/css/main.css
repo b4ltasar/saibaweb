@@ -417,18 +417,16 @@ body {
 
 .service-icon-container {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
-  width: 40px;
-  height: 40px;
-  background: white;
-  border: 1px solid black;
-  border-radius: 4px;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: transform 0.3s ease;
-  overflow: hidden;
 }
 
 .service-card:hover .service-icon-container {
@@ -454,32 +452,24 @@ body {
   transform: scale(1.1);
 }
 
-.service-card:hover .holographic .organic-circle {
-  animation: holographicBreathe 1.5s ease-in-out infinite alternate;
+.service-card:hover .organic-circle {
+  animation: organicBreathe 1.5s ease-in-out infinite alternate;
 }
 
-.service-card:hover .holographic .organic-path {
-  animation: holographicFlow 2s ease-in-out infinite alternate;
+.service-card:hover .organic-path {
+  animation: organicFlow 2s ease-in-out infinite alternate;
 }
 
-.service-card:hover .holographic .organic-rect {
-  animation: holographicExpand 1.8s ease-in-out infinite alternate;
+.service-card:hover .organic-rect {
+  animation: organicExpand 1.8s ease-in-out infinite alternate;
 }
 
-.service-card:hover .holographic .organic-shape {
-  animation: holographicMorph 2.2s ease-in-out infinite alternate;
+.service-card:hover .organic-shape {
+  animation: organicMorph 2.2s ease-in-out infinite alternate;
 }
 
-.service-card:hover .holographic .organic-dot {
-  animation: holographicPulse 1.2s ease-in-out infinite alternate;
-}
-
-.service-card:hover .holographic .organic-inner {
-  animation: holographicInner 2.5s ease-in-out infinite alternate;
-}
-
-.service-card:hover .holographic .organic-core {
-  animation: holographicCore 1.8s ease-in-out infinite alternate;
+.service-card:hover .organic-dot {
+  animation: organicPulse 1.2s ease-in-out infinite alternate;
 }
 
 @keyframes organicBreathe {
@@ -543,104 +533,6 @@ body {
   }
 }
 
-@keyframes holographicBreathe {
-  0% {
-    r: 18;
-    stroke-width: 2;
-    opacity: 0.8;
-    filter: blur(0px);
-  }
-  100% {
-    r: 22;
-    stroke-width: 3;
-    opacity: 0.4;
-    filter: blur(1px);
-  }
-}
-
-@keyframes holographicFlow {
-  0% {
-    stroke-width: 1.5;
-    opacity: 0.8;
-    filter: blur(0px);
-  }
-  100% {
-    stroke-width: 3;
-    opacity: 0.3;
-    filter: blur(2px);
-  }
-}
-
-@keyframes holographicExpand {
-  0% {
-    width: 24;
-    height: 24;
-    rx: 4;
-    stroke-width: 2;
-    opacity: 0.9;
-  }
-  100% {
-    width: 28;
-    height: 28;
-    rx: 6;
-    stroke-width: 3;
-    opacity: 0.3;
-  }
-}
-
-@keyframes holographicMorph {
-  0% {
-    stroke-width: 2;
-    opacity: 0.8;
-    transform: scale(1);
-    filter: blur(0px);
-  }
-  100% {
-    stroke-width: 4;
-    opacity: 0.2;
-    transform: scale(1.1);
-    filter: blur(2px);
-  }
-}
-
-@keyframes holographicPulse {
-  0% {
-    r: 2;
-    opacity: 0.9;
-    filter: blur(0px);
-  }
-  100% {
-    r: 4;
-    opacity: 0.3;
-    filter: blur(1px);
-  }
-}
-
-@keyframes holographicInner {
-  0% {
-    opacity: 0.6;
-    stroke-width: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0.2;
-    stroke-width: 2;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes holographicCore {
-  0% {
-    opacity: 0.8;
-    transform: scale(1);
-    filter: blur(0px);
-  }
-  100% {
-    opacity: 0.3;
-    transform: scale(1.2);
-    filter: blur(1px);
-  }
-}
 
 /* AI Facts Section */
 .ai-facts {
