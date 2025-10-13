@@ -1,31 +1,52 @@
 # SAIBA - AI Konsulentbureau Website
 
-En moderne, responsiv hjemmeside for SAIBA AI-konsulentbureau bygget med Jekyll og GitHub Pages.
+En moderne, professionel hjemmeside for SAIBA AI-konsulentbureau bygget med Jekyll og GitHub Pages.
 
-## Features
+## ✨ Features
 
-- 🎨 **Moderne Design**: Skarp og moderne visuel stil baseret på de medsendte referencer
-- 🌓 **Dark/Light Mode**: Automatisk tema-skift med gradient grid baggrund
-- 📱 **Fuldstændig Responsiv**: Optimaliseret til alle enheder og skærmstørrelser
+- 🎨 **Moderne Design**: Professionelt og moderne UI/UX design
+- 📱 **Fuldstændig Responsiv**: Optimeret til alle enheder og skærmstørrelser
 - ⚡ **Hurtig Performance**: Optimeret til hurtig loading og gnidningsfri brugeroplevelse
-- 🎯 **Interaktive Sektioner**: 
-  - AI Facts område med klikbare facts om AI-fordele
-  - Anden ekstraordinær sektion (kan udvides)
-- 🔧 **Nem Indholdsstyring**: YAML-baseret indhold via Jekyll collections
-- 🌐 **GitHub Pages Ready**: Direkte deployment til GitHub Pages
+- 🎯 **Interaktive Elementer**: 
+  - AI Facts sektion med dynamiske statistikker
+  - Smooth scrolling navigation
+  - Animerede komponenter
+- 🔧 **YAML-Baseret Indhold**: Nem indholdsstyring via YAML data filer
+- 📊 **SEO Optimeret**: Jekyll SEO plugin med sitemap og meta tags
+- 🌐 **GitHub Pages Ready**: Automatisk deployment
+- 📧 **Kontaktformular**: Integreret med Formspree
+- 🎭 **Mobile Menu**: Drawer navigation til mobile enheder
 
-## Struktur
+## 📁 Struktur
 
 ```
 saibaweb/
-├── _config.yml          # Jekyll konfiguration
-├── _layouts/            # HTML layouts
-├── _collections/        # Indholds-collections (services, team, clients)
-├── assets/              # CSS, JS og billeder
+├── _config.yml              # Jekyll konfiguration
+├── _layouts/                # HTML layouts
+│   └── default.html         # Main layout
+├── _includes/               # Genbrugelige komponenter
+│   ├── head.html            # HTML head section
+│   ├── header.html          # Site header & navigation
+│   ├── footer.html          # Site footer
+│   └── analytics.html       # Analytics scripts
+├── _data/                   # YAML data filer
+│   ├── services.yml         # Services/ydelser
+│   ├── team.yml             # Team medlemmer
+│   ├── clients.yml          # Kunder
+│   ├── navigation.yml       # Navigation links
+│   ├── contact.yml          # Kontakt information
+│   └── ai_facts.yml         # AI statistikker
+├── assets/                  # Statiske filer
 │   ├── css/
+│   │   └── main.css         # Main stylesheet
 │   ├── js/
-│   └── images/
-├── index.html           # Forside
+│   │   └── main.js          # JavaScript
+│   └── images/              # Billeder
+├── index.html               # Forside
+├── 404.html                 # 404 error page
+├── CNAME                    # Custom domain
+├── robots.txt               # SEO robots file
+├── DEPLOYMENT_GUIDE.md      # Deployment guide
 └── README.md
 ```
 
@@ -75,22 +96,47 @@ saibaweb/
 4. Vælg **Theme**: "None" (vi bruger custom CSS)
 5. Gem indstillingerne
 
-## Indholdsstyring
+## 📝 Indholdsstyring
 
-### Services
-Rediger services i `_collections/services/` mappen eller direkte i `index.html`
+Alt indhold styres via YAML filer i `_data/` mappen:
 
-### Team Members
-Tilføj team members i `_collections/team/` mappen
+### Services (`_data/services.yml`)
+```yaml
+- icon: "🎯"
+  title: "Workshop Title"
+  description: "Description here"
+  features:
+    - "Feature 1"
+    - "Feature 2"
+```
 
-### Clients
-Tilføj klienter i `_collections/clients/` mappen
+### Team (`_data/team.yml`)
+```yaml
+- name: "Name"
+  initials: "XX"
+  role: "Role"
+  bio: "Bio text"
+```
 
-### Billeder
-Placer billeder i `assets/images/` med følgende struktur:
-- `assets/images/team/` - Team billeder
-- `assets/images/clients/` - Klient logoer
-- `assets/images/` - Generelle billeder
+### Clients (`_data/clients.yml`)
+```yaml
+- name: "Client Name"
+  icon: "🏢"
+  logo: "/path/to/logo.png"
+```
+
+### Navigation (`_data/navigation.yml`)
+```yaml
+- title: "Menu Item"
+  url: "#section"
+```
+
+### Kontakt (`_data/contact.yml`)
+```yaml
+phone: "+45 XXXXXXXX"
+email: "email@example.com"
+address: "Address"
+```
 
 ## Customization
 

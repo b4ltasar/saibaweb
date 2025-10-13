@@ -1,0 +1,36 @@
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="{{ '/' | relative_url }}" class="logo">{{ site.title }}</a>
+      
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <div class="nav-links">
+        {% for item in site.data.navigation %}
+        <a href="{{ item.url }}">{{ item.title }}</a>
+        {% endfor %}
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Drawer -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-backdrop"></div>
+  <div class="drawer-content">
+    <div class="drawer-header">
+      <span class="drawer-logo">{{ site.title }}</span>
+      <button class="drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+    </div>
+    <nav class="drawer-nav">
+      {% for item in site.data.navigation %}
+      <a href="{{ item.url }}">{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</div>
+

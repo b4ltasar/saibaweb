@@ -1,0 +1,15 @@
+- name: "Kronenbourg 1664"
+  icon: "🍺"
+  logo: ""
+  description: "Premium beer brand"
+  
+- name: "Carlsberg"
+  icon: "🍺"
+  logo: ""
+  description: "Global brewing company"
+  
+- name: "NEAR Protocol"
+  icon: "⚡"
+  logo: ""
+  description: "Blockchain infrastructure"
+

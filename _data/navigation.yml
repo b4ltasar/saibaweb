@@ -1,0 +1,15 @@
+- title: "Hjem"
+  url: "#hero"
+  
+- title: "Ydelser"
+  url: "#services"
+  
+- title: "Team"
+  url: "#team"
+  
+- title: "Kunder"
+  url: "#clients"
+  
+- title: "Kontakt"
+  url: "#contact"
+

@@ -1,65 +1,15 @@
 <!DOCTYPE html>
 <html lang="da">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-  
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
-  
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #0a0a0a;
-      --muted: #6b7280;
-      --card: #f9fafb;
-      --border: rgba(0, 0, 0, 0.12);
-      --accent: #0ea5e9;
-    }
-  </style>
-</head>
+{% include head.html %}
 <body>
-  <header class="site-header">
-    <div class="container">
-      <nav class="nav">
-        <a href="/" class="logo">SAIBA</a>
-        <div class="nav-links">
-          <a href="#services">Ydelser</a>
-          <a href="#team">Team</a>
-          <a href="#clients">Kunder</a>
-          <a href="#contact">Kontakt</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+  {% include header.html %}
 
   <main>
     {{ content }}
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; {{ 'now' | date: "%Y" }} SAIBA. All rights reserved.</p>
-    </div>
-  </footer>
+  {% include footer.html %}
 
-  <script>
-    // AI Facts interactive button
-    document.addEventListener('DOMContentLoaded', function() {
-      const button = document.querySelector('.interactive-button');
-      const popup = document.querySelector('.fact-popup');
-      
-      if (button && popup) {
-        button.addEventListener('click', function() {
-          popup.classList.toggle('show');
-        });
-      }
-    });
-  </script>
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

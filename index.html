@@ -5,11 +5,11 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 ---
 
 <!-- Hero Section -->
-<section class="hero">
+<section class="hero" id="hero">
     <div class="container">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">Fra hverdagens rutiner til ekstraordinære superkræfter med AI for dine medarbejdere</h1>
+                <h1 class="hero-title">{{ site.description }}</h1>
                 <p class="hero-subtitle">Vi gentænker måden, vi arbejder på. Med mennesker i centrum og teknologi som motor.</p>
                 <a href="#contact" class="hero-cta">GET IN TOUCH</a>
             </div>
@@ -17,7 +17,7 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                 <div class="hero-placeholder">
                     <div class="hero-icon">🚀</div>
                     <h3>AI-Powered Workplace</h3>
-                    <p>Hero billede kommer her<br><small>Upload dit billede til assets/images/hero-image.jpg</small></p>
+                    <p>Transformér din virksomhed med AI</p>
                 </div>
             </div>
         </div>
@@ -33,57 +33,18 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
         </div>
         
         <div class="services-grid">
+            {% for service in site.data.services %}
             <div class="service-card">
-                <div class="service-icon">🎯</div>
-                <h3 class="service-title">Workshops & Bootcamps</h3>
-                <p class="service-description">Få overblik og indsigt i AI-teknologiens potentiale</p>
+                <div class="service-icon">{{ service.icon }}</div>
+                <h3 class="service-title">{{ service.title }}</h3>
+                <p class="service-description">{{ service.description }}</p>
                 <ul class="service-list">
-                    <li>AI-introduktion og grundlæggende koncepter</li>
-                    <li>Emerging tech bootcamps</li>
-                    <li>Hands-on øvelser med praktiske cases</li>
-                    <li>Cases & videndeling fra industrien</li>
-                    <li>Avanceret prompting teknikker</li>
+                    {% for feature in service.features %}
+                    <li>{{ feature }}</li>
+                    {% endfor %}
                 </ul>
             </div>
-            
-            <div class="service-card">
-                <div class="service-icon">⚙️</div>
-                <h3 class="service-title">Skræddersyede Forløb</h3>
-                <p class="service-description">Fra viden til konkrete use cases i din virksomhed</p>
-                <ul class="service-list">
-                    <li>Branchetilpassede programmer</li>
-                    <li>Use case-identifikation og prioritering</li>
-                    <li>Virksomhedsspecifikke workshops</li>
-                    <li>Kompetenceudvikling og træning</li>
-                    <li>Implementering og opfølgning</li>
-                </ul>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">📊</div>
-                <h3 class="service-title">Strategi & Implementering</h3>
-                <p class="service-description">Omsæt teknologi til konkrete resultater og værdi</p>
-                <ul class="service-list">
-                    <li>Teknologisk rådgivning og vejledning</li>
-                    <li>AI roadmap udvikling</li>
-                    <li>Procesudvikling og optimering</li>
-                    <li>Organisatorisk forankring</li>
-                    <li>ROI måling og evaluering</li>
-                </ul>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">🚀</div>
-                <h3 class="service-title">Produktudvikling</h3>
-                <p class="service-description">Vi udvikler og bygger AI-løsninger med jer</p>
-                <ul class="service-list">
-                    <li>Digitale produkter & services</li>
-                    <li>Co-creation og samarbejde</li>
-                    <li>AI Studio og prototyper</li>
-                    <li>Løbende sparring & rådgivning</li>
-                    <li>Skalering og vedligeholdelse</li>
-                </ul>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -92,17 +53,32 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 <section class="ai-facts section" id="ai-facts">
     <div class="container">
         <div class="ai-facts-container">
-            <h2 class="ai-facts-title">Klik og se hvorfor AI kan forbedre din virksomhed</h2>
+            <h2 class="ai-facts-title">Hvorfor AI kan forbedre din virksomhed</h2>
             <p class="ai-facts-subtitle">Udforsk konkrete fordele ved AI-implementering</p>
             
             <div class="interactive-area">
                 <button class="interactive-button">
-                    Klik og se hvorfor AI kan forbedre din virksomhed
+                    Klik og se AI-fordele
                 </button>
                 
                 <div class="fact-popup">
                     <p class="fact-text">61% af virksomheder der implementerer AI rapporterer betydelige omkostningsbesparelser</p>
                     <p class="fact-source">Kilde: MIT Sloan Management Review</p>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Produktivitetsstigning</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Færre fejl</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">25%</div>
+                    <div class="stat-label">Hurtigere beslutninger</div>
                 </div>
             </div>
         </div>
@@ -118,41 +94,16 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
         </div>
         
         <div class="team-grid">
+            {% for member in site.data.team %}
             <div class="team-member">
-                <div class="team-photo team-photo-1">
-                    <span>PH</span>
+                <div class="team-photo team-photo-{{ forloop.index }}">
+                    <span>{{ member.initials }}</span>
                 </div>
-                <h3 class="team-name">Peter Humaidan</h3>
-                <p class="team-role">Co-Founder & Partner</p>
-                <p class="team-bio">AI strategi og teknologisk innovation</p>
+                <h3 class="team-name">{{ member.name }}</h3>
+                <p class="team-role">{{ member.role }}</p>
+                <p class="team-bio">{{ member.bio }}</p>
             </div>
-            
-            <div class="team-member">
-                <div class="team-photo team-photo-2">
-                    <span>JJ</span>
-                </div>
-                <h3 class="team-name">Jens Jepsen</h3>
-                <p class="team-role">Co-Founder & Partner</p>
-                <p class="team-bio">Produktudvikling og implementering</p>
-            </div>
-            
-            <div class="team-member">
-                <div class="team-photo team-photo-3">
-                    <span>GF</span>
-                </div>
-                <h3 class="team-name">Gustav Friis</h3>
-                <p class="team-role">Co-Founder & Partner</p>
-                <p class="team-bio">Forretningsudvikling og kundeoplevelse</p>
-            </div>
-            
-            <div class="team-member">
-                <div class="team-photo team-photo-4">
-                    <span>FH</span>
-                </div>
-                <h3 class="team-name">Frederik Hansson</h3>
-                <p class="team-role">Co-Founder & Partner</p>
-                <p class="team-bio">Teknisk arkitektur og skalerbarhed</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -167,18 +118,12 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
         </div>
         
         <div class="clients-logos">
+            {% for client in site.data.clients %}
             <div class="client-logo">
-                <div class="client-icon">🍺</div>
-                <span>Kronenbourg 1664</span>
+                <div class="client-icon">{{ client.icon }}</div>
+                <span>{{ client.name }}</span>
             </div>
-            <div class="client-logo">
-                <div class="client-icon">🍺</div>
-                <span>Carlsberg</span>
-            </div>
-            <div class="client-logo">
-                <div class="client-icon">⚡</div>
-                <span>NEAR Protocol</span>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -192,21 +137,21 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                 <p>Kontakt os for at høre mere om hvordan vi kan hjælpe din virksomhed med AI-implementering.</p>
                 <div class="contact-details">
                     <div class="contact-item">
-                        <span class="contact-label">Telefon:</span>
-                        <span>+45 3141 2829</span>
+                        <span class="contact-label">📞 Telefon:</span>
+                        <span>{{ site.data.contact.phone }}</span>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-label">Email:</span>
-                        <span>info@saiba.dk</span>
+                        <span class="contact-label">✉️ Email:</span>
+                        <span>{{ site.data.contact.email }}</span>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-label">Adresse:</span>
-                        <span>Copenhagen, Denmark</span>
+                        <span class="contact-label">📍 Adresse:</span>
+                        <span>{{ site.data.contact.address }}</span>
                     </div>
                 </div>
             </div>
             
-            <form class="contact-form" action="#" method="POST">
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                 <div class="form-group">
                     <label for="name" class="form-label">Navn *</label>
                     <input type="text" id="name" name="name" class="form-input" placeholder="Dit navn" required>

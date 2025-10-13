@@ -3,9 +3,11 @@
 
 # Site settings
 title: "SAIBA"
+tagline: "AI Konsulentbureau"
 description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI for dine medarbejdere"
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. https://yourusername.github.io
+baseurl: "/saibaweb"
+url: "https://yourusername.github.io"
+repository: "yourusername/saibaweb"
 
 # Build settings
 markdown: kramdown
@@ -86,3 +88,4 @@ social:
 # Custom variables
 lang: "da"
 timezone: "Europe/Copenhagen"
+

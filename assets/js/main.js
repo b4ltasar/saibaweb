@@ -162,13 +162,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href');
+            
+            // Skip if it's just "#"
+            if (targetId === '#') return;
+            
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
+                e.preventDefault();
+                
+                const header = document.querySelector('.site-header');
+                const headerHeight = header ? header.offsetHeight : 0;
                 const targetPosition = targetElement.offsetTop - headerHeight - 20;
                 
                 window.scrollTo({
@@ -236,22 +241,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Header scroll effect
-    const header = document.querySelector('.header');
+    const header = document.querySelector('.site-header');
     let lastScrollY = window.scrollY;
     
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        
-        if (currentScrollY > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.backdropFilter = 'blur(10px)';
-        } else {
-            header.style.background = 'var(--bg)';
-            header.style.backdropFilter = 'none';
-        }
-        
-        lastScrollY = currentScrollY;
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+                header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
+            } else {
+                header.style.background = 'var(--bg)';
+                header.style.backdropFilter = 'none';
+                header.style.boxShadow = 'none';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+    }
     
     // Service cards hover effect
     const serviceCards = document.querySelectorAll('.service-card');
@@ -280,15 +289,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Keyboard navigation support
     document.addEventListener('keydown', function(e) {
         // ESC key closes drawer
-        if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') {
+        if (e.key === 'Escape' && drawer && drawer.getAttribute('aria-hidden') === 'false') {
             closeDrawer();
-        }
-        
-        // Space or Enter on theme toggle
-        if ((e.key === ' ' || e.key === 'Enter') && 
-            (document.activeElement === themeToggle || document.activeElement === drawerThemeToggle)) {
-            e.preventDefault();
-            toggleTheme();
         }
     });
     

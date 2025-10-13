@@ -1,0 +1,44 @@
+- icon: "🎯"
+  title: "Workshops & Bootcamps"
+  description: "Få overblik og indsigt i AI-teknologiens potentiale"
+  features:
+    - "AI-introduktion og grundlæggende koncepter"
+    - "Emerging tech bootcamps"
+    - "Hands-on øvelser med praktiske cases"
+    - "Cases & videndeling fra industrien"
+    - "Avanceret prompting teknikker"
+  link: "#contact"
+  
+- icon: "⚙️"
+  title: "Skræddersyede Forløb"
+  description: "Fra viden til konkrete use cases i din virksomhed"
+  features:
+    - "Branchetilpassede programmer"
+    - "Use case-identifikation og prioritering"
+    - "Virksomhedsspecifikke workshops"
+    - "Kompetenceudvikling og træning"
+    - "Implementering og opfølgning"
+  link: "#contact"
+  
+- icon: "📊"
+  title: "Strategi & Implementering"
+  description: "Omsæt teknologi til konkrete resultater og værdi"
+  features:
+    - "Teknologisk rådgivning og vejledning"
+    - "AI roadmap udvikling"
+    - "Procesudvikling og optimering"
+    - "Organisatorisk forankring"
+    - "ROI måling og evaluering"
+  link: "#contact"
+  
+- icon: "🚀"
+  title: "Produktudvikling"
+  description: "Vi udvikler og bygger AI-løsninger med jer"
+  features:
+    - "Digitale produkter & services"
+    - "Co-creation og samarbejde"
+    - "AI Studio og prototyper"
+    - "Løbende sparring & rådgivning"
+    - "Skalering og vedligeholdelse"
+  link: "#contact"
+

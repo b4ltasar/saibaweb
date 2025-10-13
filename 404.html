@@ -1,0 +1,53 @@
+---
+layout: default
+title: "404 - Side ikke fundet"
+description: "Siden du leder efter findes ikke"
+permalink: /404.html
+---
+
+<section class="error-page section">
+    <div class="container">
+        <div class="error-content">
+            <h1 class="error-title">404</h1>
+            <h2 class="error-subtitle">Side ikke fundet</h2>
+            <p class="error-text">Den side du leder efter findes desværre ikke eller er blevet flyttet.</p>
+            <a href="{{ '/' | relative_url }}" class="hero-cta">Gå til forsiden</a>
+        </div>
+    </div>
+</section>
+
+<style>
+.error-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.error-title {
+    font-size: 120px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 16px;
+}
+
+.error-subtitle {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.error-text {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 32px;
+}
+</style>
+
