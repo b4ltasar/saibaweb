@@ -62,66 +62,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Interactive AI Facts Section
-    const interactiveButton = document.querySelector('.interactive-button');
-    const factPopup = document.querySelector('.fact-popup');
+    const mainClickBox = document.querySelector('.main-click-box');
+    const factBoxes = document.querySelectorAll('.fact-box');
     const aiFactsSection = document.querySelector('.ai-facts');
     
-    // AI Facts data
-    const aiFacts = [
-        {
-            text: "61% af virksomheder der implementerer AI rapporterer betydelige omkostningsbesparelser",
-            source: "MIT Sloan Management Review"
-        },
-        {
-            text: "AI kan øge produktiviteten med op til 40% i administrative opgaver",
-            source: "McKinsey Global Institute"
-        },
-        {
-            text: "Virksomheder med AI-integration har 23% højere kundetilfredshed",
-            source: "Salesforce Research"
-        },
-        {
-            text: "AI reducerer fejlraten med 85% i dataanalyse og rapportering",
-            source: "IBM Institute for Business Value"
-        },
-        {
-            text: "Virksomheder der bruger AI har 25% hurtigere beslutningsprocesser",
-            source: "Deloitte Insights"
-        },
-        {
-            text: "AI kan identificere mønstre i data 1000x hurtigere end mennesker",
-            source: "Harvard Business Review"
+    let factsVisible = false;
+    
+    function toggleFactBoxes() {
+        if (factsVisible) {
+            // Hide all fact boxes
+            factBoxes.forEach((box, index) => {
+                setTimeout(() => {
+                    box.classList.remove('show');
+                }, index * 100);
+            });
+            factsVisible = false;
+        } else {
+            // Show all fact boxes with staggered animation
+            factBoxes.forEach((box, index) => {
+                setTimeout(() => {
+                    box.classList.add('show');
+                }, index * 200);
+            });
+            factsVisible = true;
         }
-    ];
-    
-    let currentFactIndex = 0;
-    
-    function showRandomFact() {
-        if (!factPopup) return;
-        
-        // Get random fact
-        const randomIndex = Math.floor(Math.random() * aiFacts.length);
-        const fact = aiFacts[randomIndex];
-        
-        // Update popup content
-        const factText = factPopup.querySelector('.fact-text');
-        const factSource = factPopup.querySelector('.fact-source');
-        
-        if (factText) factText.textContent = fact.text;
-        if (factSource) factSource.textContent = `Kilde: ${fact.source}`;
-        
-        // Show popup with animation
-        factPopup.classList.add('show');
-        
-        // Hide popup after 5 seconds
-        setTimeout(() => {
-            factPopup.classList.remove('show');
-        }, 5000);
     }
     
-    if (interactiveButton) {
-        interactiveButton.addEventListener('click', showRandomFact);
+    if (mainClickBox) {
+        mainClickBox.addEventListener('click', toggleFactBoxes);
     }
+    
+    // Add click handlers to individual fact boxes for better UX
+    factBoxes.forEach(box => {
+        box.addEventListener('click', function() {
+            // Optional: Add individual box interactions here
+            console.log('Fact box clicked:', this.querySelector('.fact-text').textContent);
+        });
+    });
     
     // Mouse Trail for AI Facts Section Only
     let mouseTrailEnabled = false;
