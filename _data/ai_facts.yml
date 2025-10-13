@@ -1,19 +1,59 @@
 - title: "Produktivitet"
   text: "AI kan øge produktiviteten med op til 40% i administrative opgaver"
-  source: "McKinsey Global Institute 2023"
+  source: "McKinsey Global Institute"
 
 - title: "Omkostninger"
   text: "61% af virksomheder rapporterer betydelige omkostningsbesparelser efter AI-implementering"
-  source: "MIT Sloan Management Review 2023"
+  source: "MIT Sloan Management Review"
 
 - title: "Kundetilfredshed"
   text: "Virksomheder med AI-integration har 23% højere kundetilfredshed"
-  source: "Salesforce Research 2024"
+  source: "Salesforce Research"
 
 - title: "Beslutninger"
   text: "AI accelererer beslutningsprocesser med op til 25% hurtigere workflows"
-  source: "Deloitte Insights 2023"
+  source: "Deloitte Insights"
 
 - title: "Tidsbesparelse"
   text: "AI-automation kan frigøre op til 30% af medarbejdernes tid til strategiske opgaver"
-  source: "World Economic Forum 2024"
+  source: "World Economic Forum"
+
+- title: "Fejlreduktion"
+  text: "AI reducerer fejlraten med 85% i dataanalyse og rapportering"
+  source: "IBM Institute for Business Value"
+
+- title: "ROI"
+  text: "Virksomheder med AI har 35% bedre ROI på deres digitale investeringer"
+  source: "Accenture Research"
+
+- title: "Forudsigelse"
+  text: "AI kan forudsige kundeadfærd med 95% nøjagtighed"
+  source: "Forrester Research"
+
+- title: "Operationer"
+  text: "Implementering af AI resulterer i 20% reduktion i operationelle omkostninger"
+  source: "PwC Global AI Survey"
+
+- title: "Innovation"
+  text: "AI-driven virksomheder lancere produkter 50% hurtigere end traditionelle"
+  source: "Harvard Business Review"
+
+- title: "Markedsføring"
+  text: "AI-optimerede kampagner har 3x højere konverteringsrater"
+  source: "HubSpot Research"
+
+- title: "Kundeservice"
+  text: "AI chatbots reducerer support-omkostninger med 67%"
+  source: "Oracle Research"
+
+- title: "Analytik"
+  text: "AI kan identificere mønstre i data 1000x hurtigere end mennesker"
+  source: "Microsoft AI Lab"
+
+- title: "Personale"
+  text: "AI hjælper med at reducere rekrutteringsomkostninger med 43%"
+  source: "LinkedIn Talent Solutions"
+
+- title: "Konkurrence"
+  text: "AI-adoptere har 23% højere markedsandele end ikke-adoptere"
+  source: "Bain & Company"

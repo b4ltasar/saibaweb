@@ -62,61 +62,108 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Interactive AI Facts Section
-    const mainClickBox = document.querySelector('.main-click-box');
-    const factBoxes = document.querySelectorAll('.fact-box');
     const aiFactsSection = document.querySelector('.ai-facts');
+    const factBoxesContainer = document.querySelector('.fact-boxes-container');
     
-    let currentFactIndex = 0;
-    let factsVisible = false;
+    let currentFactBox = null;
+    let factIndex = 0;
     
-    function showNextFact() {
-        // Hide all fact boxes first
-        factBoxes.forEach(box => {
-            box.classList.remove('show');
-        });
+    // AI Facts data (this would normally come from Jekyll)
+    const aiFacts = [
+        { title: "Produktivitet", text: "AI kan øge produktiviteten med op til 40% i administrative opgaver", source: "McKinsey Global Institute" },
+        { title: "Omkostninger", text: "61% af virksomheder rapporterer betydelige omkostningsbesparelser efter AI-implementering", source: "MIT Sloan Management Review" },
+        { title: "Kundetilfredshed", text: "Virksomheder med AI-integration har 23% højere kundetilfredshed", source: "Salesforce Research" },
+        { title: "Beslutninger", text: "AI accelererer beslutningsprocesser med op til 25% hurtigere workflows", source: "Deloitte Insights" },
+        { title: "Tidsbesparelse", text: "AI-automation kan frigøre op til 30% af medarbejdernes tid til strategiske opgaver", source: "World Economic Forum" },
+        { title: "Fejlreduktion", text: "AI reducerer fejlraten med 85% i dataanalyse og rapportering", source: "IBM Institute for Business Value" },
+        { title: "ROI", text: "Virksomheder med AI har 35% bedre ROI på deres digitale investeringer", source: "Accenture Research" },
+        { title: "Forudsigelse", text: "AI kan forudsige kundeadfærd med 95% nøjagtighed", source: "Forrester Research" },
+        { title: "Operationer", text: "Implementering af AI resulterer i 20% reduktion i operationelle omkostninger", source: "PwC Global AI Survey" },
+        { title: "Innovation", text: "AI-driven virksomheder lancere produkter 50% hurtigere end traditionelle", source: "Harvard Business Review" },
+        { title: "Markedsføring", text: "AI-optimerede kampagner har 3x højere konverteringsrater", source: "HubSpot Research" },
+        { title: "Kundeservice", text: "AI chatbots reducerer support-omkostninger med 67%", source: "Oracle Research" },
+        { title: "Analytik", text: "AI kan identificere mønstre i data 1000x hurtigere end mennesker", source: "Microsoft AI Lab" },
+        { title: "Personale", text: "AI hjælper med at reducere rekrutteringsomkostninger med 43%", source: "LinkedIn Talent Solutions" },
+        { title: "Konkurrence", text: "AI-adoptere har 23% højere markedsandele end ikke-adoptere", source: "Bain & Company" }
+    ];
+    
+    function createFactBox(fact, x, y) {
+        // Remove existing fact box
+        if (currentFactBox) {
+            currentFactBox.remove();
+        }
         
-        // Show the next fact box
-        if (currentFactIndex < factBoxes.length) {
-            const currentBox = factBoxes[currentFactIndex];
-            setTimeout(() => {
-                currentBox.classList.add('show');
-            }, 200);
-            
-            currentFactIndex++;
-        } else {
-            // Reset to beginning
-            currentFactIndex = 0;
-            factsVisible = false;
-        }
-    }
-    
-    function toggleFactBoxes() {
-        if (factsVisible && currentFactIndex === 0) {
-            // Hide all fact boxes
-            factBoxes.forEach((box, index) => {
+        // Create new fact box
+        const factBox = document.createElement('div');
+        factBox.className = 'fact-box dynamic-fact-box';
+        factBox.innerHTML = `
+            <h4 class="fact-title">${fact.title}</h4>
+            <p class="fact-text">${fact.text}</p>
+            <p class="fact-source">${fact.source}</p>
+        `;
+        
+        // Get the interactive area bounds
+        const interactiveArea = aiFactsSection.querySelector('.interactive-area');
+        const rect = interactiveArea.getBoundingClientRect();
+        
+        // Position relative to the interactive area
+        const relativeX = x - rect.left;
+        const relativeY = y - rect.top;
+        
+        // Ensure the fact box stays within bounds
+        const boxWidth = 280;
+        const boxHeight = 150;
+        const finalX = Math.max(10, Math.min(relativeX - boxWidth/2, rect.width - boxWidth - 10));
+        const finalY = Math.max(10, Math.min(relativeY - boxHeight/2, rect.height - boxHeight - 10));
+        
+        factBox.style.left = finalX + 'px';
+        factBox.style.top = finalY + 'px';
+        factBox.style.position = 'absolute';
+        factBox.style.zIndex = '1000';
+        
+        // Add to container
+        factBoxesContainer.appendChild(factBox);
+        
+        // Animate in
+        setTimeout(() => {
+            factBox.classList.add('show');
+        }, 100);
+        
+        currentFactBox = factBox;
+        
+        // Auto-remove after 5 seconds
+        setTimeout(() => {
+            if (factBox && factBox.parentNode) {
+                factBox.classList.remove('show');
                 setTimeout(() => {
-                    box.classList.remove('show');
-                }, index * 50);
+                    if (factBox.parentNode) {
+                        factBox.remove();
+                    }
+                }, 500);
+            }
+        }, 5000);
+    }
+    
+    function showFactAtPosition(x, y) {
+        const fact = aiFacts[factIndex];
+        createFactBox(fact, x, y);
+        factIndex = (factIndex + 1) % aiFacts.length;
+    }
+    
+    // Add click handler to the interactive area only
+    if (aiFactsSection) {
+        const interactiveArea = aiFactsSection.querySelector('.interactive-area');
+        if (interactiveArea) {
+            interactiveArea.addEventListener('click', function(e) {
+                // Don't trigger if clicking on the main click box or existing fact boxes
+                if (e.target.closest('.main-click-box') || e.target.closest('.fact-box')) {
+                    return;
+                }
+                
+                showFactAtPosition(e.clientX, e.clientY);
             });
-            factsVisible = false;
-        } else {
-            // Start showing facts one by one
-            factsVisible = true;
-            currentFactIndex = 0;
-            showNextFact();
         }
     }
-    
-    if (mainClickBox) {
-        mainClickBox.addEventListener('click', toggleFactBoxes);
-    }
-    
-    // Add click handlers to individual fact boxes
-    factBoxes.forEach(box => {
-        box.addEventListener('click', function() {
-            showNextFact();
-        });
-    });
     
     // Mouse Trail for AI Facts Section Only
     let mouseTrailEnabled = false;
