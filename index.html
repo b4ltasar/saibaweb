@@ -29,20 +29,21 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
     <div class="container">
         <div class="services-header">
             <h2 class="services-title">Ydelser</h2>
-            <p class="services-subtitle">Vi tilbyder omfattende AI-løsninger der transformerer din virksomhed</p>
+            <a href="#contact" class="explore-link">Udforsk Ydelserne →</a>
         </div>
         
         <div class="services-grid">
             {% for service in site.data.services %}
             <div class="service-card">
-                <div class="service-icon">{{ service.icon }}</div>
+                <div class="service-card-header">
+                    <a href="#contact" class="offering-link">Ydelse →</a>
+                    <span class="service-number">{{ forloop.index | prepend: '00' | slice: -3, 3 }}</span>
+                </div>
                 <h3 class="service-title">{{ service.title }}</h3>
                 <p class="service-description">{{ service.description }}</p>
-                <ul class="service-list">
-                    {% for feature in service.features %}
-                    <li>{{ feature }}</li>
-                    {% endfor %}
-                </ul>
+                <div class="service-icon-container">
+                    <div class="service-icon">{{ service.icon }}</div>
+                </div>
             </div>
             {% endfor %}
         </div>
