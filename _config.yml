@@ -6,8 +6,8 @@ title: "SAIBA"
 tagline: "AI Konsulentbureau"
 description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI for dine medarbejdere"
 baseurl: "/saibaweb"
-url: "https://yourusername.github.io"
-repository: "yourusername/saibaweb"
+url: "https://jens-jepsen.github.io"
+repository: "jens-jepsen/saibaweb"
 
 # Build settings
 markdown: kramdown
