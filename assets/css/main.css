@@ -179,26 +179,21 @@ body {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+  gap: 20px;
   max-width: 1400px;
   margin: 0 auto;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
 }
 
 .service-card {
-  background: #faf9f7;
-  padding: 40px 30px;
-  border-right: 1px solid #e0e0e0;
+  background: white;
+  padding: 25px 20px;
+  border: 1px solid black;
+  border-radius: 4px;
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 400px;
-}
-
-.service-card:last-child {
-  border-right: none;
+  min-height: 280px;
+  transition: transform 0.2s ease;
 }
 
 .service-card-header {
@@ -246,24 +241,34 @@ body {
 }
 
 .service-icon-container {
-  margin-top: 30px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon-container {
+  transform: translateY(-5px);
 }
 
 .service-icon {
+  width: 20px;
+  height: 20px;
   background: #d4af8c;
   color: white;
-  width: 60px;
-  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  font-size: 1.2rem;
-  border: 2px solid white;
-  box-shadow: 0 0 0 1px #d4af8c;
+  border-radius: 2px;
+  font-size: 0.8rem;
 }
 
 /* AI Facts Section */
@@ -285,6 +290,7 @@ body {
   margin: 0 auto;
   text-align: center;
   position: relative;
+  padding: 0 20px;
 }
 
 .interactive-area {
@@ -298,8 +304,6 @@ body {
   cursor: crosshair;
   width: 100%;
   min-height: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
 }
 
 .main-click-box {
@@ -889,22 +893,22 @@ body {
   
   .services-grid {
     grid-template-columns: 1fr;
-    border: none;
-    border-radius: 0;
-    gap: 1px;
-    background: #e0e0e0;
+    gap: 15px;
   }
   
   .service-card {
-    border-right: none;
-    border-bottom: none;
-    background: #faf9f7;
+    background: white;
+    border: 1px solid black;
     min-height: auto;
-    padding: 30px 20px;
+    padding: 20px 15px;
   }
   
-  .service-card:last-child {
-    border-bottom: none;
+  .service-icon-container {
+    position: static;
+    margin-top: 15px;
+    margin-left: auto;
+    width: 35px;
+    height: 35px;
   }
 
   .team-grid {
