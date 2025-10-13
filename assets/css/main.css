@@ -205,29 +205,24 @@ body {
   color: var(--text);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s;
+  transition: none;
   position: relative;
-  overflow: hidden;
+  padding-bottom: 4px;
 }
 
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
-  background: black;
+  background: var(--text);
   transition: width 0.3s ease;
-  transform-origin: left;
 }
 
 .nav-links a:hover::after {
   width: 100%;
-}
-
-.nav-links a:hover {
-  color: var(--text);
 }
 
 /* Dark Mode Toggle - Nordic Minimalist */
@@ -422,6 +417,7 @@ body {
   box-shadow: 0 0 0 var(--shadow);
   opacity: 1;
   transform: translateY(0);
+  overflow: visible;
 }
 
 .service-card.revealed {
@@ -498,35 +494,39 @@ body {
 
 .service-icon-container {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
+  bottom: 15px;
+  right: 15px;
+  width: 80px;
+  height: 80px;
   background: transparent;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: transform 0.3s ease;
+  overflow: visible;
+  padding: 10px;
 }
 
 .service-card:hover .service-icon-container {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 
 .service-icon {
-  width: 24px;
-  height: 24px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
+  color: var(--text);
+  overflow: visible;
 }
 
 .icon-svg {
   width: 100%;
   height: 100%;
   transition: all 0.4s ease;
+  overflow: visible;
 }
 
 .service-card:hover .icon-svg {
@@ -647,29 +647,7 @@ body {
   text-align: left;
   position: relative;
   z-index: 10;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-.ai-facts-title.revealed {
-  opacity: 1;
-}
-
-.typewriter {
-  overflow: hidden;
-  border-right: 3px solid var(--text);
-  white-space: nowrap;
-  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: var(--text) }
+  min-height: 50px;
 }
 
 .interactive-area {
@@ -684,12 +662,6 @@ body {
   min-height: 100%;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.01) 100%);
   border-radius: 8px;
-  opacity: 0;
-  transition: opacity 1s ease 0.5s;
-}
-
-.interactive-area.revealed {
-  opacity: 1;
 }
 
 .fact-boxes-container {
