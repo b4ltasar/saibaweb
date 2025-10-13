@@ -56,6 +56,18 @@ body {
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
+.dark-mode .ai-facts {
+  background: #0a0a0a;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark-mode .interactive-area {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -546,54 +558,69 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 80px 0;
 }
 
 .ai-facts-container {
   max-width: 1400px;
   margin: 0 auto;
-  text-align: center;
   position: relative;
-  padding: 0 20px;
+  padding: 0 40px;
+}
+
+.ai-facts-title {
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--text);
+  margin: 0 0 20px 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-align: left;
+  position: relative;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.ai-facts-title.revealed {
+  opacity: 1;
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 3px solid var(--text);
+  white-space: nowrap;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--text) }
 }
 
 .interactive-area {
   position: relative;
-  height: 700px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 40px;
+  justify-content: center;
   cursor: crosshair;
   width: 100%;
   min-height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.01) 100%);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 1s ease 0.5s;
 }
 
-.main-click-box {
-  background: white;
-  border: 2px solid #0a0a0a;
-  border-radius: 12px;
-  padding: 30px 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 10;
-  margin-bottom: 30px;
-}
-
-.main-click-box:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
-.click-text {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.2;
-  color: #0a0a0a;
-  font-family: 'Press Start 2P', monospace;
+.interactive-area.revealed {
+  opacity: 1;
 }
 
 .fact-boxes-container {
@@ -1186,6 +1213,24 @@ body {
   .service-icon {
     width: 20px;
     height: 20px;
+  }
+
+  .ai-facts-title {
+    font-size: 1.8rem;
+  }
+  
+  .ai-facts-container {
+    padding: 0 20px;
+  }
+  
+  .interactive-area {
+    height: 400px;
+  }
+  
+  .fact-box {
+    max-width: 220px;
+    min-width: 200px;
+    padding: 12px;
   }
 
   .team-grid {

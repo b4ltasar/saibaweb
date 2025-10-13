@@ -95,10 +95,54 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Interactive AI Facts Section
     const aiFactsSection = document.querySelector('.ai-facts');
+    const aiFactsTitle = document.getElementById('aiFactsTitle');
+    const interactiveArea = document.querySelector('.interactive-area');
     const factBoxesContainer = document.querySelector('.fact-boxes-container');
     
     let currentFactBox = null;
     let factIndex = 0;
+    
+    // Typewriter effect for AI Facts title
+    function typeWriter(element, text, speed = 100) {
+        let i = 0;
+        element.textContent = '';
+        element.style.borderRight = '3px solid var(--text)';
+        
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                // Remove cursor after typing is done
+                setTimeout(() => {
+                    element.style.borderRight = 'none';
+                }, 500);
+            }
+        }
+        type();
+    }
+    
+    // Observe AI Facts section for reveal
+    if (aiFactsSection && aiFactsTitle) {
+        const aiFactsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    aiFactsTitle.classList.add('revealed');
+                    if (interactiveArea) {
+                        interactiveArea.classList.add('revealed');
+                    }
+                    // Start typewriter effect
+                    setTimeout(() => {
+                        typeWriter(aiFactsTitle, 'Klik og se hvorfor AI kan forbedre din virksomhed', 80);
+                    }, 300);
+                    aiFactsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        aiFactsObserver.observe(aiFactsSection);
+    }
     
     // AI Facts data (this would normally come from Jekyll)
     const aiFacts = [
