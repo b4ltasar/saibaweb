@@ -66,25 +66,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const factBoxes = document.querySelectorAll('.fact-box');
     const aiFactsSection = document.querySelector('.ai-facts');
     
+    let currentFactIndex = 0;
     let factsVisible = false;
     
+    function showNextFact() {
+        // Hide all fact boxes first
+        factBoxes.forEach(box => {
+            box.classList.remove('show');
+        });
+        
+        // Show the next fact box
+        if (currentFactIndex < factBoxes.length) {
+            const currentBox = factBoxes[currentFactIndex];
+            setTimeout(() => {
+                currentBox.classList.add('show');
+            }, 200);
+            
+            currentFactIndex++;
+        } else {
+            // Reset to beginning
+            currentFactIndex = 0;
+            factsVisible = false;
+        }
+    }
+    
     function toggleFactBoxes() {
-        if (factsVisible) {
+        if (factsVisible && currentFactIndex === 0) {
             // Hide all fact boxes
             factBoxes.forEach((box, index) => {
                 setTimeout(() => {
                     box.classList.remove('show');
-                }, index * 100);
+                }, index * 50);
             });
             factsVisible = false;
         } else {
-            // Show all fact boxes with staggered animation
-            factBoxes.forEach((box, index) => {
-                setTimeout(() => {
-                    box.classList.add('show');
-                }, index * 200);
-            });
+            // Start showing facts one by one
             factsVisible = true;
+            currentFactIndex = 0;
+            showNextFact();
         }
     }
     
@@ -92,11 +111,10 @@ document.addEventListener('DOMContentLoaded', function() {
         mainClickBox.addEventListener('click', toggleFactBoxes);
     }
     
-    // Add click handlers to individual fact boxes for better UX
+    // Add click handlers to individual fact boxes
     factBoxes.forEach(box => {
         box.addEventListener('click', function() {
-            // Optional: Add individual box interactions here
-            console.log('Fact box clicked:', this.querySelector('.fact-text').textContent);
+            showNextFact();
         });
     });
     

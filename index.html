@@ -60,29 +60,12 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                 </div>
                 
                 <div class="fact-boxes-container">
-                    <div class="fact-box fact-box-1">
-                        <p class="fact-text">Deloitte fandt at</p>
-                        <p class="fact-text">AI-systemer kan frigøre 30% af en</p>
-                        <p class="fact-text">medarbejders tid</p>
-                        <p class="fact-source">Kilde: Deloitte Digital Transformation Report</p>
+                    {% for fact in site.data.ai_facts %}
+                    <div class="fact-box fact-box-{{ forloop.index }}">
+                        <p class="fact-text">{{ fact.text }}</p>
+                        <p class="fact-source">Kilde: {{ fact.source }}</p>
                     </div>
-                    
-                    <div class="fact-box fact-box-2">
-                        <p class="fact-text">Implementering</p>
-                        <p class="fact-text">i produktudvikling</p>
-                        <p class="fact-text">kan accelerere</p>
-                        <p class="fact-text">innovationstakten</p>
-                        <p class="fact-text">med 26%</p>
-                        <p class="fact-source">Kilde: Capgemini Research Institute</p>
-                    </div>
-                    
-                    <div class="fact-box fact-box-3">
-                        <p class="fact-text">AI-assisteret</p>
-                        <p class="fact-text">dataanalyse kan</p>
-                        <p class="fact-text">identificere mønstre</p>
-                        <p class="fact-text">1000x hurtigere</p>
-                        <p class="fact-source">Kilde: Harvard Business Review</p>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
