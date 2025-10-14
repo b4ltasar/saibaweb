@@ -153,6 +153,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .logo {
@@ -342,13 +345,14 @@ body {
 .team-title,
 .clients-title,
 .ai-facts-section-title {
-  font-size: 3rem;
+  font-size: 2.6rem;
   font-weight: 600;
   color: var(--text);
   margin: 0;
   letter-spacing: -0.02em;
   line-height: 1.1;
   text-align: left;
+  padding-left: 0;
 }
 
 .services-header,
@@ -365,18 +369,11 @@ body {
   padding: 0 24px;
 }
 
-.services-title {
-  font-size: 3rem;
-  font-weight: 300;
-  color: var(--text);
-  margin: 0;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
 
 .services-cta,
 .team-cta,
-.clients-cta {
+.clients-cta,
+.ai-facts-cta {
   color: var(--text);
   text-decoration: none;
   font-weight: 700;
@@ -393,7 +390,8 @@ body {
 
 .services-cta::after,
 .team-cta::after,
-.clients-cta::after {
+.clients-cta::after,
+.ai-facts-cta::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -406,7 +404,8 @@ body {
 
 .services-cta:hover::after,
 .team-cta:hover::after,
-.clients-cta:hover::after {
+.clients-cta:hover::after,
+.ai-facts-cta:hover::after {
   width: 100%;
 }
 
@@ -720,48 +719,21 @@ body {
 }
 
 
-.ai-facts-cta {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  position: relative;
-  padding-bottom: 4px;
-}
-
-.ai-facts-cta::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--text);
-  transition: width 0.3s ease;
-}
-
-.ai-facts-cta:hover::after {
-  width: 100%;
-}
 
 .ai-facts-frame {
   background: #f8f8f8;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
-  padding: 60px 40px;
+  padding: 40px 24px;
   position: relative;
-  min-height: 400px;
+  min-height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .ai-facts-title {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 600;
   color: var(--text);
   margin: 0 0 40px 0;
@@ -775,6 +747,7 @@ body {
   width: 0;
   opacity: 0;
   transition: width 2.5s ease, opacity 0.3s ease;
+  padding-left: 0;
 }
 
 .ai-facts-title.typewriter-active {
