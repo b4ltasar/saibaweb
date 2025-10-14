@@ -34,26 +34,40 @@ document.addEventListener('DOMContentLoaded', function() {
         interactiveArea.addEventListener('click', function(e) {
             console.log('AI Facts area clicked');
             
-            // Create simple fact box
+            // Remove existing fact boxes
+            const existingBoxes = document.querySelectorAll('.dynamic-fact-box');
+            existingBoxes.forEach(box => box.remove());
+            
+            // Get click position relative to interactive area
+            const rect = interactiveArea.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Create fact box positioned within interactive area
             const factBox = document.createElement('div');
+            factBox.className = 'dynamic-fact-box';
             factBox.style.position = 'absolute';
-            factBox.style.left = e.clientX + 'px';
-            factBox.style.top = e.clientY + 'px';
+            factBox.style.left = Math.max(20, Math.min(x - 125, rect.width - 270)) + 'px';
+            factBox.style.top = Math.max(20, Math.min(y - 80, rect.height - 180)) + 'px';
             factBox.style.background = 'white';
             factBox.style.border = '2px solid black';
-            factBox.style.padding = '15px';
+            factBox.style.padding = '16px';
             factBox.style.borderRadius = '8px';
             factBox.style.maxWidth = '250px';
             factBox.style.fontSize = '14px';
             factBox.style.zIndex = '1000';
-            factBox.innerHTML = 'AI kan øge produktiviteten med op til 40%';
+            factBox.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+            factBox.style.fontFamily = "'Press Start 2P', monospace";
+            factBox.style.fontSize = '11px';
+            factBox.style.lineHeight = '1.4';
+            factBox.innerHTML = '<div style="font-size: 12px; margin-bottom: 8px;">PRODUKTIVITET</div>AI kan øge produktiviteten med op til 40% i administrative opgaver<br><br><div style="font-size: 8px; opacity: 0.7;">McKinsey Global Institute</div>';
             
-            document.body.appendChild(factBox);
+            interactiveArea.appendChild(factBox);
             
-            // Remove after 4 seconds
+            // Remove after 6 seconds
             setTimeout(() => {
                 factBox.remove();
-            }, 4000);
+            }, 6000);
         });
     }
 });
