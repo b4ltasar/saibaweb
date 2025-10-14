@@ -1,5 +1,6 @@
 // SAIBA Website - Main JavaScript
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded');
     
     // Theme Management
     const darkModeToggle = document.getElementById('darkModeToggle');
@@ -66,6 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const drawerClose = document.getElementById('drawer-close');
     const drawerBackdrop = document.querySelector('.drawer-backdrop');
     
+    console.log('Burger:', burger);
+    console.log('Drawer:', drawer);
+    
     function openDrawer() {
         drawer.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -77,7 +81,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     if (burger) {
+        console.log('Adding burger click listener');
         burger.addEventListener('click', openDrawer);
+    } else {
+        console.log('Burger element not found!');
     }
     
     if (drawerClose) {
@@ -99,6 +106,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const aiFactsTitle = document.getElementById('aiFactsTitle');
     const interactiveArea = document.querySelector('.interactive-area');
     const factBoxesContainer = document.querySelector('.fact-boxes-container');
+    
+    console.log('AI Facts Section:', aiFactsSection);
+    console.log('AI Facts Title:', aiFactsTitle);
+    console.log('Interactive Area:', interactiveArea);
     
     let currentFactBox = null;
     let factIndex = 0;
