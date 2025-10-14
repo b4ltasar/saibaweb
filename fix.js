@@ -2,6 +2,41 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Fix script loaded');
     
+    // Header scroll logic
+    const header = document.querySelector('.site-header');
+    const hero = document.querySelector('.hero');
+    let lastScrollY = window.scrollY;
+    let isScrollingDown = false;
+    
+    function updateHeader() {
+        const scrollY = window.scrollY;
+        const heroHeight = hero ? hero.offsetHeight : 0;
+        
+        if (scrollY > heroHeight) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        // Hide/show header based on scroll direction
+        isScrollingDown = scrollY > lastScrollY;
+        
+        if (scrollY > 100) {
+            if (isScrollingDown) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+        } else {
+            header.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollY = scrollY;
+    }
+    
+    window.addEventListener('scroll', updateHeader);
+    updateHeader();
+    
     // Section reveal animations
     const observerOptions = {
         threshold: 0.1,

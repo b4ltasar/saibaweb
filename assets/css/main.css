@@ -132,12 +132,21 @@ body {
 
 /* Header */
 .site-header {
+  background: transparent;
+  border-bottom: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.3s ease;
+}
+
+.site-header.scrolled {
   background: var(--bg);
   border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  padding: 20px 0;
+  backdrop-filter: blur(10px);
 }
 
 .nav {
@@ -156,7 +165,7 @@ body {
 }
 
 .logo-img {
-  height: 32px;
+  height: 28px;
   width: auto;
 }
 
@@ -323,30 +332,37 @@ body {
   background: #faf9f7;
 }
 
+.services-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
 .services-title,
 .team-title,
 .clients-title,
 .ai-facts-section-title {
   font-size: 3rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--text);
-  margin: 0 0 60px 0;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   text-align: left;
 }
 
 .services-header,
 .team-header,
-.clients-header {
+.clients-header,
+.ai-facts-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 60px;
-  max-width: 1400px;
+  margin-bottom: 40px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 .services-title {
