@@ -155,7 +155,7 @@ body {
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 16px;
 }
 
 .logo {
@@ -165,7 +165,7 @@ body {
   text-decoration: none;
   display: flex;
   align-items: center;
-  padding-left: 16px;
+  padding-left: 0;
 }
 
 .logo-img {
@@ -203,7 +203,6 @@ body {
 .nav-links {
   display: flex;
   gap: 32px;
-  padding-right: 16px;
 }
 
 .nav-links a {
