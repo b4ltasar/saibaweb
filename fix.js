@@ -21,6 +21,22 @@ document.addEventListener('DOMContentLoaded', function() {
         revealObserver.observe(section);
     });
     
+    // Typewriter effect for AI facts title
+    const aiFactsTitle = document.getElementById('aiFactsTitle');
+    if (aiFactsTitle) {
+        const titleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('typewriter-active');
+                    }, 200); // Small delay for smooth reveal
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        titleObserver.observe(aiFactsTitle);
+    }
+    
     // Burger menu fix
     const burger = document.getElementById('burger');
     const drawer = document.getElementById('drawer');

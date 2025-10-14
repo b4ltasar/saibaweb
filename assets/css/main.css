@@ -491,8 +491,8 @@ body {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background: transparent;
   border: none;
   display: flex;
@@ -509,8 +509,8 @@ body {
 }
 
 .service-icon {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -660,6 +660,18 @@ body {
   position: relative;
   z-index: 10;
   min-height: 50px;
+  white-space: nowrap; /* Keep on single line */
+  overflow: hidden;
+  border-right: 3px solid var(--text);
+  width: 0;
+  opacity: 0;
+  transition: width 0.8s ease, opacity 0.3s ease;
+}
+
+.ai-facts-title.typewriter-active {
+  width: 100%;
+  opacity: 1;
+  border-right: 3px solid transparent;
 }
 
 .interactive-area {
