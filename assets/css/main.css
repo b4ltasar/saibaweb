@@ -503,17 +503,6 @@ body {
   padding: 5px;
 }
 
-.service-card:nth-child(3) .service-icon-container,
-.service-card:nth-child(4) .service-icon-container {
-  width: 60px;
-  height: 60px;
-}
-
-.service-card:nth-child(3) .service-icon,
-.service-card:nth-child(4) .service-icon {
-  width: 50px;
-  height: 50px;
-}
 
 .service-card:hover .service-icon-container {
   transform: translateY(-8px);
