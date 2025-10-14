@@ -322,6 +322,12 @@ body {
   background: #faf9f7;
 }
 
+.services-title,
+.team-title,
+.clients-title {
+  font-weight: 600;
+}
+
 .services-header {
   display: flex;
   justify-content: space-between;
