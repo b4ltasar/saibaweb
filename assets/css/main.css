@@ -155,7 +155,7 @@ body {
   align-items: center;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
 .logo {
@@ -338,7 +338,7 @@ body {
 .services-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
 .services-title,
@@ -362,11 +362,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
 
@@ -708,7 +708,7 @@ body {
 .ai-facts-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
 .ai-facts-header {
@@ -724,9 +724,9 @@ body {
   background: #f8f8f8;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
-  padding: 40px 24px;
+  padding: 32px 16px;
   position: relative;
-  min-height: 360px;
+  min-height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: center;

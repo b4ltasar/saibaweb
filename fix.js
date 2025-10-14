@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mouseTrail.push({ x, y, time: Date.now() });
             
             // Remove old trail points
-            mouseTrail = mouseTrail.filter(point => Date.now() - point.time < 1000);
+            mouseTrail = mouseTrail.filter(point => Date.now() - point.time < 800);
             
             // Limit trail length
             if (mouseTrail.length > maxTrailLength) {
@@ -156,14 +156,15 @@ document.addEventListener('DOMContentLoaded', function() {
             dot.style.position = 'absolute';
             dot.style.left = point.x + 'px';
             dot.style.top = point.y + 'px';
-            dot.style.width = '3px';
-            dot.style.height = '3px';
-            dot.style.background = 'rgba(0, 0, 0, 0.1)';
-            dot.style.borderRadius = '50%';
+            dot.style.width = '4px';
+            dot.style.height = '4px';
+            dot.style.background = 'rgba(0, 0, 0, 0.3)';
+            dot.style.borderRadius = '0';
+            dot.style.imageRendering = 'pixelated';
             dot.style.pointerEvents = 'none';
             dot.style.zIndex = '1';
             dot.style.transform = 'translate(-50%, -50%)';
-            dot.style.opacity = (index / mouseTrail.length) * 0.8;
+            dot.style.opacity = (index / mouseTrail.length) * 1.0;
             
             interactiveArea.appendChild(dot);
         });
