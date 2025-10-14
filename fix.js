@@ -21,20 +21,33 @@ document.addEventListener('DOMContentLoaded', function() {
         revealObserver.observe(section);
     });
     
-    // Typewriter effect for AI facts title
+    // Typewriter effect for AI facts title with looping
     const aiFactsTitle = document.getElementById('aiFactsTitle');
     if (aiFactsTitle) {
+        let hasAnimated = false;
+        
         const titleObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && !hasAnimated) {
                     setTimeout(() => {
                         entry.target.classList.add('typewriter-active');
-                    }, 200); // Small delay for smooth reveal
+                        hasAnimated = true;
+                    }, 200);
                 }
             });
         }, { threshold: 0.3 });
         
         titleObserver.observe(aiFactsTitle);
+        
+        // Restart animation every 8 seconds
+        setInterval(() => {
+            if (hasAnimated) {
+                aiFactsTitle.classList.remove('typewriter-active');
+                setTimeout(() => {
+                    aiFactsTitle.classList.add('typewriter-active');
+                }, 100);
+            }
+        }, 8000);
     }
     
     // Burger menu fix
