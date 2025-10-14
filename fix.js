@@ -59,18 +59,72 @@ document.addEventListener('DOMContentLoaded', function() {
         { title: "ROI", text: "Virksomheder med AI har 35% bedre ROI på deres digitale investeringer", source: "Accenture Research" },
         { title: "FORUDSIGELSE", text: "AI kan forudsige kundeadfærd med 95% nøjagtighed", source: "Forrester Research" },
         { title: "OPERATIONER", text: "Implementering af AI resulterer i 20% reduktion i operationelle omkostninger", source: "PwC Global AI Survey" },
-        { title: "INNOVATION", text: "AI-driven virksomheder lancere produkter 50% hurtigere end traditionelle", source: "Harvard Business Review" }
+        { title: "INNOVATION", text: "AI-driven virksomheder lancere produkter 50% hurtigere end traditionelle", source: "Harvard Business Review" },
+        { title: "MARKEDSFORSTÅELSE", text: "AI kan analysere 73% mere kundedata end traditionelle metoder", source: "Gartner Research" },
+        { title: "KVALITET", text: "AI-forbedrede processer har 92% højere kvalitetskontrol", source: "Capgemini Research" },
+        { title: "ADAPTATION", text: "AI-systemer lærer og tilpasser sig 3x hurtigere end menneskelige processer", source: "MIT Technology Review" },
+        { title: "KONKURRENCE", text: "Virksomheder med AI har 67% højere markedsandele end konkurrenter", source: "BCG Henderson Institute" },
+        { title: "FREMTID", text: "85% af succesfulde virksomheder vil være AI-driven inden 2030", source: "World Economic Forum" },
+        { title: "EFFEKTIVITET", text: "AI optimerer ressourceallokering med 45% bedre effektivitet", source: "McKinsey Digital" },
+        { title: "KUNDESERVICE", text: "AI-powered chatbots håndterer 80% af kundeforespørgsler automatisk", source: "Oracle Research" },
+        { title: "INNOVATION", text: "AI-genererede idéer har 40% højere implementeringsrate", source: "Harvard Business School" },
+        { title: "SKALERING", text: "AI muliggør 10x hurtigere skalering af forretningsprocesser", source: "Stanford AI Index" },
+        { title: "PRÆDIKTION", text: "AI forudsiger markedsbevægelser med 78% nøjagtighed", source: "JP Morgan Research" }
     ];
     
     let factIndex = 0;
+    let activeFacts = [];
+    
+    function findNonOverlappingPosition(clickX, clickY, rect) {
+        const factWidth = 270;
+        const factHeight = 180;
+        const margin = 20;
+        
+        let bestX = Math.max(margin, Math.min(clickX - factWidth/2, rect.width - factWidth - margin));
+        let bestY = Math.max(margin, Math.min(clickY - factHeight/2, rect.height - factHeight - margin));
+        
+        // Check for overlaps with existing facts
+        const existingBoxes = document.querySelectorAll('.dynamic-fact-box');
+        let attempts = 0;
+        const maxAttempts = 50;
+        
+        while (attempts < maxAttempts) {
+            let hasOverlap = false;
+            
+            existingBoxes.forEach(box => {
+                const boxRect = box.getBoundingClientRect();
+                const relativeBoxRect = {
+                    left: boxRect.left - rect.left,
+                    top: boxRect.top - rect.top,
+                    right: boxRect.right - rect.left,
+                    bottom: boxRect.bottom - rect.top
+                };
+                
+                // Check if new position overlaps with existing box
+                if (bestX < relativeBoxRect.right + margin &&
+                    bestX + factWidth > relativeBoxRect.left - margin &&
+                    bestY < relativeBoxRect.bottom + margin &&
+                    bestY + factHeight > relativeBoxRect.top - margin) {
+                    hasOverlap = true;
+                }
+            });
+            
+            if (!hasOverlap) break;
+            
+            // Try a new position
+            const angle = (attempts / maxAttempts) * 2 * Math.PI;
+            const radius = 100 + (attempts * 10);
+            bestX = Math.max(margin, Math.min(clickX + Math.cos(angle) * radius - factWidth/2, rect.width - factWidth - margin));
+            bestY = Math.max(margin, Math.min(clickY + Math.sin(angle) * radius - factHeight/2, rect.height - factHeight - margin));
+            attempts++;
+        }
+        
+        return { x: bestX, y: bestY };
+    }
     
     if (interactiveArea) {
         interactiveArea.addEventListener('click', function(e) {
             console.log('AI Facts area clicked');
-            
-            // Remove existing fact boxes
-            const existingBoxes = document.querySelectorAll('.dynamic-fact-box');
-            existingBoxes.forEach(box => box.remove());
             
             // Get click position relative to interactive area
             const rect = interactiveArea.getBoundingClientRect();
@@ -81,12 +135,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const fact = aiFacts[factIndex];
             factIndex = (factIndex + 1) % aiFacts.length;
             
+            // Find non-overlapping position
+            const position = findNonOverlappingPosition(x, y, rect);
+            
             // Create fact box positioned within interactive area
             const factBox = document.createElement('div');
             factBox.className = 'dynamic-fact-box';
             factBox.style.position = 'absolute';
-            factBox.style.left = Math.max(20, Math.min(x - 125, rect.width - 270)) + 'px';
-            factBox.style.top = Math.max(20, Math.min(y - 80, rect.height - 180)) + 'px';
+            factBox.style.left = position.x + 'px';
+            factBox.style.top = position.y + 'px';
             factBox.style.background = 'white';
             factBox.style.border = '2px solid black';
             factBox.style.padding = '16px';
@@ -104,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
             factBox.innerHTML = `<div style="font-size: 12px; margin-bottom: 8px;">${fact.title}</div>${fact.text}<br><br><div style="font-size: 8px; opacity: 0.7;">${fact.source}</div>`;
             
             interactiveArea.appendChild(factBox);
+            activeFacts.push(factBox);
             
             // Animate in
             setTimeout(() => {
@@ -111,12 +169,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 factBox.style.transform = 'scale(1) translateY(0)';
             }, 10);
             
-            // Remove after 6 seconds
+            // Remove after 8 seconds
             setTimeout(() => {
                 factBox.style.opacity = '0';
                 factBox.style.transform = 'scale(0.8) translateY(-20px)';
-                setTimeout(() => factBox.remove(), 500);
-            }, 6000);
+                setTimeout(() => {
+                    factBox.remove();
+                    activeFacts = activeFacts.filter(f => f !== factBox);
+                }, 500);
+            }, 8000);
         });
     }
 });
