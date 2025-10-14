@@ -115,7 +115,7 @@ body {
 .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 16px;
 }
 
 .section {
@@ -352,8 +352,7 @@ body {
 .services-title,
 .team-title,
 .clients-title,
-.ai-facts-section-title,
-.ai-facts-title {
+.ai-facts-section-title {
   font-size: 2.6rem;
   font-weight: 600;
   color: var(--text);
@@ -765,7 +764,7 @@ body {
   font-size: 2.2rem;
   font-weight: 600;
   color: var(--text);
-  margin: 0;
+  margin: 0 0 40px 0;
   letter-spacing: -0.02em;
   line-height: 1.1;
   text-align: left;
@@ -776,7 +775,7 @@ body {
   width: 0;
   opacity: 0;
   transition: width 2.5s ease, opacity 0.3s ease;
-  padding: 0;
+  padding: 0 16px;
 }
 
 .ai-facts-title.typewriter-active {
