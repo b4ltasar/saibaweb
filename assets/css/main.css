@@ -18,16 +18,6 @@
   --shadow-hover: rgba(0, 0, 0, 0.12);
 }
 
-.dark-mode {
-  --bg: #0a0a0a;
-  --text: #ffffff;
-  --muted: #a0a0a0;
-  --border: #2a2a2a;
-  --accent: #ffffff;
-  --card: #1a1a1a;
-  --shadow: rgba(255, 255, 255, 0.08);
-  --shadow-hover: rgba(255, 255, 255, 0.12);
-}
 
 * {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
@@ -46,70 +36,20 @@ body {
   transition: background 0.3s ease;
 }
 
-.dark-mode body {
-  background: var(--bg);
-}
 
-.dark-mode .ai-facts {
-  background: #0a0a0a;
-}
 
-.dark-mode .interactive-area {
-  background: rgba(255, 255, 255, 0.02);
-}
 
-.dark-mode .site-header {
-  border-bottom: 1px solid var(--border);
-}
 
-.dark-mode .drawer-content {
-  background: var(--bg);
-}
 
-.dark-mode .drawer-backdrop {
-  background: rgba(0, 0, 0, 0.7);
-}
 
-.dark-mode .hero {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-}
 
-.dark-mode .services {
-  background: #0a0a0a;
-}
 
-.dark-mode .service-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-}
 
-.dark-mode .service-card:hover {
-  border-color: var(--accent);
-}
 
-.dark-mode .team {
-  background: #0a0a0a;
-}
 
-.dark-mode .clients {
-  background: #0a0a0a;
-}
 
-.dark-mode .contact {
-  background: var(--bg);
-}
 
-.dark-mode .contact-form input,
-.dark-mode .contact-form textarea {
-  background: var(--card);
-  border: 1px solid var(--border);
-  color: var(--text);
-}
 
-.dark-mode .contact-form input::placeholder,
-.dark-mode .contact-form textarea::placeholder {
-  color: var(--muted);
-}
 
 .container {
   max-width: 1200px;
@@ -167,13 +107,7 @@ body {
   display: none;
 }
 
-.dark-mode .logo-light {
-  display: none;
-}
 
-.dark-mode .logo-dark {
-  display: block;
-}
 
 .drawer-logo-img {
   height: 24px;
@@ -216,43 +150,11 @@ body {
 }
 
 /* Dark Mode Toggle - Nordic Minimalist */
-.dark-mode-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  position: relative;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.dark-mode-toggle:hover {
-  background: rgba(0, 0, 0, 0.04);
-}
 
-.dark-mode-toggle .nordic-icon {
-  transition: stroke 0.3s ease;
-  stroke: #2c2c2c;
-  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
-}
 
-.dark-mode-toggle:hover .nordic-icon {
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1));
-}
 
-.dark-mode .dark-mode-toggle .nordic-icon {
-  stroke: #f5f5f5;
-  filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
-}
 
-.dark-mode .dark-mode-toggle:hover .nordic-icon {
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
-}
 
 /* Hero Section */
 .hero {
@@ -501,6 +403,18 @@ body {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overflow: visible;
   padding: 5px;
+}
+
+.service-card:nth-child(3) .service-icon-container,
+.service-card:nth-child(4) .service-icon-container {
+  width: 60px;
+  height: 60px;
+}
+
+.service-card:nth-child(3) .service-icon,
+.service-card:nth-child(4) .service-icon {
+  width: 50px;
+  height: 50px;
 }
 
 .service-card:hover .service-icon-container {
