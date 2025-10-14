@@ -352,7 +352,8 @@ body {
 .services-title,
 .team-title,
 .clients-title,
-.ai-facts-section-title {
+.ai-facts-section-title,
+.ai-facts-title {
   font-size: 2.6rem;
   font-weight: 600;
   color: var(--text);
@@ -718,7 +719,7 @@ body {
 /* AI Facts Section */
 .ai-facts {
   background: var(--bg);
-  padding: 120px 0;
+  padding: 60px 0;
 }
 
 .ai-facts-container {
@@ -752,9 +753,9 @@ body {
   background: #f8f8f8;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
-  padding: 40px 0;
+  padding: 20px 0;
   position: relative;
-  min-height: 320px;
+  min-height: 160px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -764,7 +765,7 @@ body {
   font-size: 2.2rem;
   font-weight: 600;
   color: var(--text);
-  margin: 0 0 40px 0;
+  margin: 0;
   letter-spacing: -0.02em;
   line-height: 1.1;
   text-align: left;
