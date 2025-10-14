@@ -78,6 +78,62 @@ document.addEventListener('DOMContentLoaded', function() {
     const interactiveArea = document.querySelector('.interactive-area');
     console.log('Interactive area found:', !!interactiveArea);
     
+    // Mouse trail for AI facts area
+    let mouseTrail = [];
+    const maxTrailLength = 20;
+    
+    if (interactiveArea) {
+        interactiveArea.addEventListener('mousemove', function(e) {
+            const rect = interactiveArea.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Add new trail point
+            mouseTrail.push({ x, y, time: Date.now() });
+            
+            // Remove old trail points
+            mouseTrail = mouseTrail.filter(point => Date.now() - point.time < 1000);
+            
+            // Limit trail length
+            if (mouseTrail.length > maxTrailLength) {
+                mouseTrail = mouseTrail.slice(-maxTrailLength);
+            }
+            
+            // Update trail visualization
+            updateMouseTrail();
+        });
+        
+        interactiveArea.addEventListener('mouseleave', function() {
+            mouseTrail = [];
+            updateMouseTrail();
+        });
+    }
+    
+    function updateMouseTrail() {
+        // Remove existing trail
+        const existingTrail = document.querySelectorAll('.mouse-trail-dot');
+        existingTrail.forEach(dot => dot.remove());
+        
+        // Add new trail
+        mouseTrail.forEach((point, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'mouse-trail-dot';
+            dot.style.position = 'absolute';
+            dot.style.left = point.x + 'px';
+            dot.style.top = point.y + 'px';
+            dot.style.width = '3px';
+            dot.style.height = '3px';
+            dot.style.background = 'rgba(0, 0, 0, 0.1)';
+            dot.style.borderRadius = '50%';
+            dot.style.pointerEvents = 'none';
+            dot.style.zIndex = '1';
+            dot.style.transform = 'translate(-50%, -50%)';
+            dot.style.opacity = (index / mouseTrail.length) * 0.8;
+            
+            interactiveArea.appendChild(dot);
+        });
+    }
+    
     const aiFacts = [
         { title: "PRODUKTIVITET", text: "AI kan øge produktiviteten med op til 40% i administrative opgaver", source: "McKinsey Global Institute" },
         { title: "OMKOSTNINGER", text: "61% af virksomheder rapporterer betydelige omkostningsbesparelser efter AI-implementering", source: "MIT Sloan Management Review" },

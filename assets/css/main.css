@@ -324,11 +324,20 @@ body {
 
 .services-title,
 .team-title,
-.clients-title {
+.clients-title,
+.ai-facts-section-title {
+  font-size: 3rem;
   font-weight: 600;
+  color: var(--text);
+  margin: 0 0 60px 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-align: left;
 }
 
-.services-header {
+.services-header,
+.team-header,
+.clients-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -346,6 +355,40 @@ body {
   margin: 0;
   letter-spacing: -0.02em;
   line-height: 1.1;
+}
+
+.services-cta,
+.team-cta,
+.clients-cta {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.services-cta::after,
+.team-cta::after,
+.clients-cta::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--text);
+  transition: width 0.3s ease;
+}
+
+.services-cta:hover::after,
+.team-cta:hover::after,
+.clients-cta:hover::after {
+  width: 100%;
 }
 
 .explore-link {
@@ -644,7 +687,7 @@ body {
 }
 
 .ai-facts-container {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -656,14 +699,6 @@ body {
   margin-bottom: 40px;
 }
 
-.ai-facts-section-title {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: var(--text);
-  margin: 0;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
 
 .ai-facts-cta {
   color: var(--text);
@@ -716,24 +751,27 @@ body {
   position: relative;
   z-index: 10;
   white-space: nowrap;
-  overflow: visible;
-  border-right: 2px solid var(--text);
+  overflow: hidden;
   width: 0;
   opacity: 0;
-  transition: width 1.2s ease, opacity 0.3s ease;
-  padding-right: 10px;
+  transition: width 2.5s ease, opacity 0.3s ease;
 }
 
 .ai-facts-title.typewriter-active {
   width: 100%;
   opacity: 1;
-  border-right: 2px solid var(--text);
+}
+
+.ai-facts-title::after {
+  content: '|';
+  color: var(--text);
   animation: typewriterBlink 1s infinite;
+  margin-left: 2px;
 }
 
 @keyframes typewriterBlink {
-  0%, 50% { border-right-color: var(--text); }
-  51%, 100% { border-right-color: transparent; }
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
 .interactive-area {
