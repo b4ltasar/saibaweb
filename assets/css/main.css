@@ -996,6 +996,8 @@ body {
   border: none;
   cursor: pointer;
   padding: 8px;
+  z-index: 999;
+  position: relative;
 }
 
 .burger span {
