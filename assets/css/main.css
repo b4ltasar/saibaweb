@@ -119,8 +119,8 @@ body {
 
 .section {
   padding: 120px 0;
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 0;
+  transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -415,10 +415,15 @@ body {
   transform: translateY(0);
 }
 
+.services-grid:hover .service-card {
+  opacity: 0.6;
+}
+
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px var(--shadow-hover);
   border-color: var(--accent);
+  opacity: 1 !important;
 }
 
 .service-card-header {
@@ -521,6 +526,17 @@ body {
 
 .service-card:hover .icon-svg {
   transform: scale(1.1);
+}
+
+.service-card:hover .icon-svg .organic-circle,
+.service-card:hover .icon-svg .organic-path,
+.service-card:hover .icon-svg .organic-rect,
+.service-card:hover .icon-svg .organic-shape {
+  stroke-width: 1.2 !important;
+}
+
+.service-card:hover .icon-svg .organic-dot {
+  transform: scale(1.2);
 }
 
 .service-card:hover .organic-circle {
