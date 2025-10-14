@@ -643,14 +643,15 @@ body {
 }
 
 .ai-facts-container {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
   position: relative;
-  padding: 0 40px;
+  padding: 0 20px;
+  overflow: visible;
 }
 
 .ai-facts-title {
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 300;
   color: var(--text);
   margin: 0 0 20px 0;
@@ -661,11 +662,13 @@ body {
   z-index: 10;
   min-height: 50px;
   white-space: nowrap; /* Keep on single line */
-  overflow: hidden;
+  overflow: visible;
   border-right: 3px solid var(--text);
   width: 0;
   opacity: 0;
   transition: width 0.8s ease, opacity 0.3s ease;
+  max-width: 100vw;
+  padding-right: 20px;
 }
 
 .ai-facts-title.typewriter-active {
