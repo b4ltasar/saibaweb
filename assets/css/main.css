@@ -115,7 +115,7 @@ body {
 .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0;
 }
 
 .section {
@@ -155,7 +155,7 @@ body {
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0;
 }
 
 .logo {
@@ -346,7 +346,7 @@ body {
 .services-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0;
 }
 
 .services-title,
@@ -719,25 +719,25 @@ body {
 /* AI Facts Section */
 .ai-facts {
   background: var(--bg);
-  padding: 60px 0;
+  padding: 40px 0;
 }
 
 .ai-facts-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0;
 }
 
 .team-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0;
 }
 
 .clients-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0;
 }
 
 .ai-facts-header {
@@ -753,9 +753,9 @@ body {
   background: #f8f8f8;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
-  padding: 20px 0;
+  padding: 15px 0;
   position: relative;
-  min-height: 160px;
+  min-height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -776,7 +776,7 @@ body {
   width: 0;
   opacity: 0;
   transition: width 2.5s ease, opacity 0.3s ease;
-  padding: 0 16px;
+  padding: 0 32px;
 }
 
 .ai-facts-title.typewriter-active {
@@ -825,20 +825,20 @@ body {
   background: rgba(255, 255, 255, 0.95);
   border: 2px solid #0a0a0a;
   border-radius: 8px;
-  padding: 16px;
+  padding: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: scale(0.8) translateY(20px);
   transition: all 0.5s ease;
   pointer-events: auto;
   cursor: pointer;
-  max-width: 280px;
-  min-width: 240px;
+  max-width: 320px;
+  min-width: 280px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .fact-box.show {
@@ -877,7 +877,7 @@ body {
 }
 
 .fact-title {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   margin: 0;
   color: #0a0a0a;
@@ -888,7 +888,7 @@ body {
 }
 
 .fact-text {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   margin: 0;
   color: #0a0a0a;
@@ -897,7 +897,7 @@ body {
 }
 
 .fact-source {
-  font-size: 8px;
+  font-size: 9px;
   color: #6b7280;
   margin: 0;
   font-style: italic;
@@ -1414,7 +1414,7 @@ body {
   }
   
   .ai-facts-container {
-    padding: 0 16px;
+    padding: 0;
   }
   
   .interactive-area {
