@@ -1351,7 +1351,51 @@ body {
   }
 }
 
+/* Tablet Breakpoint */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 24px;
+  }
+  
+  .services-container,
+  .ai-facts-container,
+  .team-container,
+  .clients-container {
+    padding: 0 24px;
+  }
+  
+  .nav {
+    padding: 0 24px;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+/* Mobile Breakpoint */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .services-container,
+  .ai-facts-container,
+  .team-container,
+  .clients-container {
+    padding: 0 20px;
+  }
+  
+  .nav {
+    padding: 0 20px;
+  }
+  
   .nav-links {
     display: none;
   }
@@ -1360,91 +1404,145 @@ body {
     display: flex;
   }
 
+  .hero {
+    padding: 80px 0;
+  }
+
   .hero-content {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
 
   .hero-title {
     font-size: 32px;
+    line-height: 1.2;
   }
   
   .hero-subtitle {
     font-size: 18px;
   }
 
-  .contact-content {
-    grid-template-columns: 1fr;
+  .section {
+    padding: 80px 0;
   }
 
-  .services-header {
+  .services-title,
+  .team-title,
+  .clients-title,
+  .ai-facts-section-title {
+    font-size: 2.2rem;
+  }
+
+  .services-header,
+  .team-header,
+  .clients-header,
+  .ai-facts-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-    padding: 0 16px;
+    margin-bottom: 40px;
   }
   
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 20px;
   }
   
   .service-card {
-    background: white;
-    border: 1px solid black;
     min-height: auto;
-    padding: 20px 15px;
+    padding: 24px 20px;
   }
   
   .service-icon-container {
     position: static;
-    margin-top: 15px;
+    margin-top: 20px;
     margin-left: auto;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
   }
   
   .service-icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .ai-facts {
+    padding: 60px 0;
   }
 
   .ai-facts-title {
     font-size: 1.8rem;
   }
   
-  .ai-facts-container {
-    padding: 0 16px;
+  .ai-facts-frame {
+    min-height: 100px;
+    padding: 12px 0;
   }
   
   .interactive-area {
-    height: 400px;
+    height: 300px;
+    padding-top: 20px;
   }
   
   .fact-box {
-    max-width: 220px;
-    min-width: 200px;
-    padding: 12px;
+    max-width: 280px;
+    min-width: 260px;
+    padding: 16px;
+  }
+  
+  .fact-title {
+    font-size: 12px;
+  }
+  
+  .fact-text {
+    font-size: 10px;
+  }
+  
+  .fact-source {
+    font-size: 8px;
+  }
+  
+  .fact-box-1 {
+    top: 8%;
+    right: 4%;
+  }
+  
+  .fact-box-2 {
+    top: 35%;
+    left: 4%;
+  }
+  
+  .fact-box-3 {
+    bottom: 12%;
+    left: 8%;
+  }
+  
+  .fact-box-4 {
+    top: 18%;
+    left: 45%;
+  }
+  
+  .fact-box-5 {
+    bottom: 25%;
+    right: 4%;
   }
 
   .team-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
   
-  .interactive-area {
-    height: 600px;
-    padding-top: 30px;
+  .clients-logos {
+    gap: 40px;
   }
-  
-  .main-click-box {
-    padding: 25px 35px;
-  }
-  
-  .click-text {
-    font-size: 18px;
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
   
   .logo-img {
-    height: 28px;
+    height: 24px;
   }
   
   .drawer-logo-img {
@@ -1452,12 +1550,63 @@ body {
   }
   
   .footer-logo {
-    height: 32px;
+    height: 28px;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* Small Mobile Breakpoint */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .services-container,
+  .ai-facts-container,
+  .team-container,
+  .clients-container {
+    padding: 0 16px;
+  }
+  
+  .nav {
+    padding: 0 16px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+  
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .services-title,
+  .team-title,
+  .clients-title,
+  .ai-facts-section-title {
+    font-size: 2rem;
+  }
+
+  .service-card {
+    padding: 20px 16px;
+  }
+
+  .ai-facts-frame {
+    min-height: 80px;
+    padding: 10px 0;
+  }
+  
+  .interactive-area {
+    height: 250px;
   }
   
   .fact-box {
-    max-width: 220px;
-    min-width: 200px;
+    max-width: 240px;
+    min-width: 220px;
     padding: 12px;
   }
   
@@ -1471,48 +1620,6 @@ body {
   
   .fact-source {
     font-size: 7px;
-  }
-  
-  .fact-box-1 {
-    top: 10%;
-    right: 2%;
-  }
-  
-  .fact-box-2 {
-    top: 40%;
-    left: 2%;
-  }
-  
-  .fact-box-3 {
-    bottom: 15%;
-    left: 8%;
-  }
-  
-  .fact-box-4 {
-    top: 20%;
-    left: 50%;
-  }
-  
-  .fact-box-5 {
-    bottom: 30%;
-    right: 2%;
-  }
-  
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  
-  .clients-logos {
-    gap: 32px;
-  }
-  
-  .section {
-    padding: 60px 0;
-  }
-  
-  .hero {
-    padding: 80px 0;
   }
 }
 
