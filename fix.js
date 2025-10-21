@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (aiFactsTitle) {
         const originalText = aiFactsTitle.textContent;
         let isAnimating = false;
-        let animationInterval;
+        let typewriterTimeout;
         
         function startTypewriterAnimation() {
             if (isAnimating) return;
@@ -95,17 +95,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (charIndex < originalText.length) {
                     aiFactsTitle.textContent = originalText.substring(0, charIndex + 1);
                     charIndex++;
-                    setTimeout(typeNextChar, 100); // Speed of typing
+                    typewriterTimeout = setTimeout(typeNextChar, 80); // Faster typing
                 } else {
-                    // Wait a bit before restarting
-                    setTimeout(() => {
+                    // Wait before restarting
+                    typewriterTimeout = setTimeout(() => {
                         isAnimating = false;
                         startTypewriterAnimation();
-                    }, 2000);
+                    }, 3000);
                 }
             }
             
             typeNextChar();
+        }
+        
+        function stopTypewriterAnimation() {
+            isAnimating = false;
+            if (typewriterTimeout) {
+                clearTimeout(typewriterTimeout);
+            }
+            aiFactsTitle.textContent = originalText;
         }
         
         const titleObserver = new IntersectionObserver((entries) => {
@@ -115,14 +123,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         startTypewriterAnimation();
                     }, 500);
                 } else {
-                    // Stop animation when not visible
-                    isAnimating = false;
-                    aiFactsTitle.textContent = originalText;
+                    stopTypewriterAnimation();
                 }
             });
         }, { threshold: 0.3 });
         
         titleObserver.observe(aiFactsTitle);
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', stopTypewriterAnimation);
     }
     
     // Burger menu fix
