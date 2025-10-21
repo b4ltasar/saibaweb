@@ -37,16 +37,26 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', updateHeader);
     updateHeader();
     
-    // Section reveal animations
+    // Enhanced section reveal animations
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
     };
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
+                
+                // Add staggered animation to child elements
+                const cards = entry.target.querySelectorAll('.service-card, .team-member, .client-logo');
+                cards.forEach((card, index) => {
+                    card.style.setProperty('--index', index);
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
             }
         });
     }, observerOptions);
@@ -56,33 +66,63 @@ document.addEventListener('DOMContentLoaded', function() {
         revealObserver.observe(section);
     });
     
-    // Typewriter effect for AI facts title with looping
+    // Add page load reveal effect
+    window.addEventListener('load', () => {
+        // Trigger reveal for sections that are already visible
+        document.querySelectorAll('.section').forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                section.classList.add('revealed');
+            }
+        });
+    });
+    
+    // Typewriter effect for AI facts title with continuous looping
     const aiFactsTitle = document.getElementById('aiFactsTitle');
     if (aiFactsTitle) {
-        let hasAnimated = false;
+        const originalText = aiFactsTitle.textContent;
+        let isAnimating = false;
+        let animationInterval;
+        
+        function startTypewriterAnimation() {
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            let charIndex = 0;
+            aiFactsTitle.textContent = '';
+            
+            function typeNextChar() {
+                if (charIndex < originalText.length) {
+                    aiFactsTitle.textContent = originalText.substring(0, charIndex + 1);
+                    charIndex++;
+                    setTimeout(typeNextChar, 100); // Speed of typing
+                } else {
+                    // Wait a bit before restarting
+                    setTimeout(() => {
+                        isAnimating = false;
+                        startTypewriterAnimation();
+                    }, 2000);
+                }
+            }
+            
+            typeNextChar();
+        }
         
         const titleObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !hasAnimated) {
+                if (entry.isIntersecting) {
                     setTimeout(() => {
-                        entry.target.classList.add('typewriter-active');
-                        hasAnimated = true;
-                    }, 200);
+                        startTypewriterAnimation();
+                    }, 500);
+                } else {
+                    // Stop animation when not visible
+                    isAnimating = false;
+                    aiFactsTitle.textContent = originalText;
                 }
             });
         }, { threshold: 0.3 });
         
         titleObserver.observe(aiFactsTitle);
-        
-        // Restart animation every 8 seconds
-        setInterval(() => {
-            if (hasAnimated) {
-                aiFactsTitle.classList.remove('typewriter-active');
-                setTimeout(() => {
-                    aiFactsTitle.classList.add('typewriter-active');
-                }, 100);
-            }
-        }, 8000);
     }
     
     // Burger menu fix
