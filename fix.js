@@ -205,15 +205,16 @@ document.addEventListener('DOMContentLoaded', function() {
             dot.style.position = 'absolute';
             dot.style.left = point.x + 'px';
             dot.style.top = point.y + 'px';
-            dot.style.width = '4px';
-            dot.style.height = '4px';
-            dot.style.background = 'rgba(0, 0, 0, 0.3)';
-            dot.style.borderRadius = '0';
+            dot.style.width = '8px';
+            dot.style.height = '8px';
+            dot.style.background = 'rgba(0, 0, 0, 0.25)';
+            dot.style.borderRadius = '2px';
             dot.style.imageRendering = 'pixelated';
             dot.style.pointerEvents = 'none';
             dot.style.zIndex = '1';
             dot.style.transform = 'translate(-50%, -50%)';
-            dot.style.opacity = (index / mouseTrail.length) * 1.0;
+            dot.style.opacity = (index / mouseTrail.length) * 0.8;
+            dot.style.filter = 'blur(0.5px)';
             
             interactiveArea.appendChild(dot);
         });
@@ -246,8 +247,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let activeFacts = [];
     
     function findNonOverlappingPosition(clickX, clickY, rect) {
-        const factWidth = 270;
-        const factHeight = 180;
+        const factWidth = 340;
+        const factHeight = 220;
         const margin = 20;
         
         let bestX = Math.max(margin, Math.min(clickX - factWidth/2, rect.width - factWidth - margin));
@@ -316,19 +317,19 @@ document.addEventListener('DOMContentLoaded', function() {
             factBox.style.top = position.y + 'px';
             factBox.style.background = 'white';
             factBox.style.border = '2px solid black';
-            factBox.style.padding = '16px';
+            factBox.style.padding = '22px';
             factBox.style.borderRadius = '8px';
-            factBox.style.maxWidth = '250px';
+            factBox.style.maxWidth = '320px';
             factBox.style.zIndex = '1000';
             factBox.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
             factBox.style.fontFamily = "'Press Start 2P', monospace";
-            factBox.style.fontSize = '11px';
-            factBox.style.lineHeight = '1.4';
+            factBox.style.fontSize = '12px';
+            factBox.style.lineHeight = '1.5';
             factBox.style.opacity = '0';
             factBox.style.transform = 'scale(0.8) translateY(20px)';
             factBox.style.transition = 'all 0.5s ease';
             
-            factBox.innerHTML = `<div style="font-size: 12px; margin-bottom: 8px;">${fact.title}</div>${fact.text}<br><br><div style="font-size: 8px; opacity: 0.7;">${fact.source}</div>`;
+            factBox.innerHTML = `<div style="font-size: 13px; margin-bottom: 10px;">${fact.title}</div>${fact.text}<br><br><div style="font-size: 9px; opacity: 0.7;">${fact.source}</div>`;
             
             interactiveArea.appendChild(factBox);
             activeFacts.push(factBox);
