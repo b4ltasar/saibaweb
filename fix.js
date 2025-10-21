@@ -14,8 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (scrollY > heroHeight) {
             header.classList.add('scrolled');
+            header.classList.remove('hero-overlay');
         } else {
             header.classList.remove('scrolled');
+            header.classList.add('hero-overlay');
         }
         
         // Hide/show header based on scroll direction

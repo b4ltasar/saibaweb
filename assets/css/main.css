@@ -311,6 +311,19 @@ body {
   align-items: center;
 }
 
+/* White header when over hero section */
+.site-header.hero-overlay {
+  color: white;
+}
+
+.site-header.hero-overlay .nav-links a {
+  color: white;
+}
+
+.site-header.hero-overlay .site-logo {
+  color: white;
+}
+
 .hero-video {
   position: absolute;
   top: 0;
@@ -362,21 +375,20 @@ body {
 
 .hero-description {
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.9);
+  color: white;
   margin-bottom: 40px;
   line-height: 1.6;
   max-width: 500px;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .hero-title {
-  font-size: 72px;
-  font-weight: 300;
-  line-height: 1.0;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.1;
   margin-bottom: 40px;
   color: white;
-  letter-spacing: -0.03em;
-  text-transform: lowercase;
+  letter-spacing: -0.02em;
 }
 
 .hero-cta {
