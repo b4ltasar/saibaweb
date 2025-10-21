@@ -150,7 +150,11 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
         <div class="clients-logos">
             {% for client in site.data.clients %}
             <div class="client-logo">
-                <div class="client-icon">{{ client.icon }}</div>
+                {% if client.logo %}
+                    <img src="{{ client.logo | relative_url }}" alt="{{ client.name }}" class="client-logo-img">
+                {% else %}
+                    <div class="client-icon">{{ client.icon }}</div>
+                {% endif %}
                 <span>{{ client.name }}</span>
             </div>
             {% endfor %}
