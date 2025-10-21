@@ -1,15 +1,20 @@
 - name: "Kronenbourg 1664"
   icon: "🍺"
-  logo: ""
+  logo: "/assets/images/kronenbourg.png"
   description: "Premium beer brand"
   
 - name: "Carlsberg"
   icon: "🍺"
-  logo: ""
+  logo: "/assets/images/carlsberglogo.png"
   description: "Global brewing company"
   
 - name: "NEAR Protocol"
   icon: "⚡"
-  logo: ""
+  logo: "/assets/images/nearlogo.png"
   description: "Blockchain infrastructure"
+
+- name: "Plames"
+  icon: "🔥"
+  logo: "/assets/images/plames.svg"
+  description: "Creative agency"
 
