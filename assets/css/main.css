@@ -324,6 +324,10 @@ body {
   color: white;
 }
 
+.site-header.hero-overlay .site-logo img {
+  filter: brightness(0) invert(1);
+}
+
 .hero-video {
   position: absolute;
   top: 0;
