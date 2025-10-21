@@ -321,6 +321,8 @@ body {
   object-position: center center;
   z-index: 0;
   filter: brightness(1.2) contrast(1.1);
+  border: 2px solid red;
+  background: black;
 }
 
 
