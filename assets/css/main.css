@@ -1430,7 +1430,7 @@ body {
 
 /* Footer */
 .site-footer {
-  background: var(--text);
+  background: black;
   color: white;
   padding: 60px 0 24px;
 }
