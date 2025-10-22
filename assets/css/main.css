@@ -183,8 +183,8 @@ body {
 }
 
 .site-header.scrolled {
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
 }
 
@@ -358,6 +358,7 @@ body {
 
 /* White header when over hero section */
 .site-header.hero-overlay {
+  background: transparent !important;
   color: white;
 }
 
@@ -365,8 +366,18 @@ body {
   color: white;
 }
 
-.site-header.hero-overlay .site-logo {
+.site-header.hero-overlay .logo {
   color: white;
+}
+
+.site-header.hero-overlay .language-toggle {
+  color: white;
+  border-color: white;
+}
+
+.site-header.hero-overlay .language-toggle:hover {
+  background: white;
+  color: black;
 }
 
 /* Default logo state - show light (black) logo */
@@ -1142,33 +1153,6 @@ body {
   z-index: 1;
 }
 
-/* Header Strip */
-.team-header-strip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.team-header-left,
-.team-header-right {
-  flex: 1;
-}
-
-.team-header-text {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
-  letter-spacing: 0.5px;
-}
-
-.team-header-arrow {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 20px;
-}
 
 /* Main Content */
 .team-content {

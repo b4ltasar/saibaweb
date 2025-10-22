@@ -21,30 +21,27 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrollY = window.scrollY;
         const heroHeight = hero ? hero.offsetHeight : 0;
         
-        if (scrollY > heroHeight) {
-            header.classList.add('scrolled');
-            header.classList.remove('hero-overlay');
-        } else if (scrollY > 50) {
-            // Only add hero-overlay when actually over hero section
+        // Over hero section: transparent background, white text
+        if (scrollY < heroHeight) {
             header.classList.remove('scrolled');
             header.classList.add('hero-overlay');
         } else {
-            // At very top, remove both classes for normal header
-            header.classList.remove('scrolled');
+            // Past hero section: white background, black text, hide on scroll down
             header.classList.remove('hero-overlay');
-        }
-        
-        // Hide/show header based on scroll direction
-        isScrollingDown = scrollY > lastScrollY;
-        
-        if (scrollY > 100) {
-            if (isScrollingDown) {
-                header.style.transform = 'translateY(-100%)';
+            header.classList.add('scrolled');
+            
+            // Hide/show header based on scroll direction
+            isScrollingDown = scrollY > lastScrollY;
+            
+            if (scrollY > 100) {
+                if (isScrollingDown) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
             } else {
                 header.style.transform = 'translateY(0)';
             }
-        } else {
-            header.style.transform = 'translateY(0)';
         }
         
         lastScrollY = scrollY;
@@ -320,6 +317,8 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'From knowledge to concrete use cases in your business': 'Fra viden til konkrete use cases i din virksomhed',
             'Strategy & Implementation': 'Strategi & Implementering',
             'Translate technology into concrete results and value': 'Omsæt teknologi til konkrete resultater og værdi',
+            'Produktudvikling': 'Product Development',
+            'Vi udvikler og bygger AI-løsninger med jer': 'We develop and build AI solutions with you',
             'Mød eksperterne_': 'Meet the experts_',
             'der transformerer jeres AI-rejse': 'who transform your AI journey',
             'Identificer jeres': 'Identify your',
@@ -329,9 +328,6 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'SAIBA\'s erfarne team af AI-konsulenter og teknologiske eksperter er dedikeret til at hjælpe jer med at overvinde jeres forretningsudfordringer og frigøre AI\'s fulde potentiale for jeres virksomhed.': 'SAIBA\'s experienced team of AI consultants and technology experts is dedicated to helping you overcome your business challenges and unlock AI\'s full potential for your company.',
             'Se vores team': 'See our team',
             'Skjul team': 'Hide team',
-            'Produktudvikling': 'Product Development',
-            'Vi udvikler og bygger AI-løsninger med jer': 'We develop and build AI solutions with you',
-            'Workshops & Bootcamps': 'Workshops & Bootcamps',
             'Få overblik og indsigt i AI-teknologiens potentiale': 'Get an overview and insight into AI technology\'s potential',
             'Skræddersyede Forløb': 'Tailored Courses',
             'Fra viden til konkrete use cases i din virksomhed': 'From knowledge to concrete use cases in your business',
