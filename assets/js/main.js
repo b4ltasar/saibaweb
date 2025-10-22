@@ -267,20 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
         factIndex = (factIndex + 1) % aiFacts.length;
     }
     
-    // Add click handler to the interactive area only
-    if (aiFactsSection) {
-        const interactiveArea = aiFactsSection.querySelector('.interactive-area');
-        if (interactiveArea) {
-            interactiveArea.addEventListener('click', function(e) {
-                // Don't trigger if clicking on the main click box or existing fact boxes
-                if (e.target.closest('.main-click-box') || e.target.closest('.fact-box')) {
-                    return;
-                }
-                
-                showFactAtPosition(e.clientX, e.clientY);
-            });
-        }
-    }
+    // Click handler for interactive area is handled in fix.js to avoid duplicates
     
     // Mouse Trail for AI Facts Section Only
     let mouseTrailEnabled = false;

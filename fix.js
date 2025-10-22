@@ -146,10 +146,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         titleObserver.observe(aiFactsTitle);
         
-    // Cleanup on page unload
-    window.addEventListener('beforeunload', stopTypewriterAnimation);
-}
-
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', stopTypewriterAnimation);
+    }
+    
 // Language toggle functionality
 const languageToggle = document.getElementById('languageToggle');
 const langText = document.querySelector('.lang-text');
@@ -595,7 +595,10 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
     }
     
     if (interactiveArea) {
-        interactiveArea.addEventListener('click', function(e) {
+        // Ensure only one click handler is bound
+        interactiveArea.replaceWith(interactiveArea.cloneNode(true));
+        const ia = document.querySelector('.interactive-area');
+        ia.addEventListener('click', function(e) {
             
             // Get click position relative to interactive area
             const rect = interactiveArea.getBoundingClientRect();
@@ -631,7 +634,7 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             
             factBox.innerHTML = `<div style="font-size: 13px; margin-bottom: 10px;">${fact.title}</div>${fact.text}<br><br><div style="font-size: 9px; opacity: 0.7;">${fact.source}</div>`;
             
-            interactiveArea.appendChild(factBox);
+            ia.appendChild(factBox);
             activeFacts.push(factBox);
             
             // Animate in
