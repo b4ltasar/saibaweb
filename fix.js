@@ -324,6 +324,7 @@ if (languageToggle && langText) {
             console.log('Burger clicked');
             drawer.style.display = 'block';
             drawer.setAttribute('aria-hidden', 'false');
+            document.querySelector('.site-header').classList.add('drawer-open');
         });
     }
     
@@ -332,6 +333,18 @@ if (languageToggle && langText) {
             console.log('Close clicked');
             drawer.style.display = 'none';
             drawer.setAttribute('aria-hidden', 'true');
+            document.querySelector('.site-header').classList.remove('drawer-open');
+        });
+    }
+    
+    // Close drawer when clicking backdrop
+    const backdrop = document.querySelector('.drawer-backdrop');
+    if (backdrop) {
+        backdrop.addEventListener('click', function() {
+            console.log('Backdrop clicked');
+            drawer.style.display = 'none';
+            drawer.setAttribute('aria-hidden', 'true');
+            document.querySelector('.site-header').classList.remove('drawer-open');
         });
     }
     
