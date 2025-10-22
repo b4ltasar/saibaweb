@@ -324,8 +324,22 @@ body {
   color: white;
 }
 
-.site-header.hero-overlay .site-logo img {
-  filter: brightness(0) invert(1);
+/* Default logo state - show light (black) logo */
+.logo-light {
+  display: block;
+}
+
+.logo-dark {
+  display: none;
+}
+
+/* Hero overlay state - show dark (white) logo */
+.site-header.hero-overlay .logo-light {
+  display: none;
+}
+
+.site-header.hero-overlay .logo-dark {
+  display: block;
 }
 
 .hero-video {
@@ -348,6 +362,7 @@ body {
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
   z-index: 1;
+  pointer-events: none;
 }
 
 
