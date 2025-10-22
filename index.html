@@ -26,18 +26,10 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 <!-- Services Section -->
 <section class="services section" id="services">
     <div class="services-container">
-        <div class="services-header">
-            <h2 class="services-title">Ydelser</h2>
-            <p class="services-subtitle">Fra strategi til implementering - vi leverer komplette AI-løsninger</p>
-        </div>
-        
         <div class="services-content">
-            <div class="services-visual">
-                <div class="services-mask">
-                    <div class="services-image-placeholder">
-                        <div class="services-image-fade"></div>
-                    </div>
-                </div>
+            <div class="services-text">
+                <h2 class="services-main-text">Fra strategi til implementering</h2>
+                <p class="services-description">Vi leverer komplette AI-løsninger der passer til jeres specifikke behov og forretningsmål.</p>
             </div>
             
             <div class="services-grid">
@@ -87,32 +79,19 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 <!-- Optimization Section -->
 <section class="optimization section" id="optimization">
     <div class="optimization-container">
-        <div class="optimization-header">
-            <h2 class="optimization-title">Optimering</h2>
-            <p class="optimization-subtitle">Udforsk AI's potentiale gennem interaktive cases</p>
-        </div>
-        
         <div class="optimization-content">
             <div class="optimization-text">
-                <h3 class="optimization-main-text">Optimér jeres forretningsprocesser</h3>
+                <h2 class="optimization-main-text">Optimér jeres forretningsprocesser</h2>
                 <p class="optimization-description">
-                    Klik rundt i området nedenfor og se konkrete eksempler på, hvordan AI kan optimere jeres specifikke forretningsområder. Fra produktivitet til kundeservice - hver case viser målbare resultater.
+                    Udforsk AI's potentiale gennem interaktive cases. Klik rundt i området nedenfor og se konkrete eksempler på, hvordan AI kan optimere jeres specifikke forretningsområder.
                 </p>
             </div>
             
-            <div class="optimization-visual">
-                <div class="optimization-mask">
-                    <div class="optimization-image-placeholder">
-                        <div class="optimization-image-fade"></div>
-                    </div>
-                </div>
-                
-                <div class="optimization-interactive">
-                    <h4 class="optimization-interactive-title" id="optimizationTitle">Klik og se hvorfor AI kan forbedre din virksomhed</h4>
-                    <div class="interactive-area">
-                        <div class="fact-boxes-container">
-                            <!-- AI fact boxes will be dynamically positioned here -->
-                        </div>
+            <div class="optimization-interactive">
+                <h3 class="optimization-interactive-title" id="optimizationTitle">Klik og se hvorfor AI kan forbedre din virksomhed</h3>
+                <div class="interactive-area">
+                    <div class="fact-boxes-container">
+                        <!-- AI fact boxes will be dynamically positioned here -->
                     </div>
                 </div>
             </div>
@@ -183,20 +162,21 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 <!-- Clients Section -->
 <section class="clients section" id="clients">
     <div class="clients-container">
-        <div class="clients-header">
-            <h2 class="clients-title">Kunder</h2>
-        </div>
-        
-        <div class="clients-logos">
-            {% for client in site.data.clients %}
-            <div class="client-logo">
-                {% if client.logo %}
-                    <img src="{{ client.logo | relative_url }}" alt="{{ client.name }}" class="client-logo-img">
-                {% else %}
-                    <div class="client-icon">{{ client.icon }}</div>
-                {% endif %}
+        <div class="clients-content">
+            <h2 class="clients-main-text">Vi arbejder med</h2>
+            <p class="clients-description">Få et indblik i de virksomheder der allerede har valgt at investere i AI med os</p>
+            
+            <div class="clients-logos">
+                {% for client in site.data.clients %}
+                <div class="client-logo">
+                    {% if client.logo %}
+                        <img src="{{ client.logo | relative_url }}" alt="{{ client.name }}" class="client-logo-img">
+                    {% else %}
+                        <div class="client-icon">{{ client.icon }}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
 </section>
