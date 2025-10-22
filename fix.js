@@ -241,11 +241,15 @@ function updateHeader() {
     
     const currentScrollY = window.scrollY;
     
+    console.log('Scroll:', currentScrollY, 'Last:', lastScrollY);
+    
     if (currentScrollY > lastScrollY && currentScrollY > 100) {
         // Scrolling down - hide header
+        console.log('Hiding header');
         header.classList.add('hidden');
     } else {
         // Scrolling up - show header
+        console.log('Showing header');
         header.classList.remove('hidden');
     }
     
