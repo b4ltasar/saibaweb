@@ -415,17 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Service cards hover effect
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
+    // Service cards hover effect is handled by CSS
     
     // Team member cards hover effect
     const teamMembers = document.querySelectorAll('.team-member');

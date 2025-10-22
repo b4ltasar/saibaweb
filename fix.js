@@ -382,6 +382,8 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'SAIBA\'s erfarne team af AI-konsulenter og teknologiske eksperter er dedikeret til at hjælpe jer med at overvinde jeres forretningsudfordringer og frigøre AI\'s fulde potentiale for jeres virksomhed.': 'SAIBA\'s experienced team of AI consultants and technology experts is dedicated to helping you overcome your business challenges and unlock AI\'s full potential for your company.',
             'Se vores team': 'See our team',
             'Skjul team': 'Hide team',
+            'Produktudvikling': 'Product Development',
+            'Vi udvikler og bygger AI-løsninger med jer': 'We develop and build AI solutions with you',
             'Meet the experts_': 'Mød eksperterne_',
             'who transform your AI journey': 'der transformerer jeres AI-rejse',
             'Identify your': 'Identificer jeres',
@@ -390,7 +392,9 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'with AI expertise': 'med AI-ekspertise',
             'SAIBA\'s experienced team of AI consultants and technology experts is dedicated to helping you overcome your business challenges and unlock AI\'s full potential for your company.': 'SAIBA\'s erfarne team af AI-konsulenter og teknologiske eksperter er dedikeret til at hjælpe jer med at overvinde jeres forretningsudfordringer og frigøre AI\'s fulde potentiale for jeres virksomhed.',
             'See our team': 'Se vores team',
-            'Hide team': 'Skjul team'
+            'Hide team': 'Skjul team',
+            'Product Development': 'Produktudvikling',
+            'We develop and build AI solutions with you': 'Vi udvikler og bygger AI-løsninger med jer'
         }
     };
     
