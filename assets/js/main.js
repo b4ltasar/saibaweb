@@ -62,64 +62,44 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mobile Navigation
     const burger = document.getElementById('burger');
-    const drawer = document.getElementById('drawer');
-    const drawerClose = document.getElementById('drawer-close');
-    const drawerBackdrop = document.querySelector('.drawer-backdrop');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileDrawerClose = document.getElementById('mobileDrawerClose');
+    const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
     
-    // Mobile navigation elements
-    
-    function openDrawer() {
-        drawer.style.display = 'block';
-        drawer.setAttribute('aria-hidden', 'false');
+    function openMobileDrawer() {
+        mobileDrawer.classList.add('active');
+        document.body.classList.add('mobile-drawer-open');
         document.body.style.overflow = 'hidden';
-        document.body.classList.add('drawer-open');
     }
     
-    function closeDrawer() {
-        drawer.style.display = 'none';
-        drawer.setAttribute('aria-hidden', 'true');
+    function closeMobileDrawer() {
+        mobileDrawer.classList.remove('active');
+        document.body.classList.remove('mobile-drawer-open');
         document.body.style.overflow = '';
-        document.body.classList.remove('drawer-open');
     }
     
+    // Burger menu click
     if (burger) {
-        // Remove any existing event listeners
-        burger.replaceWith(burger.cloneNode(true));
-        const newBurger = document.getElementById('burger');
-        
-        newBurger.addEventListener('click', function(e) {
+        burger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            openDrawer();
-        });
-        
-        // Also try touch events for mobile
-        newBurger.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            openDrawer();
-        });
-        
-        // Also try mousedown for desktop
-        newBurger.addEventListener('mousedown', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            openDrawer();
+            openMobileDrawer();
         });
     }
     
-    if (drawerClose) {
-        drawerClose.addEventListener('click', closeDrawer);
+    // Close drawer
+    if (mobileDrawerClose) {
+        mobileDrawerClose.addEventListener('click', closeMobileDrawer);
     }
     
-    if (drawerBackdrop) {
-        drawerBackdrop.addEventListener('click', closeDrawer);
+    if (mobileDrawerOverlay) {
+        mobileDrawerOverlay.addEventListener('click', closeMobileDrawer);
     }
     
     // Close drawer when clicking navigation links
-    const drawerNavLinks = document.querySelectorAll('.drawer-nav a');
-    drawerNavLinks.forEach(link => {
-        link.addEventListener('click', closeDrawer);
+    const mobileDrawerLinks = document.querySelectorAll('.mobile-drawer-link');
+    mobileDrawerLinks.forEach(link => {
+        link.addEventListener('click', closeMobileDrawer);
     });
     
     // Interactive AI Facts Section

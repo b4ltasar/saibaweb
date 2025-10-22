@@ -148,8 +148,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Language toggle functionality
 const languageToggle = document.getElementById('languageToggle');
 const langText = document.querySelector('.lang-text');
-const drawerLanguageToggle = document.getElementById('drawerLanguageToggle');
-const drawerLangText = document.querySelector('.drawer-lang-text');
+    const drawerLanguageToggle = document.getElementById('mobileDrawerLangToggle');
+    const drawerLangText = document.querySelector('.mobile-drawer-lang-text');
 
 if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
     let isEnglish = false;
