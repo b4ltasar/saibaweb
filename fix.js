@@ -1,3 +1,26 @@
+// Header scroll logic
+function updateHeader() {
+    const header = document.querySelector('.site-header');
+    const hero = document.querySelector('.hero');
+    
+    if (header && hero) {
+        const heroRect = hero.getBoundingClientRect();
+        const isOverHero = heroRect.top <= 0 && heroRect.bottom > 0;
+        
+        if (isOverHero) {
+            header.classList.add('hero-overlay');
+        } else {
+            header.classList.remove('hero-overlay');
+        }
+    }
+}
+
+// Initialize header logic
+document.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('scroll', updateHeader);
+    updateHeader();
+});
+
 // Simple and clean language toggle system
 let isEnglish = false;
 
@@ -8,6 +31,7 @@ const translations = {
     'Kunder': 'Clients',
     'Kontakt': 'Contact',
     'Get in touch': 'Kontakt',
+    'Kontakt': 'Get in touch',
     'Book et møde': 'Book a meeting',
     'Fra strategi til implementering': 'From strategy to implementation',
     'Vi leverer komplette AI-løsninger der passer til jeres specifikke behov og forretningsmål.': 'We deliver complete AI solutions that fit your specific needs and business goals.',

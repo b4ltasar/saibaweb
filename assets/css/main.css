@@ -188,6 +188,28 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.site-header.hero-overlay {
+  background: transparent;
+  border-bottom: none;
+}
+
+.site-header.hero-overlay .logo-img {
+  filter: brightness(0) invert(1);
+}
+
+.site-header.hero-overlay .nav-links a {
+  color: white;
+}
+
+.site-header.hero-overlay .language-toggle {
+  color: white;
+  border-color: white;
+}
+
+.site-header.hero-overlay .language-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
