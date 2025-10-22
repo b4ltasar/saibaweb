@@ -4,6 +4,12 @@ class LanguageTheme {
         this.currentLang = localStorage.getItem('saiba-lang') || 'da';
         this.translations = {
             da: {
+                nav: {
+                    services: "Ydelser",
+                    team: "Team", 
+                    clients: "Kunder",
+                    contact: "Kontakt"
+                },
                 hero: {
                     subtitle: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI for dine medarbejdere",
                     title: "Vi gentænker måden, vi arbejder på. Med mennesker i centrum og teknologi som motor.",
@@ -69,6 +75,12 @@ class LanguageTheme {
                 }
             },
             en: {
+                nav: {
+                    services: "Services",
+                    team: "Team",
+                    clients: "Clients", 
+                    contact: "Contact"
+                },
                 hero: {
                     subtitle: "From everyday routines to extraordinary superpowers with AI for your employees",
                     title: "We rethink the way we work. With people at the center and technology as the engine.",
