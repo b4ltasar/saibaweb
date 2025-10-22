@@ -251,7 +251,7 @@ body {
 }
 
 .mobile-drawer-logo {
-  height: 24px;
+  height: 20px;
   width: auto;
 }
 
@@ -2415,7 +2415,7 @@ body.mobile-drawer-open .site-header .burger {
   }
   
   .clients-logos {
-    gap: 40px;
+    gap: 20px;
   }
 
   .contact-content {
@@ -2428,7 +2428,7 @@ body.mobile-drawer-open .site-header .burger {
   }
   
   .mobile-drawer-logo {
-    height: 20px;
+    height: 16px;
   }
   
   .footer-logo {
