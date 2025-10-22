@@ -329,8 +329,6 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'From knowledge to concrete use cases in your business': 'Fra viden til konkrete use cases i din virksomhed',
             'Strategy & Implementation': 'Strategi & Implementering',
             'Translate technology into concrete results and value': 'Omsæt teknologi til konkrete resultater og værdi',
-            'Produktudvikling': 'Product Development',
-            'Vi udvikler og bygger AI-løsninger med jer': 'We develop and build AI solutions with you',
             'Klik og se hvorfor AI kan forbedre din virksomhed': 'Click and see why AI can improve your business',
             'Mød eksperterne_': 'Meet the experts_',
             'der transformerer jeres AI-rejse': 'who transform your AI journey',
