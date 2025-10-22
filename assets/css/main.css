@@ -177,7 +177,7 @@ body {
   left: 0;
   right: 0;
   z-index: 1002;
-  padding-top: 20px;
+  padding: 20px 0;
   transition: all 0.3s ease;
   transform: translateY(0);
 }
@@ -199,6 +199,13 @@ body {
 .site-header.hero-overlay {
   background: transparent;
   border-bottom: none;
+  padding: 20px 0;
+}
+
+.site-header:not(.hero-overlay) {
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 30px 0;
 }
 
 .site-header.hero-overlay .logo-img {
@@ -1532,7 +1539,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 30%;
   filter: brightness(0.9) contrast(1.1);
   transition: all 0.3s ease;
   image-rendering: -webkit-optimize-contrast;
@@ -1656,7 +1663,9 @@ body {
 /* Clients Section */
 .clients {
   background: var(--card);
-  padding: 80px 0 40px 0;
+  padding: 80px 0;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
 }
 
 .clients-container {
@@ -1694,11 +1703,11 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 40px;
-  opacity: 0.6;
-  filter: grayscale(80%);
+  gap: 60px;
+  opacity: 0.4;
+  filter: grayscale(100%);
   transition: all 0.3s ease;
-  padding: 40px 0;
+  padding: 60px 40px;
 }
 
 .clients-logos:hover {
