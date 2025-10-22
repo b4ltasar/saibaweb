@@ -208,7 +208,7 @@ class LanguageTheme {
     // Get translation by key path
     getTranslation(key) {
         const parts = key.split('.');
-        let value = this.i18n[this.currentLang];
+        let value = this.translations[this.currentLang];
         for (const part of parts) {
             value = value?.[part];
         }
