@@ -29,18 +29,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // Past hero section: white background, black text, hide on scroll down
             header.classList.remove('hero-overlay');
             header.classList.add('scrolled');
-            
-            // Hide/show header based on scroll direction
-            isScrollingDown = scrollY > lastScrollY;
-            
-            if (scrollY > 100) {
-                if (isScrollingDown) {
-                    header.style.transform = 'translateY(-100%)';
-                } else {
-                    header.style.transform = 'translateY(0)';
-                }
+        
+        // Hide/show header based on scroll direction
+        isScrollingDown = scrollY > lastScrollY;
+        
+        if (scrollY > 100) {
+            if (isScrollingDown) {
+                header.style.transform = 'translateY(-100%)';
             } else {
                 header.style.transform = 'translateY(0)';
+            }
+        } else {
+            header.style.transform = 'translateY(0)';
             }
         }
         
@@ -581,26 +581,26 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
     }
     
     const aiFacts = [
-        { title: "PRODUKTIVITET", text: "AI kan øge produktiviteten med op til 40% i administrative opgaver", source: "McKinsey Global Institute" },
-        { title: "OMKOSTNINGER", text: "61% af virksomheder rapporterer betydelige omkostningsbesparelser efter AI-implementering", source: "MIT Sloan Management Review" },
-        { title: "KUNDETILFREDS", text: "Virksomheder med AI-integration har 23% højere kundetilfredshed", source: "Salesforce Research" },
-        { title: "BESLUTNINGER", text: "AI accelererer beslutningsprocesser med op til 25% hurtigere workflows", source: "Deloitte Insights" },
-        { title: "TIDSBESPARELSE", text: "AI-automation kan frigøre op til 30% af medarbejdernes tid til strategiske opgaver", source: "World Economic Forum" },
-        { title: "FEJLREDUKTION", text: "AI reducerer fejlraten med 85% i dataanalyse og rapportering", source: "IBM Institute for Business Value" },
-        { title: "ROI", text: "Virksomheder med AI har 35% bedre ROI på deres digitale investeringer", source: "Accenture Research" },
-        { title: "FORUDSIGELSE", text: "AI kan forudsige kundeadfærd med 95% nøjagtighed", source: "Forrester Research" },
-        { title: "OPERATIONER", text: "Implementering af AI resulterer i 20% reduktion i operationelle omkostninger", source: "PwC Global AI Survey" },
-        { title: "INNOVATION", text: "AI-driven virksomheder lancere produkter 50% hurtigere end traditionelle", source: "Harvard Business Review" },
-        { title: "MARKEDSFORSTÅELSE", text: "AI kan analysere 73% mere kundedata end traditionelle metoder", source: "Gartner Research" },
-        { title: "KVALITET", text: "AI-forbedrede processer har 92% højere kvalitetskontrol", source: "Capgemini Research" },
-        { title: "ADAPTATION", text: "AI-systemer lærer og tilpasser sig 3x hurtigere end menneskelige processer", source: "MIT Technology Review" },
-        { title: "KONKURRENCE", text: "Virksomheder med AI har 67% højere markedsandele end konkurrenter", source: "BCG Henderson Institute" },
-        { title: "FREMTID", text: "85% af succesfulde virksomheder vil være AI-driven inden 2030", source: "World Economic Forum" },
-        { title: "EFFEKTIVITET", text: "AI optimerer ressourceallokering med 45% bedre effektivitet", source: "McKinsey Digital" },
-        { title: "KUNDESERVICE", text: "AI-powered chatbots håndterer 80% af kundeforespørgsler automatisk", source: "Oracle Research" },
-        { title: "INNOVATION", text: "AI-genererede idéer har 40% højere implementeringsrate", source: "Harvard Business School" },
-        { title: "SKALERING", text: "AI muliggør 10x hurtigere skalering af forretningsprocesser", source: "Stanford AI Index" },
-        { title: "PRÆDIKTION", text: "AI forudsiger markedsbevægelser med 78% nøjagtighed", source: "JP Morgan Research" }
+        { title: "PRODUKTIVITET", text: "AI kan øge produktiviteten med op til 40% i administrative opgaver", source: "McKinsey Global Institute", titleEn: "PRODUCTIVITY", textEn: "AI can increase productivity by up to 40% in administrative tasks" },
+        { title: "OMKOSTNINGER", text: "61% af virksomheder rapporterer betydelige omkostningsbesparelser efter AI-implementering", source: "MIT Sloan Management Review", titleEn: "COSTS", textEn: "61% of companies report significant cost savings after AI implementation" },
+        { title: "KUNDETILFREDS", text: "Virksomheder med AI-integration har 23% højere kundetilfredshed", source: "Salesforce Research", titleEn: "CUSTOMER SATISFACTION", textEn: "Companies with AI integration have 23% higher customer satisfaction" },
+        { title: "BESLUTNINGER", text: "AI accelererer beslutningsprocesser med op til 25% hurtigere workflows", source: "Deloitte Insights", titleEn: "DECISIONS", textEn: "AI accelerates decision processes with up to 25% faster workflows" },
+        { title: "TIDSBESPARELSE", text: "AI-automation kan frigøre op til 30% af medarbejdernes tid til strategiske opgaver", source: "World Economic Forum", titleEn: "TIME SAVINGS", textEn: "AI automation can free up to 30% of employees' time for strategic tasks" },
+        { title: "FEJLREDUKTION", text: "AI reducerer fejlraten med 85% i dataanalyse og rapportering", source: "IBM Institute for Business Value", titleEn: "ERROR REDUCTION", textEn: "AI reduces error rates by 85% in data analysis and reporting" },
+        { title: "ROI", text: "Virksomheder med AI har 35% bedre ROI på deres digitale investeringer", source: "Accenture Research", titleEn: "ROI", textEn: "Companies with AI have 35% better ROI on their digital investments" },
+        { title: "FORUDSIGELSE", text: "AI kan forudsige kundeadfærd med 95% nøjagtighed", source: "Forrester Research", titleEn: "PREDICTION", textEn: "AI can predict customer behavior with 95% accuracy" },
+        { title: "OPERATIONER", text: "Implementering af AI resulterer i 20% reduktion i operationelle omkostninger", source: "PwC Global AI Survey", titleEn: "OPERATIONS", textEn: "AI implementation results in 20% reduction in operational costs" },
+        { title: "INNOVATION", text: "AI-driven virksomheder lancere produkter 50% hurtigere end traditionelle", source: "Harvard Business Review", titleEn: "INNOVATION", textEn: "AI-driven companies launch products 50% faster than traditional ones" },
+        { title: "MARKEDSFORSTÅELSE", text: "AI kan analysere 73% mere kundedata end traditionelle metoder", source: "Gartner Research", titleEn: "MARKET INSIGHT", textEn: "AI can analyze 73% more customer data than traditional methods" },
+        { title: "KVALITET", text: "AI-forbedrede processer har 92% højere kvalitetskontrol", source: "Capgemini Research", titleEn: "QUALITY", textEn: "AI-enhanced processes have 92% higher quality control" },
+        { title: "ADAPTATION", text: "AI-systemer lærer og tilpasser sig 3x hurtigere end menneskelige processer", source: "MIT Technology Review", titleEn: "ADAPTATION", textEn: "AI systems learn and adapt 3x faster than human processes" },
+        { title: "KONKURRENCE", text: "Virksomheder med AI har 67% højere markedsandele end konkurrenter", source: "BCG Henderson Institute", titleEn: "COMPETITION", textEn: "Companies with AI have 67% higher market share than competitors" },
+        { title: "FREMTID", text: "85% af succesfulde virksomheder vil være AI-driven inden 2030", source: "World Economic Forum", titleEn: "FUTURE", textEn: "85% of successful companies will be AI-driven by 2030" },
+        { title: "EFFEKTIVITET", text: "AI optimerer ressourceallokering med 45% bedre effektivitet", source: "McKinsey Digital", titleEn: "EFFICIENCY", textEn: "AI optimizes resource allocation with 45% better efficiency" },
+        { title: "KUNDESERVICE", text: "AI-powered chatbots håndterer 80% af kundeforespørgsler automatisk", source: "Oracle Research", titleEn: "CUSTOMER SERVICE", textEn: "AI-powered chatbots handle 80% of customer inquiries automatically" },
+        { title: "INNOVATION", text: "AI-genererede idéer har 40% højere implementeringsrate", source: "Harvard Business School", titleEn: "INNOVATION", textEn: "AI-generated ideas have 40% higher implementation rate" },
+        { title: "SKALERING", text: "AI muliggør 10x hurtigere skalering af forretningsprocesser", source: "Stanford AI Index", titleEn: "SCALING", textEn: "AI enables 10x faster scaling of business processes" },
+        { title: "PRÆDIKTION", text: "AI forudsiger markedsbevægelser med 78% nøjagtighed", source: "JP Morgan Research", titleEn: "PREDICTION", textEn: "AI predicts market movements with 78% accuracy" }
     ];
     
     let factIndex = 0;
@@ -677,7 +677,9 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             factBox.style.transform = 'scale(0.8) translateY(20px)';
             factBox.style.transition = 'all 0.5s ease';
             
-            factBox.innerHTML = `<div style="font-size: 13px; margin-bottom: 10px;">${fact.title}</div>${fact.text}<br><br><div style="font-size: 9px; opacity: 0.7;">${fact.source}</div>`;
+            const displayTitle = isEnglish ? (fact.titleEn || fact.title) : fact.title;
+            const displayText = isEnglish ? (fact.textEn || fact.text) : fact.text;
+            factBox.innerHTML = `<div style="font-size: 13px; margin-bottom: 10px;">${displayTitle}</div>${displayText}<br><br><div style="font-size: 9px; opacity: 0.7;">${fact.source}</div>`;
             
             ia.appendChild(factBox);
             activeFacts.push(factBox);
