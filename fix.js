@@ -370,17 +370,29 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
     };
     
     function translatePage() {
-        const elements = document.querySelectorAll('a, button, h1, h2, h3, p, span, label, input, textarea');
+        const elements = document.querySelectorAll('a, button, h1, h2, h3, p, span, label, input, textarea, div');
+        let translatedCount = 0;
         
         elements.forEach(element => {
-            if (element.children.length === 0) { // Only translate leaf nodes
+            // Skip if element has specific classes that shouldn't be translated
+            if (element.classList.contains('mouse-trail-dot') || 
+                element.classList.contains('fact-box') ||
+                element.classList.contains('ai-facts-title')) {
+                return;
+            }
+            
+            // Only translate if element has text content and no child elements with text
+            if (element.textContent.trim() && element.children.length === 0) {
                 const text = element.textContent.trim();
                 const translation = translations[isEnglish ? 'da' : 'en'][text];
                 if (translation) {
                     element.textContent = translation;
+                    translatedCount++;
                 }
             }
         });
+        
+        console.log(`Translated ${translatedCount} elements to ${isEnglish ? 'Danish' : 'English'}`);
     }
     
     if (languageToggle) {
