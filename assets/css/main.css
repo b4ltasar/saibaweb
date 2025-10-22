@@ -1414,7 +1414,7 @@ body {
 }
 
 .drawer[aria-hidden="false"] {
-  pointer-events: auto;
+  pointer-events: auto !important;
 }
 
 body.drawer-open .site-header .burger {

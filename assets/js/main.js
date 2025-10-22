@@ -69,10 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile navigation elements
     
     function openDrawer() {
+        console.log('Opening drawer...', drawer);
         drawer.style.display = 'block';
         drawer.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
         document.body.classList.add('drawer-open');
+        console.log('Drawer opened, aria-hidden:', drawer.getAttribute('aria-hidden'));
     }
     
     function closeDrawer() {
@@ -83,7 +85,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     if (burger) {
-        burger.addEventListener('click', openDrawer);
+        burger.addEventListener('click', function(e) {
+            console.log('Burger clicked!', e);
+            openDrawer();
+        });
+    } else {
+        console.log('Burger element not found!');
     }
     
     if (drawerClose) {
