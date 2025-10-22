@@ -734,7 +734,7 @@ body {
 }
 
 .services-grid:hover .service-card {
-  opacity: 0.4;
+  opacity: 0.2;
 }
 
 .service-card:hover {

@@ -450,6 +450,8 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'Vi leverer komplette AI-løsninger der passer til jeres specifikke behov og forretningsmål.': 'We deliver complete AI solutions that fit your specific needs and business goals.',
             'Optimér jeres forretningsprocesser': 'Optimize your business processes',
             'Udforsk AI\'s potentiale gennem interaktive cases. Klik rundt i området nedenfor og se konkrete eksempler på, hvordan AI kan optimere jeres specifikke forretningsområder.': 'Explore AI\'s potential through interactive cases. Click around in the area below and see concrete examples of how AI can optimize your specific business areas.',
+            'Optimize your business processes': 'Optimér jeres forretningsprocesser',
+            'Explore AI\'s potential through interactive cases. Click around in the area below and see concrete examples of how AI can optimize your specific business areas.': 'Udforsk AI\'s potentiale gennem interaktive cases. Klik rundt i området nedenfor og se konkrete eksempler på, hvordan AI kan optimere jeres specifikke forretningsområder.',
             'I samarbejde med': 'In collaboration with',
             'Vi stolte partnere der har valgt at transformere deres forretning med AI': 'Our trusted partners who have chosen to transform their business with AI'
         }
