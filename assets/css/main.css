@@ -1384,8 +1384,8 @@ body {
   display: none;
   flex-direction: column;
   gap: 5px;
-  background: none;
-  border: none;
+  background: rgba(255, 0, 0, 0.3) !important;
+  border: 2px solid red !important;
   cursor: pointer;
   padding: 8px;
   z-index: 1005;
@@ -1393,6 +1393,8 @@ body {
   pointer-events: auto !important;
   user-select: none;
   outline: none;
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .burger span {
@@ -1416,6 +1418,8 @@ body {
   bottom: 0;
   z-index: 9999;
   display: none;
+  background: rgba(255, 255, 0, 0.1) !important;
+  border: 2px solid yellow !important;
 }
 
 .mobile-drawer.active {
@@ -1710,6 +1714,8 @@ body.mobile-drawer-open .site-header .burger {
     visibility: visible !important;
     opacity: 1 !important;
     z-index: 1005 !important;
+    background: rgba(0, 255, 0, 0.5) !important;
+    border: 3px solid blue !important;
   }
 
   .hero {

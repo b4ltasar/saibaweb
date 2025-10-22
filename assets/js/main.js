@@ -67,9 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
     
     function openMobileDrawer() {
+        console.log('Opening mobile drawer...', mobileDrawer);
         mobileDrawer.classList.add('active');
         document.body.classList.add('mobile-drawer-open');
         document.body.style.overflow = 'hidden';
+        console.log('Mobile drawer classes:', mobileDrawer.className);
+        console.log('Body classes:', document.body.className);
     }
     
     function closeMobileDrawer() {
@@ -80,11 +83,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Burger menu click
     if (burger) {
+        console.log('Burger element found:', burger);
+        console.log('Burger display:', getComputedStyle(burger).display);
+        console.log('Burger visibility:', getComputedStyle(burger).visibility);
+        
         burger.addEventListener('click', function(e) {
+            console.log('Burger clicked!', e);
             e.preventDefault();
             e.stopPropagation();
             openMobileDrawer();
         });
+        
+        // Also add touch events
+        burger.addEventListener('touchstart', function(e) {
+            console.log('Burger touched!', e);
+            e.preventDefault();
+            e.stopPropagation();
+            openMobileDrawer();
+        });
+    } else {
+        console.log('Burger element NOT found!');
     }
     
     // Close drawer
