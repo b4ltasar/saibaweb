@@ -239,18 +239,23 @@ function updateHeader() {
     const header = document.querySelector('.site-header');
     if (!header) return;
     
+    const heroSection = document.querySelector('.hero');
+    const heroHeight = heroSection ? heroSection.offsetHeight : 0;
     const currentScrollY = window.scrollY;
     
-    console.log('Scroll:', currentScrollY, 'Last:', lastScrollY);
-    
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down - hide header
-        console.log('Hiding header');
-        header.classList.add('hidden');
-    } else {
-        // Scrolling up - show header
-        console.log('Showing header');
+    // Check if we're in hero section
+    if (currentScrollY < heroHeight) {
+        header.classList.add('hero-overlay');
         header.classList.remove('hidden');
+    } else {
+        header.classList.remove('hero-overlay');
+        
+        // Hide/show logic when not in hero
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            header.classList.add('hidden');
+        } else {
+            header.classList.remove('hidden');
+        }
     }
     
     lastScrollY = currentScrollY;
@@ -271,6 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup header scroll
     lastScrollY = window.scrollY;
+    updateHeader(); // Initialize header state
     window.addEventListener('scroll', requestTick);
     
     // Setup language toggles

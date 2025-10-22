@@ -2017,10 +2017,10 @@ body {
 }
 
 .mobile-drawer-logo {
-  width: 120px !important;
-  height: 120px !important;
-  min-width: 120px !important;
-  min-height: 120px !important;
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px !important;
+  min-height: 80px !important;
 }
 
 .mobile-drawer-close {
@@ -2075,10 +2075,10 @@ body {
 /* Mobile responsive for drawer logo */
 @media (max-width: 768px) {
   .mobile-drawer-logo {
-    width: 100px !important;
-    height: 100px !important;
-    min-width: 100px !important;
-    min-height: 100px !important;
+    width: 60px !important;
+    height: 60px !important;
+    min-width: 60px !important;
+    min-height: 60px !important;
   }
 }
 
@@ -2422,7 +2422,16 @@ body.mobile-drawer-open .site-header .burger {
   }
   
   .clients-logos {
-    gap: 20px;
+    gap: 16px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 20px;
+  }
+  
+  .client-logo-img {
+    height: 40px;
+    flex-shrink: 0;
   }
 
   .contact-content {
