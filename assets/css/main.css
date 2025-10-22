@@ -261,6 +261,36 @@ body {
   width: 100%;
 }
 
+.language-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 16px;
+}
+
+.language-toggle:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.site-header.hero-overlay .language-toggle {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.site-header.hero-overlay .language-toggle:hover {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
 /* Dark Mode Toggle - Nordic Minimalist */
 .dark-mode-toggle {
   background: none;
@@ -355,11 +385,11 @@ body {
 }
 
 .hero-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.3);
   z-index: 1;
   pointer-events: none;

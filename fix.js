@@ -132,9 +132,84 @@ document.addEventListener('DOMContentLoaded', function() {
         
         titleObserver.observe(aiFactsTitle);
         
-        // Cleanup on page unload
-        window.addEventListener('beforeunload', stopTypewriterAnimation);
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', stopTypewriterAnimation);
+}
+
+// Language toggle functionality
+const languageToggle = document.getElementById('languageToggle');
+const langText = document.querySelector('.lang-text');
+
+if (languageToggle && langText) {
+    let isEnglish = false;
+    
+    const translations = {
+        da: {
+            'Ydelser': 'Services',
+            'Team': 'Team', 
+            'Kunder': 'Clients',
+            'Kontakt': 'Contact',
+            'GET IN TOUCH': 'GET IN TOUCH',
+            'Book et møde': 'Book a meeting',
+            'Kontakt os for at høre mere om hvordan vi kan hjælpe din virksomhed med AI-implementering.': 'Contact us to hear more about how we can help your company with AI implementation.',
+            'Telefon:': 'Phone:',
+            'Email:': 'Email:',
+            'Adresse:': 'Address:',
+            'Navn *': 'Name *',
+            'Dit navn': 'Your name',
+            'Email *': 'Email *',
+            'din.email@example.com': 'your.email@example.com',
+            'Telefon (valgfri)': 'Phone (optional)',
+            'Dit telefonnummer': 'Your phone number',
+            'Besked *': 'Message *',
+            'Hvordan kan vi hjælpe dig?': 'How can we help you?',
+            'Send': 'Send',
+            'Ved at indsende denne formular accepterer du vores privatlivspolitik og servicevilkår.': 'By submitting this form you accept our privacy policy and terms of service.'
+        },
+        en: {
+            'Services': 'Ydelser',
+            'Team': 'Team',
+            'Clients': 'Kunder', 
+            'Contact': 'Kontakt',
+            'GET IN TOUCH': 'KONTAKT OS',
+            'Book a meeting': 'Book et møde',
+            'Contact us to hear more about how we can help your company with AI implementation.': 'Kontakt os for at høre mere om hvordan vi kan hjælpe din virksomhed med AI-implementering.',
+            'Phone:': 'Telefon:',
+            'Email:': 'Email:',
+            'Address:': 'Adresse:',
+            'Name *': 'Navn *',
+            'Your name': 'Dit navn',
+            'Email *': 'Email *',
+            'your.email@example.com': 'din.email@example.com',
+            'Phone (optional)': 'Telefon (valgfri)',
+            'Your phone number': 'Dit telefonnummer',
+            'Message *': 'Besked *',
+            'How can we help you?': 'Hvordan kan vi hjælpe dig?',
+            'Send': 'Send',
+            'By submitting this form you accept our privacy policy and terms of service.': 'Ved at indsende denne formular accepterer du vores privatlivspolitik og servicevilkår.'
+        }
+    };
+    
+    function translatePage() {
+        const elements = document.querySelectorAll('a, button, h1, h2, h3, p, span, label, input, textarea');
+        
+        elements.forEach(element => {
+            if (element.children.length === 0) { // Only translate leaf nodes
+                const text = element.textContent.trim();
+                const translation = translations[isEnglish ? 'da' : 'en'][text];
+                if (translation) {
+                    element.textContent = translation;
+                }
+            }
+        });
     }
+    
+    languageToggle.addEventListener('click', () => {
+        isEnglish = !isEnglish;
+        langText.textContent = isEnglish ? 'DA' : 'EN';
+        translatePage();
+    });
+}
     
     // Burger menu fix
     const burger = document.getElementById('burger');
