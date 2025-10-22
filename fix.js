@@ -2,6 +2,17 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Fix script loaded');
     
+    // Ensure page starts at top on mobile
+    if (window.innerWidth <= 768) {
+        window.scrollTo(0, 0);
+    }
+    
+    // Clear any hash from URL on mobile to prevent unwanted scrolling
+    if (window.innerWidth <= 768 && window.location.hash) {
+        window.history.replaceState('', document.title, window.location.pathname);
+        window.scrollTo(0, 0);
+    }
+    
     // Header scroll logic
     const header = document.querySelector('.site-header');
     const hero = document.querySelector('.hero');
