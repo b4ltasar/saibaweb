@@ -73,11 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function openDrawer() {
         drawer.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        document.body.classList.add('drawer-open');
     }
     
     function closeDrawer() {
         drawer.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        document.body.classList.remove('drawer-open');
     }
     
     if (burger) {

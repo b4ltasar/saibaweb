@@ -311,42 +311,7 @@ if (languageToggle && langText) {
     });
 }
     
-    // Burger menu fix
-    const burger = document.getElementById('burger');
-    const drawer = document.getElementById('drawer');
-    const close = document.getElementById('drawer-close');
-    
-    console.log('Burger found:', !!burger);
-    console.log('Drawer found:', !!drawer);
-    
-    if (burger && drawer) {
-        burger.addEventListener('click', function() {
-            console.log('Burger clicked');
-            drawer.style.display = 'block';
-            drawer.setAttribute('aria-hidden', 'false');
-            document.querySelector('.site-header').classList.add('drawer-open');
-        });
-    }
-    
-    if (close) {
-        close.addEventListener('click', function() {
-            console.log('Close clicked');
-            drawer.style.display = 'none';
-            drawer.setAttribute('aria-hidden', 'true');
-            document.querySelector('.site-header').classList.remove('drawer-open');
-        });
-    }
-    
-    // Close drawer when clicking backdrop
-    const backdrop = document.querySelector('.drawer-backdrop');
-    if (backdrop) {
-        backdrop.addEventListener('click', function() {
-            console.log('Backdrop clicked');
-            drawer.style.display = 'none';
-            drawer.setAttribute('aria-hidden', 'true');
-            document.querySelector('.site-header').classList.remove('drawer-open');
-        });
-    }
+    // Burger menu is handled in main.js
     
     // AI Facts fix
     const interactiveArea = document.querySelector('.interactive-area');
