@@ -2010,8 +2010,10 @@ body {
 }
 
 .mobile-drawer-logo {
-  width: 80px;
-  height: 80px;
+  width: 120px !important;
+  height: 120px !important;
+  min-width: 120px !important;
+  min-height: 120px !important;
 }
 
 .mobile-drawer-close {
@@ -2061,6 +2063,16 @@ body {
 .mobile-drawer-lang-toggle:hover {
   background: var(--card);
   border-color: var(--accent);
+}
+
+/* Mobile responsive for drawer logo */
+@media (max-width: 768px) {
+  .mobile-drawer-logo {
+    width: 100px !important;
+    height: 100px !important;
+    min-width: 100px !important;
+    min-height: 100px !important;
+  }
 }
 
 /* Hide burger when drawer is open */
