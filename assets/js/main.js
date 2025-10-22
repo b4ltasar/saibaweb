@@ -470,6 +470,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Team Section Expand/Collapse
     const teamExpandBtn = document.getElementById('teamExpandBtn');
     const teamGrid = document.getElementById('teamGrid');
+    const teamDivider = document.getElementById('teamDivider');
+    const teamCtaText = teamExpandBtn ? teamExpandBtn.querySelector('.team-cta-text') : null;
     
     if (teamExpandBtn && teamGrid) {
         let isExpanded = false;
@@ -479,10 +481,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (isExpanded) {
                 teamGrid.classList.add('expanded');
-                teamExpandBtn.textContent = 'Skjul team';
+                teamExpandBtn.classList.add('expanded');
+                if (teamDivider) teamDivider.classList.add('expanded');
+                if (teamCtaText) teamCtaText.textContent = 'Skjul team';
             } else {
                 teamGrid.classList.remove('expanded');
-                teamExpandBtn.textContent = 'Se vores team';
+                teamExpandBtn.classList.remove('expanded');
+                if (teamDivider) teamDivider.classList.remove('expanded');
+                if (teamCtaText) teamCtaText.textContent = 'Se vores team';
             }
         });
     }
