@@ -138,7 +138,9 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                 </div>
                 <h3 class="team-name">{{ member.name }}</h3>
                 <p class="team-role">{{ member.role }}</p>
-                <p class="team-bio">{{ member.bio }}</p>
+                {% if member.bio and member.bio != "" %}
+                    <p class="team-bio">{{ member.bio }}</p>
+                {% endif %}
                 {% if member.linkedin %}
                     <a href="{{ member.linkedin }}" target="_blank" class="team-linkedin">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
