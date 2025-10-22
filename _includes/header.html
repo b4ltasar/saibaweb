@@ -30,7 +30,7 @@
   <div class="drawer-content">
     <div class="drawer-header">
       <span class="drawer-logo">
-        <img src="{{ '/favicon.ico' | relative_url }}" alt="{{ site.title }}" class="drawer-logo-img">
+        <img src="{{ '/assets/images/favicon.svg' | relative_url }}" alt="{{ site.title }}" class="drawer-logo-img">
       </span>
       <button class="drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
     </div>
@@ -38,6 +38,9 @@
       {% for item in site.data.navigation %}
       <a href="{{ item.url }}">{{ item.title }}</a>
       {% endfor %}
+      <button class="drawer-language-toggle" id="drawerLanguageToggle" aria-label="Toggle language">
+        <span class="drawer-lang-text">EN</span>
+      </button>
     </nav>
   </div>
 </div>

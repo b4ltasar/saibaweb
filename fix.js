@@ -150,8 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
 // Language toggle functionality
 const languageToggle = document.getElementById('languageToggle');
 const langText = document.querySelector('.lang-text');
+const drawerLanguageToggle = document.getElementById('drawerLanguageToggle');
+const drawerLangText = document.querySelector('.drawer-lang-text');
 
-if (languageToggle && langText) {
+if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
     let isEnglish = false;
     
     const translations = {
@@ -297,7 +299,73 @@ if (languageToggle && langText) {
             'Implementation': 'Implementering',
             'We implement AI solutions in a safe and effective way': 'Vi implementerer AI-løsninger på en sikker og effektiv måde',
             'Training and support': 'Træning og support',
-            'We ensure your team can use AI tools optimally': 'Vi sikrer at jeres team kan bruge AI-værktøjerne optimalt'
+            'We ensure your team can use AI tools optimally': 'Vi sikrer at jeres team kan bruge AI-værktøjerne optimalt',
+            'Workshops & Bootcamps': 'Workshops & Bootcamps',
+            'Get an overview and insight into AI technology\'s potential': 'Få overblik og indsigt i AI-teknologiens potentiale',
+            'Tailored Courses': 'Skræddersyede Forløb',
+            'From knowledge to concrete use cases in your business': 'Fra viden til konkrete use cases i din virksomhed',
+            'Strategy & Implementation': 'Strategi & Implementering',
+            'Translate technology into concrete results and value': 'Omsæt teknologi til konkrete resultater og værdi',
+            'AI Facts': 'AI Facts',
+            'What is AI?': 'Hvad er AI?',
+            'Artificial intelligence (AI) is technology that can learn and make decisions like humans.': 'Kunstig intelligens (AI) er teknologi, der kan lære og træffe beslutninger som mennesker.',
+            'Why is AI important?': 'Hvorfor er AI vigtigt?',
+            'AI can automate routine tasks and free up time for more creative work.': 'AI kan automatisere rutineopgaver og frigøre tid til mere kreativt arbejde.',
+            'How do we implement AI?': 'Hvordan implementerer vi AI?',
+            'We start by understanding your needs and finding the right AI solution.': 'Vi starter med at forstå jeres behov og finder den rigtige AI-løsning.',
+            'What does AI implementation cost?': 'Hvad koster AI-implementering?',
+            'The price depends on your needs and the chosen solution. We provide a free quote.': 'Prisen afhænger af jeres behov og den valgte løsning. Vi giver et gratis tilbud.',
+            'How long does it take?': 'Hvor lang tid tager det?',
+            'Typically 2-6 months depending on the complexity of the project.': 'Typisk 2-6 måneder afhængigt af kompleksiteten af projektet.',
+            'What is your experience?': 'Hvad er jeres erfaring?',
+            'We have implemented AI in over 50 companies in the last 3 years.': 'Vi har implementeret AI i over 50 virksomheder i de sidste 3 år.',
+            'Can you help with training?': 'Kan I hjælpe med træning?',
+            'Yes, we train your employees to use the new AI tools.': 'Ja, vi træner jeres medarbejdere i at bruge de nye AI-værktøjer.',
+            'What about support?': 'Hvad med support?',
+            'We offer ongoing support and maintenance of your AI solutions.': 'Vi tilbyder løbende support og vedligeholdelse af jeres AI-løsninger.',
+            'Is AI safe?': 'Er AI sikkert?',
+            'We only implement safe and tested AI solutions with focus on data protection.': 'Vi implementerer kun sikre og testede AI-løsninger med fokus på databeskyttelse.',
+            'What is your approach?': 'Hvad er jeres tilgang?',
+            'We put people at the center and use technology as a tool for improvement.': 'Vi sætter mennesker i centrum og bruger teknologi som værktøj til forbedring.',
+            'Can you help all industries?': 'Kan I hjælpe alle brancher?',
+            'Yes, we have experience with AI implementation across all industries.': 'Ja, vi har erfaring med AI-implementering på tværs af alle brancher.',
+            'What is your success rate?': 'Hvad er jeres succesrate?',
+            '95% of our projects deliver the expected results within the timeframe.': '95% af vores projekter leverer de forventede resultater inden for tidsrammen.',
+            'How do we start?': 'Hvordan starter vi?',
+            'Contact us for a free consultation meeting where we discuss your needs.': 'Kontakt os for et gratis konsultationsmøde hvor vi diskuterer jeres behov.',
+            'Workshops & Bootcamps': 'Workshops & Bootcamps',
+            'Få overblik og indsigt i AI-teknologiens potentiale': 'Get an overview and insight into AI technology\'s potential',
+            'Skræddersyede Forløb': 'Tailored Courses',
+            'Fra viden til konkrete use cases i din virksomhed': 'From knowledge to concrete use cases in your business',
+            'Strategi & Implementering': 'Strategy & Implementation',
+            'Omsæt teknologi til konkrete resultater og værdi': 'Translate technology into concrete results and value',
+            'AI Facts': 'AI Facts',
+            'Hvad er AI?': 'What is AI?',
+            'Kunstig intelligens (AI) er teknologi, der kan lære og træffe beslutninger som mennesker.': 'Artificial intelligence (AI) is technology that can learn and make decisions like humans.',
+            'Hvorfor er AI vigtigt?': 'Why is AI important?',
+            'AI kan automatisere rutineopgaver og frigøre tid til mere kreativt arbejde.': 'AI can automate routine tasks and free up time for more creative work.',
+            'Hvordan implementerer vi AI?': 'How do we implement AI?',
+            'Vi starter med at forstå jeres behov og finder den rigtige AI-løsning.': 'We start by understanding your needs and finding the right AI solution.',
+            'Hvad koster AI-implementering?': 'What does AI implementation cost?',
+            'Prisen afhænger af jeres behov og den valgte løsning. Vi giver et gratis tilbud.': 'The price depends on your needs and the chosen solution. We provide a free quote.',
+            'Hvor lang tid tager det?': 'How long does it take?',
+            'Typisk 2-6 måneder afhængigt af kompleksiteten af projektet.': 'Typically 2-6 months depending on the complexity of the project.',
+            'Hvad er jeres erfaring?': 'What is your experience?',
+            'Vi har implementeret AI i over 50 virksomheder i de sidste 3 år.': 'We have implemented AI in over 50 companies in the last 3 years.',
+            'Kan I hjælpe med træning?': 'Can you help with training?',
+            'Ja, vi træner jeres medarbejdere i at bruge de nye AI-værktøjer.': 'Yes, we train your employees to use the new AI tools.',
+            'Hvad med support?': 'What about support?',
+            'Vi tilbyder løbende support og vedligeholdelse af jeres AI-løsninger.': 'We offer ongoing support and maintenance of your AI solutions.',
+            'Er AI sikkert?': 'Is AI safe?',
+            'Vi implementerer kun sikre og testede AI-løsninger med fokus på databeskyttelse.': 'We only implement safe and tested AI solutions with focus on data protection.',
+            'Hvad er jeres tilgang?': 'What is your approach?',
+            'Vi sætter mennesker i centrum og bruger teknologi som værktøj til forbedring.': 'We put people at the center and use technology as a tool for improvement.',
+            'Kan I hjælpe alle brancher?': 'Can you help all industries?',
+            'Ja, vi har erfaring med AI-implementering på tværs af alle brancher.': 'Yes, we have experience with AI implementation across all industries.',
+            'Hvad er jeres succesrate?': 'What is your success rate?',
+            '95% af vores projekter leverer de forventede resultater inden for tidsrammen.': '95% of our projects deliver the expected results within the timeframe.',
+            'Hvordan starter vi?': 'How do we start?',
+            'Kontakt os for et gratis konsultationsmøde hvor vi diskuterer jeres behov.': 'Contact us for a free consultation meeting where we discuss your needs.'
         }
     };
     
@@ -315,11 +383,23 @@ if (languageToggle && langText) {
         });
     }
     
-    languageToggle.addEventListener('click', () => {
-        isEnglish = !isEnglish;
-        langText.textContent = isEnglish ? 'DA' : 'EN';
-        translatePage();
-    });
+    if (languageToggle) {
+        languageToggle.addEventListener('click', () => {
+            isEnglish = !isEnglish;
+            if (langText) langText.textContent = isEnglish ? 'DA' : 'EN';
+            if (drawerLangText) drawerLangText.textContent = isEnglish ? 'DA' : 'EN';
+            translatePage();
+        });
+    }
+    
+    if (drawerLanguageToggle) {
+        drawerLanguageToggle.addEventListener('click', () => {
+            isEnglish = !isEnglish;
+            if (langText) langText.textContent = isEnglish ? 'DA' : 'EN';
+            if (drawerLangText) drawerLangText.textContent = isEnglish ? 'DA' : 'EN';
+            translatePage();
+        });
+    }
 }
     
     // Burger menu is handled in main.js

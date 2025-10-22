@@ -1495,6 +1495,26 @@ body.drawer-open .site-header .burger {
   background: var(--card);
 }
 
+.drawer-language-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+.drawer-language-toggle:hover {
+  background: var(--card);
+  border-color: var(--accent);
+}
+
 .drawer-dark-toggle {
   margin-top: 20px;
   padding: 12px 16px;
