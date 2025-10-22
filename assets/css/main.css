@@ -1503,8 +1503,15 @@ body {
   object-fit: cover;
   filter: brightness(0.9) contrast(1.1);
   transition: all 0.3s ease;
-  image-rendering: high-quality;
   image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: auto;
+  image-rendering: high-quality;
+  -webkit-image-rendering: -webkit-optimize-contrast;
+  -moz-image-rendering: crisp-edges;
+  -ms-image-rendering: crisp-edges;
+  -o-image-rendering: crisp-edges;
 }
 
 .team-photo::before {
@@ -1653,7 +1660,7 @@ body {
 /* Clients Section */
 .clients {
   background: var(--card);
-  padding: 120px 0;
+  padding: 80px 0 40px 0;
 }
 
 .clients-container {
@@ -1664,7 +1671,7 @@ body {
 
 .clients-content {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   padding: 0 20px;
 }
 
@@ -2261,7 +2268,7 @@ body.mobile-drawer-open .site-header .burger {
   }
 
   .section {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 
   .services-title,
