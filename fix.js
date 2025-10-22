@@ -90,10 +90,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Typewriter effect for AI facts title with continuous looping
-    const aiFactsTitle = document.getElementById('aiFactsTitle');
-    if (aiFactsTitle) {
-        const originalText = aiFactsTitle.textContent;
+    // Typewriter effect for optimization title with continuous looping
+    const optimizationTitle = document.getElementById('optimizationTitle');
+    if (optimizationTitle) {
+        const originalText = optimizationTitle.textContent;
         let isAnimating = false;
         let typewriterTimeout;
         
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (typewriterTimeout) {
                 clearTimeout(typewriterTimeout);
             }
-            aiFactsTitle.textContent = originalText;
+            optimizationTitle.textContent = originalText;
         }
         
         const titleObserver = new IntersectionObserver((entries) => {
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, { threshold: 0.3 });
         
-        titleObserver.observe(aiFactsTitle);
+        titleObserver.observe(optimizationTitle);
         
         // Cleanup on page unload
         window.addEventListener('beforeunload', stopTypewriterAnimation);
@@ -313,6 +313,11 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'We develop and build AI solutions with you': 'Vi udvikler og bygger AI-løsninger med jer',
             'Click and see why AI can improve your business': 'Klik og se hvorfor AI kan forbedre din virksomhed',
             'Optimization': 'Optimering',
+            'Optimize your': 'Optimér jeres',
+            'business processes': 'forretningsprocesser',
+            'Explore AI\'s potential': 'Udforsk AI\'s potentiale',
+            'through interactive cases': 'gennem interaktive cases',
+            'Click around the area below and see concrete examples of how AI can optimize your specific business areas. From productivity to customer service - each case shows measurable results.': 'Klik rundt i området nedenfor og se konkrete eksempler på, hvordan AI kan optimere jeres specifikke forretningsområder. Fra produktivitet til kundeservice - hver case viser målbare resultater.',
             'AI strategy and technological innovation': 'AI strategi og teknologisk innovation',
             'Product development and implementation': 'Produktudvikling og implementering',
             'Business development and customer experience': 'Forretningsudvikling og kundeoplevelse',
@@ -332,6 +337,11 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'Translate technology into concrete results and value': 'Omsæt teknologi til konkrete resultater og værdi',
             'Klik og se hvorfor AI kan forbedre din virksomhed': 'Click and see why AI can improve your business',
             'Optimering': 'Optimization',
+            'Optimér jeres': 'Optimize your',
+            'forretningsprocesser': 'business processes',
+            'Udforsk AI\'s potentiale': 'Explore AI\'s potential',
+            'gennem interaktive cases': 'through interactive cases',
+            'Klik rundt i området nedenfor og se konkrete eksempler på, hvordan AI kan optimere jeres specifikke forretningsområder. Fra produktivitet til kundeservice - hver case viser målbare resultater.': 'Click around the area below and see concrete examples of how AI can optimize your specific business areas. From productivity to customer service - each case shows measurable results.',
             'Mød eksperterne_': 'Meet the experts_',
             'der transformerer jeres AI-rejse': 'who transform your AI journey',
             'Identificer jeres': 'Identify your',
@@ -501,7 +511,7 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
     
     // Burger menu is handled in main.js
     
-    // AI Facts fix
+    // Optimization Interactive Area
     const interactiveArea = document.querySelector('.interactive-area');
     
     // Mouse trail for AI facts area
