@@ -232,19 +232,31 @@ class LanguageTheme {
 const langTheme = new LanguageTheme();
 
 // Header scroll logic
+let lastScrollY = window.scrollY;
+let ticking = false;
+
 function updateHeader() {
     const header = document.querySelector('.site-header');
-    const hero = document.querySelector('.hero');
+    if (!header) return;
     
-    if (header && hero) {
-        const heroRect = hero.getBoundingClientRect();
-        const isOverHero = heroRect.top <= 0 && heroRect.bottom > 0;
-        
-        if (isOverHero) {
-            header.classList.add('hero-overlay');
-        } else {
-            header.classList.remove('hero-overlay');
-        }
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down - hide header
+        header.classList.add('hidden');
+    } else {
+        // Scrolling up - show header
+        header.classList.remove('hidden');
+    }
+    
+    lastScrollY = currentScrollY;
+    ticking = false;
+}
+
+function requestTick() {
+    if (!ticking) {
+        requestAnimationFrame(updateHeader);
+        ticking = true;
     }
 }
 
@@ -254,8 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
     langTheme.apply();
     
     // Setup header scroll
-    window.addEventListener('scroll', updateHeader);
-    updateHeader();
+    window.addEventListener('scroll', requestTick);
     
     // Setup language toggles
     const toggleBtns = [
