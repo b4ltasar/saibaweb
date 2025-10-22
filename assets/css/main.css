@@ -553,17 +553,19 @@ body {
 }
 
 .services-content {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 80px;
-  align-items: start;
-  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 80px;
 }
 
 .services-text {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  max-width: 800px;
+  margin-bottom: 60px;
 }
 
 .services-main-text {
@@ -1242,8 +1244,11 @@ body {
   }
   
   .services-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .services-text {
+    margin-bottom: 40px;
   }
   
   .services-main-text {
@@ -1654,23 +1659,26 @@ body {
 
 .clients-content {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
+  padding: 0 20px;
 }
 
 .clients-main-text {
-  font-size: 48px;
-  font-weight: 800;
+  font-size: 36px;
+  font-weight: 700;
   color: var(--text);
-  margin: 0 0 16px 0;
-  line-height: 1.1;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .clients-description {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--muted);
   margin: 0;
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
+  font-weight: 400;
 }
 
 .clients-logos {
@@ -1678,28 +1686,37 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 60px;
-  opacity: 0.4;
-  filter: grayscale(100%);
+  gap: 80px;
+  opacity: 0.6;
+  filter: grayscale(80%);
   transition: all 0.3s ease;
+  padding: 40px 0;
 }
 
 .clients-logos:hover {
-  opacity: 0.7;
-  filter: grayscale(50%);
+  opacity: 0.8;
+  filter: grayscale(40%);
 }
 
 .client-logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.client-logo:hover {
+  background: rgba(0, 0, 0, 0.02);
+  transform: translateY(-2px);
 }
 
 .client-logo-img {
-  height: 40px;
+  height: 50px;
   width: auto;
   object-fit: contain;
-  filter: brightness(0.8);
+  filter: brightness(0.9);
   transition: all 0.3s ease;
 }
 
