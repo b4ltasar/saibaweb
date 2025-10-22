@@ -311,6 +311,10 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'Hide team': 'Skjul team',
             'Product Development': 'Produktudvikling',
             'We develop and build AI solutions with you': 'Vi udvikler og bygger AI-løsninger med jer',
+            'AI strategy and technological innovation': 'AI strategi og teknologisk innovation',
+            'Product development and implementation': 'Produktudvikling og implementering',
+            'Business development and customer experience': 'Forretningsudvikling og kundeoplevelse',
+            'Technical architecture and scalability': 'Teknisk arkitektur og skalerbarhed',
             'Workshops & Bootcamps': 'Workshops & Bootcamps',
             'Get an overview and insight into AI technology\'s potential': 'Få overblik og indsigt i AI-teknologiens potentiale',
             'Tailored Courses': 'Skræddersyede Forløb',
@@ -418,7 +422,11 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'See our team': 'Se vores team',
             'Hide team': 'Skjul team',
             'Product Development': 'Produktudvikling',
-            'We develop and build AI solutions with you': 'Vi udvikler og bygger AI-løsninger med jer'
+            'We develop and build AI solutions with you': 'Vi udvikler og bygger AI-løsninger med jer',
+            'AI strategi og teknologisk innovation': 'AI strategy and technological innovation',
+            'Produktudvikling og implementering': 'Product development and implementation',
+            'Forretningsudvikling og kundeoplevelse': 'Business development and customer experience',
+            'Teknisk arkitektur og skalerbarhed': 'Technical architecture and scalability'
         }
     };
     
