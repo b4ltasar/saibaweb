@@ -232,7 +232,7 @@ class LanguageTheme {
 const langTheme = new LanguageTheme();
 
 // Header scroll logic
-let lastScrollY = window.scrollY;
+let lastScrollY = 0;
 let ticking = false;
 
 function updateHeader() {
@@ -266,6 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
     langTheme.apply();
     
     // Setup header scroll
+    lastScrollY = window.scrollY;
     window.addEventListener('scroll', requestTick);
     
     // Setup language toggles
