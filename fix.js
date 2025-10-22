@@ -21,93 +21,123 @@ document.addEventListener('DOMContentLoaded', function() {
     updateHeader();
 });
 
-// Simple and clean language toggle system
-let isEnglish = false;
+// Key-based, theme-like i18n
+let currentLang = (localStorage.getItem('lang') || 'da');
 
-// Essential translations only
-const translations = {
-    'Ydelser': 'Services',
-    'Team': 'Team', 
-    'Kunder': 'Clients',
-    'Kontakt': 'Contact',
-    'Get in touch': 'Kontakt',
-    'Kontakt': 'Get in touch',
-    'Book et møde': 'Book a meeting',
-    'Fra strategi til implementering': 'From strategy to implementation',
-    'Vi leverer komplette AI-løsninger der passer til jeres specifikke behov og forretningsmål.': 'We deliver complete AI solutions that fit your specific needs and business goals.',
-    'Optimér jeres forretningsprocesser': 'Optimize your business processes',
-    'Udforsk AI\'s potentiale gennem interaktive cases. Klik rundt i området nedenfor og se konkrete eksempler på, hvordan AI kan optimere jeres specifikke forretningsområder.': 'Explore AI\'s potential through interactive cases. Click around in the area below and see concrete examples of how AI can optimize your specific business areas.',
-    'Klik og se hvorfor AI kan forbedre din virksomhed': 'Click and see why AI can improve your business',
-    'I samarbejde med': 'In collaboration with',
-    'Vi stolte partnere der har valgt at transformere deres forretning med AI': 'Our trusted partners who have chosen to transform their business with AI',
-    'Identificer jeres': 'Identify your',
-    'AI-potentiale': 'AI potential',
-    'Accelerer jeres fremgang': 'Accelerate your progress',
-    'med AI-ekspertise': 'with AI expertise',
-    'SAIBA\'s erfarne team af AI-konsulenter og teknologiske eksperter er dedikeret til at hjælpe jer med at overvinde jeres forretningsudfordringer og frigøre AI\'s fulde potentiale for jeres virksomhed.': 'SAIBA\'s experienced team of AI consultants and technology experts is dedicated to helping you overcome your business challenges and unlock AI\'s full potential for your company.',
-    'Se vores team': 'See our team',
-    'Skjul team': 'Hide team',
-    'AI strategi og teknologisk innovation': 'AI strategy and technological innovation',
-    'Produktudvikling og implementering': 'Product development and implementation',
-    'Forretningsudvikling og kundeoplevelse': 'Business development and customer experience',
-    'Teknisk arkitektur og skalerbarhed': 'Technical architecture and scalability'
+const i18n = {
+  da: {
+    hero: {
+      subtitle: "{{ site.description }}",
+      title: "Vi gentænker måden, vi arbejder på. Med mennesker i centrum og teknologi som motor.",
+      cta: "Kontakt"
+    },
+    services: {
+      title: "Fra strategi til implementering",
+      description: "Vi leverer komplette AI-løsninger der passer til jeres specifikke behov og forretningsmål."
+    },
+    optimization: {
+      title: "Optimér jeres forretningsprocesser",
+      description: "Udforsk AI's potentiale gennem interaktive cases. Klik rundt i området nedenfor og se konkrete eksempler på, hvordan AI kan optimere jeres specifikke forretningsområder.",
+      cta: "Klik og se hvorfor AI kan forbedre din virksomhed"
+    },
+    team: {
+      titleLine1: "Identificer jeres",
+      titleLine2: "AI-potentiale",
+      subtitle1: "Accelerer jeres fremgang",
+      subtitle2: "med AI-ekspertise",
+      description: "SAIBA's erfarne team af AI-konsulenter og teknologiske eksperter er dedikeret til at hjælpe jer med at overvinde jeres forretningsudfordringer og frigøre AI's fulde potentiale for jeres virksomhed.",
+      cta: "Se vores team"
+    },
+    clients: { title: "I samarbejde med", subtitle: "Vi stolte partnere der har valgt at transformere deres forretning med AI" },
+    contact: { title: "Book et møde", description: "Kontakt os for at høre mere om hvordan vi kan hjælpe din virksomhed med AI-implementering." },
+    form: {
+      nameLabel: "Navn *", namePlaceholder: "Dit navn",
+      emailLabel: "Email *", emailPlaceholder: "din.email@example.com",
+      phoneLabel: "Telefon (valgfri)", phonePlaceholder: "Dit telefonnummer",
+      messageLabel: "Besked *", messagePlaceholder: "Hvordan kan vi hjælpe dig?",
+      submit: "Send",
+      disclaimer: "Ved at indsende denne formular accepterer du vores privatlivspolitik og servicevilkår."
+    }
+  },
+  en: {
+    hero: { subtitle: "We rethink the way we work. With people at the center and technology as the engine.", title: "We rethink the way we work. With people at the center and technology as the engine.", cta: "Get in touch" },
+    services: { title: "From strategy to implementation", description: "We deliver complete AI solutions that fit your specific needs and business goals." },
+    optimization: { title: "Optimize your business processes", description: "Explore AI's potential through interactive cases. Click around in the area below and see concrete examples of how AI can optimize your specific business areas.", cta: "Click and see why AI can improve your business" },
+    team: { titleLine1: "Identify your", titleLine2: "AI potential", subtitle1: "Accelerate your progress", subtitle2: "with AI expertise", description: "SAIBA's experienced team of AI consultants and technology experts is dedicated to helping you overcome your business challenges and unlock AI's full potential for your company.", cta: "See our team" },
+    clients: { title: "In collaboration with", subtitle: "Our trusted partners who have chosen to transform their business with AI" },
+    contact: { title: "Book a meeting", description: "Contact us to hear more about how we can help your company with AI implementation." },
+    form: {
+      nameLabel: "Name *", namePlaceholder: "Your name",
+      emailLabel: "Email *", emailPlaceholder: "your.email@example.com",
+      phoneLabel: "Phone (optional)", phonePlaceholder: "Your phone number",
+      messageLabel: "Message *", messagePlaceholder: "How can we help you?",
+      submit: "Send",
+      disclaimer: "By submitting this form you accept our privacy policy and terms of service."
+    }
+  }
 };
 
-// Reverse translations for English to Danish
-const reverseTranslations = {};
-for (const [da, en] of Object.entries(translations)) {
-    reverseTranslations[en] = da;
+function renderTranslations() {
+  document.documentElement.setAttribute('lang', currentLang);
+  const dict = i18n[currentLang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const parts = key.split('.');
+    let value = dict;
+    parts.forEach(p => value = value && value[p]);
+    if (typeof value === 'string') el.textContent = value;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    const parts = key.split('.');
+    let value = dict;
+    parts.forEach(p => value = value && value[p]);
+    if (typeof value === 'string') el.setAttribute('placeholder', value);
+  });
+  const langText = document.querySelector('.lang-text');
+  const drawerLangText = document.querySelector('.mobile-drawer-lang-text');
+  if (langText) langText.textContent = currentLang === 'da' ? 'EN' : 'DA';
+  if (drawerLangText) drawerLangText.textContent = currentLang === 'da' ? 'EN' : 'DA';
 }
 
-function translatePage() {
-    const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, button, label');
-    
-    elements.forEach(element => {
-        if (element.textContent.trim()) {
-            const text = element.textContent.trim();
-            const translation = isEnglish ? reverseTranslations[text] : translations[text];
-            if (translation) {
-                element.textContent = translation;
-            }
-        }
-    });
-}
+// Wire toggles
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtns = [document.getElementById('languageToggle'), document.getElementById('mobileDrawerLangToggle')].filter(Boolean);
+  toggleBtns.forEach(btn => btn.addEventListener('click', () => {
+    currentLang = currentLang === 'da' ? 'en' : 'da';
+    localStorage.setItem('lang', currentLang);
+    renderTranslations();
+  }));
+  renderTranslations();
+});
 
-// Setup language toggles
-const languageToggle = document.getElementById('languageToggle');
-const langText = document.querySelector('.lang-text');
-const drawerLanguageToggle = document.getElementById('mobileDrawerLangToggle');
-const drawerLangText = document.querySelector('.mobile-drawer-lang-text');
-
-if (languageToggle && langText) {
-    languageToggle.addEventListener('click', () => {
-        isEnglish = !isEnglish;
-        langText.textContent = isEnglish ? 'DA' : 'EN';
-        translatePage();
-    });
-}
-
-if (drawerLanguageToggle && drawerLangText) {
-    drawerLanguageToggle.addEventListener('click', () => {
-        isEnglish = !isEnglish;
-        drawerLangText.textContent = isEnglish ? 'DA' : 'EN';
-        translatePage();
-    });
-}
-
-// AI Facts with language support
-    const aiFacts = [
-    { title: "PRODUKTIVITET", text: "AI kan øge produktiviteten med op til 40% i administrative opgaver", source: "McKinsey Global Institute", titleEn: "PRODUCTIVITY", textEn: "AI can increase productivity by up to 40% in administrative tasks" },
-    { title: "OMKOSTNINGER", text: "61% af virksomheder rapporterer betydelige omkostningsbesparelser efter AI-implementering", source: "MIT Sloan Management Review", titleEn: "COSTS", textEn: "61% of companies report significant cost savings after AI implementation" },
-    { title: "KUNDETILFREDS", text: "Virksomheder med AI-integration har 23% højere kundetilfredshed", source: "Salesforce Research", titleEn: "CUSTOMER SATISFACTION", textEn: "Companies with AI integration have 23% higher customer satisfaction" },
-    { title: "BESLUTNINGER", text: "AI accelererer beslutningsprocesser med op til 25% hurtigere workflows", source: "Deloitte Insights", titleEn: "DECISIONS", textEn: "AI accelerates decision processes with up to 25% faster workflows" },
-    { title: "TIDSBESPARELSE", text: "AI-automation kan frigøre op til 30% af medarbejdernes tid til strategiske opgaver", source: "World Economic Forum", titleEn: "TIME SAVINGS", textEn: "AI automation can free up to 30% of employees' time for strategic tasks" },
-    { title: "FEJLREDUKTION", text: "AI reducerer fejlraten med 85% i dataanalyse og rapportering", source: "IBM Institute for Business Value", titleEn: "ERROR REDUCTION", textEn: "AI reduces error rates by 85% in data analysis and reporting" },
-    { title: "ROI", text: "Virksomheder med AI har 35% bedre ROI på deres digitale investeringer", source: "Accenture Research", titleEn: "ROI", textEn: "Companies with AI have 35% better ROI on their digital investments" },
-    { title: "FORUDSIGELSE", text: "AI kan forudsige kundeadfærd med 95% nøjagtighed", source: "Forrester Research", titleEn: "PREDICTION", textEn: "AI can predict customer behavior with 95% accuracy" },
-    { title: "OPERATIONER", text: "Implementering af AI resulterer i 20% reduktion i operationelle omkostninger", source: "PwC Global AI Survey", titleEn: "OPERATIONS", textEn: "AI implementation results in 20% reduction in operational costs" },
-    { title: "INNOVATION", text: "AI-driven virksomheder lancere produkter 50% hurtigere end traditionelle", source: "Harvard Business Review", titleEn: "INNOVATION", textEn: "AI-driven companies launch products 50% faster than traditional ones" }
-    ];
+// AI Facts - separate arrays per language
+const aiFacts = {
+    da: [
+        { title: "PRODUKTIVITET", text: "AI kan øge produktiviteten med op til 40% i administrative opgaver", source: "McKinsey Global Institute" },
+        { title: "OMKOSTNINGER", text: "61% af virksomheder rapporterer betydelige omkostningsbesparelser efter AI-implementering", source: "MIT Sloan Management Review" },
+        { title: "KUNDETILFREDS", text: "Virksomheder med AI-integration har 23% højere kundetilfredshed", source: "Salesforce Research" },
+        { title: "BESLUTNINGER", text: "AI accelererer beslutningsprocesser med op til 25% hurtigere workflows", source: "Deloitte Insights" },
+        { title: "TIDSBESPARELSE", text: "AI-automation kan frigøre op til 30% af medarbejdernes tid til strategiske opgaver", source: "World Economic Forum" },
+        { title: "FEJLREDUKTION", text: "AI reducerer fejlraten med 85% i dataanalyse og rapportering", source: "IBM Institute for Business Value" },
+        { title: "ROI", text: "Virksomheder med AI har 35% bedre ROI på deres digitale investeringer", source: "Accenture Research" },
+        { title: "FORUDSIGELSE", text: "AI kan forudsige kundeadfærd med 95% nøjagtighed", source: "Forrester Research" },
+        { title: "OPERATIONER", text: "Implementering af AI resulterer i 20% reduktion i operationelle omkostninger", source: "PwC Global AI Survey" },
+        { title: "INNOVATION", text: "AI-driven virksomheder lancere produkter 50% hurtigere end traditionelle", source: "Harvard Business Review" }
+    ],
+    en: [
+        { title: "PRODUCTIVITY", text: "AI can increase productivity by up to 40% in administrative tasks", source: "McKinsey Global Institute" },
+        { title: "COSTS", text: "61% of companies report significant cost savings after AI implementation", source: "MIT Sloan Management Review" },
+        { title: "CUSTOMER SATISFACTION", text: "Companies with AI integration have 23% higher customer satisfaction", source: "Salesforce Research" },
+        { title: "DECISIONS", text: "AI accelerates decision processes with up to 25% faster workflows", source: "Deloitte Insights" },
+        { title: "TIME SAVINGS", text: "AI automation can free up to 30% of employees' time for strategic tasks", source: "World Economic Forum" },
+        { title: "ERROR REDUCTION", text: "AI reduces error rates by 85% in data analysis and reporting", source: "IBM Institute for Business Value" },
+        { title: "ROI", text: "Companies with AI have 35% better ROI on their digital investments", source: "Accenture Research" },
+        { title: "PREDICTION", text: "AI can predict customer behavior with 95% accuracy", source: "Forrester Research" },
+        { title: "OPERATIONS", text: "AI implementation results in 20% reduction in operational costs", source: "PwC Global AI Survey" },
+        { title: "INNOVATION", text: "AI-driven companies launch products 50% faster than traditional ones", source: "Harvard Business Review" }
+    ]
+};
     
     let factIndex = 0;
     let activeFacts = [];
@@ -123,8 +153,9 @@ const interactiveArea = document.querySelector('.interactive-area');
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             
-            const fact = aiFacts[factIndex];
-            factIndex = (factIndex + 1) % aiFacts.length;
+        const facts = aiFacts[currentLang];
+        const fact = facts[factIndex];
+        factIndex = (factIndex + 1) % facts.length;
             
             const factBox = document.createElement('div');
             factBox.className = 'dynamic-fact-box';
@@ -145,9 +176,7 @@ const interactiveArea = document.querySelector('.interactive-area');
             factBox.style.transform = 'scale(0.8) translateY(20px)';
             factBox.style.transition = 'all 0.5s ease';
             
-        const displayTitle = isEnglish ? (fact.titleEn || fact.title) : fact.title;
-        const displayText = isEnglish ? (fact.textEn || fact.text) : fact.text;
-        factBox.innerHTML = `<div style="font-size: 13px; margin-bottom: 10px;">${displayTitle}</div>${displayText}<br><br><div style="font-size: 9px; opacity: 0.7;">${fact.source}</div>`;
+        factBox.innerHTML = `<div style="font-size: 13px; margin-bottom: 10px;">${fact.title}</div>${fact.text}<br><br><div style="font-size: 9px; opacity: 0.7;">${fact.source}</div>`;
             
             interactiveArea.appendChild(factBox);
             activeFacts.push(factBox);

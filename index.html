@@ -15,9 +15,9 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-arrow">→</div>
-                <p class="hero-description">{{ site.description }}</p>
-                <h1 class="hero-title">Vi gentænker måden, vi arbejder på. Med mennesker i centrum og teknologi som motor.</h1>
-                <a href="#contact" class="hero-cta">Kontakt</a>
+                <p class="hero-description" data-i18n="hero.subtitle">{{ site.description }}</p>
+                <h1 class="hero-title" data-i18n="hero.title">Vi gentænker måden, vi arbejder på. Med mennesker i centrum og teknologi som motor.</h1>
+                <a href="#contact" class="hero-cta" data-i18n="hero.cta">Kontakt</a>
             </div>
         </div>
     </div>
@@ -28,8 +28,8 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
     <div class="services-container">
         <div class="services-content">
             <div class="services-text">
-                <h2 class="services-main-text">Fra strategi til implementering</h2>
-                <p class="services-description">Vi leverer komplette AI-løsninger der passer til jeres specifikke behov og forretningsmål.</p>
+                <h2 class="services-main-text" data-i18n="services.title">Fra strategi til implementering</h2>
+                <p class="services-description" data-i18n="services.description">Vi leverer komplette AI-løsninger der passer til jeres specifikke behov og forretningsmål.</p>
             </div>
             
             <div class="services-grid">
@@ -81,14 +81,14 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
     <div class="optimization-container">
         <div class="optimization-content">
             <div class="optimization-text">
-                <h2 class="optimization-main-text">Optimér jeres forretningsprocesser</h2>
-                <p class="optimization-description">
+                <h2 class="optimization-main-text" data-i18n="optimization.title">Optimér jeres forretningsprocesser</h2>
+                <p class="optimization-description" data-i18n="optimization.description">
                     Udforsk AI's potentiale gennem interaktive cases. Klik rundt i området nedenfor og se konkrete eksempler på, hvordan AI kan optimere jeres specifikke forretningsområder.
                 </p>
             </div>
             
             <div class="optimization-interactive">
-                <h3 class="optimization-interactive-title" id="optimizationTitle">Klik og se hvorfor AI kan forbedre din virksomhed</h3>
+                <h3 class="optimization-interactive-title" id="optimizationTitle" data-i18n="optimization.cta">Klik og se hvorfor AI kan forbedre din virksomhed</h3>
                 <div class="interactive-area">
                     <div class="fact-boxes-container">
                         <!-- AI fact boxes will be dynamically positioned here -->
@@ -107,21 +107,21 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
         <div class="team-content">
             <div class="team-left">
                 <h2 class="team-main-title">
-                    <span class="team-title-line">Identificer jeres</span>
-                    <span class="team-title-line team-title-indent">AI-potentiale</span>
+                    <span class="team-title-line" data-i18n="team.titleLine1">Identificer jeres</span>
+                    <span class="team-title-line team-title-indent" data-i18n="team.titleLine2">AI-potentiale</span>
                 </h2>
             </div>
             
             <div class="team-right">
                 <h3 class="team-subtitle">
-                    <span class="team-subtitle-line">Accelerer jeres fremgang</span>
-                    <span class="team-subtitle-line">med AI-ekspertise</span>
+                    <span class="team-subtitle-line" data-i18n="team.subtitle1">Accelerer jeres fremgang</span>
+                    <span class="team-subtitle-line" data-i18n="team.subtitle2">med AI-ekspertise</span>
                 </h3>
-                <p class="team-description">
+                <p class="team-description" data-i18n="team.description">
                     SAIBA's erfarne team af AI-konsulenter og teknologiske eksperter er dedikeret til at hjælpe jer med at overvinde jeres forretningsudfordringer og frigøre AI's fulde potentiale for jeres virksomhed.
                 </p>
                 <button class="team-cta" id="teamExpandBtn">
-                    <span class="team-cta-text">Se vores team</span>
+                    <span class="team-cta-text" data-i18n="team.cta">Se vores team</span>
                     <span class="team-cta-arrow">▼</span>
                 </button>
             </div>
@@ -163,8 +163,8 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 <section class="clients section" id="clients">
     <div class="clients-container">
         <div class="clients-content">
-            <h2 class="clients-main-text">I samarbejde med</h2>
-            <p class="clients-description">Vi stolte partnere der har valgt at transformere deres forretning med AI</p>
+            <h2 class="clients-main-text" data-i18n="clients.title">I samarbejde med</h2>
+            <p class="clients-description" data-i18n="clients.subtitle">Vi stolte partnere der har valgt at transformere deres forretning med AI</p>
             
             <div class="clients-logos">
                 {% for client in site.data.clients %}
@@ -186,8 +186,8 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
     <div class="container">
         <div class="contact-content">
             <div class="contact-info">
-                <h3>Book et møde</h3>
-                <p>Kontakt os for at høre mere om hvordan vi kan hjælpe din virksomhed med AI-implementering.</p>
+                <h3 data-i18n="contact.title">Book et møde</h3>
+                <p data-i18n="contact.description">Kontakt os for at høre mere om hvordan vi kan hjælpe din virksomhed med AI-implementering.</p>
                 <div class="contact-details">
                     <div class="contact-item">
                         <span class="contact-label">Telefon:</span>
@@ -206,28 +206,28 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
             
             <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                 <div class="form-group">
-                    <label for="name" class="form-label">Navn *</label>
-                    <input type="text" id="name" name="name" class="form-input" placeholder="Dit navn" required>
+                    <label for="name" class="form-label" data-i18n="form.nameLabel">Navn *</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Dit navn" data-i18n-placeholder="form.namePlaceholder" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="email" class="form-label">Email *</label>
-                    <input type="email" id="email" name="email" class="form-input" placeholder="din.email@example.com" required>
+                    <label for="email" class="form-label" data-i18n="form.emailLabel">Email *</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="din.email@example.com" data-i18n-placeholder="form.emailPlaceholder" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone" class="form-label">Telefon (valgfri)</label>
-                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="Dit telefonnummer">
+                    <label for="phone" class="form-label" data-i18n="form.phoneLabel">Telefon (valgfri)</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="Dit telefonnummer" data-i18n-placeholder="form.phonePlaceholder">
                 </div>
                 
                 <div class="form-group">
-                    <label for="message" class="form-label">Besked *</label>
-                    <textarea id="message" name="message" class="form-textarea" placeholder="Hvordan kan vi hjælpe dig?" required></textarea>
+                    <label for="message" class="form-label" data-i18n="form.messageLabel">Besked *</label>
+                    <textarea id="message" name="message" class="form-textarea" placeholder="Hvordan kan vi hjælpe dig?" data-i18n-placeholder="form.messagePlaceholder" required></textarea>
                 </div>
                 
-                <button type="submit" class="form-submit">Send</button>
+                <button type="submit" class="form-submit" data-i18n="form.submit">Send</button>
                 
-                <p class="form-disclaimer">
+                <p class="form-disclaimer" data-i18n="form.disclaimer">
                     Ved at indsende denne formular accepterer du vores privatlivspolitik og servicevilkår.
                 </p>
             </form>
