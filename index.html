@@ -97,11 +97,40 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 <!-- Team Section -->
 <section class="team section" id="team">
     <div class="team-container">
-        <div class="team-header">
-            <h2 class="team-title">Team</h2>
+        <!-- Header Strip -->
+        <div class="team-header-strip">
+            <div class="team-header-left">
+                <span class="team-header-text">Mød eksperterne_</span>
+            </div>
+            <div class="team-header-arrow">→</div>
+            <div class="team-header-right">
+                <span class="team-header-text">der transformerer jeres AI-rejse</span>
+            </div>
         </div>
         
-        <div class="team-grid">
+        <!-- Main Content -->
+        <div class="team-content">
+            <div class="team-left">
+                <h2 class="team-main-title">
+                    <span class="team-title-line">Identificer jeres</span>
+                    <span class="team-title-line team-title-indent">AI-potentiale</span>
+                </h2>
+            </div>
+            
+            <div class="team-right">
+                <h3 class="team-subtitle">
+                    <span class="team-subtitle-line">Accelerer jeres fremgang</span>
+                    <span class="team-subtitle-line">med AI-ekspertise</span>
+                </h3>
+                <p class="team-description">
+                    SAIBA's erfarne team af AI-konsulenter og teknologiske eksperter er dedikeret til at hjælpe jer med at overvinde jeres forretningsudfordringer og frigøre AI's fulde potentiale for jeres virksomhed.
+                </p>
+                <button class="team-cta" id="teamExpandBtn">Se vores team</button>
+            </div>
+        </div>
+        
+        <!-- Expandable Team Grid -->
+        <div class="team-grid-expandable" id="teamGrid">
             {% for member in site.data.team %}
             <div class="team-member">
                 <div class="team-photo team-photo-{{ forloop.index }}">

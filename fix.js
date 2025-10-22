@@ -367,7 +367,25 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'Optimering': 'Optimization',
             'Klik og se hvorfor AI kan forbedre din virksomhed': 'Click and see why AI can improve your business',
             'Ydelse →': 'Service →',
-            'Book et møde': 'Book a meeting'
+            'Book et møde': 'Book a meeting',
+            'Mød eksperterne_': 'Meet the experts_',
+            'der transformerer jeres AI-rejse': 'who transform your AI journey',
+            'Identificer jeres': 'Identify your',
+            'AI-potentiale': 'AI potential',
+            'Accelerer jeres fremgang': 'Accelerate your progress',
+            'med AI-ekspertise': 'with AI expertise',
+            'SAIBA\'s erfarne team af AI-konsulenter og teknologiske eksperter er dedikeret til at hjælpe jer med at overvinde jeres forretningsudfordringer og frigøre AI\'s fulde potentiale for jeres virksomhed.': 'SAIBA\'s experienced team of AI consultants and technology experts is dedicated to helping you overcome your business challenges and unlock AI\'s full potential for your company.',
+            'Se vores team': 'See our team',
+            'Skjul team': 'Hide team',
+            'Meet the experts_': 'Mød eksperterne_',
+            'who transform your AI journey': 'der transformerer jeres AI-rejse',
+            'Identify your': 'Identificer jeres',
+            'AI potential': 'AI-potentiale',
+            'Accelerate your progress': 'Accelerer jeres fremgang',
+            'with AI expertise': 'med AI-ekspertise',
+            'SAIBA\'s experienced team of AI consultants and technology experts is dedicated to helping you overcome your business challenges and unlock AI\'s full potential for your company.': 'SAIBA\'s erfarne team af AI-konsulenter og teknologiske eksperter er dedikeret til at hjælpe jer med at overvinde jeres forretningsudfordringer og frigøre AI\'s fulde potentiale for jeres virksomhed.',
+            'See our team': 'Se vores team',
+            'Hide team': 'Skjul team'
         }
     };
     

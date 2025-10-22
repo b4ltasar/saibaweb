@@ -467,5 +467,25 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', debouncedScrollHandler);
     
+    // Team Section Expand/Collapse
+    const teamExpandBtn = document.getElementById('teamExpandBtn');
+    const teamGrid = document.getElementById('teamGrid');
+    
+    if (teamExpandBtn && teamGrid) {
+        let isExpanded = false;
+        
+        teamExpandBtn.addEventListener('click', function() {
+            isExpanded = !isExpanded;
+            
+            if (isExpanded) {
+                teamGrid.classList.add('expanded');
+                teamExpandBtn.textContent = 'Skjul team';
+            } else {
+                teamGrid.classList.remove('expanded');
+                teamExpandBtn.textContent = 'Se vores team';
+            }
+        });
+    }
+
     // SAIBA website initialized successfully! 🚀
 });
