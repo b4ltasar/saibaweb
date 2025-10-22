@@ -67,6 +67,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const drawerBackdrop = document.querySelector('.drawer-backdrop');
     
     // Mobile navigation elements
+    console.log('Burger element:', burger);
+    console.log('Burger display:', burger ? getComputedStyle(burger).display : 'not found');
+    console.log('Burger pointer-events:', burger ? getComputedStyle(burger).pointerEvents : 'not found');
+    console.log('Burger z-index:', burger ? getComputedStyle(burger).zIndex : 'not found');
+    
+    // Test if burger is clickable
+    if (burger) {
+        burger.style.border = '2px solid red';
+        burger.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
+    }
     
     function openDrawer() {
         console.log('Opening drawer...', drawer);
@@ -86,7 +96,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (burger) {
         burger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             console.log('Burger clicked!', e);
+            openDrawer();
+        });
+        
+        // Also try touch events for mobile
+        burger.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Burger touched!', e);
             openDrawer();
         });
     } else {

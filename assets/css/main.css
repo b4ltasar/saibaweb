@@ -1386,7 +1386,7 @@ body {
   border: none;
   cursor: pointer;
   padding: 8px;
-  z-index: 999;
+  z-index: 1004;
   position: relative;
 }
 
