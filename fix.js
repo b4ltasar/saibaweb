@@ -11,7 +11,23 @@ class LanguageTheme {
                 },
                 services: {
                     title: "Fra strategi til implementering",
-                    description: "Vi leverer komplette AI-løsninger der passer til jeres specifikke behov og forretningsmål."
+                    description: "Vi leverer komplette AI-løsninger der passer til jeres specifikke behov og forretningsmål.",
+                    card1: {
+                        title: "Workshops & Bootcamps",
+                        description: "Få overblik og indsigt i AI-teknologiens potentiale"
+                    },
+                    card2: {
+                        title: "Skræddersyede Forløb",
+                        description: "Fra viden til konkrete use cases i din virksomhed"
+                    },
+                    card3: {
+                        title: "Strategi & Implementering",
+                        description: "Omsæt teknologi til konkrete resultater og værdi"
+                    },
+                    card4: {
+                        title: "Produktudvikling",
+                        description: "Vi udvikler og bygger AI-løsninger med jer"
+                    }
                 },
                 optimization: {
                     title: "Optimér jeres forretningsprocesser",
@@ -55,7 +71,23 @@ class LanguageTheme {
                 },
                 services: {
                     title: "From strategy to implementation",
-                    description: "We deliver complete AI solutions that fit your specific needs and business goals."
+                    description: "We deliver complete AI solutions that fit your specific needs and business goals.",
+                    card1: {
+                        title: "Workshops & Bootcamps",
+                        description: "Get an overview and insight into AI technology's potential"
+                    },
+                    card2: {
+                        title: "Customized Programs",
+                        description: "From knowledge to concrete use cases in your company"
+                    },
+                    card3: {
+                        title: "Strategy & Implementation",
+                        description: "Turn technology into concrete results and value"
+                    },
+                    card4: {
+                        title: "Product Development",
+                        description: "We develop and build AI solutions with you"
+                    }
                 },
                 optimization: {
                     title: "Optimize your business processes",

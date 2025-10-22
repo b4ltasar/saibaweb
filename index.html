@@ -67,8 +67,8 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                             {% endcase %}
                         </div>
                     </div>
-                    <h3 class="service-title">{{ service.title }}</h3>
-                    <p class="service-description">{{ service.description }}</p>
+                    <h3 class="service-title" data-i18n="services.card{{ forloop.index }}.title">{{ service.title }}</h3>
+                    <p class="service-description" data-i18n="services.card{{ forloop.index }}.description">{{ service.description }}</p>
                 </div>
                 {% endfor %}
             </div>
