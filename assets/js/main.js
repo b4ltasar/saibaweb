@@ -121,24 +121,26 @@ document.addEventListener('DOMContentLoaded', function() {
     let factIndex = 0;
     
     // Typewriter effect for AI Facts title
-    function typeWriter(element, text, speed = 100) {
-        let i = 0;
+    // Smooth typewriter using requestAnimationFrame
+    function typeWriter(element, text, cps = 16) { // characters per second
+        const frameInterval = 1000 / 60; // 60fps
+        const charsPerFrame = cps / 60;
+        let shown = 0;
         element.textContent = '';
-        element.style.borderRight = '3px solid var(--text)';
-        
-        function type() {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
+        element.style.borderRight = '2px solid currentColor';
+        let rafId;
+        const step = () => {
+            shown += charsPerFrame;
+            const next = Math.min(text.length, Math.floor(shown));
+            element.textContent = text.slice(0, next);
+            if (next < text.length) {
+                rafId = requestAnimationFrame(step);
             } else {
-                // Remove cursor after typing is done
-                setTimeout(() => {
-                    element.style.borderRight = 'none';
-                }, 500);
+                setTimeout(() => { element.style.borderRight = 'none'; }, 300);
+                cancelAnimationFrame(rafId);
             }
-        }
-        type();
+        };
+        rafId = requestAnimationFrame(step);
     }
     
     // Observe AI Facts section for reveal
@@ -150,10 +152,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (interactiveArea) {
                         interactiveArea.classList.add('revealed');
                     }
-                    // Start typewriter effect
+                    // Start smoother typewriter effect
                     setTimeout(() => {
-                        typeWriter(aiFactsTitle, 'Klik og se hvorfor AI kan forbedre din virksomhed', 80);
-                    }, 300);
+                        typeWriter(aiFactsTitle, 'Klik og se hvorfor AI kan forbedre din virksomhed', 18);
+                    }, 150);
                     aiFactsObserver.unobserve(entry.target);
                 }
             });

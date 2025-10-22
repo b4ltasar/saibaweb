@@ -396,7 +396,7 @@ body {
   object-fit: cover;
   object-position: center center;
   z-index: 1;
-  filter: brightness(0.7) contrast(1.1);
+  filter: brightness(0.76) contrast(1.04) saturate(1);
 }
 
 
@@ -1724,7 +1724,7 @@ body.mobile-drawer-open .site-header .burger {
 
 /* Footer */
 .site-footer {
-  background: black;
+  background: #0b1324;
   color: white;
   padding: 60px 0 24px;
 }
