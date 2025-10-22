@@ -46,7 +46,23 @@ class LanguageTheme {
                     subtitle1: "Accelerer jeres fremgang",
                     subtitle2: "med AI-ekspertise",
                     description: "SAIBA's erfarne team af AI-konsulenter og teknologiske eksperter er dedikeret til at hjælpe jer med at overvinde jeres forretningsudfordringer og frigøre AI's fulde potentiale for jeres virksomhed.",
-                    cta: "Se vores team"
+                    cta: "Se vores team",
+                    peter: {
+                        name: "Peter Humaidan",
+                        role: "AI strategi og teknologisk innovation"
+                    },
+                    jens: {
+                        name: "Jens Jepsen", 
+                        role: "Produktudvikling og implementering"
+                    },
+                    gustav: {
+                        name: "Gustav Friis",
+                        role: "Forretningsudvikling og kundeoplevelse"
+                    },
+                    frederik: {
+                        name: "Frederik Hansson",
+                        role: "Teknisk arkitektur og skalerbarhed"
+                    }
                 },
                 clients: {
                     title: "I samarbejde med",
@@ -117,7 +133,23 @@ class LanguageTheme {
                     subtitle1: "Accelerate your progress",
                     subtitle2: "with AI expertise",
                     description: "SAIBA's experienced team of AI consultants and technology experts is dedicated to helping you overcome your business challenges and unlock AI's full potential for your company.",
-                    cta: "See our team"
+                    cta: "See our team",
+                    peter: {
+                        name: "Peter Humaidan",
+                        role: "AI strategy and technological innovation"
+                    },
+                    jens: {
+                        name: "Jens Jepsen",
+                        role: "Product development and implementation"
+                    },
+                    gustav: {
+                        name: "Gustav Friis",
+                        role: "Business development and customer experience"
+                    },
+                    frederik: {
+                        name: "Frederik Hansson",
+                        role: "Technical architecture and scalability"
+                    }
                 },
                 clients: {
                     title: "In collaboration with",

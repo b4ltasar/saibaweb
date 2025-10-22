@@ -141,8 +141,8 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                         <span>{{ member.initials }}</span>
                     {% endif %}
                 </div>
-                <h3 class="team-name">{{ member.name }}</h3>
-                <p class="team-role">{{ member.role }}</p>
+                <h3 class="team-name" data-i18n="{{ member.name }}">{{ member.name }}</h3>
+                <p class="team-role" data-i18n="{{ member.role }}">{{ member.role }}</p>
                 {% if member.bio and member.bio != "" %}
                     <p class="team-bio">{{ member.bio }}</p>
                 {% endif %}

@@ -205,7 +205,7 @@ body {
 .site-header:not(.hero-overlay) {
   background: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 30px 0;
+  padding: 25px 0;
 }
 
 .site-header.hero-overlay .logo-img {
@@ -1539,7 +1539,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 25%;
   filter: brightness(0.9) contrast(1.1);
   transition: all 0.3s ease;
   image-rendering: -webkit-optimize-contrast;
@@ -2439,8 +2439,9 @@ body.mobile-drawer-open .site-header .burger {
   }
   
   .client-logo-img {
-    height: 50px;
+    height: 40px;
     width: auto;
+    max-width: 120px;
   }
 
   .contact-content {
