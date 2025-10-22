@@ -19,6 +19,26 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
   
+  <!-- Prevent FOUC -->
+  <style>
+    html {
+      visibility: hidden;
+    }
+    html.loaded {
+      visibility: visible;
+    }
+    /* Fallback if JS doesn't load */
+    html:not(.loaded) {
+      visibility: visible;
+    }
+  </style>
+  <script>
+    // Fallback to show page after 2 seconds if JS doesn't load
+    setTimeout(function() {
+      document.documentElement.classList.add('loaded');
+    }, 2000);
+  </script>
+  
   <!-- SEO -->
   {% seo %}
   

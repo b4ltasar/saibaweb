@@ -303,6 +303,9 @@ function requestTick() {
 
 // Initialize everything
 document.addEventListener('DOMContentLoaded', function() {
+    // Show page after everything is loaded
+    document.documentElement.classList.add('loaded');
+    
     // Apply language theme
     langTheme.apply();
     
