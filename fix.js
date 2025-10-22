@@ -589,48 +589,17 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
     let activeFacts = [];
     
     function findNonOverlappingPosition(clickX, clickY, rect) {
-        const factWidth = 340;
-        const factHeight = 220;
+        const factWidth = 320;
+        const factHeight = 200;
         const margin = 20;
         
-        let bestX = Math.max(margin, Math.min(clickX - factWidth/2, rect.width - factWidth - margin));
-        let bestY = Math.max(margin, Math.min(clickY - factHeight/2, rect.height - factHeight - margin));
+        // Start with click position, centered on the click point
+        let bestX = clickX - factWidth/2;
+        let bestY = clickY - factHeight/2;
         
-        // Check for overlaps with existing facts
-        const existingBoxes = document.querySelectorAll('.dynamic-fact-box');
-        let attempts = 0;
-        const maxAttempts = 50;
-        
-        while (attempts < maxAttempts) {
-            let hasOverlap = false;
-            
-            existingBoxes.forEach(box => {
-                const boxRect = box.getBoundingClientRect();
-                const relativeBoxRect = {
-                    left: boxRect.left - rect.left,
-                    top: boxRect.top - rect.top,
-                    right: boxRect.right - rect.left,
-                    bottom: boxRect.bottom - rect.top
-                };
-                
-                // Check if new position overlaps with existing box
-                if (bestX < relativeBoxRect.right + margin &&
-                    bestX + factWidth > relativeBoxRect.left - margin &&
-                    bestY < relativeBoxRect.bottom + margin &&
-                    bestY + factHeight > relativeBoxRect.top - margin) {
-                    hasOverlap = true;
-                }
-            });
-            
-            if (!hasOverlap) break;
-            
-            // Try a new position
-            const angle = (attempts / maxAttempts) * 2 * Math.PI;
-            const radius = 100 + (attempts * 10);
-            bestX = Math.max(margin, Math.min(clickX + Math.cos(angle) * radius - factWidth/2, rect.width - factWidth - margin));
-            bestY = Math.max(margin, Math.min(clickY + Math.sin(angle) * radius - factHeight/2, rect.height - factHeight - margin));
-            attempts++;
-        }
+        // Keep within bounds
+        bestX = Math.max(margin, Math.min(bestX, rect.width - factWidth - margin));
+        bestY = Math.max(margin, Math.min(bestY, rect.height - factHeight - margin));
         
         return { x: bestX, y: bestY };
     }
