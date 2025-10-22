@@ -14,7 +14,7 @@
       
       <div class="nav-links">
         {% for item in site.data.navigation %}
-        <a href="{{ item.url }}">{{ item.title }}</a>
+        <a href="{{ item.url }}" data-i18n="{{ item.title }}">{{ item.title }}</a>
         {% endfor %}
         <button class="language-toggle" id="languageToggle" aria-label="Toggle language">
           <span class="lang-text">EN</span>
@@ -34,7 +34,7 @@
     </div>
     <nav class="mobile-drawer-nav">
       {% for item in site.data.navigation %}
-      <a href="{{ item.url }}" class="mobile-drawer-link">{{ item.title }}</a>
+      <a href="{{ item.url }}" class="mobile-drawer-link" data-i18n="{{ item.title }}">{{ item.title }}</a>
       {% endfor %}
       <button class="mobile-drawer-lang-toggle" id="mobileDrawerLangToggle">
         <span class="mobile-drawer-lang-text">EN</span>

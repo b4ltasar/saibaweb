@@ -61,6 +61,11 @@ class LanguageTheme {
                     messagePlaceholder: "Hvordan kan vi hjælpe dig?",
                     submit: "Send",
                     disclaimer: "Ved at indsende denne formular accepterer du vores privatlivspolitik og servicevilkår."
+                },
+                footer: {
+                    contact: "Kontakt",
+                    links: "Links",
+                    copyright: "Alle rettigheder forbeholdes."
                 }
             },
             en: {
@@ -121,6 +126,11 @@ class LanguageTheme {
                     messagePlaceholder: "How can we help you?",
                     submit: "Send",
                     disclaimer: "By submitting this form you accept our privacy policy and terms of service."
+                },
+                footer: {
+                    contact: "Contact",
+                    links: "Links",
+                    copyright: "All rights reserved."
                 }
             }
         };

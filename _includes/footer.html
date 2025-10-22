@@ -7,24 +7,24 @@
       </div>
       
       <div class="footer-section">
-        <h4>Kontakt</h4>
+        <h4 data-i18n="footer.contact">Kontakt</h4>
         <p>{{ site.data.contact.email }}</p>
         <p>{{ site.data.contact.phone }}</p>
         <p>{{ site.data.contact.address }}</p>
       </div>
       
       <div class="footer-section">
-        <h4>Links</h4>
+        <h4 data-i18n="footer.links">Links</h4>
         <nav class="footer-nav">
           {% for item in site.data.navigation %}
-          <a href="{{ item.url }}">{{ item.title }}</a>
+          <a href="{{ item.url }}" data-i18n="{{ item.title }}">{{ item.title }}</a>
           {% endfor %}
         </nav>
       </div>
     </div>
     
     <div class="footer-bottom">
-      <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. Alle rettigheder forbeholdes.</p>
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. <span data-i18n="footer.copyright">Alle rettigheder forbeholdes.</span></p>
     </div>
   </div>
 </footer>

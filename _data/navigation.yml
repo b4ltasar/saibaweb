@@ -1,12 +1,12 @@
-- title: "Ydelser"
+- title: "nav.services"
   url: "#services"
   
-- title: "Team"
+- title: "nav.team"
   url: "#team"
   
-- title: "Kunder"
+- title: "nav.clients"
   url: "#clients"
   
-- title: "Kontakt"
+- title: "nav.contact"
   url: "#contact"
 
