@@ -1,16 +1,14 @@
-// Simple fix for burger menu and AI facts
+// SAIBA Website - Fix Script
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Fix script loaded');
     
-    // Ensure page starts at top on mobile
+    // Mobile scroll fix
     if (window.innerWidth <= 768) {
         window.scrollTo(0, 0);
-    }
-    
-    // Clear any hash from URL on mobile to prevent unwanted scrolling
-    if (window.innerWidth <= 768 && window.location.hash) {
-        window.history.replaceState('', document.title, window.location.pathname);
-        window.scrollTo(0, 0);
+        // Clear any hash from URL on mobile to prevent unwanted scrolling
+        if (window.location.hash) {
+            window.history.replaceState('', document.title, window.location.pathname);
+            window.scrollTo(0, 0);
+        }
     }
     
     // Header scroll logic
@@ -392,7 +390,7 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             }
         });
         
-        console.log(`Translated ${translatedCount} elements to ${isEnglish ? 'Danish' : 'English'}`);
+        // Debug: console.log(`Translated ${translatedCount} elements to ${isEnglish ? 'Danish' : 'English'}`);
     }
     
     if (languageToggle) {
@@ -418,7 +416,6 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
     
     // AI Facts fix
     const interactiveArea = document.querySelector('.interactive-area');
-    console.log('Interactive area found:', !!interactiveArea);
     
     // Mouse trail for AI facts area
     let mouseTrail = [];
@@ -553,7 +550,6 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
     
     if (interactiveArea) {
         interactiveArea.addEventListener('click', function(e) {
-            console.log('AI Facts area clicked');
             
             // Get click position relative to interactive area
             const rect = interactiveArea.getBoundingClientRect();

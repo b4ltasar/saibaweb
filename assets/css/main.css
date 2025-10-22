@@ -2055,10 +2055,6 @@ body.drawer-open .site-header .burger {
   }
 }
 
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
-}
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
