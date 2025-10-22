@@ -76,6 +76,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (burger) {
         burger.style.border = '2px solid red';
         burger.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
+        
+        // Test if there are overlapping elements
+        const rect = burger.getBoundingClientRect();
+        const elementsAtPoint = document.elementsFromPoint(rect.left + rect.width/2, rect.top + rect.height/2);
+        console.log('Elements at burger position:', elementsAtPoint);
+        
+        // Check if burger is the top element
+        if (elementsAtPoint[0] !== burger) {
+            console.log('Burger is not the top element! Top element:', elementsAtPoint[0]);
+        }
     }
     
     function openDrawer() {
@@ -95,7 +105,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     if (burger) {
-        burger.addEventListener('click', function(e) {
+        // Remove any existing event listeners
+        burger.replaceWith(burger.cloneNode(true));
+        const newBurger = document.getElementById('burger');
+        
+        newBurger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             console.log('Burger clicked!', e);
@@ -103,10 +117,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Also try touch events for mobile
-        burger.addEventListener('touchstart', function(e) {
+        newBurger.addEventListener('touchstart', function(e) {
             e.preventDefault();
             e.stopPropagation();
             console.log('Burger touched!', e);
+            openDrawer();
+        });
+        
+        // Also try mousedown for desktop
+        newBurger.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Burger mousedown!', e);
             openDrawer();
         });
     } else {
