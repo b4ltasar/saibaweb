@@ -607,9 +607,24 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
         let bestX = clickX - factWidth/2;
         let bestY = clickY - factHeight/2;
         
-        // Keep within bounds
+        // Keep within bounds with more precise positioning
         bestX = Math.max(margin, Math.min(bestX, rect.width - factWidth - margin));
         bestY = Math.max(margin, Math.min(bestY, rect.height - factHeight - margin));
+        
+        // If we had to adjust position, try to maintain the click relationship
+        if (bestX !== clickX - factWidth/2) {
+            // If we hit the right edge, position from the right
+            if (clickX > rect.width - factWidth/2 - margin) {
+                bestX = rect.width - factWidth - margin;
+            }
+        }
+        
+        if (bestY !== clickY - factHeight/2) {
+            // If we hit the bottom edge, position from the bottom
+            if (clickY > rect.height - factHeight/2 - margin) {
+                bestY = rect.height - factHeight - margin;
+            }
+        }
         
         return { x: bestX, y: bestY };
     }
@@ -619,9 +634,11 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
         interactiveArea.replaceWith(interactiveArea.cloneNode(true));
         const ia = document.querySelector('.interactive-area');
         ia.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             
             // Get click position relative to interactive area
-            const rect = interactiveArea.getBoundingClientRect();
+            const rect = ia.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             
@@ -629,7 +646,7 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             const fact = aiFacts[factIndex];
             factIndex = (factIndex + 1) % aiFacts.length;
             
-            // Find non-overlapping position
+            // Find non-overlapping position using the correct rect reference
             const position = findNonOverlappingPosition(x, y, rect);
             
             // Create fact box positioned within interactive area

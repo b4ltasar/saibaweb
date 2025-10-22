@@ -28,50 +28,58 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
     <div class="services-container">
         <div class="services-header">
             <h2 class="services-title">Ydelser</h2>
+            <p class="services-subtitle">Fra strategi til implementering - vi leverer komplette AI-løsninger</p>
         </div>
         
-        <div class="services-grid">
-            {% for service in site.data.services %}
-            <div class="service-card">
-                <div class="service-card-header">
-                    <a href="#contact" class="offering-link">Ydelse →</a>
-                    <span class="service-number">{{ forloop.index | prepend: '00' | slice: -3, 3 }}</span>
-                </div>
-                <h3 class="service-title">{{ service.title }}</h3>
-                <p class="service-description">{{ service.description }}</p>
-                <div class="service-icon-container">
-                    <div class="service-icon" data-icon="{{ service.icon }}">
-                        {% case service.icon %}
-                        {% when 'strategy' %}
-                            <svg viewBox="0 0 40 40" class="icon-svg">
-                                <circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="1" class="organic-circle hover-only"/>
-                                <circle cx="20" cy="20" r="8" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-circle hover-only"/>
-                                <path d="M12 20h16M20 12v16M16 16l8 8M24 16l-8 8" stroke="currentColor" stroke-width="0.8" fill="none" class="organic-path"/>
-                            </svg>
-                        {% when 'implementation' %}
-                            <svg viewBox="0 0 40 40" class="icon-svg">
-                                <path d="M10 30 L15 25 L20 30 L25 25 L30 30" fill="none" stroke="currentColor" stroke-width="1" class="organic-path"/>
-                                <path d="M10 25 L15 20 L20 25 L25 20 L30 25" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
-                                <path d="M10 20 L15 15 L20 20 L25 15 L30 20" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
-                                <path d="M18 12 L20 10 L22 12" stroke="currentColor" stroke-width="0.6" class="organic-path"/>
-                            </svg>
-                        {% when 'education' %}
-                            <svg viewBox="0 0 40 40" class="icon-svg">
-                                <path d="M20 10l-10 5v8l10 5 10-5v-8l-10-5z" fill="none" stroke="currentColor" stroke-width="1" class="organic-shape"/>
-                                <path d="M20 12l-8 4v6l8 4 8-4v-6l-8-4z" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-shape"/>
-                                <path d="M10 15l10 5 10-5" stroke="currentColor" stroke-width="0.8" fill="none" class="organic-path"/>
-                            </svg>
-                        {% when 'consulting' %}
-                            <svg viewBox="0 0 40 40" class="icon-svg">
-                                <path d="M14 20 Q20 14 26 20 Q20 26 14 20" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
-                                <path d="M16 20 Q20 16 24 20 Q20 24 16 20" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
-                                <path d="M20 8 L20 12 M20 28 L20 32 M8 20 L12 20 M28 20 L32 20" stroke="currentColor" stroke-width="0.6" class="organic-path"/>
-                            </svg>
-                        {% endcase %}
+        <div class="services-content">
+            <div class="services-visual">
+                <div class="services-mask">
+                    <div class="services-image-placeholder">
+                        <div class="services-image-fade"></div>
                     </div>
                 </div>
             </div>
-            {% endfor %}
+            
+            <div class="services-grid">
+                {% for service in site.data.services %}
+                <div class="service-card">
+                    <div class="service-card-header">
+                        <span class="service-number">{{ forloop.index | prepend: '00' | slice: -3, 3 }}</span>
+                        <div class="service-icon" data-icon="{{ service.icon }}">
+                            {% case service.icon %}
+                            {% when 'strategy' %}
+                                <svg viewBox="0 0 40 40" class="icon-svg">
+                                    <circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="1" class="organic-circle hover-only"/>
+                                    <circle cx="20" cy="20" r="8" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-circle hover-only"/>
+                                    <path d="M12 20h16M20 12v16M16 16l8 8M24 16l-8 8" stroke="currentColor" stroke-width="0.8" fill="none" class="organic-path"/>
+                                </svg>
+                            {% when 'implementation' %}
+                                <svg viewBox="0 0 40 40" class="icon-svg">
+                                    <path d="M10 30 L15 25 L20 30 L25 25 L30 30" fill="none" stroke="currentColor" stroke-width="1" class="organic-path"/>
+                                    <path d="M10 25 L15 20 L20 25 L25 20 L30 25" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
+                                    <path d="M10 20 L15 15 L20 20 L25 15 L30 20" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
+                                    <path d="M18 12 L20 10 L22 12" stroke="currentColor" stroke-width="0.6" class="organic-path"/>
+                                </svg>
+                            {% when 'education' %}
+                                <svg viewBox="0 0 40 40" class="icon-svg">
+                                    <path d="M20 10l-10 5v8l10 5 10-5v-8l-10-5z" fill="none" stroke="currentColor" stroke-width="1" class="organic-shape"/>
+                                    <path d="M20 12l-8 4v6l8 4 8-4v-6l-8-4z" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-shape"/>
+                                    <path d="M10 15l10 5 10-5" stroke="currentColor" stroke-width="0.8" fill="none" class="organic-path"/>
+                                </svg>
+                            {% when 'consulting' %}
+                                <svg viewBox="0 0 40 40" class="icon-svg">
+                                    <path d="M14 20 Q20 14 26 20 Q20 26 14 20" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
+                                    <path d="M16 20 Q20 16 24 20 Q20 24 16 20" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
+                                    <path d="M20 8 L20 12 M20 28 L20 32 M8 20 L12 20 M28 20 L32 20" stroke="currentColor" stroke-width="0.6" class="organic-path"/>
+                                </svg>
+                            {% endcase %}
+                        </div>
+                    </div>
+                    <h3 class="service-title">{{ service.title }}</h3>
+                    <p class="service-description">{{ service.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </section>
@@ -79,25 +87,26 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 <!-- Optimization Section -->
 <section class="optimization section" id="optimization">
     <div class="optimization-container">
-        <!-- Main Content -->
+        <div class="optimization-header">
+            <h2 class="optimization-title">Optimering</h2>
+            <p class="optimization-subtitle">Udforsk AI's potentiale gennem interaktive cases</p>
+        </div>
+        
         <div class="optimization-content">
-            <div class="optimization-left">
-                <h2 class="optimization-main-title">
-                    <span class="optimization-title-line">Optimér jeres</span>
-                    <span class="optimization-title-line optimization-title-indent">forretningsprocesser</span>
-                </h2>
-            </div>
-            
-            <div class="optimization-right">
-                <h3 class="optimization-subtitle">
-                    <span class="optimization-subtitle-line">Udforsk AI's potentiale</span>
-                    <span class="optimization-subtitle-line">gennem interaktive cases</span>
-                </h3>
+            <div class="optimization-text">
+                <h3 class="optimization-main-text">Optimér jeres forretningsprocesser</h3>
                 <p class="optimization-description">
                     Klik rundt i området nedenfor og se konkrete eksempler på, hvordan AI kan optimere jeres specifikke forretningsområder. Fra produktivitet til kundeservice - hver case viser målbare resultater.
                 </p>
+            </div>
+            
+            <div class="optimization-visual">
+                <div class="optimization-mask">
+                    <div class="optimization-image-placeholder">
+                        <div class="optimization-image-fade"></div>
+                    </div>
+                </div>
                 
-                <!-- Interactive Area -->
                 <div class="optimization-interactive">
                     <h4 class="optimization-interactive-title" id="optimizationTitle">Klik og se hvorfor AI kan forbedre din virksomhed</h4>
                     <div class="interactive-area">
