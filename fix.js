@@ -160,7 +160,7 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'Team': 'Team', 
             'Kunder': 'Clients',
             'Kontakt': 'Contact',
-            'Kontakt': 'Get in touch',
+            'Get in touch': 'Kontakt',
             'Book et møde': 'Book a meeting',
             'Kontakt os for at høre mere om hvordan vi kan hjælpe din virksomhed med AI-implementering.': 'Contact us to hear more about how we can help your company with AI implementation.',
             'Telefon:': 'Phone:',
@@ -363,19 +363,26 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             'Hvad er jeres succesrate?': 'What is your success rate?',
             '95% af vores projekter leverer de forventede resultater inden for tidsrammen.': '95% of our projects deliver the expected results within the timeframe.',
             'Hvordan starter vi?': 'How do we start?',
-            'Kontakt os for et gratis konsultationsmøde hvor vi diskuterer jeres behov.': 'Contact us for a free consultation meeting where we discuss your needs.'
+            'Kontakt os for et gratis konsultationsmøde hvor vi diskuterer jeres behov.': 'Contact us for a free consultation meeting where we discuss your needs.',
+            'Optimering': 'Optimization',
+            'Klik og se hvorfor AI kan forbedre din virksomhed': 'Click and see why AI can improve your business',
+            'Ydelse →': 'Service →',
+            'Book et møde': 'Book a meeting'
         }
     };
     
     function translatePage() {
-        const elements = document.querySelectorAll('a, button, h1, h2, h3, p, span, label, input, textarea, div');
+        const elements = document.querySelectorAll('a, button, h1, h2, h3, p, span, label, input, textarea, div, h4, h5, h6');
         let translatedCount = 0;
         
         elements.forEach(element => {
             // Skip if element has specific classes that shouldn't be translated
             if (element.classList.contains('mouse-trail-dot') || 
                 element.classList.contains('fact-box') ||
-                element.classList.contains('ai-facts-title')) {
+                element.classList.contains('ai-facts-title') ||
+                element.classList.contains('service-number') ||
+                element.classList.contains('team-photo-img') ||
+                element.classList.contains('client-logo-img')) {
                 return;
             }
             
@@ -390,7 +397,19 @@ if ((languageToggle && langText) || (drawerLanguageToggle && drawerLangText)) {
             }
         });
         
-        // Debug: console.log(`Translated ${translatedCount} elements to ${isEnglish ? 'Danish' : 'English'}`);
+        // Also translate placeholder attributes
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            if (input.placeholder) {
+                const translation = translations[isEnglish ? 'da' : 'en'][input.placeholder];
+                if (translation) {
+                    input.placeholder = translation;
+                    translatedCount++;
+                }
+            }
+        });
+        
+        console.log(`Translated ${translatedCount} elements to ${isEnglish ? 'Danish' : 'English'}`);
     }
     
     if (languageToggle) {
