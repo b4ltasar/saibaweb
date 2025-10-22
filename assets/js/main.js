@@ -67,34 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const drawerBackdrop = document.querySelector('.drawer-backdrop');
     
     // Mobile navigation elements
-    console.log('Burger element:', burger);
-    console.log('Burger display:', burger ? getComputedStyle(burger).display : 'not found');
-    console.log('Burger pointer-events:', burger ? getComputedStyle(burger).pointerEvents : 'not found');
-    console.log('Burger z-index:', burger ? getComputedStyle(burger).zIndex : 'not found');
-    
-    // Test if burger is clickable
-    if (burger) {
-        burger.style.border = '2px solid red';
-        burger.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
-        
-        // Test if there are overlapping elements
-        const rect = burger.getBoundingClientRect();
-        const elementsAtPoint = document.elementsFromPoint(rect.left + rect.width/2, rect.top + rect.height/2);
-        console.log('Elements at burger position:', elementsAtPoint);
-        
-        // Check if burger is the top element
-        if (elementsAtPoint[0] !== burger) {
-            console.log('Burger is not the top element! Top element:', elementsAtPoint[0]);
-        }
-    }
     
     function openDrawer() {
-        console.log('Opening drawer...', drawer);
         drawer.style.display = 'block';
         drawer.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
         document.body.classList.add('drawer-open');
-        console.log('Drawer opened, aria-hidden:', drawer.getAttribute('aria-hidden'));
     }
     
     function closeDrawer() {
@@ -112,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         newBurger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Burger clicked!', e);
             openDrawer();
         });
         
@@ -120,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
         newBurger.addEventListener('touchstart', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Burger touched!', e);
             openDrawer();
         });
         
@@ -128,11 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
         newBurger.addEventListener('mousedown', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Burger mousedown!', e);
             openDrawer();
         });
-    } else {
-        console.log('Burger element not found!');
     }
     
     if (drawerClose) {

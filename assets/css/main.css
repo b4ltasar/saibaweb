@@ -1000,17 +1000,18 @@ body {
 
 .interactive-area {
   position: relative;
-  height: 600px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 50px;
+  padding-top: 30px;
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22" stroke="black" stroke-width="1.5"/><line x1="2" y1="12" x2="22" y2="12" stroke="black" stroke-width="1.5"/></svg>') 12 12, crosshair;
   width: 100%;
-  min-height: 100%;
-  background: rgba(0, 0, 0, 0.02);
-  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.02) 0%, rgba(168, 85, 247, 0.02) 100%);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
 
 .fact-boxes-container {
@@ -1387,10 +1388,11 @@ body {
   border: none;
   cursor: pointer;
   padding: 8px;
-  z-index: 1004;
+  z-index: 1005;
   position: relative;
   pointer-events: auto !important;
   user-select: none;
+  outline: none;
 }
 
 .burger span {
@@ -1421,7 +1423,18 @@ body {
 }
 
 body.drawer-open .site-header .burger {
-  display: none;
+  display: none !important;
+}
+
+/* Ensure burger menu is always clickable */
+.burger:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.burger:hover {
+  background: rgba(15, 23, 42, 0.05);
+  border-radius: 4px;
 }
 
 .drawer-backdrop {
@@ -1600,7 +1613,7 @@ body.drawer-open .site-header .burger {
 /* Responsive */
 @media (min-width: 1200px) {
   .interactive-area {
-    height: 800px;
+    height: 400px;
     max-width: 1600px;
   }
   
@@ -1713,7 +1726,10 @@ body.drawer-open .site-header .burger {
   }
   
   .burger {
-    display: flex;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1005 !important;
   }
 
   .hero {
@@ -1805,7 +1821,7 @@ body.drawer-open .site-header .burger {
   }
   
   .interactive-area {
-    height: 350px;
+    height: 250px;
     padding-top: 15px;
   }
   
@@ -1946,7 +1962,7 @@ body.drawer-open .site-header .burger {
   }
   
   .interactive-area {
-    height: 280px;
+    height: 200px;
     padding-top: 10px;
   }
   
@@ -1991,7 +2007,7 @@ body.drawer-open .site-header .burger {
   }
   
   .interactive-area {
-    height: 250px;
+    height: 180px;
     padding-top: 8px;
   }
   
