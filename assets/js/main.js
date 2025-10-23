@@ -478,6 +478,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (teamExpandBtn && teamGrid) {
         let isExpanded = false;
         
+        // Initialize with correct translation
+        if (teamCtaText) {
+            teamCtaText.textContent = translate('team.cta');
+        }
+        
         teamExpandBtn.addEventListener('click', function() {
             isExpanded = !isExpanded;
             

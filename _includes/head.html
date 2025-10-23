@@ -16,9 +16,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
   
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
-  
   <!-- Prevent FOUC -->
   <style>
     html {
@@ -32,16 +29,20 @@
       visibility: visible;
     }
   </style>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  
   <script>
     // Show page immediately when DOM is ready
     document.addEventListener('DOMContentLoaded', function() {
       document.documentElement.classList.add('loaded');
     });
     
-    // Fallback to show page after 500ms if JS doesn't load
+    // Fallback to show page after 300ms if JS doesn't load
     setTimeout(function() {
       document.documentElement.classList.add('loaded');
-    }, 500);
+    }, 300);
   </script>
   
   <!-- SEO -->
