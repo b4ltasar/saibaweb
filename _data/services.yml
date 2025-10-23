@@ -1,10 +1,5 @@
-<<<<<<< Updated upstream
-- icon: "strategy"
-  title: "Workshops & Bootcamps"
-=======
 - title: "Workshops & Bootcamps"
   icon: "🎯"
->>>>>>> Stashed changes
   description: "Få overblik og indsigt i AI-teknologiens potentiale"
   features:
     - "AI-introduktion og grundlæggende koncepter"
@@ -12,16 +7,10 @@
     - "Hands-on øvelser med praktiske cases"
     - "Cases & videndeling fra industrien"
     - "Avanceret prompting teknikker"
-<<<<<<< Updated upstream
   link: "#contact"
-  
-- icon: "implementation"
-  title: "Skræddersyede Forløb"
-=======
 
 - title: "Skræddersyede Forløb"
   icon: "⚙️"
->>>>>>> Stashed changes
   description: "Fra viden til konkrete use cases i din virksomhed"
   features:
     - "Branchetilpassede programmer"
@@ -29,16 +18,10 @@
     - "Virksomhedsspecifikke workshops"
     - "Kompetenceudvikling og træning"
     - "Implementering og opfølgning"
-<<<<<<< Updated upstream
   link: "#contact"
-  
-- icon: "education"
-  title: "Strategi & Implementering"
-=======
 
 - title: "Strategi & Implementering"
   icon: "📊"
->>>>>>> Stashed changes
   description: "Omsæt teknologi til konkrete resultater og værdi"
   features:
     - "Teknologisk rådgivning og vejledning"
@@ -46,26 +29,15 @@
     - "Procesudvikling og optimering"
     - "Organisatorisk forankring"
     - "ROI måling og evaluering"
-<<<<<<< Updated upstream
   link: "#contact"
-  
-- icon: "consulting"
-  title: "Produktudvikling"
-=======
 
 - title: "Produktudvikling"
   icon: "🚀"
->>>>>>> Stashed changes
   description: "Vi udvikler og bygger AI-løsninger med jer"
   features:
     - "Digitale produkter & services"
     - "Co-creation og samarbejde"
     - "AI Studio og prototyper"
     - "Løbende sparring & rådgivning"
-<<<<<<< Updated upstream
     - "Skalering og vedligeholdelse"
   link: "#contact"
-
-=======
-    - "Skalering og vedligeholdelse"
->>>>>>> Stashed changes

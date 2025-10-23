@@ -1,6 +1,5 @@
 - name: "Kronenbourg 1664"
   icon: "🍺"
-<<<<<<< Updated upstream
   logo: "/assets/images/kronenbourg.png"
   description: "Premium beer brand"
   
@@ -18,12 +17,3 @@
   icon: "🔥"
   logo: "/assets/images/palmeslogo.svg"
   description: "Creative agency"
-
-=======
-
-- name: "Carlsberg"
-  icon: "🍺"
-
-- name: "NEAR Protocol"
-  icon: "⚡"
->>>>>>> Stashed changes
