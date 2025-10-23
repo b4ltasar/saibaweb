@@ -1670,19 +1670,20 @@ body {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
-  background: rgba(255, 255, 255, 0.05);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   margin-top: 12px;
   padding: 0 16px;
 }
 
 .team-competencies-content.expanded {
-  max-height: 200px;
+  max-height: 300px;
   padding: 16px;
 }
 
 .team-competencies-content p {
-  color: rgba(255, 255, 255, 0.9);
+  color: white;
   font-size: 14px;
   line-height: 1.6;
   margin: 0;
@@ -1749,6 +1750,15 @@ body {
   .team-role {
     font-size: 14px;
     font-weight: 400;
+  }
+  
+  .team-competencies-content.expanded {
+    max-height: 400px;
+  }
+  
+  .team-competencies-content p {
+    font-size: 13px;
+    line-height: 1.5;
   }
 }
 
@@ -1829,6 +1839,35 @@ body {
 .client-logo:hover .client-logo-img {
   filter: brightness(1);
   transform: scale(1.05);
+}
+
+/* Team Mobile Responsive */
+@media (max-width: 1024px) {
+  .team-competencies-content.expanded {
+    max-height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-competencies-content.expanded {
+    max-height: 400px;
+  }
+  
+  .team-competencies-content p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-competencies-content.expanded {
+    max-height: 500px;
+  }
+  
+  .team-competencies-content p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
 }
 
 /* Clients Mobile Responsive */

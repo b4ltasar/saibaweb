@@ -536,9 +536,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const icon = this.querySelector('.team-expand-icon');
             
             if (content.classList.contains('expanded')) {
+                // Collapse
                 content.classList.remove('expanded');
                 this.classList.remove('expanded');
             } else {
+                // Expand
                 content.classList.add('expanded');
                 this.classList.add('expanded');
             }
