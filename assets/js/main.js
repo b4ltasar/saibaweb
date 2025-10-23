@@ -473,6 +473,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.textContent = translations[getCurrentLanguage()][key];
             }
         });
+        
+        // Special handling for team button
+        const teamCtaText = document.querySelector('.team-cta-text');
+        if (teamCtaText) {
+            const teamExpandBtn = document.getElementById('teamExpandBtn');
+            const isExpanded = teamExpandBtn && teamExpandBtn.classList.contains('expanded');
+            teamCtaText.textContent = isExpanded ? translate('team.cta.expanded') : translate('team.cta');
+        }
     }
     
     function translate(key) {
@@ -525,6 +533,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         themeObserver.observe(html, { attributes: true, attributeFilter: ['class'] });
     }
+
+    // Initialize translations on page load
+    updateTranslations();
 
     // SAIBA website initialized successfully! 🚀
 });

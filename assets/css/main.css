@@ -1756,6 +1756,7 @@ body {
   
   .clients-description {
     font-size: 14px;
+    margin-bottom: 40px;
   }
   
   .clients-logos {
@@ -2442,6 +2443,13 @@ body.mobile-drawer-open .site-header .burger {
     height: 50px;
     width: auto;
     max-width: 140px;
+  }
+  
+  /* Specific sizing for Kronenbourg and Carlsberg on mobile */
+  .client-logo:nth-child(1) .client-logo-img,
+  .client-logo:nth-child(2) .client-logo-img {
+    height: 55px;
+    max-width: 150px;
   }
 
   .contact-content {
