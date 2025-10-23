@@ -446,6 +446,29 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', debouncedScrollHandler);
     
+    // Internationalization
+    const translations = {
+        da: {
+            'team.cta': 'Se vores team',
+            'team.cta.expanded': 'Skjul team'
+        },
+        en: {
+            'team.cta': 'See our team',
+            'team.cta.expanded': 'Hide team'
+        }
+    };
+    
+    function getCurrentLanguage() {
+        // Check if dark mode is enabled to determine language
+        const isDark = html.classList.contains('dark-mode');
+        return isDark ? 'en' : 'da'; // Assuming dark mode = English, light mode = Danish
+    }
+    
+    function translate(key) {
+        const lang = getCurrentLanguage();
+        return translations[lang] && translations[lang][key] ? translations[lang][key] : translations['da'][key] || key;
+    }
+
     // Team Section Expand/Collapse
     const teamExpandBtn = document.getElementById('teamExpandBtn');
     const teamGrid = document.getElementById('teamGrid');
@@ -462,14 +485,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 teamGrid.classList.add('expanded');
                 teamExpandBtn.classList.add('expanded');
                 if (teamDivider) teamDivider.classList.add('expanded');
-                if (teamCtaText) teamCtaText.textContent = 'Skjul team';
+                if (teamCtaText) teamCtaText.textContent = translate('team.cta.expanded');
             } else {
                 teamGrid.classList.remove('expanded');
                 teamExpandBtn.classList.remove('expanded');
                 if (teamDivider) teamDivider.classList.remove('expanded');
-                if (teamCtaText) teamCtaText.textContent = 'Se vores team';
+                if (teamCtaText) teamCtaText.textContent = translate('team.cta');
             }
         });
+        
+        // Update text when theme changes
+        const themeObserver = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    if (teamCtaText) {
+                        teamCtaText.textContent = isExpanded ? translate('team.cta.expanded') : translate('team.cta');
+                    }
+                }
+            });
+        });
+        
+        themeObserver.observe(html, { attributes: true, attributeFilter: ['class'] });
     }
 
     // SAIBA website initialized successfully! 🚀

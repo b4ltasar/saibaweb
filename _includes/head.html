@@ -27,16 +27,21 @@
     html.loaded {
       visibility: visible;
     }
-    /* Fallback if JS doesn't load */
+    /* Fallback if JS doesn't load - show immediately after CSS loads */
     html:not(.loaded) {
       visibility: visible;
     }
   </style>
   <script>
-    // Fallback to show page after 2 seconds if JS doesn't load
+    // Show page immediately when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      document.documentElement.classList.add('loaded');
+    });
+    
+    // Fallback to show page after 500ms if JS doesn't load
     setTimeout(function() {
       document.documentElement.classList.add('loaded');
-    }, 2000);
+    }, 500);
   </script>
   
   <!-- SEO -->
