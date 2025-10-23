@@ -25,6 +25,11 @@ html.loaded .mobile-drawer-lang-toggle {
 
 /* FOUC prevention handled in head.html */
 
+/* Video background fix */
+.hero-video {
+  background: #0a0a0a !important;
+}
+
 :root {
   --bg: #0a0a0a;
   --text: #ffffff;
