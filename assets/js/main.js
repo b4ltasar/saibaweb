@@ -513,32 +513,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Team Member Competencies Expand/Collapse - Only one at a time
-    const teamExpandBtns = document.querySelectorAll('.team-expand-btn');
-    teamExpandBtns.forEach((btn, index) => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const content = this.parentElement.querySelector('.team-competencies-content');
-            const isCurrentlyExpanded = content.classList.contains('expanded');
-            
-            // ALWAYS close all team members first
-            teamExpandBtns.forEach((otherBtn) => {
-                const otherContent = otherBtn.parentElement.querySelector('.team-competencies-content');
-                otherContent.classList.remove('expanded');
-                otherBtn.classList.remove('expanded');
+    function initTeamExpansion() {
+        const teamExpandBtns = document.querySelectorAll('.team-expand-btn');
+        console.log('Found team expand buttons:', teamExpandBtns.length);
+        
+        teamExpandBtns.forEach((btn, index) => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('Clicked team member button:', index);
+                
+                const content = this.parentElement.querySelector('.team-competencies-content');
+                const isCurrentlyExpanded = content.classList.contains('expanded');
+                
+                // ALWAYS close all team members first
+                teamExpandBtns.forEach((otherBtn, otherIndex) => {
+                    const otherContent = otherBtn.parentElement.querySelector('.team-competencies-content');
+                    otherContent.classList.remove('expanded');
+                    otherBtn.classList.remove('expanded');
+                    console.log('Closed team member:', otherIndex);
+                });
+                
+                // Only expand the clicked one if it wasn't already expanded
+                if (!isCurrentlyExpanded) {
+                    content.classList.add('expanded');
+                    this.classList.add('expanded');
+                    console.log('Expanded team member:', index);
+                } else {
+                    console.log('Collapsed team member:', index);
+                }
             });
-            
-            // Only expand the clicked one if it wasn't already expanded
-            if (!isCurrentlyExpanded) {
-                content.classList.add('expanded');
-                this.classList.add('expanded');
-                console.log('Expanded team member', index);
-            } else {
-                console.log('Collapsed team member', index);
-            }
         });
-    });
+    }
+    
+    // Initialize team expansion after DOM is ready
+    initTeamExpansion();
 
     // Initialize translations on page load
     updateTranslations();

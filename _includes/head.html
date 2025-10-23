@@ -18,17 +18,17 @@
   
   <!-- Prevent FOUC -->
   <style>
-    /* Prevent FOUC - more robust approach for Arc browser */
+    /* Prevent FOUC - NO LIGHT GRAY FLASH */
     html:not(.loaded) {
       visibility: hidden !important;
     }
     html.loaded {
       visibility: visible !important;
     }
-    /* Ensure body has proper background immediately */
+    /* Force dark background immediately - NO LIGHT GRAY */
     body {
-      background: var(--bg) !important;
-      color: var(--text) !important;
+      background: #0a0a0a !important;
+      color: #ffffff !important;
       visibility: hidden !important;
     }
     html.loaded body {
