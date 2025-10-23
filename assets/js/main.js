@@ -522,6 +522,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const memberIndex = this.getAttribute('data-member');
             // Find the content div - it's the next sibling after the divider
             const content = this.parentElement.querySelector('.team-competencies-content');
+            const teamMember = this.closest('.team-member');
             const icon = this.querySelector('.team-expand-icon');
             
             console.log('Clicked team member', index, 'expanded:', content.classList.contains('expanded'));
@@ -531,11 +532,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Collapse this one
                 content.classList.remove('expanded');
                 this.classList.remove('expanded');
+                teamMember.classList.remove('expanded');
                 console.log('Collapsed team member', index);
             } else {
                 // Expand this one
                 content.classList.add('expanded');
                 this.classList.add('expanded');
+                teamMember.classList.add('expanded');
                 console.log('Expanded team member', index);
             }
         });
