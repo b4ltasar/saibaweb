@@ -25,7 +25,7 @@
     html.loaded {
       visibility: visible !important;
       opacity: 1 !important;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.1s ease;
     }
     /* Hide all content until fully loaded */
     body {
@@ -35,7 +35,7 @@
     html.loaded body {
       visibility: visible !important;
       opacity: 1 !important;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.1s ease;
     }
     /* Hide header content until translations are loaded */
     .site-header .nav-links a,
@@ -43,27 +43,12 @@
     .mobile-drawer-nav a,
     .mobile-drawer-lang-toggle {
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.2s ease;
     }
     html.loaded .site-header .nav-links a,
     html.loaded .site-header .language-toggle,
     html.loaded .mobile-drawer-nav a,
     html.loaded .mobile-drawer-lang-toggle {
-      opacity: 1;
-    }
-    /* Fallback if JS doesn't load - show after 1 second */
-    html:not(.loaded) {
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    html:not(.loaded) body {
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    html:not(.loaded) .site-header .nav-links a,
-    html:not(.loaded) .site-header .language-toggle,
-    html:not(.loaded) .mobile-drawer-nav a,
-    html:not(.loaded) .mobile-drawer-lang-toggle {
       opacity: 1;
     }
   </style>
@@ -81,13 +66,13 @@
           updateTranslations();
         }
         document.documentElement.classList.add('loaded');
-      }, 100);
+      }, 50);
     });
     
-    // Fallback to show page after 1 second if JS doesn't load
+    // Fallback to show page after 200ms if JS doesn't load
     setTimeout(function() {
       document.documentElement.classList.add('loaded');
-    }, 1000);
+    }, 200);
   </script>
   
   <!-- SEO -->
