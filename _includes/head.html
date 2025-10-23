@@ -20,13 +20,17 @@
   <style>
     html {
       visibility: hidden;
+      opacity: 0;
     }
     html.loaded {
       visibility: visible;
+      opacity: 1;
+      transition: opacity 0.1s ease;
     }
     /* Fallback if JS doesn't load - show immediately after CSS loads */
     html:not(.loaded) {
       visibility: visible;
+      opacity: 1;
     }
   </style>
   
@@ -39,10 +43,10 @@
       document.documentElement.classList.add('loaded');
     });
     
-    // Fallback to show page after 300ms if JS doesn't load
+    // Fallback to show page after 200ms if JS doesn't load
     setTimeout(function() {
       document.documentElement.classList.add('loaded');
-    }, 300);
+    }, 200);
   </script>
   
   <!-- SEO -->

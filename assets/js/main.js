@@ -464,6 +464,17 @@ document.addEventListener('DOMContentLoaded', function() {
         return isDark ? 'en' : 'da'; // Assuming dark mode = English, light mode = Danish
     }
     
+    // Update all translations when theme changes
+    function updateTranslations() {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[getCurrentLanguage()] && translations[getCurrentLanguage()][key]) {
+                element.textContent = translations[getCurrentLanguage()][key];
+            }
+        });
+    }
+    
     function translate(key) {
         const lang = getCurrentLanguage();
         return translations[lang] && translations[lang][key] ? translations[lang][key] : translations['da'][key] || key;
@@ -506,6 +517,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (teamCtaText) {
                         teamCtaText.textContent = isExpanded ? translate('team.cta.expanded') : translate('team.cta');
                     }
+                    // Update all translations when theme changes
+                    updateTranslations();
                 }
             });
         });
