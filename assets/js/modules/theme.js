@@ -10,7 +10,7 @@ export class ThemeManager {
     
     init() {
         // Initialize theme from localStorage
-        const savedTheme = localStorage.getItem('theme') || 'light';
+        const savedTheme = localStorage.getItem('theme') || 'dark';
         this.html.setAttribute('data-theme', savedTheme);
         
         // Bind event listeners
