@@ -303,11 +303,41 @@ function requestTick() {
 
 // Initialize everything
 document.addEventListener('DOMContentLoaded', function() {
-    // Show page after everything is loaded
-    document.documentElement.classList.add('loaded');
-    
     // Apply language theme
     langTheme.apply();
+    
+    // Fallback team expansion initialization
+    setTimeout(function() {
+        const teamExpandBtns = document.querySelectorAll('.team-expand-btn');
+        if (teamExpandBtns.length > 0) {
+            console.log('Fix.js: Initializing team expansion fallback');
+            teamExpandBtns.forEach((btn, index) => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    console.log('Fix.js: Clicked team member button:', index);
+                    
+                    const content = this.parentElement.querySelector('.team-competencies-content');
+                    const isCurrentlyExpanded = content.classList.contains('expanded');
+                    
+                    // Close all others first
+                    teamExpandBtns.forEach((otherBtn) => {
+                        const otherContent = otherBtn.parentElement.querySelector('.team-competencies-content');
+                        otherContent.classList.remove('expanded');
+                        otherBtn.classList.remove('expanded');
+                    });
+                    
+                    // Expand clicked one if not already expanded
+                    if (!isCurrentlyExpanded) {
+                        content.classList.add('expanded');
+                        this.classList.add('expanded');
+                        console.log('Fix.js: Expanded team member:', index);
+                    }
+                });
+            });
+        }
+    }, 100);
     
     // Setup header scroll
     lastScrollY = window.scrollY;

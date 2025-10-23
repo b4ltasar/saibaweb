@@ -14,18 +14,6 @@ markdown: kramdown
 highlighter: rouge
 theme: minima
 
-# Collections
-collections:
-  services:
-    output: true
-    permalink: /:name/
-  team:
-    output: true
-    permalink: /team/:name/
-  clients:
-    output: true
-    permalink: /clients/:name/
-
 # Defaults
 defaults:
   - scope:
@@ -33,21 +21,6 @@ defaults:
       type: "pages"
     values:
       layout: "default"
-  - scope:
-      path: ""
-      type: "services"
-    values:
-      layout: "service"
-  - scope:
-      path: ""
-      type: "team"
-    values:
-      layout: "team-member"
-  - scope:
-      path: ""
-      type: "clients"
-    values:
-      layout: "client"
 
 # Plugins for GitHub Pages
 plugins:

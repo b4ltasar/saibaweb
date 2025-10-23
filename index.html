@@ -6,18 +6,19 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 
 <!-- Hero Section -->
 <section class="hero" id="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto">
-        <source src="/assets/saibanewweb.mp4" type="video/mp4">
-        <source src="assets/saibanewweb.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
     <div class="container">
         <div class="hero-content">
             <div class="hero-text">
-                <div class="hero-arrow">→</div>
-                <p class="hero-description" data-i18n="hero.subtitle">{{ site.description }}</p>
-                <h1 class="hero-title" data-i18n="hero.title">Vi gentænker måden, vi arbejder på. Med mennesker i centrum og teknologi som motor.</h1>
-                <a href="#contact" class="hero-cta" data-i18n="hero.cta">Kontakt</a>
+                <h1 class="hero-title">{{ site.data.site.hero.title }}</h1>
+                <p class="hero-subtitle">{{ site.data.site.hero.subtitle }}</p>
+                <a href="{{ site.data.site.hero.cta_link }}" class="hero-cta">{{ site.data.site.hero.cta_text }}</a>
+            </div>
+            <div class="hero-image">
+                <div class="hero-placeholder">
+                    <div class="hero-icon">🚀</div>
+                    <h3>AI-Powered Workplace</h3>
+                    <p>Hero billede kommer her<br><small>Upload dit billede til assets/images/hero-image.jpg</small></p>
+                </div>
             </div>
         </div>
     </div>
@@ -25,74 +26,41 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 
 <!-- Services Section -->
 <section class="services section" id="services">
-    <div class="services-container">
-        <div class="services-content">
-            <div class="services-text">
-                <h2 class="services-main-text" data-i18n="services.title">Fra strategi til implementering</h2>
-                <p class="services-description" data-i18n="services.description">Vi leverer komplette AI-løsninger der passer til jeres specifikke behov og forretningsmål.</p>
+    <div class="container">
+        <div class="services-header">
+            <h2 class="services-title">Ydelser</h2>
+            <p class="services-subtitle">Vi tilbyder omfattende AI-løsninger der transformerer din virksomhed</p>
+        </div>
+        
+        <div class="services-grid">
+            {% for service in site.data.services %}
+            <div class="service-card">
+                <div class="service-icon">{{ service.icon }}</div>
+                <h3 class="service-title">{{ service.title }}</h3>
+                <p class="service-description">{{ service.description }}</p>
+                <ul class="service-list">
+                    {% for feature in service.features %}
+                    <li>{{ feature }}</li>
+                    {% endfor %}
+                </ul>
             </div>
-            
-            <div class="services-grid">
-                {% for service in site.data.services %}
-                <div class="service-card">
-                    <div class="service-card-header">
-                        <span class="service-number">{{ forloop.index | prepend: '00' | slice: -3, 3 }}</span>
-                        <div class="service-icon" data-icon="{{ service.icon }}">
-                            {% case service.icon %}
-                            {% when 'strategy' %}
-                                <svg viewBox="0 0 40 40" class="icon-svg">
-                                    <circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="1" class="organic-circle hover-only"/>
-                                    <circle cx="20" cy="20" r="8" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-circle hover-only"/>
-                                    <path d="M12 20h16M20 12v16M16 16l8 8M24 16l-8 8" stroke="currentColor" stroke-width="0.8" fill="none" class="organic-path"/>
-                                </svg>
-                            {% when 'implementation' %}
-                                <svg viewBox="0 0 40 40" class="icon-svg">
-                                    <path d="M10 30 L15 25 L20 30 L25 25 L30 30" fill="none" stroke="currentColor" stroke-width="1" class="organic-path"/>
-                                    <path d="M10 25 L15 20 L20 25 L25 20 L30 25" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
-                                    <path d="M10 20 L15 15 L20 20 L25 15 L30 20" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
-                                    <path d="M18 12 L20 10 L22 12" stroke="currentColor" stroke-width="0.6" class="organic-path"/>
-                                </svg>
-                            {% when 'education' %}
-                                <svg viewBox="0 0 40 40" class="icon-svg">
-                                    <path d="M20 10l-10 5v8l10 5 10-5v-8l-10-5z" fill="none" stroke="currentColor" stroke-width="1" class="organic-shape"/>
-                                    <path d="M20 12l-8 4v6l8 4 8-4v-6l-8-4z" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-shape"/>
-                                    <path d="M10 15l10 5 10-5" stroke="currentColor" stroke-width="0.8" fill="none" class="organic-path"/>
-                                </svg>
-                            {% when 'consulting' %}
-                                <svg viewBox="0 0 40 40" class="icon-svg">
-                                    <path d="M14 20 Q20 14 26 20 Q20 26 14 20" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
-                                    <path d="M16 20 Q20 16 24 20 Q20 24 16 20" fill="none" stroke="currentColor" stroke-width="0.8" class="organic-path"/>
-                                    <path d="M20 8 L20 12 M20 28 L20 32 M8 20 L12 20 M28 20 L32 20" stroke="currentColor" stroke-width="0.6" class="organic-path"/>
-                                </svg>
-                            {% endcase %}
-                        </div>
-                    </div>
-                    <h3 class="service-title" data-i18n="services.card{{ forloop.index }}.title">{{ service.title }}</h3>
-                    <p class="service-description" data-i18n="services.card{{ forloop.index }}.description">{{ service.description }}</p>
-                </div>
-                {% endfor %}
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- Optimization Section -->
-<section class="optimization section" id="optimization">
-    <div class="optimization-container">
-        <div class="optimization-content">
-            <div class="optimization-text">
-                <h2 class="optimization-main-text" data-i18n="optimization.title">Optimér jeres forretningsprocesser</h2>
-                <p class="optimization-description" data-i18n="optimization.description">
-                    Udforsk AI's potentiale gennem interaktive cases. Klik rundt i området nedenfor og se konkrete eksempler på, hvordan AI kan optimere jeres specifikke forretningsområder.
-                </p>
-            </div>
+<!-- Interactive AI Facts Section -->
+<section class="ai-facts section" id="ai-facts">
+    <div class="container">
+        <div class="ai-facts-container">
+            <h2 class="ai-facts-title">AI Fakta</h2>
+            <p class="ai-facts-subtitle">Klik for at lære mere om AI's potentiale</p>
             
-            <div class="optimization-interactive">
-                <h3 class="optimization-interactive-title" id="optimizationTitle" data-i18n="optimization.cta">Klik og se hvorfor AI kan forbedre din virksomhed</h3>
-                <div class="interactive-area">
-                    <div class="fact-boxes-container">
-                        <!-- AI fact boxes will be dynamically positioned here -->
-                    </div>
+            <div class="interactive-area">
+                <button class="interactive-button">Vis AI Fakta</button>
+                <div class="fact-popup">
+                    <p class="fact-text">Klik for at se et tilfældigt AI-faktum</p>
+                    <p class="fact-source">Kilde: SAIBA Research</p>
                 </div>
             </div>
         </div>
@@ -101,68 +69,70 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 
 <!-- Team Section -->
 <section class="team section" id="team">
-    <div class="team-container">
-        
-        <!-- Main Content -->
-        <div class="team-content">
-            <div class="team-left">
-                <h2 class="team-main-title">
-                    <span class="team-title-line" data-i18n="team.titleLine1">Identificer jeres</span>
-                    <span class="team-title-line team-title-indent" data-i18n="team.titleLine2">AI-potentiale</span>
-                </h2>
-            </div>
-            
-            <div class="team-right">
-                <h3 class="team-subtitle">
-                    <span class="team-subtitle-line" data-i18n="team.subtitle1">Accelerer jeres fremgang</span>
-                    <span class="team-subtitle-line" data-i18n="team.subtitle2">med AI-ekspertise</span>
-                </h3>
-                <p class="team-description" data-i18n="team.description">
-                    SAIBA's erfarne team af AI-konsulenter og teknologiske eksperter er dedikeret til at hjælpe jer med at overvinde jeres forretningsudfordringer og frigøre AI's fulde potentiale for jeres virksomhed.
-                </p>
-                <button class="team-cta" id="teamExpandBtn">
-                    <span class="team-cta-text" data-i18n="team.cta">TEAM</span>
-                    <span class="team-cta-arrow">▼</span>
-                </button>
-            </div>
+    <div class="container">
+        <div class="team-header">
+            <h2 class="team-title">Team</h2>
+            <p class="team-subtitle">Mød de eksperter der hjælper jer med at implementere AI</p>
         </div>
         
-        <!-- Team Divider Line -->
-        <div class="team-divider" id="teamDivider"></div>
-        
-        <!-- Expandable Team Grid -->
-        <div class="team-grid-expandable" id="teamGrid">
+        <div class="team-grid">
             {% for member in site.data.team %}
-            <div class="team-member">
-                <div class="team-photo team-photo-{{ forloop.index }}">
-                    {% if member.image %}
-                        <img src="{{ member.image | relative_url }}" alt="{{ member.name }}" class="team-photo-img">
-                    {% else %}
-                        <span>{{ member.initials }}</span>
-                    {% endif %}
+            <div class="team-member" data-member-id="{{ forloop.index0 }}">
+                <div class="team-photo {{ member.photo_class }}">
+                    <span>{{ member.initials }}</span>
                 </div>
-                <h3 class="team-name" data-i18n="{{ member.name }}">{{ member.name }}</h3>
-                <p class="team-role" data-i18n="{{ member.role }}">{{ member.role }}</p>
-                {% if member.bio and member.bio != "" %}
-                    <p class="team-bio">{{ member.bio }}</p>
-                {% endif %}
+                <h3 class="team-name">{{ member.name }}</h3>
+                <p class="team-role">{{ member.role }}</p>
+                <p class="team-bio">{{ member.bio }}</p>
                 
-                {% if member.linkedin %}
-                    <a href="{{ member.linkedin }}" target="_blank" class="team-linkedin">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                {% endif %}
+                <button class="team-expand-btn" aria-expanded="false" aria-controls="team-details-{{ forloop.index0 }}">
+                    <span class="expand-text">Se mere</span>
+                    <span class="expand-icon">+</span>
+                </button>
                 
-                <!-- Competencies section -->
-                <div class="team-competencies">
-                    <div class="team-expand-divider"></div>
-                    <button class="team-expand-btn" data-member="{{ forloop.index }}">
-                        <span class="team-expand-icon">▼</span>
-                    </button>
-                    <div class="team-competencies-content" data-i18n="{{ member.competencies }}">
-                        {{ member.competencies }}
+                <div class="team-details" id="team-details-{{ forloop.index0 }}" aria-hidden="true">
+                    <div class="team-details-content">
+                        <div class="detail-section">
+                            <h4>Erfaring</h4>
+                            <p>{{ member.details.experience }}</p>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h4>Specialer</h4>
+                            <ul class="specialty-list">
+                                {% for specialty in member.details.specialties %}
+                                <li>{{ specialty }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h4>Uddannelse</h4>
+                            <p>{{ member.details.education }}</p>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h4>Præstationer</h4>
+                            <ul class="achievement-list">
+                                {% for achievement in member.details.achievements %}
+                                <li>{{ achievement }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        
+                        <div class="detail-section contact-section">
+                            <h4>Kontakt</h4>
+                            <div class="contact-links">
+                                <a href="mailto:{{ member.details.contact.email }}" class="contact-link">
+                                    <span class="contact-icon">✉️</span>
+                                    {{ member.details.contact.email }}
+                                </a>
+                                <a href="https://{{ member.details.contact.linkedin }}" target="_blank" class="contact-link">
+                                    <span class="contact-icon">💼</span>
+                                    LinkedIn
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,22 +143,20 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 
 <!-- Clients Section -->
 <section class="clients section" id="clients">
-    <div class="clients-container">
-        <div class="clients-content">
-            <h2 class="clients-main-text" data-i18n="clients.title">I samarbejde med</h2>
-            <p class="clients-description" data-i18n="clients.subtitle">Vi stolte partnere der har valgt at transformere deres forretning med AI</p>
-            
-            <div class="clients-logos">
-                {% for client in site.data.clients %}
-                <div class="client-logo">
-                    {% if client.logo %}
-                        <img src="{{ client.logo | relative_url }}" alt="{{ client.name }}" class="client-logo-img">
-                    {% else %}
-                        <div class="client-icon">{{ client.icon }}</div>
-                    {% endif %}
-                </div>
-                {% endfor %}
+    <div class="container">
+        <div class="clients-header">
+            <h2 class="clients-title">Kunder</h2>
+            <p class="clients-subtitle">Fra lokale virksomheder til internationale brands</p>
+            <p class="clients-subtitle">Komplekse muligheder bliver omsat til løsninger, der skaber varig værdi</p>
+        </div>
+        
+        <div class="clients-logos">
+            {% for client in site.data.clients %}
+            <div class="client-logo">
+                <div class="client-icon">{{ client.icon }}</div>
+                <span>{{ client.name }}</span>
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -198,51 +166,42 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
     <div class="container">
         <div class="contact-content">
             <div class="contact-info">
-                <h3 data-i18n="contact.title">Book et møde</h3>
-                <p data-i18n="contact.description">Kontakt os for at høre mere om hvordan vi kan hjælpe din virksomhed med AI-implementering.</p>
+                <h2 class="contact-title">Kontakt os</h2>
+                <p class="contact-description">Klar til at komme i gang med AI? Lad os høre fra jer.</p>
+                
                 <div class="contact-details">
                     <div class="contact-item">
                         <span class="contact-label">Telefon:</span>
-                        <span>{{ site.data.contact.phone }}</span>
+                        <span>{{ site.data.site.contact.phone }}</span>
                     </div>
                     <div class="contact-item">
                         <span class="contact-label">Email:</span>
-                        <span>{{ site.data.contact.email }}</span>
+                        <span>{{ site.data.site.contact.email }}</span>
                     </div>
                     <div class="contact-item">
                         <span class="contact-label">Adresse:</span>
-                        <span>{{ site.data.contact.address }}</span>
+                        <span>{{ site.data.site.contact.address }}</span>
                     </div>
                 </div>
             </div>
             
-            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <div class="form-group">
-                    <label for="name" class="form-label" data-i18n="form.nameLabel">Navn *</label>
-                    <input type="text" id="name" name="name" class="form-input" placeholder="Dit navn" data-i18n-placeholder="form.namePlaceholder" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email" class="form-label" data-i18n="form.emailLabel">Email *</label>
-                    <input type="email" id="email" name="email" class="form-input" placeholder="din.email@example.com" data-i18n-placeholder="form.emailPlaceholder" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone" class="form-label" data-i18n="form.phoneLabel">Telefon (valgfri)</label>
-                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="Dit telefonnummer" data-i18n-placeholder="form.phonePlaceholder">
-                </div>
-                
-                <div class="form-group">
-                    <label for="message" class="form-label" data-i18n="form.messageLabel">Besked *</label>
-                    <textarea id="message" name="message" class="form-textarea" placeholder="Hvordan kan vi hjælpe dig?" data-i18n-placeholder="form.messagePlaceholder" required></textarea>
-                </div>
-                
-                <button type="submit" class="form-submit" data-i18n="form.submit">Send</button>
-                
-                <p class="form-disclaimer" data-i18n="form.disclaimer">
-                    Ved at indsende denne formular accepterer du vores privatlivspolitik og servicevilkår.
-                </p>
-            </form>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Navn" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="company" placeholder="Virksomhed">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Besked" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Send besked</button>
+                </form>
+            </div>
         </div>
     </div>
 </section>

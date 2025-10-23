@@ -1,0 +1,99 @@
+/* =========================
+   Responsive Design
+   ========================= */
+@media (max-width: 1024px) {
+  .nav {
+    display: none;
+  }
+  
+  .burger {
+    display: flex;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .section {
+    padding: 60px 0;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .team-member {
+    padding: 24px 20px;
+  }
+  
+  .team-details[aria-hidden="false"] {
+    max-height: 1000px;
+  }
+  
+  .team-details-content {
+    padding: 20px;
+  }
+  
+  .contact-links {
+    gap: 12px;
+  }
+  
+  .contact-link {
+    padding: 12px;
+    font-size: 13px;
+  }
+  
+  .clients-logos {
+    gap: 40px;
+  }
+  
+  .client-logo {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 36px;
+  }
+  
+  .hero-subtitle {
+    font-size: 16px;
+  }
+  
+  .services-title,
+  .ai-facts-title,
+  .team-title,
+  .clients-title {
+    font-size: 28px;
+  }
+  
+  .service-card,
+  .contact-form {
+    padding: 24px;
+  }
+}
