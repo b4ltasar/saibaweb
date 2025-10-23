@@ -473,14 +473,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.textContent = translations[getCurrentLanguage()][key];
             }
         });
-        
-        // Special handling for team button
-        const teamCtaText = document.querySelector('.team-cta-text');
-        if (teamCtaText) {
-            const teamExpandBtn = document.getElementById('teamExpandBtn');
-            const isExpanded = teamExpandBtn && teamExpandBtn.classList.contains('expanded');
-            teamCtaText.textContent = isExpanded ? translate('team.cta.expanded') : translate('team.cta');
-        }
     }
     
     function translate(key) {
@@ -497,10 +489,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (teamExpandBtn && teamGrid) {
         let isExpanded = false;
         
-        // Initialize with correct translation
-        if (teamCtaText) {
-            teamCtaText.textContent = translate('team.cta');
-        }
+        // Initialize with correct translation via data-i18n system
+        updateTranslations();
         
         teamExpandBtn.addEventListener('click', function() {
             isExpanded = !isExpanded;
@@ -509,12 +499,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 teamGrid.classList.add('expanded');
                 teamExpandBtn.classList.add('expanded');
                 if (teamDivider) teamDivider.classList.add('expanded');
-                if (teamCtaText) teamCtaText.textContent = translate('team.cta.expanded');
+                if (teamCtaText) {
+                    teamCtaText.setAttribute('data-i18n', 'team.cta.expanded');
+                    teamCtaText.textContent = translate('team.cta.expanded');
+                }
             } else {
                 teamGrid.classList.remove('expanded');
                 teamExpandBtn.classList.remove('expanded');
                 if (teamDivider) teamDivider.classList.remove('expanded');
-                if (teamCtaText) teamCtaText.textContent = translate('team.cta');
+                if (teamCtaText) {
+                    teamCtaText.setAttribute('data-i18n', 'team.cta');
+                    teamCtaText.textContent = translate('team.cta');
+                }
             }
         });
         
@@ -522,11 +518,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const themeObserver = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                    if (teamCtaText) {
-                        teamCtaText.textContent = isExpanded ? translate('team.cta.expanded') : translate('team.cta');
-                    }
                     // Update all translations when theme changes
                     updateTranslations();
+                    
+                    // Update team button specifically
+                    if (teamCtaText) {
+                        const currentKey = isExpanded ? 'team.cta.expanded' : 'team.cta';
+                        teamCtaText.setAttribute('data-i18n', currentKey);
+                        teamCtaText.textContent = translate(currentKey);
+                    }
                 }
             });
         });
