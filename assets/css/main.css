@@ -1687,7 +1687,8 @@ body {
   opacity: 1;
 }
 
-.team-member .team-competencies-content p {
+.team-member .team-competencies-content p,
+.team-member .team-competencies-content {
   color: white !important;
   font-size: 14px;
   line-height: 1.6;
