@@ -512,31 +512,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Team Member Competencies Expand/Collapse
+    // Team Member Competencies Expand/Collapse - Only one at a time
     const teamExpandBtns = document.querySelectorAll('.team-expand-btn');
     teamExpandBtns.forEach((btn, index) => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
-            const memberIndex = this.getAttribute('data-member');
-            // Find the content div - it's the next sibling after the divider
             const content = this.parentElement.querySelector('.team-competencies-content');
-            const icon = this.querySelector('.team-expand-icon');
+            const isCurrentlyExpanded = content.classList.contains('expanded');
             
-            console.log('Clicked team member', index, 'expanded:', content.classList.contains('expanded'));
+            // ALWAYS close all team members first
+            teamExpandBtns.forEach((otherBtn) => {
+                const otherContent = otherBtn.parentElement.querySelector('.team-competencies-content');
+                otherContent.classList.remove('expanded');
+                otherBtn.classList.remove('expanded');
+            });
             
-            // Toggle this specific team member
-            if (content.classList.contains('expanded')) {
-                // Collapse this one
-                content.classList.remove('expanded');
-                this.classList.remove('expanded');
-                console.log('Collapsed team member', index);
-            } else {
-                // Expand this one
+            // Only expand the clicked one if it wasn't already expanded
+            if (!isCurrentlyExpanded) {
                 content.classList.add('expanded');
                 this.classList.add('expanded');
                 console.log('Expanded team member', index);
+            } else {
+                console.log('Collapsed team member', index);
             }
         });
     });

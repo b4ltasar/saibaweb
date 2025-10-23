@@ -18,24 +18,21 @@
   
   <!-- Prevent FOUC -->
   <style>
-    html {
+    /* Prevent FOUC - more robust approach for Arc browser */
+    html:not(.loaded) {
       visibility: hidden !important;
-      opacity: 0 !important;
     }
     html.loaded {
       visibility: visible !important;
-      opacity: 1 !important;
-      transition: opacity 0.1s ease;
     }
-    /* Hide all content until fully loaded */
+    /* Ensure body has proper background immediately */
     body {
+      background: var(--bg) !important;
+      color: var(--text) !important;
       visibility: hidden !important;
-      opacity: 0 !important;
     }
     html.loaded body {
       visibility: visible !important;
-      opacity: 1 !important;
-      transition: opacity 0.1s ease;
     }
     /* Hide header content until translations are loaded */
     .site-header .nav-links a,
@@ -57,22 +54,27 @@
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
   
   <script>
-    // Show page only after everything is fully loaded and translated
-    document.addEventListener('DOMContentLoaded', function() {
-      // Wait for fonts and translations to be ready
-      setTimeout(function() {
-        // Double-check that translations are applied
+    // More robust loading for Arc browser
+    function showPage() {
+      document.documentElement.classList.add('loaded');
+    }
+    
+    // Show page immediately if already loaded
+    if (document.readyState === 'complete') {
+      showPage();
+    } else {
+      // Show page on DOMContentLoaded
+      document.addEventListener('DOMContentLoaded', function() {
+        // Apply translations if available
         if (typeof updateTranslations === 'function') {
           updateTranslations();
         }
-        document.documentElement.classList.add('loaded');
-      }, 50);
-    });
-    
-    // Fallback to show page after 200ms if JS doesn't load
-    setTimeout(function() {
-      document.documentElement.classList.add('loaded');
-    }, 200);
+        showPage();
+      });
+      
+      // Fallback to show page after 100ms
+      setTimeout(showPage, 100);
+    }
   </script>
   
   <!-- SEO -->
