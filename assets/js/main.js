@@ -488,44 +488,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return translations[lang] && translations[lang][key] ? translations[lang][key] : translations['da'][key] || key;
     }
 
-    // Team Section Expand/Collapse
-    const teamExpandBtn = document.getElementById('teamExpandBtn');
-    const teamGrid = document.getElementById('teamGrid');
-    const teamDivider = document.getElementById('teamDivider');
-    const teamCtaText = teamExpandBtn ? teamExpandBtn.querySelector('.team-cta-text') : null;
-    
-    if (teamExpandBtn && teamGrid) {
-        let isExpanded = false;
-        
-        // Initialize with correct translation via data-i18n system
-        updateTranslations();
-        
-        teamExpandBtn.addEventListener('click', function() {
-            isExpanded = !isExpanded;
-            
-            if (isExpanded) {
-                teamGrid.classList.add('expanded');
-                teamExpandBtn.classList.add('expanded');
-                if (teamDivider) teamDivider.classList.add('expanded');
-            } else {
-                teamGrid.classList.remove('expanded');
-                teamExpandBtn.classList.remove('expanded');
-                if (teamDivider) teamDivider.classList.remove('expanded');
-            }
-        });
-        
-        // Update text when theme changes
-        const themeObserver = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                    // Update all translations when theme changes
-                    updateTranslations();
-                }
-            });
-        });
-        
-        themeObserver.observe(html, { attributes: true, attributeFilter: ['class'] });
-    }
 
     // Team Member Competencies Expand/Collapse
     const teamExpandBtns = document.querySelectorAll('.team-expand-btn');
