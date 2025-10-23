@@ -1,0 +1,13 @@
+hero:
+  title: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI for dine medarbejdere"
+  subtitle: "Vi gentænker måden, vi arbejder på. Med mennesker i centrum og teknologi som motor."
+  cta_text: "GET IN TOUCH"
+  cta_link: "#contact"
+
+contact:
+  phone: "+45 3141 2829"
+  email: "info@saiba.dk"
+  address: "Copenhagen, Denmark"
+
+social:
+  linkedin: "#"

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* Reset & Base */
@@ -2799,3 +2800,17 @@ body.mobile-drawer-open .site-header .burger {
     scroll-behavior: auto !important;
   }
 }
+=======
+/* =========================
+   SAIBA Website - Main Stylesheet
+   Modular CSS Architecture
+   ========================= */
+
+/* Import all CSS modules */
+@import url('base.css');
+@import url('layout.css');
+@import url('components.css');
+@import url('responsive.css');
+
+
+>>>>>>> Stashed changes

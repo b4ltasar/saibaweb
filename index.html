@@ -14,10 +14,23 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
     <div class="container">
         <div class="hero-content">
             <div class="hero-text">
+<<<<<<< Updated upstream
                 <div class="hero-arrow">→</div>
                 <p class="hero-description" data-i18n="hero.subtitle">{{ site.description }}</p>
                 <h1 class="hero-title" data-i18n="hero.title">Vi gentænker måden, vi arbejder på. Med mennesker i centrum og teknologi som motor.</h1>
                 <a href="#contact" class="hero-cta" data-i18n="hero.cta">Kontakt</a>
+=======
+                <h1 class="hero-title">{{ site.data.site.hero.title }}</h1>
+                <p class="hero-subtitle">{{ site.data.site.hero.subtitle }}</p>
+                <a href="{{ site.data.site.hero.cta_link }}" class="hero-cta">{{ site.data.site.hero.cta_text }}</a>
+            </div>
+            <div class="hero-image">
+                <div class="hero-placeholder">
+                    <div class="hero-icon">🚀</div>
+                    <h3>AI-Powered Workplace</h3>
+                    <p>Hero billede kommer her<br><small>Upload dit billede til assets/images/hero-image.jpg</small></p>
+                </div>
+>>>>>>> Stashed changes
             </div>
         </div>
     </div>
@@ -25,6 +38,7 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 
 <!-- Services Section -->
 <section class="services section" id="services">
+<<<<<<< Updated upstream
     <div class="services-container">
         <div class="services-content">
             <div class="services-text">
@@ -71,7 +85,27 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                     <p class="service-description" data-i18n="services.card{{ forloop.index }}.description">{{ service.description }}</p>
                 </div>
                 {% endfor %}
+=======
+    <div class="container">
+        <div class="services-header">
+            <h2 class="services-title">Ydelser</h2>
+            <p class="services-subtitle">Vi tilbyder omfattende AI-løsninger der transformerer din virksomhed</p>
+        </div>
+        
+        <div class="services-grid">
+            {% for service in site.data.services %}
+            <div class="service-card">
+                <div class="service-icon">{{ service.icon }}</div>
+                <h3 class="service-title">{{ service.title }}</h3>
+                <p class="service-description">{{ service.description }}</p>
+                <ul class="service-list">
+                    {% for feature in service.features %}
+                    <li>{{ feature }}</li>
+                    {% endfor %}
+                </ul>
+>>>>>>> Stashed changes
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -127,6 +161,7 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
             </div>
         </div>
         
+<<<<<<< Updated upstream
         <!-- Team Divider Line -->
         <div class="team-divider" id="teamDivider"></div>
         
@@ -163,6 +198,66 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                     </button>
                     <div class="team-competencies-content" data-i18n="{{ member.competencies }}">
                         {{ member.competencies }}
+=======
+        <div class="team-grid">
+            {% for member in site.data.team %}
+            <div class="team-member" data-member-id="{{ forloop.index0 }}">
+                <div class="team-photo {{ member.photo_class }}">
+                    <span>{{ member.initials }}</span>
+                </div>
+                <h3 class="team-name">{{ member.name }}</h3>
+                <p class="team-role">{{ member.role }}</p>
+                <p class="team-bio">{{ member.bio }}</p>
+                
+                <button class="team-expand-btn" aria-expanded="false" aria-controls="team-details-{{ forloop.index0 }}">
+                    <span class="expand-text">Se mere</span>
+                    <span class="expand-icon">+</span>
+                </button>
+                
+                <div class="team-details" id="team-details-{{ forloop.index0 }}" aria-hidden="true">
+                    <div class="team-details-content">
+                        <div class="detail-section">
+                            <h4>Erfaring</h4>
+                            <p>{{ member.details.experience }}</p>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h4>Specialer</h4>
+                            <ul class="specialty-list">
+                                {% for specialty in member.details.specialties %}
+                                <li>{{ specialty }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h4>Uddannelse</h4>
+                            <p>{{ member.details.education }}</p>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h4>Præstationer</h4>
+                            <ul class="achievement-list">
+                                {% for achievement in member.details.achievements %}
+                                <li>{{ achievement }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        
+                        <div class="detail-section contact-section">
+                            <h4>Kontakt</h4>
+                            <div class="contact-links">
+                                <a href="mailto:{{ member.details.contact.email }}" class="contact-link">
+                                    <span class="contact-icon">✉️</span>
+                                    {{ member.details.contact.email }}
+                                </a>
+                                <a href="https://{{ member.details.contact.linkedin }}" target="_blank" class="contact-link">
+                                    <span class="contact-icon">💼</span>
+                                    LinkedIn
+                                </a>
+                            </div>
+                        </div>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>
@@ -173,6 +268,7 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
 
 <!-- Clients Section -->
 <section class="clients section" id="clients">
+<<<<<<< Updated upstream
     <div class="clients-container">
         <div class="clients-content">
             <h2 class="clients-main-text" data-i18n="clients.title">I samarbejde med</h2>
@@ -188,7 +284,22 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                     {% endif %}
                 </div>
                 {% endfor %}
+=======
+    <div class="container">
+        <div class="clients-header">
+            <h2 class="clients-title">Kunder</h2>
+            <p class="clients-subtitle">Fra lokale virksomheder til internationale brands</p>
+            <p class="clients-subtitle">Komplekse muligheder bliver omsat til løsninger, der skaber varig værdi</p>
+        </div>
+        
+        <div class="clients-logos">
+            {% for client in site.data.clients %}
+            <div class="client-logo">
+                <div class="client-icon">{{ client.icon }}</div>
+                <span>{{ client.name }}</span>
+>>>>>>> Stashed changes
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -203,6 +314,7 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                 <div class="contact-details">
                     <div class="contact-item">
                         <span class="contact-label">Telefon:</span>
+<<<<<<< Updated upstream
                         <span>{{ site.data.contact.phone }}</span>
                     </div>
                     <div class="contact-item">
@@ -212,6 +324,17 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                     <div class="contact-item">
                         <span class="contact-label">Adresse:</span>
                         <span>{{ site.data.contact.address }}</span>
+=======
+                        <span>{{ site.data.site.contact.phone }}</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Email:</span>
+                        <span>{{ site.data.site.contact.email }}</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Adresse:</span>
+                        <span>{{ site.data.site.contact.address }}</span>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>

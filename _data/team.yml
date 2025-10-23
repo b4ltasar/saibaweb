@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 - name: "team.peter.name"
   initials: "PH"
   role: "team.peter.role"
@@ -38,3 +39,88 @@
   email: ""
   color: "gradient-4"
 
+=======
+- name: "Peter Humaidan"
+  role: "Co-Founder & Partner"
+  bio: "AI strategi og teknologisk innovation"
+  initials: "PH"
+  photo_class: "team-photo-1"
+  details:
+    experience: "15+ års erfaring inden for AI og machine learning"
+    specialties:
+      - "AI Strategy & Roadmapping"
+      - "Machine Learning Implementation"
+      - "Digital Transformation"
+      - "Technology Leadership"
+    education: "MSc Computer Science, DTU"
+    achievements:
+      - "Led AI transformation for 50+ companies"
+      - "Published researcher in AI ethics"
+      - "Former CTO at tech unicorn"
+    contact:
+      email: "peter@saiba.dk"
+      linkedin: "linkedin.com/in/peterhumaidan"
+
+- name: "Jens Jepsen"
+  role: "Co-Founder & Partner"
+  bio: "Produktudvikling og implementering"
+  initials: "JJ"
+  photo_class: "team-photo-2"
+  details:
+    experience: "12+ års erfaring med produktudvikling og agile metoder"
+    specialties:
+      - "Product Development"
+      - "Agile & Scrum Methodologies"
+      - "User Experience Design"
+      - "Technical Implementation"
+    education: "MSc Engineering, KTH Stockholm"
+    achievements:
+      - "Built 20+ successful AI products"
+      - "Certified Scrum Master & Product Owner"
+      - "Award-winning UX designer"
+    contact:
+      email: "jens@saiba.dk"
+      linkedin: "linkedin.com/in/jensjepsen"
+
+- name: "Gustav Friis"
+  role: "Co-Founder & Partner"
+  bio: "Forretningsudvikling og kundeoplevelse"
+  initials: "GF"
+  photo_class: "team-photo-3"
+  details:
+    experience: "10+ års erfaring med forretningsudvikling og kundeforhold"
+    specialties:
+      - "Business Development"
+      - "Customer Experience"
+      - "Sales & Marketing"
+      - "Strategic Partnerships"
+    education: "MBA, Copenhagen Business School"
+    achievements:
+      - "Grew revenue 500% at previous company"
+      - "Expert in B2B customer journey mapping"
+      - "International speaker on CX"
+    contact:
+      email: "gustav@saiba.dk"
+      linkedin: "linkedin.com/in/gustavfriis"
+
+- name: "Frederik Hansson"
+  role: "Co-Founder & Partner"
+  bio: "Teknisk arkitektur og skalerbarhed"
+  initials: "FH"
+  photo_class: "team-photo-4"
+  details:
+    experience: "14+ års erfaring med systemarkitektur og cloud teknologier"
+    specialties:
+      - "System Architecture"
+      - "Cloud Infrastructure"
+      - "DevOps & Automation"
+      - "Scalability Engineering"
+    education: "MSc Software Engineering, ITU"
+    achievements:
+      - "Architected systems serving 10M+ users"
+      - "AWS & Azure certified solutions architect"
+      - "Open source contributor"
+    contact:
+      email: "frederik@saiba.dk"
+      linkedin: "linkedin.com/in/frederikhansson"
+>>>>>>> Stashed changes
