@@ -541,6 +541,13 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
       updateTranslations();
     }, 10);
+    
+    // Wait for fonts to load before showing page
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function() {
+        updateTranslations();
+      });
+    }
 
     // SAIBA website initialized successfully! 🚀
 });

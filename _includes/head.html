@@ -19,13 +19,23 @@
   <!-- Prevent FOUC -->
   <style>
     html {
-      visibility: hidden;
-      opacity: 0;
+      visibility: hidden !important;
+      opacity: 0 !important;
     }
     html.loaded {
-      visibility: visible;
-      opacity: 1;
-      transition: opacity 0.1s ease;
+      visibility: visible !important;
+      opacity: 1 !important;
+      transition: opacity 0.2s ease;
+    }
+    /* Hide all content until fully loaded */
+    body {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    html.loaded body {
+      visibility: visible !important;
+      opacity: 1 !important;
+      transition: opacity 0.2s ease;
     }
     /* Hide header content until translations are loaded */
     .site-header .nav-links a,
@@ -33,7 +43,7 @@
     .mobile-drawer-nav a,
     .mobile-drawer-lang-toggle {
       opacity: 0;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.3s ease;
     }
     html.loaded .site-header .nav-links a,
     html.loaded .site-header .language-toggle,
@@ -41,10 +51,14 @@
     html.loaded .mobile-drawer-lang-toggle {
       opacity: 1;
     }
-    /* Fallback if JS doesn't load - show immediately after CSS loads */
+    /* Fallback if JS doesn't load - show after 1 second */
     html:not(.loaded) {
-      visibility: visible;
-      opacity: 1;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    html:not(.loaded) body {
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     html:not(.loaded) .site-header .nav-links a,
     html:not(.loaded) .site-header .language-toggle,
@@ -58,18 +72,22 @@
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
   
   <script>
-    // Show page after everything is loaded and translated
+    // Show page only after everything is fully loaded and translated
     document.addEventListener('DOMContentLoaded', function() {
-      // Small delay to ensure translations are applied
+      // Wait for fonts and translations to be ready
       setTimeout(function() {
+        // Double-check that translations are applied
+        if (typeof updateTranslations === 'function') {
+          updateTranslations();
+        }
         document.documentElement.classList.add('loaded');
-      }, 50);
+      }, 100);
     });
     
-    // Fallback to show page after 300ms if JS doesn't load
+    // Fallback to show page after 1 second if JS doesn't load
     setTimeout(function() {
       document.documentElement.classList.add('loaded');
-    }, 300);
+    }, 1000);
   </script>
   
   <!-- SEO -->

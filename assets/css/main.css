@@ -23,6 +23,15 @@ html.loaded .mobile-drawer-lang-toggle {
   opacity: 1;
 }
 
+/* Additional FOUC prevention */
+html:not(.loaded) * {
+  visibility: hidden !important;
+}
+
+html.loaded * {
+  visibility: visible !important;
+}
+
 :root {
   --bg: #ffffff;
   --text: #0f172a;
