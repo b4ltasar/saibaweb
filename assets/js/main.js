@@ -535,15 +535,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const content = this.nextElementSibling;
             const icon = this.querySelector('.team-expand-icon');
             
-            // First, close ALL team members (including this one)
-            teamExpandBtns.forEach(otherBtn => {
-                const otherContent = otherBtn.nextElementSibling;
-                otherContent.classList.remove('expanded');
-                otherBtn.classList.remove('expanded');
-            });
-            
-            // If this wasn't expanded, expand it
-            if (!content.classList.contains('expanded')) {
+            // Toggle this specific team member
+            if (content.classList.contains('expanded')) {
+                // Collapse this one
+                content.classList.remove('expanded');
+                this.classList.remove('expanded');
+            } else {
+                // Expand this one
                 content.classList.add('expanded');
                 this.classList.add('expanded');
             }
