@@ -1622,6 +1622,65 @@ body {
   transform: translateY(-1px);
 }
 
+/* Team Competencies */
+.team-competencies {
+  margin-top: 12px;
+}
+
+.team-expand-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 auto;
+}
+
+.team-expand-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.team-expand-icon {
+  font-size: 16px;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.team-expand-btn.expanded .team-expand-icon {
+  transform: rotate(45deg);
+}
+
+.team-competencies-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin-top: 12px;
+  padding: 0 16px;
+}
+
+.team-competencies-content.expanded {
+  max-height: 200px;
+  padding: 16px;
+}
+
+.team-competencies-content p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

@@ -450,11 +450,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const translations = {
         da: {
             'team.cta': 'TEAM',
-            'team.cta.expanded': 'TEAM'
+            'team.cta.expanded': 'TEAM',
+            'team.competencies': 'Kompetencer',
+            'team.peter.competencies': 'AI-strategi, Machine Learning, Data Science, Cloud Architecture, Team Leadership',
+            'team.jens.competencies': 'Produktudvikling, AI-implementering, UX/UI Design, Agile Methodologies, Innovation',
+            'team.gustav.competencies': 'Forretningsudvikling, Kundeoplevelse, Strategisk Planlægning, Markedsanalyse, Partnerships',
+            'team.frederik.competencies': 'Teknisk Arkitektur, Skalerbarhed, DevOps, System Integration, Performance Optimization'
         },
         en: {
             'team.cta': 'TEAM',
-            'team.cta.expanded': 'TEAM'
+            'team.cta.expanded': 'TEAM',
+            'team.competencies': 'Competencies',
+            'team.peter.competencies': 'AI Strategy, Machine Learning, Data Science, Cloud Architecture, Team Leadership',
+            'team.jens.competencies': 'Product Development, AI Implementation, UX/UI Design, Agile Methodologies, Innovation',
+            'team.gustav.competencies': 'Business Development, Customer Experience, Strategic Planning, Market Analysis, Partnerships',
+            'team.frederik.competencies': 'Technical Architecture, Scalability, DevOps, System Integration, Performance Optimization'
         }
     };
     
@@ -518,6 +528,26 @@ document.addEventListener('DOMContentLoaded', function() {
         
         themeObserver.observe(html, { attributes: true, attributeFilter: ['class'] });
     }
+
+    // Team Member Competencies Expand/Collapse
+    const teamExpandBtns = document.querySelectorAll('.team-expand-btn');
+    teamExpandBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const memberIndex = this.getAttribute('data-member');
+            const content = this.nextElementSibling;
+            const icon = this.querySelector('.team-expand-icon');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                this.classList.remove('expanded');
+                icon.textContent = '+';
+            } else {
+                content.classList.add('expanded');
+                this.classList.add('expanded');
+                icon.textContent = '−';
+            }
+        });
+    });
 
     // Initialize translations on page load
     updateTranslations();
