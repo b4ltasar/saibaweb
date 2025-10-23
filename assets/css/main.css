@@ -1667,10 +1667,11 @@ body {
   transform: rotate(180deg);
 }
 
+/* Team member competencies - individual control */
 .team-competencies-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
+  transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
   background: transparent;
   border: none;
   border-radius: 12px;
@@ -1686,29 +1687,12 @@ body {
   opacity: 1;
 }
 
-.team-competencies-content p,
-.team-competencies-content {
+.team-competencies-content p {
   color: white !important;
   font-size: 14px;
   line-height: 1.6;
   margin: 0;
   text-align: left;
-}
-
-/* Team member competencies - individual control */
-.team-member .team-competencies-content {
-  max-height: 0;
-  opacity: 0;
-  padding: 0 16px;
-  border: none;
-  transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
-}
-
-.team-member .team-competencies-content.expanded {
-  max-height: 800px;
-  opacity: 1;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @keyframes fadeInUp {

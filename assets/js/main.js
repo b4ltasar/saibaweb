@@ -529,21 +529,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Team Member Competencies Expand/Collapse
     const teamExpandBtns = document.querySelectorAll('.team-expand-btn');
-    teamExpandBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
+    teamExpandBtns.forEach((btn, index) => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
             const memberIndex = this.getAttribute('data-member');
             const content = this.nextElementSibling;
             const icon = this.querySelector('.team-expand-icon');
+            
+            console.log('Clicked team member', index, 'expanded:', content.classList.contains('expanded'));
             
             // Toggle this specific team member
             if (content.classList.contains('expanded')) {
                 // Collapse this one
                 content.classList.remove('expanded');
                 this.classList.remove('expanded');
+                console.log('Collapsed team member', index);
             } else {
                 // Expand this one
                 content.classList.add('expanded');
                 this.classList.add('expanded');
+                console.log('Expanded team member', index);
             }
         });
     });
