@@ -7,6 +7,22 @@
   box-sizing: border-box;
 }
 
+/* Prevent FOUC for navigation text */
+.site-header .nav-links a,
+.site-header .language-toggle,
+.mobile-drawer-nav a,
+.mobile-drawer-lang-toggle {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+html.loaded .site-header .nav-links a,
+html.loaded .site-header .language-toggle,
+html.loaded .mobile-drawer-nav a,
+html.loaded .mobile-drawer-lang-toggle {
+  opacity: 1;
+}
+
 :root {
   --bg: #ffffff;
   --text: #0f172a;

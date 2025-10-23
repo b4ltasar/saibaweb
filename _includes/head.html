@@ -27,9 +27,29 @@
       opacity: 1;
       transition: opacity 0.1s ease;
     }
+    /* Hide header content until translations are loaded */
+    .site-header .nav-links a,
+    .site-header .language-toggle,
+    .mobile-drawer-nav a,
+    .mobile-drawer-lang-toggle {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    html.loaded .site-header .nav-links a,
+    html.loaded .site-header .language-toggle,
+    html.loaded .mobile-drawer-nav a,
+    html.loaded .mobile-drawer-lang-toggle {
+      opacity: 1;
+    }
     /* Fallback if JS doesn't load - show immediately after CSS loads */
     html:not(.loaded) {
       visibility: visible;
+      opacity: 1;
+    }
+    html:not(.loaded) .site-header .nav-links a,
+    html:not(.loaded) .site-header .language-toggle,
+    html:not(.loaded) .mobile-drawer-nav a,
+    html:not(.loaded) .mobile-drawer-lang-toggle {
       opacity: 1;
     }
   </style>
@@ -38,15 +58,18 @@
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
   
   <script>
-    // Show page immediately when DOM is ready
+    // Show page after everything is loaded and translated
     document.addEventListener('DOMContentLoaded', function() {
-      document.documentElement.classList.add('loaded');
+      // Small delay to ensure translations are applied
+      setTimeout(function() {
+        document.documentElement.classList.add('loaded');
+      }, 50);
     });
     
-    // Fallback to show page after 200ms if JS doesn't load
+    // Fallback to show page after 300ms if JS doesn't load
     setTimeout(function() {
       document.documentElement.classList.add('loaded');
-    }, 200);
+    }, 300);
   </script>
   
   <!-- SEO -->

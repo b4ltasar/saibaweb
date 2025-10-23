@@ -536,6 +536,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize translations on page load
     updateTranslations();
+    
+    // Ensure translations are applied before showing page
+    setTimeout(function() {
+      updateTranslations();
+    }, 10);
 
     // SAIBA website initialized successfully! 🚀
 });
