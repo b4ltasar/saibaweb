@@ -449,12 +449,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Internationalization
     const translations = {
         da: {
-            'team.cta': 'Se vores team',
-            'team.cta.expanded': 'Skjul team'
+            'team.cta': 'TEAM',
+            'team.cta.expanded': 'TEAM'
         },
         en: {
-            'team.cta': 'See our team',
-            'team.cta.expanded': 'Hide team'
+            'team.cta': 'TEAM',
+            'team.cta.expanded': 'TEAM'
         }
     };
     
@@ -499,18 +499,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 teamGrid.classList.add('expanded');
                 teamExpandBtn.classList.add('expanded');
                 if (teamDivider) teamDivider.classList.add('expanded');
-                if (teamCtaText) {
-                    teamCtaText.setAttribute('data-i18n', 'team.cta.expanded');
-                    teamCtaText.textContent = translate('team.cta.expanded');
-                }
             } else {
                 teamGrid.classList.remove('expanded');
                 teamExpandBtn.classList.remove('expanded');
                 if (teamDivider) teamDivider.classList.remove('expanded');
-                if (teamCtaText) {
-                    teamCtaText.setAttribute('data-i18n', 'team.cta');
-                    teamCtaText.textContent = translate('team.cta');
-                }
             }
         });
         
@@ -520,13 +512,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                     // Update all translations when theme changes
                     updateTranslations();
-                    
-                    // Update team button specifically
-                    if (teamCtaText) {
-                        const currentKey = isExpanded ? 'team.cta.expanded' : 'team.cta';
-                        teamCtaText.setAttribute('data-i18n', currentKey);
-                        teamCtaText.textContent = translate(currentKey);
-                    }
                 }
             });
         });
