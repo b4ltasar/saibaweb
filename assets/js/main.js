@@ -535,7 +535,8 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
             
             const memberIndex = this.getAttribute('data-member');
-            const content = this.nextElementSibling;
+            // Find the content div - it's the next sibling after the divider
+            const content = this.parentElement.querySelector('.team-competencies-content');
             const icon = this.querySelector('.team-expand-icon');
             
             console.log('Clicked team member', index, 'expanded:', content.classList.contains('expanded'));
