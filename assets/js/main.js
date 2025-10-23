@@ -514,37 +514,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Team Member Competencies Expand/Collapse - Only one at a time
     function initTeamExpansion() {
-        const teamExpandBtns = document.querySelectorAll('.team-expand-btn');
-        console.log('Found team expand buttons:', teamExpandBtns.length);
-        
-        teamExpandBtns.forEach((btn, index) => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                console.log('Clicked team member button:', index);
-                
-                const content = this.parentElement.querySelector('.team-competencies-content');
-                const isCurrentlyExpanded = content.classList.contains('expanded');
-                
-                // ALWAYS close all team members first
-                teamExpandBtns.forEach((otherBtn, otherIndex) => {
-                    const otherContent = otherBtn.parentElement.querySelector('.team-competencies-content');
-                    otherContent.classList.remove('expanded');
-                    otherBtn.classList.remove('expanded');
-                    console.log('Closed team member:', otherIndex);
-                });
-                
-                // Only expand the clicked one if it wasn't already expanded
-                if (!isCurrentlyExpanded) {
-                    content.classList.add('expanded');
-                    this.classList.add('expanded');
-                    console.log('Expanded team member:', index);
-                } else {
-                    console.log('Collapsed team member:', index);
-                }
+        // Wait a bit for DOM to be fully ready
+        setTimeout(() => {
+            const teamExpandBtns = document.querySelectorAll('.team-expand-btn');
+            console.log('Found team expand buttons:', teamExpandBtns.length);
+            
+            teamExpandBtns.forEach((btn, index) => {
+                // Remove any existing listeners
+                btn.removeEventListener('click', handleTeamClick);
+                // Add new listener
+                btn.addEventListener('click', handleTeamClick);
             });
+        }, 200);
+    }
+    
+    function handleTeamClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const btn = e.currentTarget;
+        const content = btn.parentElement.querySelector('.team-competencies-content');
+        const isCurrentlyExpanded = content.classList.contains('expanded');
+        
+        console.log('Team button clicked, currently expanded:', isCurrentlyExpanded);
+        
+        // Get all buttons again to close others
+        const allBtns = document.querySelectorAll('.team-expand-btn');
+        
+        // ALWAYS close all team members first
+        allBtns.forEach((otherBtn) => {
+            const otherContent = otherBtn.parentElement.querySelector('.team-competencies-content');
+            otherContent.classList.remove('expanded');
+            otherBtn.classList.remove('expanded');
         });
+        
+        // Only expand the clicked one if it wasn't already expanded
+        if (!isCurrentlyExpanded) {
+            content.classList.add('expanded');
+            btn.classList.add('expanded');
+            console.log('Expanded team member');
+        } else {
+            console.log('Collapsed team member');
+        }
     }
     
     // Initialize team expansion after DOM is ready
