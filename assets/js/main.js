@@ -535,6 +535,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const content = this.nextElementSibling;
             const icon = this.querySelector('.team-expand-icon');
             
+            // Close all other expanded team members
+            teamExpandBtns.forEach(otherBtn => {
+                if (otherBtn !== this) {
+                    const otherContent = otherBtn.nextElementSibling;
+                    otherContent.classList.remove('expanded');
+                    otherBtn.classList.remove('expanded');
+                }
+            });
+            
             if (content.classList.contains('expanded')) {
                 // Collapse
                 content.classList.remove('expanded');
