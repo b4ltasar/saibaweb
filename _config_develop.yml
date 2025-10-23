@@ -1,0 +1,47 @@
+# Development configuration for GitHub Pages
+baseurl: "/saibaweb"
+url: "https://b4ltasar.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Plugins for GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - package.json
+  - package-lock.json
+  - .sass-cache/
+  - .jekyll-cache/
+  - .jekyll-metadata
+  - .git
+  - .gitignore
+  - .vscode
+
+# Include files
+include:
+  - _redirects
+
+# SEO
+author: "SAIBA"
+social:
+  name: "SAIBA"
+  links:
+    - "https://linkedin.com/company/saiba"
+
+# Custom variables
+lang: "da"
+timezone: "Europe/Copenhagen"
