@@ -451,7 +451,6 @@ document.addEventListener('DOMContentLoaded', function() {
         da: {
             'team.cta': 'TEAM',
             'team.cta.expanded': 'TEAM',
-            'team.competencies': 'Kompetencer',
             'team.peter.competencies': 'AI-strategi, Machine Learning, Data Science, Cloud Architecture, Team Leadership',
             'team.jens.competencies': 'Produktudvikling, AI-implementering, UX/UI Design, Agile Methodologies, Innovation',
             'team.gustav.competencies': 'Forretningsudvikling, Kundeoplevelse, Strategisk Planlægning, Markedsanalyse, Partnerships',
@@ -460,7 +459,6 @@ document.addEventListener('DOMContentLoaded', function() {
         en: {
             'team.cta': 'TEAM',
             'team.cta.expanded': 'TEAM',
-            'team.competencies': 'Competencies',
             'team.peter.competencies': 'AI Strategy, Machine Learning, Data Science, Cloud Architecture, Team Leadership',
             'team.jens.competencies': 'Product Development, AI Implementation, UX/UI Design, Agile Methodologies, Innovation',
             'team.gustav.competencies': 'Business Development, Customer Experience, Strategic Planning, Market Analysis, Partnerships',
@@ -540,11 +538,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (content.classList.contains('expanded')) {
                 content.classList.remove('expanded');
                 this.classList.remove('expanded');
-                icon.textContent = '+';
             } else {
                 content.classList.add('expanded');
                 this.classList.add('expanded');
-                icon.textContent = '−';
             }
         });
     });
