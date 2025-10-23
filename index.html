@@ -147,16 +147,6 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                     <p class="team-bio">{{ member.bio }}</p>
                 {% endif %}
                 
-                <!-- Competencies section -->
-                <div class="team-competencies">
-                    <button class="team-expand-btn" data-member="{{ forloop.index }}">
-                        <span class="team-expand-icon">▼</span>
-                    </button>
-                    <div class="team-competencies-content" data-i18n="{{ member.competencies }}">
-                        {{ member.competencies }}
-                    </div>
-                </div>
-                
                 {% if member.linkedin %}
                     <a href="{{ member.linkedin }}" target="_blank" class="team-linkedin">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -164,6 +154,17 @@ description: "Fra hverdagens rutiner til ekstraordinære superkræfter med AI fo
                         </svg>
                     </a>
                 {% endif %}
+                
+                <!-- Competencies section -->
+                <div class="team-competencies">
+                    <div class="team-expand-divider"></div>
+                    <button class="team-expand-btn" data-member="{{ forloop.index }}">
+                        <span class="team-expand-icon">▼</span>
+                    </button>
+                    <div class="team-competencies-content" data-i18n="{{ member.competencies }}">
+                        {{ member.competencies }}
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>

@@ -451,18 +451,18 @@ document.addEventListener('DOMContentLoaded', function() {
         da: {
             'team.cta': 'TEAM',
             'team.cta.expanded': 'TEAM',
-            'team.peter.competencies': 'AI-strategi, Machine Learning, Data Science, Cloud Architecture, Team Leadership',
-            'team.jens.competencies': 'Produktudvikling, AI-implementering, UX/UI Design, Agile Methodologies, Innovation',
-            'team.gustav.competencies': 'Forretningsudvikling, Kundeoplevelse, Strategisk Planlægning, Markedsanalyse, Partnerships',
-            'team.frederik.competencies': 'Teknisk Arkitektur, Skalerbarhed, DevOps, System Integration, Performance Optimization'
+            'team.gustav.competencies': 'Gustav har arbejdet med blockchain og open-source teknologi siden 2016 og har bidraget til projekter som BrainBot (Ethereum), Linkdrop og NEAR Foundation. Han kombinerer dyb teknisk indsigt med erfaring inden for produktstrategi og forretningsudvikling i internationale miljøer. Hos SAIBA leder Gustav den tekniske og strategiske udvikling med fokus på, hvordan AI og ny teknologi kan omsættes til løsninger, der skaber målbar værdi for virksomheder og organisationer.',
+            'team.peter.competencies': 'Peter har arbejdet med blockchain, AI og digitale produkter siden 2021 og har været en central del af NEAR-økosystemet – først i NEAR Foundation og siden som stifter af NEARWEEK. Han har solid erfaring med produktudvikling, strategi og positionering samt i at bygge bro mellem teknologi, brand og brugeroplevelse. Hos SAIBA arbejder Peter med forretningsstrategi og produktretning med fokus på at forene teknologisk innovation med klare kommunikations- og markedsmål.',
+            'team.frederik.competencies': 'Frederik har arbejdet med blockchain og AI siden 2020 og kombinerer kreativ tænkning med en strategisk forståelse for, hvordan teknologi kan styrke forretning og organisation. Han har mere end ti års erfaring fra modebranchen, herunder som COO for Revolver Trade Show. Hos SAIBA arbejder Frederik med strategi, udvikling og ledelse med fokus på, at teknologi implementeres med tydelig retning, effekt og forretningsmæssig værdi.',
+            'team.jens.competencies': 'Jens har en baggrund som snedker og kunsthistoriker og har siden 2021 arbejdet med blockchain og AI – særligt inden for marketing, design og regenerative AI-projekter. Han forener håndværksmæssig præcision med kreativ forståelse og evnen til at omsætte idéer til klare visuelle koncepter. Hos SAIBA arbejder Jens med konceptudvikling, visuel retning og anvendelsen af AI i kreative og kommunikative processer.'
         },
         en: {
             'team.cta': 'TEAM',
             'team.cta.expanded': 'TEAM',
-            'team.peter.competencies': 'AI Strategy, Machine Learning, Data Science, Cloud Architecture, Team Leadership',
-            'team.jens.competencies': 'Product Development, AI Implementation, UX/UI Design, Agile Methodologies, Innovation',
-            'team.gustav.competencies': 'Business Development, Customer Experience, Strategic Planning, Market Analysis, Partnerships',
-            'team.frederik.competencies': 'Technical Architecture, Scalability, DevOps, System Integration, Performance Optimization'
+            'team.gustav.competencies': 'Gustav has worked with blockchain and open-source technology since 2016 and has contributed to projects like BrainBot (Ethereum), Linkdrop and NEAR Foundation. He combines deep technical insight with experience in product strategy and business development in international environments. At SAIBA, Gustav leads technical and strategic development with a focus on how AI and new technology can be translated into solutions that create measurable value for companies and organizations.',
+            'team.peter.competencies': 'Peter has worked with blockchain, AI and digital products since 2021 and has been a central part of the NEAR ecosystem – first at NEAR Foundation and later as founder of NEARWEEK. He has solid experience with product development, strategy and positioning as well as building bridges between technology, brand and user experience. At SAIBA, Peter works with business strategy and product direction with a focus on uniting technological innovation with clear communication and marketing goals.',
+            'team.frederik.competencies': 'Frederik has worked with blockchain and AI since 2020 and combines creative thinking with a strategic understanding of how technology can strengthen business and organization. He has more than ten years of experience from the fashion industry, including as COO for Revolver Trade Show. At SAIBA, Frederik works with strategy, development and leadership with a focus on technology being implemented with clear direction, effect and business value.',
+            'team.jens.competencies': 'Jens has a background as a carpenter and art historian and has since 2021 worked with blockchain and AI – particularly within marketing, design and regenerative AI projects. He combines craft precision with creative understanding and the ability to translate ideas into clear visual concepts. At SAIBA, Jens works with concept development, visual direction and the application of AI in creative and communicative processes.'
         }
     };
     
