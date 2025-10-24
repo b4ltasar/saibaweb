@@ -2,12 +2,12 @@
   icon: "🍺"
   logo: "/assets/images/kronenbourg.png"
   description: "Premium beer brand"
-  
+
 - name: "Carlsberg"
   icon: "🍺"
   logo: "/assets/images/carlsberglogo.png"
   description: "Global brewing company"
-  
+
 - name: "NEAR Protocol"
   icon: "⚡"
   logo: "/assets/images/nearlogo.png"
