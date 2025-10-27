@@ -29,7 +29,7 @@ const base = import.meta.env.BASE_URL;
           id="logo-link"
           class="block transition-opacity duration-300"
         >
-          <img src={`${base}SAIBAwhite.svg`} alt="SAIBA" class="h-8 w-auto" style="height: 32px !important;" />
+          <img src={`${base}/SAIBAwhite.svg`} alt="SAIBA" class="h-8 w-auto" style="height: 32px !important;" />
         </a>
       </div>
 
@@ -75,7 +75,7 @@ const base = import.meta.env.BASE_URL;
             {
               lang === "da" ? (
                 <img
-                  src={`${base}icons/en-button.svg`}
+                  src={`${base}/icons/en-button.svg`}
                   alt="Switch to English"
                   class="h-7 w-auto"
                 />
@@ -130,7 +130,7 @@ const base = import.meta.env.BASE_URL;
           class="flex items-center justify-between p-6 border-b border-gray-200 bg-white"
         >
           <div class="flex items-center space-x-3">
-            <img src={`${base}favicon.svg`} alt="SAIBA logo" class="h-12 w-12" />
+            <img src={`${base}/favicon.svg`} alt="SAIBA logo" class="h-12 w-12" />
           </div>
           <button
             class="close-mobile-menu text-gray-400 hover:text-gray-600 transition-colors"
@@ -309,7 +309,7 @@ const base = import.meta.env.BASE_URL;
 
         // Keep white logo styling
         if (logoImg) {
-          logoImg.src = `${base}SAIBAwhite.svg`;
+          logoImg.src = `${base}/SAIBAwhite.svg`;
           logoImg.style.height = "32px"; // Ensure consistent size
         }
 
