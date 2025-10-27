@@ -8,6 +8,9 @@ const t = useTranslations(lang);
 const currentPath = Astro.url.pathname.replace(/^\/(da|en)/, "") || "/";
 const otherLang = lang === "da" ? "en" : "da";
 const langSwitchUrl = `/${otherLang}${currentPath}`;
+
+// Base URL for assets
+const base = import.meta.env.BASE_URL;
 ---
 
 <header
@@ -26,7 +29,7 @@ const langSwitchUrl = `/${otherLang}${currentPath}`;
           id="logo-link"
           class="block transition-opacity duration-300"
         >
-          <img src="/SAIBAwhite.svg" alt="SAIBA" class="h-8 w-auto" style="height: 32px !important;" />
+          <img src={`${base}SAIBAwhite.svg`} alt="SAIBA" class="h-8 w-auto" style="height: 32px !important;" />
         </a>
       </div>
 
@@ -72,7 +75,7 @@ const langSwitchUrl = `/${otherLang}${currentPath}`;
             {
               lang === "da" ? (
                 <img
-                  src="/icons/en-button.svg"
+                  src={`${base}icons/en-button.svg`}
                   alt="Switch to English"
                   class="h-7 w-auto"
                 />
@@ -127,7 +130,7 @@ const langSwitchUrl = `/${otherLang}${currentPath}`;
           class="flex items-center justify-between p-6 border-b border-gray-200 bg-white"
         >
           <div class="flex items-center space-x-3">
-            <img src="/favicon.svg" alt="SAIBA logo" class="h-12 w-12" />
+            <img src={`${base}favicon.svg`} alt="SAIBA logo" class="h-12 w-12" />
           </div>
           <button
             class="close-mobile-menu text-gray-400 hover:text-gray-600 transition-colors"
@@ -185,7 +188,7 @@ const langSwitchUrl = `/${otherLang}${currentPath}`;
   </nav>
 </header>
 
-<script>
+<script define:vars={{ base }}>
   document.addEventListener("DOMContentLoaded", () => {
     const header = document.getElementById("header");
     const logoImg = document.getElementById("logo-link")?.querySelector("img");
@@ -306,7 +309,7 @@ const langSwitchUrl = `/${otherLang}${currentPath}`;
 
         // Keep white logo styling
         if (logoImg) {
-          logoImg.src = "/SAIBAwhite.svg";
+          logoImg.src = `${base}SAIBAwhite.svg`;
           logoImg.style.height = "32px"; // Ensure consistent size
         }
 
@@ -350,7 +353,7 @@ const langSwitchUrl = `/${otherLang}${currentPath}`;
 
         // Switch to dark logo styling
         if (logoImg) {
-          logoImg.src = "/SAIBAblack.svg";
+          logoImg.src = `${base}SAIBAblack.svg`;
           logoImg.style.height = "32px"; // Ensure consistent size
         }
 
