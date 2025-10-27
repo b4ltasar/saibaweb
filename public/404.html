@@ -11,6 +11,8 @@
     // Handle /saibaweb base path
     if (path.includes('/en') || path.endsWith('/en')) {
       window.location.replace('/saibaweb/en/');
+    } else if (path.includes('/da') || path.endsWith('/da')) {
+      window.location.replace('/saibaweb/da/');
     } else {
       // Default to Danish homepage
       window.location.replace('/saibaweb/');
