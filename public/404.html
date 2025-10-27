@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAIBA - Page Not Found</title>
+  <script>
+    // GitHub Pages 404 fallback
+    const path = window.location.pathname;
+    
+    // Remove base path if present
+    const cleanPath = path.replace('/saibaweb', '');
+    
+    // Check if we're trying to access English page
+    if (cleanPath.includes('/en') || cleanPath.startsWith('/en/')) {
+      window.location.replace('/saibaweb/en/');
+    } else {
+      // Default to Danish homepage
+      window.location.replace('/saibaweb/');
+    }
+  </script>
+</head>
+<body>
+  <noscript>
+    <p>Redirecting to <a href="/saibaweb/">homepage</a>...</p>
+  </noscript>
+</body>
+</html>
+

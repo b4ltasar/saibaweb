@@ -9,14 +9,13 @@ export default defineConfig({
   output: 'static', // VIGTIGT for GitHub Pages
   
   // GitHub Pages URL (ændres til custom domain senere)
-  site: process.env.NODE_ENV === 'production' 
-    ? 'https://b4ltasar.github.io'
-    : 'http://localhost:4321',
+  site: 'https://b4ltasar.github.io',
   
   // Repository navn for GitHub Pages
-  base: process.env.NODE_ENV === 'production' 
-    ? '/saibaweb'
-    : undefined,
+  base: '/saibaweb',
+  
+  // KRITISK for GitHub Pages routing
+  trailingSlash: 'always',
   
   vite: {
     plugins: [tailwindcss()]
@@ -26,6 +25,7 @@ export default defineConfig({
 
   // Performance optimizations
   build: {
+    format: 'directory', // Sikrer folder struktur
     inlineStylesheets: 'auto',
   },
 
