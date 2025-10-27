@@ -223,27 +223,29 @@ const langSwitchUrl = `${base}/${otherLang}${currentPath}`;
     menu?.addEventListener("click", (e) => {
       if (e.target === menu) closeMenu();
     });
+    
+    // Language switcher - handle without page reload
+    langToggle?.addEventListener("click", (e) => {
+      e.preventDefault();
+      const newUrl = langToggle.getAttribute("data-lang-url");
+      if (newUrl && window.SAIBA?.i18n) {
+        // Use client-side switcher if available
+        const newLang = newUrl.includes('/en/') ? 'en' : 'da';
+        window.SAIBA.i18n.setLang(newLang);
+      } else if (newUrl) {
+        // Fallback to page reload
+        window.location.href = newUrl;
+      }
+    });
 
     // Handle mobile nav links
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     mobileNavLinks.forEach(link => {
       link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const href = (link as HTMLAnchorElement).getAttribute('href');
-        const targetId = href?.split('#')[1];
+        closeMenu(); // Close menu immediately
         
-        if (targetId) {
-          const target = document.getElementById(targetId);
-          if (target) {
-            closeMenu(); // Close mobile menu first
-            setTimeout(() => {
-              target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
-            }, 300); // Wait for menu to close
-          }
-        }
+        // Let the default link behavior handle scrolling
+        // Just ensure the menu is closed
       });
     });
 
