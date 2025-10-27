@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl } from '../utils/i18n';
+import '../styles/global.css';
 
 export interface Props {
   title: string;
@@ -99,9 +100,6 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
     {import.meta.env.PROD && (
       <script defer data-domain="saiba.dk" src="https://plausible.io/js/script.js"></script>
     )}
-    
-    <!-- Import global styles -->
-    <link rel="stylesheet" href="/src/styles/global.css" />
     
     <!-- Prevent flash of unstyled content -->
     <style>
