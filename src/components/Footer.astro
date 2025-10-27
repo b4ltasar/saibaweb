@@ -14,7 +14,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
       <div>
         <!-- Logo -->
         <div class="mb-6">
-          <a href={`/${lang}`} class="block">
+          <a href={`${base}/${lang}`} class="block">
             <img 
               src={`${base}/SAIBAwhite.svg`}
               alt="SAIBA" 
@@ -41,16 +41,16 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
         <!-- Navigation Menu -->
         <nav class="mb-8">
           <div class="flex flex-col lg:items-end space-y-4">
-            <a href={`/${lang}#services`} class="text-gray-300 hover:text-white transition-colors text-lg">
+            <a href={`${base}/${lang}#services`} class="text-gray-300 hover:text-white transition-colors text-lg">
               {t('nav.services')}
             </a>
-            <a href={`/${lang}#team`} class="text-gray-300 hover:text-white transition-colors text-lg">
+            <a href={`${base}/${lang}#team`} class="text-gray-300 hover:text-white transition-colors text-lg">
               {t('nav.team')}
             </a>
-            <a href={`/${lang}#clients`} class="text-gray-300 hover:text-white transition-colors text-lg">
+            <a href={`${base}/${lang}#clients`} class="text-gray-300 hover:text-white transition-colors text-lg">
               {t('nav.clients')}
             </a>
-            <a href={`/${lang}#contact`} class="text-gray-300 hover:text-white transition-colors text-lg">
+            <a href={`${base}/${lang}#contact`} class="text-gray-300 hover:text-white transition-colors text-lg">
               {t('nav.contact')}
             </a>
           </div>

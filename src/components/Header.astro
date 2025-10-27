@@ -4,13 +4,13 @@ import { getLangFromUrl, useTranslations } from "../utils/i18n";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Get current path without language prefix
-const currentPath = Astro.url.pathname.replace(/^\/(da|en)/, "") || "/";
-const otherLang = lang === "da" ? "en" : "da";
-const langSwitchUrl = `/${otherLang}${currentPath}`;
-
 // Base URL for assets (remove trailing slash to avoid double slashes)
 const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
+
+// Get current path without language prefix and base
+const currentPath = Astro.url.pathname.replace(new RegExp(`^${base}/(da|en)`), "") || "/";
+const otherLang = lang === "da" ? "en" : "da";
+const langSwitchUrl = `${base}/${otherLang}${currentPath}`;
 ---
 
 <header
@@ -25,7 +25,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
       <!-- Logo -->
       <div class="flex-shrink-0">
         <a
-          href={`/${lang}`}
+          href={`${base}/${lang}`}
           id="logo-link"
           class="block transition-opacity duration-300"
         >
@@ -38,28 +38,28 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
         <!-- Navigation Links -->
         <div class="flex items-center space-x-8">
           <a
-            href={`/${lang}#services`}
+            href={`${base}/${lang}#services`}
             class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
           >
             <span class="relative z-10">{t("nav.services")}</span>
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </a>
           <a
-            href={`/${lang}#team`}
+            href={`${base}/${lang}#team`}
             class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
           >
             <span class="relative z-10">{t("nav.team")}</span>
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </a>
           <a
-            href={`/${lang}#clients`}
+            href={`${base}/${lang}#clients`}
             class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
           >
             <span class="relative z-10">{t("nav.clients")}</span>
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </a>
           <a
-            href={`/${lang}#contact`}
+            href={`${base}/${lang}#contact`}
             class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
           >
             <span class="relative z-10">{t("nav.contact")}</span>
@@ -153,24 +153,24 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
         <!-- Navigation -->
         <div class="p-6 space-y-6">
           <a
-            href={`/${lang}#services`}
+            href={`${base}/${lang}#services`}
             class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
-            >{t("nav.services")}</a
+          >{t("nav.services")}</a
           >
           <a
-            href={`/${lang}#team`}
+            href={`${base}/${lang}#team`}
             class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
-            >{t("nav.team")}</a
+          >{t("nav.team")}</a
           >
           <a
-            href={`/${lang}#clients`}
+            href={`${base}/${lang}#clients`}
             class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
-            >{t("nav.clients")}</a
+          >{t("nav.clients")}</a
           >
           <a
-            href={`/${lang}#contact`}
+            href={`${base}/${lang}#contact`}
             class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
-            >{t("nav.contact")}</a
+          >{t("nav.contact")}</a
           >
 
           <!-- Language Switch -->
