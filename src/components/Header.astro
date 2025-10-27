@@ -394,9 +394,13 @@ const langSwitchUrl = `${base}/${otherLang}/`;
     // Initial call
     handleScroll();
 
-    // Language switch - direct navigation
+    // Language switch - preserve scroll position
     langToggle?.addEventListener("click", (e) => {
       e.preventDefault();
+      // Store current scroll position
+      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+      sessionStorage.setItem('preserveScroll', 'true');
+      
       const newUrl = langToggle.getAttribute("data-lang-url");
       if (newUrl) {
         window.location.href = newUrl;

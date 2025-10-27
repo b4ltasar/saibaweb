@@ -133,7 +133,26 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
       // Show body when page is loaded to prevent flash
       document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('loaded');
+        
+        // Restore scroll position if preserved during language switch
+        if (sessionStorage.getItem('preserveScroll') === 'true') {
+          const savedScrollPosition = sessionStorage.getItem('scrollPosition');
+          if (savedScrollPosition) {
+            // Wait a bit for page to fully render
+            setTimeout(() => {
+              window.scrollTo(0, parseInt(savedScrollPosition));
+              // Clear the flag
+              sessionStorage.removeItem('preserveScroll');
+              sessionStorage.removeItem('scrollPosition');
+            }, 50);
+          }
+        }
       });
+      
+      // Prevent automatic scroll restoration
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
     </script>
     
     <!-- Language switcher script -->
