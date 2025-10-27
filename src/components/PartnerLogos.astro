@@ -3,12 +3,13 @@ import { getLangFromUrl, useTranslations } from '../utils/i18n';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 
 const partners = [
-  { name: 'Carlsberg', logo: '/images/partners/carlsberg.png' },
-  { name: 'NEAR', logo: '/images/partners/nearlogo.png' },
-  { name: 'Palmes', logo: '/images/partners/palmes.png' },
-  { name: 'Kronenbourg', logo: '/images/partners/kronenbourg.png' },
+  { name: 'Carlsberg', logo: `${base}/images/partners/carlsberg.png` },
+  { name: 'NEAR', logo: `${base}/images/partners/nearlogo.png` },
+  { name: 'Palmes', logo: `${base}/images/partners/palmes.png` },
+  { name: 'Kronenbourg', logo: `${base}/images/partners/kronenbourg.png` },
 ];
 ---
 
