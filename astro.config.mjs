@@ -6,6 +6,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'static', // VIGTIGT for GitHub Pages
+  
   // GitHub Pages URL (ændres til custom domain senere)
   site: process.env.NODE_ENV === 'production' 
     ? 'https://b4ltasar.github.io'
