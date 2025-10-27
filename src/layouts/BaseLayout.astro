@@ -1,0 +1,123 @@
+---
+import { getLangFromUrl } from '../utils/i18n';
+
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+}
+
+const { 
+  title, 
+  description = "SAIBA - Vi omsætter ny teknologi til værdi for jeres virksomhed",
+  image = "/og-image.jpg",
+  canonical 
+} = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO -->
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="SAIBA" />
+    <meta property="og:locale" content={lang === 'da' ? 'da_DK' : 'en_US'} />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@SAIBASPACE" />
+    <meta name="twitter:creator" content="@SAIBASPACE" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.url)} />
+    
+    <!-- Additional meta tags for better SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="SAIBA" />
+    <meta name="theme-color" content="#0D1224" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SAIBA",
+      "url": "https://saiba.dk",
+      "logo": "https://saiba.dk/SAIBAwhite.svg",
+      "description": "Vi omsætter ny teknologi til værdi for jeres virksomhed",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+45-31-41-28-29",
+        "contactType": "customer service",
+        "email": "hello@saiba.dk"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "København",
+        "addressCountry": "DK"
+      },
+      "sameAs": [
+        "https://linkedin.com/company/saiba",
+        "https://instagram.com/saibaspace",
+        "https://twitter.com/SAIBASPACE"
+      ]
+    }
+    </script>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/fonts/Inter/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/SAIBAwhite.svg" as="image" />
+    <link rel="preload" href="/videos/hero-video.mp4" as="video" type="video/mp4" />
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//formspree.io" />
+    
+    <!-- Preconnect to important third-party origins -->
+    <link rel="preconnect" href="https://formspree.io" crossorigin />
+    
+    <!-- Analytics - Plausible (disabled on preview) -->
+    {import.meta.env.PROD && (
+      <script defer data-domain="saiba.dk" src="https://plausible.io/js/script.js"></script>
+    )}
+    
+    <!-- Import global styles -->
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    
+    <!-- Prevent flash of unstyled content -->
+    <style>
+      html { background-color: #ffffff; }
+      body { opacity: 0; transition: opacity 0.3s ease-in-out; }
+      body.loaded { opacity: 1; }
+    </style>
+  </head>
+  <body class="min-h-screen bg-white text-gray-900 antialiased font-inter" style="background-color: #ffffff;">
+    <slot />
+    
+    <script>
+      // Show body when page is loaded to prevent flash
+      document.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.add('loaded');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Kontakt - Vi omsætter ny teknologi til værdi for jeres virksomhed" description="Kontakt SAIBA for AI løsninger der transformerer jeres forretning">
+  <Header />
+  
+  <main class="py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:px-16">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Let's Create Something Amazing
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          Ready to transform your newsletter? Get in touch and let's discuss your project.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-16 max-w-xl">
+        <form class="space-y-6">
+          <div>
+            <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+            <div class="mt-2">
+              <input type="text" name="name" id="name" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-3">
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+            <div class="mt-2">
+              <input type="email" name="email" id="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-3">
+            </div>
+          </div>
+
+          <div>
+            <label for="project" class="block text-sm font-medium leading-6 text-gray-900">Project Type</label>
+            <div class="mt-2">
+              <select name="project" id="project" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-3">
+                <option>Newsletter Design</option>
+                <option>Email Template</option>
+                <option>Brand Guidelines</option>
+                <option>Complete Package</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium leading-6 text-gray-900">Message</label>
+            <div class="mt-2">
+              <textarea name="message" id="message" rows="4" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-3"></textarea>
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" class="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors">
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

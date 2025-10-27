@@ -1,0 +1,43 @@
+---
+import { getLangFromUrl, useTranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const partners = [
+  { name: 'Carlsberg', logo: '/images/partners/carlsberg.png' },
+  { name: 'NEAR', logo: '/images/partners/nearlogo.png' },
+  { name: 'Palmes', logo: '/images/partners/palmes.png' },
+  { name: 'Kronenbourg', logo: '/images/partners/kronenbourg.png' },
+];
+---
+
+<section class="py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:px-16">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6 sm:mb-8 leading-tight">
+        {t('partners.title')}
+      </h2>
+      <p class="text-xl text-gray-700 leading-relaxed">
+        {t('partners.subtitle')}
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 items-center justify-items-center max-w-4xl mx-auto">
+      {partners.map((partner) => (
+        <div class="flex items-center justify-center p-3 sm:p-4 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 h-16 sm:h-20 w-full">
+          <img 
+            src={partner.logo} 
+            alt={partner.name}
+            class="h-8 sm:h-10 w-auto object-contain max-w-full"
+            loading="lazy"
+            decoding="async"
+            width="120"
+            height="40"
+            onerror="this.style.display='none'; console.log('Failed to load logo:', this.src);"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

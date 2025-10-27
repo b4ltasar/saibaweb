@@ -1,0 +1,19 @@
+OG IMAGE PLACEHOLDER
+
+Du skal oprette en fil kaldet "og-image.jpg" i public/ mappen.
+
+Specifikationer for Open Graph billede:
+- Størrelse: 1200x630 pixels (anbefalet)
+- Format: JPG eller PNG
+- Maksimal filstørrelse: Under 8MB (anbefalet under 1MB)
+- Indhold: SAIBA logo på professionel baggrund
+
+Billedet vil blive vist når nogen deler links til:
+- www.saiba.dk
+- saiba.dk
+- Alle undersider
+
+Sammen med beskrivelsen:
+"SAIBA - Vi omsætter ny teknologi til værdi for jeres virksomhed"
+
+Når billedet er oprettet, slet denne placeholder fil.

@@ -1,0 +1,15 @@
+HERO POSTER PLACEHOLDER
+
+Du skal oprette en fil kaldet "hero-poster.jpg" i public/images/ mappen.
+
+Dette er et poster billede der vises mens hero videoen loader.
+
+Specifikationer:
+- Størrelse: 1920x1080 pixels (eller samme aspect ratio som videoen)
+- Format: JPG (optimeret for hurtig loading)
+- Indhold: Et stillbillede fra videoen eller lignende baggrund
+- Filstørrelse: Under 200KB anbefalet
+
+Dette forbedrer performance ved at vise et billede øjeblikkeligt mens videoen loader i baggrunden.
+
+Når billedet er oprettet, slet denne placeholder fil.

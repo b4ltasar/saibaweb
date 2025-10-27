@@ -1,0 +1,76 @@
+/* SAIBA Typography System - Stringente regler for alle tekststørrelser */
+
+/* HIERARCHY RULES:
+ * 1. Hero Heading (Definerende): text-6xl (60px) font-black
+ * 2. Section Main Heading: text-3xl (30px) font-bold  
+ * 3. Subsection Heading: text-2xl (24px) font-semibold
+ * 4. Body Large: text-xl (20px) font-normal
+ * 5. Body Medium: text-lg (18px) font-medium
+ * 6. Body Small: text-base (16px) font-normal
+ * 7. Caption: text-sm (14px) font-medium
+ */
+
+/* HERO/MAIN HEADINGS - Definerende størrelse */
+.heading-hero {
+  @apply text-6xl font-black leading-tight;
+}
+
+/* SECTION HEADINGS - Baseret på hero størrelse */
+.heading-section {
+  @apply text-3xl font-bold leading-tight;
+}
+
+/* SUBSECTION HEADINGS */
+.heading-subsection {
+  @apply text-2xl font-semibold leading-tight;
+}
+
+/* BODY TEXT SIZES */
+.text-body-large {
+  @apply text-xl leading-relaxed;
+}
+
+.text-body-medium {
+  @apply text-lg font-medium leading-relaxed;
+}
+
+.text-body-small {
+  @apply text-base leading-normal;
+}
+
+/* CAPTION/SMALL TEXT */
+.text-caption {
+  @apply text-sm font-medium;
+}
+
+/* RESPONSIVE RULES */
+@media (max-width: 768px) {
+  .heading-hero {
+    @apply text-4xl;
+  }
+  
+  .heading-section {
+    @apply text-2xl;
+  }
+  
+  .heading-subsection {
+    @apply text-xl;
+  }
+  
+  .text-body-large {
+    @apply text-lg;
+  }
+}
+
+/* COLOR RULES */
+.text-primary {
+  @apply text-gray-900;
+}
+
+.text-secondary {
+  @apply text-gray-700;
+}
+
+.text-muted {
+  @apply text-gray-600;
+}

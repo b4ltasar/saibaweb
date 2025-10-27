@@ -1,0 +1,415 @@
+---
+import { getLangFromUrl, useTranslations } from "../utils/i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Get current path without language prefix
+const currentPath = Astro.url.pathname.replace(/^\/(da|en)/, "") || "/";
+const otherLang = lang === "da" ? "en" : "da";
+const langSwitchUrl = `/${otherLang}${currentPath}`;
+---
+
+<header
+  id="header"
+  class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300"
+>
+  <nav
+    class="mx-auto max-w-[1400px] px-4 sm:px-8 lg:px-16"
+    aria-label="Main navigation"
+  >
+    <div class="flex h-[80px] items-center justify-between">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a
+          href={`/${lang}`}
+          id="logo-link"
+          class="block transition-opacity duration-300"
+        >
+          <img src="/SAIBAwhite.svg" alt="SAIBA" class="h-8 w-auto" style="height: 32px !important;" />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center justify-end w-full">
+        <!-- Navigation Links -->
+        <div class="flex items-center space-x-8">
+          <a
+            href={`/${lang}#services`}
+            class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
+          >
+            <span class="relative z-10">{t("nav.services")}</span>
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+          </a>
+          <a
+            href={`/${lang}#team`}
+            class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
+          >
+            <span class="relative z-10">{t("nav.team")}</span>
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+          </a>
+          <a
+            href={`/${lang}#clients`}
+            class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
+          >
+            <span class="relative z-10">{t("nav.clients")}</span>
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+          </a>
+          <a
+            href={`/${lang}#contact`}
+            class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
+          >
+            <span class="relative z-10">{t("nav.contact")}</span>
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+          </a>
+
+          <!-- Language Toggle Button -->
+          <button
+            id="lang-toggle"
+            class="transition-all duration-300 hover:scale-105"
+            data-lang-url={langSwitchUrl}
+          >
+            {
+              lang === "da" ? (
+                <img
+                  src="/icons/en-button.svg"
+                  alt="Switch to English"
+                  class="h-7 w-auto"
+                />
+              ) : (
+                <div class="px-3 py-1.5 rounded border border-current text-sm font-medium hover:bg-current hover:text-white">
+                  DA
+                </div>
+              )
+            }
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="lg:hidden">
+        <button
+          type="button"
+          id="mobile-button"
+          class="mobile-menu-button inline-flex items-center justify-center p-3 rounded-md transition-colors duration-300 text-white hover:text-white/80"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="block h-8 w-8 md:h-10 md:w-10"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div
+      class="mobile-menu hidden lg:hidden fixed inset-0 z-50"
+      id="mobile-menu"
+    >
+      <!-- Backdrop -->
+      <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+
+      <!-- Drawer -->
+      <div class="relative bg-white w-80 h-full shadow-xl min-h-screen ml-auto">
+        <!-- Header -->
+        <div
+          class="flex items-center justify-between p-6 border-b border-gray-200 bg-white"
+        >
+          <div class="flex items-center space-x-3">
+            <img src="/favicon.svg" alt="SAIBA logo" class="h-12 w-12" />
+          </div>
+          <button
+            class="close-mobile-menu text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Navigation -->
+        <div class="p-6 space-y-6">
+          <a
+            href={`/${lang}#services`}
+            class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
+            >{t("nav.services")}</a
+          >
+          <a
+            href={`/${lang}#team`}
+            class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
+            >{t("nav.team")}</a
+          >
+          <a
+            href={`/${lang}#clients`}
+            class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
+            >{t("nav.clients")}</a
+          >
+          <a
+            href={`/${lang}#contact`}
+            class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
+            >{t("nav.contact")}</a
+          >
+
+          <!-- Language Switch -->
+          <div class="pt-4 border-t border-gray-200">
+            <a
+              href={langSwitchUrl}
+              class="block text-gray-600 text-sm hover:text-gray-900 transition-colors"
+            >
+              {lang === "da" ? "EN" : "DA"}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const header = document.getElementById("header");
+    const logoImg = document.getElementById("logo-link")?.querySelector("img");
+    const langToggle = document.getElementById("lang-toggle");
+    const mobileButton = document.getElementById("mobile-button");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    let lastScrollY = window.scrollY;
+    let isHeaderVisible = true;
+
+    // Mobile menu toggle
+    const button = document.querySelector(".mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+    const closeButton = document.querySelector(".close-mobile-menu");
+
+    const openMenu = () => {
+      menu?.classList.remove("hidden");
+      button?.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeMenu = () => {
+      menu?.classList.add("hidden");
+      button?.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    };
+
+    button?.addEventListener("click", openMenu);
+    closeButton?.addEventListener("click", closeMenu);
+
+    // Close when clicking backdrop
+    menu?.addEventListener("click", (e) => {
+      if (e.target === menu) closeMenu();
+    });
+
+    // Handle mobile nav links
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = (link as HTMLAnchorElement).getAttribute('href');
+        const targetId = href?.split('#')[1];
+        
+        if (targetId) {
+          const target = document.getElementById(targetId);
+          if (target) {
+            closeMenu(); // Close mobile menu first
+            setTimeout(() => {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }, 300); // Wait for menu to close
+          }
+        }
+      });
+    });
+
+    // Scroll handler
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+      const heroHeight = window.innerHeight; // Approximate hero height
+
+      // Determine if we're in hero section
+      const isInHero = currentScrollY < heroHeight * 0.8;
+
+      // Special logic for hero section
+      if (isInHero) {
+        // In hero section - hide header when scrolling up to avoid collision with hero text
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down in hero - show header
+          if (!isHeaderVisible) {
+            header?.classList.remove("-translate-y-full");
+            isHeaderVisible = true;
+          }
+        } else {
+          // Scrolling up in hero - hide header to avoid collision
+          if (isHeaderVisible && currentScrollY > 50) {
+            header?.classList.add("-translate-y-full");
+            isHeaderVisible = false;
+          }
+        }
+        
+        // Show header when at very top
+        if (currentScrollY <= 50) {
+          if (!isHeaderVisible) {
+            header?.classList.remove("-translate-y-full");
+            isHeaderVisible = true;
+          }
+        }
+      } else {
+        // Outside hero section - normal scroll behavior
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Scrolling down - hide header
+          if (isHeaderVisible) {
+            header?.classList.add("-translate-y-full");
+            isHeaderVisible = false;
+          }
+        } else {
+          // Scrolling up - show header
+          if (!isHeaderVisible) {
+            header?.classList.remove("-translate-y-full");
+            isHeaderVisible = true;
+          }
+        }
+      }
+
+      // Change header style based on position
+      if (isInHero) {
+        // Transparent header in hero - keep white text
+        header?.classList.remove(
+          "bg-white/95",
+          "backdrop-blur-md",
+          "border-b",
+          "border-gray-200",
+        );
+        header?.classList.add("bg-transparent");
+
+        // Keep white logo styling
+        if (logoImg) {
+          logoImg.src = "/SAIBAwhite.svg";
+          logoImg.style.height = "32px"; // Ensure consistent size
+        }
+
+        // Language toggle styling for transparent header
+        const langImg = langToggle?.querySelector("img");
+        const langDiv = langToggle?.querySelector("div");
+        if (langImg) {
+          langImg.style.filter = "none"; // Keep it white
+        }
+        if (langDiv) {
+          langDiv.classList.remove(
+            "border-gray-900",
+            "text-gray-900",
+            "hover:bg-gray-900",
+            "hover:text-white",
+          );
+          langDiv.classList.add(
+            "border-white/30",
+            "text-white",
+            "hover:bg-white/10",
+            "hover:border-white/50",
+          );
+        }
+
+        mobileButton?.classList.remove("text-gray-900", "hover:text-gray-700");
+        mobileButton?.classList.add("text-white", "hover:text-white/80");
+
+        navLinks.forEach((link) => {
+          link.classList.remove("text-gray-700", "hover:text-gray-900");
+          link.classList.add("text-white", "hover:text-white/80");
+        });
+      } else {
+        // Solid header after hero - switch to dark text
+        header?.classList.remove("bg-transparent");
+        header?.classList.add(
+          "bg-white/95",
+          "backdrop-blur-md",
+          "border-b",
+          "border-gray-200",
+        );
+
+        // Switch to dark logo styling
+        if (logoImg) {
+          logoImg.src = "/SAIBAblack.svg";
+          logoImg.style.height = "32px"; // Ensure consistent size
+        }
+
+        // Language toggle styling for solid header
+        const langImg = langToggle?.querySelector("img");
+        const langDiv = langToggle?.querySelector("div");
+        if (langImg) {
+          langImg.style.filter = "brightness(0)"; // Make it black
+        }
+        if (langDiv) {
+          langDiv.classList.remove(
+            "border-white/30",
+            "text-white",
+            "hover:bg-white/10",
+            "hover:border-white/50",
+          );
+          langDiv.classList.add(
+            "border-gray-900",
+            "text-gray-900",
+            "hover:bg-gray-900",
+            "hover:text-white",
+          );
+        }
+
+        mobileButton?.classList.remove("text-white", "hover:text-white/80");
+        mobileButton?.classList.add("text-gray-900", "hover:text-gray-700");
+
+        navLinks.forEach((link) => {
+          link.classList.remove("text-white", "hover:text-white/80");
+          link.classList.add("text-gray-700", "hover:text-gray-900");
+        });
+      }
+
+      lastScrollY = currentScrollY;
+    }
+
+    // Throttled scroll listener
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Initial call
+    handleScroll();
+
+    // Language switch without reload
+    langToggle?.addEventListener("click", (e) => {
+      e.preventDefault();
+      const newUrl = langToggle.getAttribute("data-lang-url");
+      if (newUrl) {
+        window.history.pushState({}, "", newUrl);
+        window.location.reload();
+      }
+    });
+  });
+</script>

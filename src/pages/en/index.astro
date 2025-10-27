@@ -1,0 +1,369 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import PartnerLogos from "../../components/PartnerLogos.astro";
+import ContactForm from "../../components/ContactForm.astro";
+import AIOptimizationBox from "../../components/AIOptimizationBox.astro";
+import TeamCard from "../../components/TeamCard.astro";
+import GeometricOptimizer from "../../components/GeometricOptimizer.astro";
+import GradientGridBackground from "../../components/GradientGridBackground.astro";
+import { useTranslations } from "../../utils/i18n";
+
+const t = useTranslations("en");
+
+// Service data in English
+const services = [
+  {
+    number: "001",
+    title: "Workshops & Bootcamps",
+    description:
+      "Get an overview and insight into the potential of AI technology",
+    highlighted: false,
+  },
+  {
+    number: "002",
+    title: "Custom Programs",
+    description: "From knowledge to concrete use cases in your company",
+    highlighted: false,
+  },
+  {
+    number: "003",
+    title: "Strategy & Implementation",
+    description:
+      "Turn technology into concrete results and value",
+    highlighted: true,
+  },
+  {
+    number: "004",
+    title: "Product Development",
+    description: "We develop and build AI solutions with you",
+    highlighted: false,
+  },
+];
+---
+
+<BaseLayout 
+  title="SAIBA - We transform new technology into value for your business"
+  description="SAIBA - We transform new technology into value for your business"
+  image="/og-image.jpg"
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section with Video Background -->
+    <section
+      class="relative h-screen flex items-center justify-start overflow-hidden"
+    >
+      <!-- Background Video -->
+      <div class="absolute inset-0 z-0">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          class="absolute inset-0 w-full h-full object-cover"
+          style="min-width: 100%; min-height: 100%;"
+          poster="/images/hero-poster.jpg"
+        >
+          <source src="/videos/hero-video.mp4" type="video/mp4" />
+        </video>
+        <!-- Dark overlay for better text readability -->
+        <div class="absolute inset-0 bg-black/30 z-10"></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div
+        class="relative z-10 mx-auto max-w-[1400px] px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 w-full"
+      >
+        <div class="max-w-4xl pt-12 xs:pt-14 sm:pt-16 md:pt-18 lg:pt-20">
+          <!-- Arrow indicator -->
+          <div class="mb-3 animate-fade-in">
+            <svg class="w-5 h-5 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </div>
+          
+          <!-- Subtitle -->
+          <p class="text-white/90 text-lg sm:text-xl mb-6 animate-fade-in">
+            From everyday routines to extraordinary superpowers with AI for your employees
+          </p>
+
+          <!-- Main Title -->
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight animate-fade-in-up text-balance"
+          >
+            {t("hero.title")}
+          </h1>
+
+          <!-- CTA Button -->
+          <div class="animate-fade-in-up" style="animation-delay: 0.3s;">
+            <a
+              href="/en/contact"
+              class="inline-flex items-center bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-white/20 transition-all duration-300 border border-white/20"
+            >
+              {t("hero.cta")}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="relative py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-gray-50">
+      <div class="mx-auto max-w-7xl px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight tracking-tight"
+          >
+            {t("services.title")}
+          </h2>
+          <p
+            class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+          >
+            {t("services.subtitle")}
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 justify-items-center"
+        >
+          {services.map((service) => <ServiceCard {...service} />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Optimization Section -->
+    <section id="optimization" class="py-32 bg-gray-100">
+      <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:px-16">
+        <div class="grid grid-cols-1 lg:grid-cols-8 gap-20 items-center">
+          <div class="lg:col-span-3">
+            <p class="text-lg text-gray-600 mb-6 font-medium">Goals and why AI can improve your business</p>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6 sm:mb-8 leading-tight">
+              Optimize your<br class="hidden sm:block">
+              <span class="sm:hidden">business processes</span>
+              <span class="hidden sm:inline">business processes</span>
+            </h2>
+            <p class="text-xl text-gray-700 leading-relaxed">
+              Optimize AI potentials through targeted analysis. Measure and assess potentials and identify the best opportunities for your business and specific business processes.
+            </p>
+          </div>
+          <div class="lg:col-span-5 lg:pl-52">
+            <GeometricOptimizer />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-16 sm:py-20 md:py-24 lg:py-32 xl:py-40 bg-[#0D1224] text-white" style="min-height: 450px;">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start" style="min-height: 280px;">
+          <div style="min-height: 160px;">
+            <h2 id="team-heading-en" class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 leading-tight" style="min-height: 120px; display: flex; align-items: center;">
+              <span></span>
+            </h2>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-4">
+              Accelerate your progress<br />with AI expertise
+            </h3>
+            <p class="text-gray-300 mb-6">
+              SAIBA's experienced team of AI specialists and technologists
+              accelerates your AI journey through targeted consulting and
+              implementation of AI solutions that create potential for your
+              business.
+            </p>
+            <button
+              id="show-team-btn"
+              class="inline-flex items-center text-white hover:text-gray-200 transition-all duration-300"
+            >
+              <span class="mr-2">TEAM</span>
+              <svg id="team-arrow" class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Team Cards -->
+        <div id="team-cards" class="hidden mt-16">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-stretch">
+            <TeamCard
+              id="gustav-en"
+              name="Gustav Friis"
+              image="/images/team/gustav.jpg"
+              details="Gustav has worked with blockchain and open-source technology since 2016 and has contributed to projects like BrainBot (Ethereum), Linkdrop and NEAR Foundation. He combines deep technical insight with experience in product strategy and business development in international environments. At SAIBA, Gustav leads technical and strategic development with focus on how AI and new technology can be transformed into solutions that create measurable value for companies and organizations."
+              linkedin="https://linkedin.com/in/gustav"
+            />
+            <TeamCard
+              id="peter-en"
+              name="Peter Humaidan"
+              image="/images/team/peter.jpg"
+              details="Peter has worked with blockchain, AI and digital products since 2021 and has been a central part of the NEAR ecosystem – first at NEAR Foundation and later as founder of NEARWEEK. He has solid experience with product development, strategy and positioning as well as building bridges between technology, brand and user experience. At SAIBA, Peter works with business strategy and product direction with focus on uniting technological innovation with clear communication and market goals."
+              linkedin="https://linkedin.com/in/peter"
+            />
+            <TeamCard
+              id="frederik-en"
+              name="Frederik Hansson"
+              image="/images/team/frederik.jpg"
+              details="Frederik has worked with blockchain and AI since 2020 and combines creative thinking with strategic understanding of how technology can strengthen business and organization. He has more than ten years of experience from the fashion industry, including as COO for Revolver Trade Show. At SAIBA, Frederik works with strategy, development and leadership with focus on implementing technology with clear direction, effect and business value."
+              linkedin="https://linkedin.com/in/frederik"
+            />
+            <TeamCard
+              id="jens-en"
+              name="Jens Jepsen"
+              image="/images/team/jens.jpg"
+              details="Jens has a background as carpenter and art historian and has since 2021 worked with blockchain and AI – particularly within marketing, design and regenerative AI projects. He combines craftsmanship precision with creative understanding and the ability to transform ideas into clear visual concepts. At SAIBA, Jens works with concept development, visual direction and the application of AI in creative and communicative processes."
+              linkedin="https://linkedin.com/in/jens"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gradient Grid Background for bottom sections -->
+    <div class="relative">
+      <GradientGridBackground />
+      
+      <!-- Partner Logos -->
+      <section id="clients" class="relative z-10">
+        <PartnerLogos />
+      </section>
+
+      <!-- Contact Form -->
+      <section id="contact" class="relative z-10">
+        <ContactForm />
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const showTeamBtn = document.getElementById("show-team-btn");
+    const teamCards = document.getElementById("team-cards");
+    const teamArrow = document.getElementById('team-arrow');
+    
+    showTeamBtn?.addEventListener("click", () => {
+      if (teamCards && teamArrow) {
+        if (teamCards.classList.contains("hidden")) {
+          teamCards.classList.remove("hidden");
+          teamCards.classList.add("animate-fade-in");
+          teamArrow.classList.add('rotate-180');
+        } else {
+          teamCards.classList.add("hidden");
+          teamCards.classList.remove("animate-fade-in");
+          teamArrow.classList.remove('rotate-180');
+        }
+      }
+    });
+
+    // Mobile team card expansion
+    document.addEventListener('click', (e) => {
+      const button = (e.target as HTMLElement).closest('.team-expand-btn');
+      if (!button) return;
+      
+      const cardId = button.getAttribute('data-target');
+      if (!cardId) return;
+      
+      const detailsContainer = document.querySelector(`[data-details="${cardId}"] .lg\\:hidden`) as HTMLElement;
+      const arrow = button.querySelector('.team-arrow') as HTMLElement;
+      
+      if (!detailsContainer || !arrow) return;
+      
+      const isExpanded = detailsContainer.style.maxHeight !== '0px' && detailsContainer.style.maxHeight !== '';
+      
+      if (isExpanded) {
+        // Collapse
+        detailsContainer.style.maxHeight = '0px';
+        detailsContainer.style.opacity = '0';
+        arrow.classList.remove('rotate-180');
+        button.setAttribute('aria-expanded', 'false');
+      } else {
+        // Expand
+        detailsContainer.style.maxHeight = detailsContainer.scrollHeight + 'px';
+        detailsContainer.style.opacity = '1';
+        arrow.classList.add('rotate-180');
+        button.setAttribute('aria-expanded', 'true');
+        
+        // Set to auto after animation
+        setTimeout(() => {
+          if (detailsContainer.style.opacity === '1') {
+            detailsContainer.style.maxHeight = 'auto';
+          }
+        }, 300);
+      }
+    });
+
+    // Scroll reveal functionality
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+        }
+      });
+    }, observerOptions);
+
+    // Add reveal classes and observe elements
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section, index) => {
+      if (index > 0) {
+        // Skip hero section
+        section.classList.add("reveal");
+        observer.observe(section);
+      }
+    });
+
+    // Observe service cards individually
+    const serviceCards = document.querySelectorAll(".grid .inline-flex");
+    serviceCards.forEach((card, index) => {
+      card.classList.add("reveal");
+      (card as HTMLElement).style.transitionDelay = `${index * 0.1}s`;
+      observer.observe(card);
+    });
+
+    // Typewriter effect for team heading
+    const teamHeading = document.getElementById('team-heading-en');
+    if (teamHeading) {
+      const originalText = 'We identify your\nAI potential';
+      const span = teamHeading.querySelector('span');
+      if (span) {
+        span.innerHTML = '';
+        
+        const typewriterObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              let index = 0;
+              const typeInterval = setInterval(() => {
+                if (index < originalText.length) {
+                  const char = originalText[index];
+                  if (char === '\n') {
+                    span.innerHTML += '<br>';
+                  } else {
+                    span.innerHTML += char;
+                  }
+                  index++;
+                } else {
+                  clearInterval(typeInterval);
+                }
+              }, 80); // 80ms per character
+              typewriterObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+        
+        typewriterObserver.observe(teamHeading);
+      }
+    }
+  });
+</script>

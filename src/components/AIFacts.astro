@@ -1,0 +1,282 @@
+---
+// AI Facts Section with collapsible categories
+---
+
+<section class="ai-facts">
+  <div class="ai-facts-container">
+    <div class="ai-facts-header">
+      <h2 class="ai-facts-title">AI Facts</h2>
+    </div>
+    
+    <div class="ai-facts-frame">
+      <!-- EFFEKTIVITET Section -->
+      <div class="fact-section" data-category="effektivitet">
+        <div class="fact-section-header">
+          <h3 class="fact-category-title">EFFEKTIVITET</h3>
+          <button class="expand-toggle" aria-expanded="true">
+            <svg class="expand-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+        <div class="fact-content expanded">
+          <p class="fact-text">AI kan reducere fejlraten med 99% i data-intensive processer og øge gennemsnitlig behandlingstid med 75%</p>
+          <div class="fact-sources">
+            <span class="source">McKinsey Global Institute 2023</span>
+            <span class="source">Deloitte AI Institute</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- OMKOSTNINGSBESPARELSE Section -->
+      <div class="fact-section" data-category="omkostninger">
+        <div class="fact-section-header">
+          <h3 class="fact-category-title">OMKOSTNINGSBESPARELSE</h3>
+          <button class="expand-toggle" aria-expanded="false">
+            <svg class="expand-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+        <div class="fact-content collapsed">
+          <p class="fact-text">Virksomheder der implementerer AI rapporterer gennemsnitlige omkostningsbesparelser på 15-20% og ROI på 200-300% inden for 18 måneder</p>
+          <div class="fact-sources">
+            <span class="source">Accenture Technology Vision 2024</span>
+            <span class="source">PwC AI Analysis</span>
+            <span class="source">IBM Global AI Adoption Index</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- KUNDETILFREDSSTILLELSE Section -->
+      <div class="fact-section" data-category="kunder">
+        <div class="fact-section-header">
+          <h3 class="fact-category-title">KUNDETILFREDSSTILLELSE</h3>
+          <button class="expand-toggle" aria-expanded="false">
+            <svg class="expand-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+        <div class="fact-content collapsed">
+          <p class="fact-text">AI-drevne chatbots og support systemer kan håndtere 80% af kundeforespørgsler automatisk og øge kundetilfredshed med 35%</p>
+          <div class="fact-sources">
+            <span class="source">Gartner Customer Experience Research</span>
+            <span class="source">Forrester AI Customer Service Report</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BESLUTNINGSTAGNING Section -->
+      <div class="fact-section" data-category="beslutninger">
+        <div class="fact-section-header">
+          <h3 class="fact-category-title">BESLUTNINGSTAGNING</h3>
+          <button class="expand-toggle" aria-expanded="false">
+            <svg class="expand-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+        <div class="fact-content collapsed">
+          <p class="fact-text">AI kan analysere 10x flere datapunkter end mennesker og give præcise forudsigelser med 95% nøjagtighed, hvilket forbedrer strategiske beslutninger markant</p>
+          <div class="fact-sources">
+            <span class="source">MIT Sloan Management Review</span>
+            <span class="source">Harvard Business Review AI Study</span>
+            <span class="source">BCG Henderson Institute</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* AI Facts Section */
+  .ai-facts {
+    background: #f8fafc;
+    padding: 60px 0;
+  }
+
+  .ai-facts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-facts-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .ai-facts-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .ai-facts-frame {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 2px dashed #d1d5db;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.12),
+      0 2px 8px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-facts-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  .fact-section {
+    border: 1px dashed #d1d5db;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.06),
+      0 1px 4px rgba(0, 0, 0, 0.04);
+    position: relative;
+    z-index: 1;
+  }
+
+  .fact-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .fact-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.1),
+      0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .fact-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .fact-section-header:hover {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  }
+
+  .fact-category-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #374151;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .expand-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .expand-icon {
+    width: 20px;
+    height: 20px;
+    color: #6b7280;
+    transition: transform 0.3s ease;
+  }
+
+  .expand-toggle[aria-expanded="true"] .expand-icon {
+    transform: rotate(180deg);
+  }
+
+  .fact-content {
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .fact-content.expanded {
+    max-height: 200px;
+    padding: 20px 24px;
+  }
+
+  .fact-text {
+    font-size: 16px;
+    color: #374151;
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+  }
+
+  .fact-sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .source {
+    font-size: 12px;
+    color: #9ca3af;
+    background: #f3f4f6;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-style: italic;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Handle collapsible sections
+    const factSections = document.querySelectorAll('.fact-section');
+    
+    factSections.forEach(section => {
+      const header = section.querySelector('.fact-section-header');
+      const content = section.querySelector('.fact-content');
+      const toggle = section.querySelector('.expand-toggle');
+      
+      if (header && content && toggle) {
+        header.addEventListener('click', () => {
+          const isExpanded = content.classList.contains('expanded');
+          
+          if (isExpanded) {
+            // Collapse this section
+            content.classList.remove('expanded');
+            content.classList.add('collapsed');
+            toggle.setAttribute('aria-expanded', 'false');
+          } else {
+            // Expand this section
+            content.classList.remove('collapsed');
+            content.classList.add('expanded');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
+        });
+      }
+    });
+  });
+</script>

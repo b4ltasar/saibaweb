@@ -1,0 +1,465 @@
+---
+// Geometric 3D Optimizer Component
+---
+
+<div id="geometric-optimizer" class="w-full h-[800px] relative"></div>
+
+<script>
+  import * as THREE from 'three';
+
+  class GeometricOptimizer {
+    private scene!: THREE.Scene;
+    private camera!: THREE.PerspectiveCamera;
+    private renderer!: THREE.WebGLRenderer;
+    private container: HTMLElement;
+    private animationId: number | null = null;
+    private coreGroup!: THREE.Group;
+
+
+    // 8 optimization facts with sources - language specific
+    private facts: Array<{text: string, source: string}> = [];
+    
+    private initializeFacts() {
+      // Detect language from URL - default to Danish
+      const currentPath = window.location.pathname;
+      const isEnglish = currentPath.includes('/en/') || currentPath.startsWith('/en');
+      
+      if (isEnglish) {
+        this.facts = [
+          {text: "AI can automate up to 30% of work activities", source: "McKinsey Global Institute"},
+          {text: "Companies using AI see 15% productivity gains", source: "MIT Sloan Review"}, 
+          {text: "AI improves decision-making accuracy significantly", source: "Harvard Business Review"},
+          {text: "Businesses report 10-20% cost reductions with AI", source: "Deloitte AI Survey"},
+          {text: "AI-powered analytics enhance operational efficiency", source: "PwC Global AI Study"},
+          {text: "Automation reduces human error in repetitive tasks", source: "Accenture Research"},
+          {text: "AI adoption drives measurable business value", source: "IBM Institute for Business Value"},
+          {text: "Smart systems optimize workflows and processes", source: "Boston Consulting Group"}
+        ];
+      } else {
+        this.facts = [
+          {text: "AI kan automatisere op til 30% af arbejdsopgaver", source: "McKinsey Global Institute"},
+          {text: "Virksomheder med AI ser 15% produktivitetsforbedring", source: "MIT Sloan Review"}, 
+          {text: "AI forbedrer beslutningstagning markant", source: "Harvard Business Review"},
+          {text: "Virksomheder rapporterer 10-20% omkostningsbesparelser", source: "Deloitte AI Survey"},
+          {text: "AI-drevet analyse øger operationel effektivitet", source: "PwC Global AI Study"},
+          {text: "Automatisering reducerer menneskelige fejl", source: "Accenture Research"},
+          {text: "AI adoption skaber målbar forretningsværdi", source: "IBM Institute for Business Value"},
+          {text: "Smarte systemer optimerer workflows og processer", source: "Boston Consulting Group"}
+        ];
+      }
+    }
+    private currentFactIndex = 0;
+    private lastFactTime = 0;
+    private isDragging = false;
+    private previousMousePosition = { x: 0, y: 0 };
+    private targetRotation = { x: 0, y: 0 };
+    private currentRotation = { x: 0, y: 0 };
+    private frameCount = 0;
+    private lastFPSCheck = 0;
+
+    constructor(container: HTMLElement) {
+      this.container = container;
+      this.initializeFacts();
+      this.init();
+      this.createGeometry();
+      this.createControlPoints();
+      this.setupEventListeners();
+      this.animate();
+    }
+
+    private init() {
+      this.scene = new THREE.Scene();
+      
+      this.camera = new THREE.PerspectiveCamera(
+        50, // Wider field of view to see whole sphere
+        this.container.clientWidth / this.container.clientHeight,
+        0.1,
+        100
+      );
+      this.camera.position.set(0, 0, 12); // Further back to see whole sphere with air around it
+
+      this.renderer = new THREE.WebGLRenderer({ 
+        alpha: true, 
+        antialias: true,
+        powerPreference: "high-performance",
+        stencil: false,
+        depth: true,
+        logarithmicDepthBuffer: false
+      });
+      this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // High resolution but capped for performance
+      this.renderer.setClearColor(0x000000, 0);
+      
+      // Enable smooth rendering optimizations
+      this.renderer.sortObjects = true;
+      this.renderer.shadowMap.enabled = false; // Disable shadows for better performance
+      this.container.appendChild(this.renderer.domElement);
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+      this.scene.add(ambientLight);
+      
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      directionalLight.position.set(2, 2, 5);
+      this.scene.add(directionalLight);
+    }
+
+    private createGeometry() {
+      this.coreGroup = new THREE.Group();
+
+      // Create oval gradient shadow under the sphere
+      const shadowGeometry = new THREE.PlaneGeometry(3.5, 2.5); // Smaller oval shape
+      
+      // Create canvas for gradient shadow texture
+      const canvas = document.createElement('canvas');
+      canvas.width = 256;
+      canvas.height = 256;
+      const ctx = canvas.getContext('2d')!;
+      
+      // Create radial gradient from dark blue center to transparent edges
+      const gradient = ctx.createRadialGradient(128, 128, 0, 128, 128, 128);
+      gradient.addColorStop(0, 'rgba(30, 64, 175, 0.15)'); // Dark blue center
+      gradient.addColorStop(0.6, 'rgba(30, 64, 175, 0.08)'); // Fade to lighter
+      gradient.addColorStop(1, 'rgba(30, 64, 175, 0)'); // Transparent edges
+      
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 256, 256);
+      
+      const shadowTexture = new THREE.CanvasTexture(canvas);
+      const shadowMaterial = new THREE.MeshBasicMaterial({
+        map: shadowTexture,
+        transparent: true,
+        opacity: 0 // Start invisible
+      });
+      
+      const shadowPlane = new THREE.Mesh(shadowGeometry, shadowMaterial);
+      shadowPlane.rotation.x = -Math.PI / 2; // Rotate to be horizontal
+      shadowPlane.position.y = -3.2; // Closer to sphere
+      this.coreGroup.add(shadowPlane);
+
+      // Single clean holographic sphere with wireframe
+      const sphereGeometry = new THREE.IcosahedronGeometry(2.5, 3); // Slightly smaller for better fit with air around
+      const sphereMaterial = new THREE.MeshBasicMaterial({
+        color: 0x1e40af, // Dark blue
+        wireframe: true,
+        transparent: true,
+        opacity: 0 // Start completely invisible
+      });
+      
+      const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+      this.coreGroup.add(sphere);
+      
+      // Store references for animation
+      this.coreGroup.userData = {
+        sphere: sphere,
+        shadow: shadowPlane,
+        revealed: false
+      };
+      
+      // Start with sphere invisible but full size
+      this.coreGroup.scale.setScalar(1);
+      this.coreGroup.visible = true;
+
+      this.scene.add(this.coreGroup);
+    }
+
+    private createControlPoints() {
+      // No control points - pure automatic animation
+    }
+
+    private setupEventListeners() {
+      window.addEventListener('resize', () => this.onWindowResize());
+      
+      // Scroll reveal functionality
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !this.coreGroup.userData.revealed) {
+            // Professional delay before reveal starts
+            setTimeout(() => {
+              this.revealSphere();
+              this.coreGroup.userData.revealed = true;
+            }, 500); // 500ms delay for professional feel
+          }
+        });
+      }, {
+        threshold: 0.4, // Trigger when 40% visible
+        rootMargin: '0px 0px -50px 0px' // Start animation when element is well in view
+      });
+      
+      observer.observe(this.container);
+
+      // Mouse interaction for rotation
+      this.container.addEventListener('mousedown', (event) => {
+        this.isDragging = true;
+        this.previousMousePosition = { x: event.clientX, y: event.clientY };
+        this.container.style.cursor = 'grabbing';
+      });
+
+      document.addEventListener('mousemove', (event) => {
+        if (!this.isDragging) return;
+
+        const deltaX = event.clientX - this.previousMousePosition.x;
+        const deltaY = event.clientY - this.previousMousePosition.y;
+
+        this.targetRotation.y += deltaX * 0.01;
+        this.targetRotation.x += deltaY * 0.01;
+
+        this.previousMousePosition = { x: event.clientX, y: event.clientY };
+      });
+
+      document.addEventListener('mouseup', () => {
+        this.isDragging = false;
+        this.container.style.cursor = 'grab';
+      });
+
+      // Set initial cursor
+      this.container.style.cursor = 'grab';
+    }
+
+    private revealSphere() {
+      const sphere = this.coreGroup.userData.sphere;
+      const shadow = this.coreGroup.userData.shadow;
+      
+      // Professional 2.5 second reveal animation
+      const duration = 2500; // 2.5 seconds
+      const startTime = Date.now();
+      
+      const animateReveal = () => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Professional easing curve - slow start, smooth middle, gentle end
+        let easeProgress;
+        if (progress < 0.3) {
+          // Very slow start (30% of time for first 10% of animation)
+          easeProgress = Math.pow(progress / 0.3, 2) * 0.1;
+        } else if (progress < 0.8) {
+          // Smooth middle section (50% of time for 70% of animation)
+          const midProgress = (progress - 0.3) / 0.5;
+          easeProgress = 0.1 + midProgress * 0.7;
+        } else {
+          // Gentle finish (20% of time for last 20% of animation)
+          const endProgress = (progress - 0.8) / 0.2;
+          const smoothEnd = 1 - Math.pow(1 - endProgress, 3);
+          easeProgress = 0.8 + smoothEnd * 0.2;
+        }
+        
+        // Gradually increase sphere opacity with professional curve
+        sphere.material.opacity = easeProgress * 0.6;
+        
+        // Gradually reveal gradient shadow with very subtle opacity
+        shadow.material.opacity = easeProgress * 0.6; // Opacity for the gradient texture
+        
+        // Subtle scale animation - starts slightly smaller
+        const scaleProgress = Math.min(easeProgress * 1.2, 1);
+        const scale = 0.95 + scaleProgress * 0.05; // From 95% to 100%
+        this.coreGroup.scale.setScalar(scale);
+        
+        // Very subtle rotation during reveal for elegance
+        this.coreGroup.rotation.y = easeProgress * 0.2; // Just 0.2 radians total
+        
+        if (progress < 1) {
+          requestAnimationFrame(animateReveal);
+        } else {
+          // Set final professional state
+          sphere.material.opacity = 0.6;
+          shadow.material.opacity = 0.6; // Final opacity for gradient texture
+          this.coreGroup.scale.setScalar(1);
+        }
+      };
+      
+      animateReveal();
+    }
+
+
+
+    private showFact(index: number) {
+      // Remove any existing fact
+      const existingFact = this.container.querySelector('.optimization-fact');
+      if (existingFact) {
+        existingFact.remove();
+      }
+
+      // Facts positioned with LARGE safe distance from sphere center
+      const positions = [
+        { class: 'top-4 right-4', maxWidth: 'max-w-xs' }, // Far top right corner
+        { class: 'top-4 left-4', maxWidth: 'max-w-xs' }, // Far top left corner  
+        { class: 'top-20 right-0', maxWidth: 'max-w-xs' }, // Top right edge
+        { class: 'top-20 left-0', maxWidth: 'max-w-xs' }, // Top left edge
+        { class: 'bottom-20 right-0', maxWidth: 'max-w-xs' }, // Bottom right edge
+        { class: 'bottom-20 left-0', maxWidth: 'max-w-xs' }, // Bottom left edge
+        { class: 'bottom-4 right-4', maxWidth: 'max-w-xs' }, // Far bottom right corner
+        { class: 'bottom-4 left-4', maxWidth: 'max-w-xs' } // Far bottom left corner
+      ];
+
+      const position = positions[index % positions.length];
+
+      const fact = this.facts[index];
+      
+      // Create fact display with varying positions
+      const factElement = document.createElement('div');
+      factElement.className = `optimization-fact absolute ${position.class} text-slate-900 text-lg font-semibold opacity-0 transition-all duration-500 z-20 ${position.maxWidth} leading-tight text-center`;
+      factElement.textContent = fact.text;
+      
+      // Add minimal styling with safe positioning
+      factElement.style.textShadow = '0 2px 4px rgba(0,0,0,0.1)';
+      factElement.style.transform = 'translateY(20px)';
+      factElement.style.pointerEvents = 'none'; // Ensure no interaction with sphere
+      factElement.style.minWidth = '120px'; // Minimum width for readability
+      factElement.style.padding = '8px 12px'; // Internal padding for text breathing room
+      
+      // Add source citation
+      const sourceElement = document.createElement('div');
+      sourceElement.className = 'text-xs text-gray-500 mt-1 opacity-70';
+      const currentPath = window.location.pathname;
+      const isEnglish = currentPath.includes('/en/') || currentPath.startsWith('/en');
+      sourceElement.textContent = isEnglish ? `Source: ${fact.source}` : `Kilde: ${fact.source}`;
+      sourceElement.style.pointerEvents = 'none';
+      
+      factElement.appendChild(sourceElement);
+      this.container.appendChild(factElement);
+      
+      // Entrance animation
+      setTimeout(() => {
+        factElement.style.opacity = '1';
+        factElement.style.transform = 'translateY(0)';
+      }, 100);
+      
+      // Fade out before next fact
+      setTimeout(() => {
+        factElement.style.opacity = '0';
+        factElement.style.transform = 'translateY(-10px)';
+      }, 2500);
+    }
+
+    private onWindowResize() {
+      this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+      
+      // Adjust camera position for mobile to ensure sphere is always fully visible
+      if (window.innerWidth < 768) {
+        this.camera.position.z = 14; // Further back on mobile
+      } else {
+        this.camera.position.z = 12; // Good distance on desktop
+      }
+    }
+
+    private animate = () => {
+      this.animationId = requestAnimationFrame(this.animate);
+
+      // Use high-precision timing for ultra-smooth animation
+      const time = performance.now() * 0.001;
+
+      // Always animate the sphere rotation, even during reveal
+      if (this.coreGroup.userData.revealed) {
+        const sphere = this.coreGroup.userData.sphere;
+        const shadow = this.coreGroup.userData.shadow;
+        
+        // Ultra-smooth continuous rotation with interpolation
+        const targetRotationY = time * 0.08;
+        const targetRotationX = Math.sin(time * 0.15) * 0.05;
+        
+        // Smooth interpolation to prevent any jitter
+        this.coreGroup.rotation.y += (targetRotationY - this.coreGroup.rotation.y) * 0.02;
+        this.coreGroup.rotation.x += (targetRotationX - this.coreGroup.rotation.x) * 0.05;
+        
+        // Only do other animations if reveal is complete
+        if (sphere.material.opacity >= 0.6) {
+          // Ultra-smooth breathing with multiple harmonics for organic feel
+          const breathe1 = Math.sin(time * 0.4) * 0.015;
+          const breathe2 = Math.sin(time * 0.7) * 0.01;
+          const breathe3 = Math.sin(time * 1.1) * 0.005;
+          const totalBreathe = 1 + breathe1 + breathe2 + breathe3;
+          this.coreGroup.scale.setScalar(totalBreathe);
+          
+          // Smooth opacity pulsing with gentle easing
+          const baseopacity = 0.6;
+          const pulse1 = Math.sin(time * 0.8) * 0.06;
+          const pulse2 = Math.sin(time * 1.3) * 0.03;
+          sphere.material.opacity = baseopacity + pulse1 + pulse2;
+          
+          // Ultra-smooth floating with multiple sine waves
+          const float1 = Math.sin(time * 0.3) * 0.08;
+          const float2 = Math.sin(time * 0.5) * 0.03;
+          const floatY = float1 + float2;
+          this.coreGroup.position.y = floatY;
+          
+          // Smooth shadow response with gentle transitions
+          const shadowIntensity = 0.6 - (floatY * 0.08);
+          const currentShadowOpacity = shadow.material.opacity;
+          shadow.material.opacity = currentShadowOpacity + (shadowIntensity - currentShadowOpacity) * 0.1;
+        }
+      }
+
+      // Smooth fact timing with slight randomization to feel organic
+      const factInterval = 3 + Math.sin(time * 0.1) * 0.5; // 2.5-3.5 seconds
+      if (time - this.lastFactTime > factInterval && this.coreGroup.userData.revealed) {
+        this.showFact(this.currentFactIndex);
+        this.currentFactIndex = (this.currentFactIndex + 1) % this.facts.length;
+        this.lastFactTime = time;
+      }
+
+      // Performance monitoring to ensure smooth 60fps
+      this.frameCount++;
+      if (time - this.lastFPSCheck > 1) {
+        const fps = this.frameCount / (time - this.lastFPSCheck);
+        if (fps < 55) {
+          // If FPS drops below 55, reduce quality slightly
+          this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        }
+        this.frameCount = 0;
+        this.lastFPSCheck = time;
+      }
+
+      this.renderer.render(this.scene, this.camera);
+    };
+
+    public destroy() {
+      if (this.animationId) {
+        cancelAnimationFrame(this.animationId);
+      }
+      this.renderer.dispose();
+      if (this.container.contains(this.renderer.domElement)) {
+        this.container.removeChild(this.renderer.domElement);
+      }
+    }
+  }
+
+  // Lazy load 3D when component comes into view
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('geometric-optimizer');
+    if (!container || !window.WebGLRenderingContext) return;
+
+    // Only initialize when container is visible (performance optimization)
+    const lazyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          try {
+            const optimizer = new GeometricOptimizer(container);
+            
+            window.addEventListener('beforeunload', () => {
+              optimizer.destroy();
+            });
+            
+            lazyObserver.unobserve(container); // Stop observing after initialization
+          } catch (error) {
+            console.log('Failed to initialize geometric optimizer:', error);
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    lazyObserver.observe(container);
+  });
+</script>
+
+<style>
+  #geometric-optimizer {
+    cursor: default;
+  }
+  
+  #geometric-optimizer canvas {
+    display: block;
+  }
+</style>

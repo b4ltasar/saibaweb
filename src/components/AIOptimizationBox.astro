@@ -1,0 +1,506 @@
+---
+// AI Transformation Visualizer - Before/After Interactive Experience
+---
+
+<div class="relative w-full max-w-6xl mx-auto">
+  <!-- Main Container -->
+  <div
+    id="transformation-container"
+    class="relative bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden min-h-[600px]"
+  >
+    <!-- Header -->
+    <div class="relative z-10 p-8 text-center">
+      <h3 class="text-2xl font-bold text-gray-900 mb-2">
+        Transformér jeres forretning med AI
+      </h3>
+      <p class="text-gray-600 mb-6">
+        Oplev forskellen mellem traditionelle processer og AI-optimerede
+        løsninger
+      </p>
+
+      <!-- Toggle Switch -->
+      <div
+        class="inline-flex items-center bg-gray-100 rounded-full p-1 relative"
+      >
+        <button
+          id="before-btn"
+          class="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 relative z-10"
+        >
+          Før AI
+        </button>
+        <button
+          id="after-btn"
+          class="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 relative z-10"
+        >
+          Efter AI
+        </button>
+        <div
+          id="toggle-slider"
+          class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-full shadow-md transition-transform duration-300"
+        >
+        </div>
+      </div>
+    </div>
+
+    <!-- Visualization Area -->
+    <div class="relative px-8 pb-8">
+      <!-- Before State -->
+      <div id="before-state" class="transition-all duration-700 opacity-100">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <!-- Manual Process -->
+          <div class="text-center">
+            <div class="relative mb-6">
+              <div
+                class="w-24 h-24 bg-gray-200 rounded-2xl mx-auto flex items-center justify-center mb-4 relative overflow-hidden"
+              >
+                <svg
+                  class="w-12 h-12 text-gray-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  ></path>
+                </svg>
+                <!-- Slow loading animation -->
+                <div
+                  class="absolute inset-0 bg-gray-300 opacity-50 animate-pulse"
+                >
+                </div>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">
+                Manuelle processer
+              </h4>
+              <p class="text-sm text-gray-600">Tidskrævende og fejlbehæftede</p>
+
+              <!-- Slow progress bar -->
+              <div class="mt-4 bg-gray-200 rounded-full h-2">
+                <div
+                  class="slow-progress bg-red-400 h-2 rounded-full"
+                  style="width: 0%; animation: slowProgress 8s ease-in-out infinite;"
+                >
+                </div>
+              </div>
+              <div class="text-xs text-gray-500 mt-2">
+                Gennemsnitstid: 4-6 timer
+              </div>
+            </div>
+          </div>
+
+          <!-- Limited Insights -->
+          <div class="text-center">
+            <div class="relative mb-6">
+              <div
+                class="w-24 h-24 bg-gray-200 rounded-2xl mx-auto flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-12 h-12 text-gray-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  ></path>
+                </svg>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">
+                Begrænsede insights
+              </h4>
+              <p class="text-sm text-gray-600">Reaktive beslutninger</p>
+
+              <!-- Static bars -->
+              <div class="mt-4 space-y-2">
+                <div class="bg-gray-200 rounded-full h-1.5">
+                  <div
+                    class="bg-gray-400 h-1.5 rounded-full"
+                    style="width: 30%"
+                  >
+                  </div>
+                </div>
+                <div class="bg-gray-200 rounded-full h-1.5">
+                  <div
+                    class="bg-gray-400 h-1.5 rounded-full"
+                    style="width: 25%"
+                  >
+                  </div>
+                </div>
+              </div>
+              <div class="text-xs text-gray-500 mt-2">Præcision: ~60%</div>
+            </div>
+          </div>
+
+          <!-- High Costs -->
+          <div class="text-center">
+            <div class="relative mb-6">
+              <div
+                class="w-24 h-24 bg-gray-200 rounded-2xl mx-auto flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-12 h-12 text-gray-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+                  ></path>
+                </svg>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">
+                Høje omkostninger
+              </h4>
+              <p class="text-sm text-gray-600">Mange ressourcer brugt</p>
+
+              <!-- Cost indicator -->
+              <div class="mt-4">
+                <div class="text-2xl font-bold text-red-500">€€€</div>
+                <div class="text-xs text-gray-500 mt-1">
+                  Høj ressourceforbrug
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- After State -->
+      <div
+        id="after-state"
+        class="transition-all duration-700 opacity-0 absolute inset-x-8 top-24"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <!-- AI Automation -->
+          <div class="text-center">
+            <div class="relative mb-6">
+              <div
+                class="w-24 h-24 bg-gray-900 rounded-2xl mx-auto flex items-center justify-center mb-4 relative overflow-hidden"
+              >
+                <svg
+                  class="w-12 h-12 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <!-- Fast pulse animation -->
+                <div class="absolute inset-0 bg-white opacity-20 animate-ping">
+                </div>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">
+                AI Automatisering
+              </h4>
+              <p class="text-sm text-gray-600">Hurtig og præcis udførelse</p>
+
+              <!-- Fast progress bar -->
+              <div class="mt-4 bg-gray-200 rounded-full h-2">
+                <div
+                  class="fast-progress bg-green-500 h-2 rounded-full"
+                  style="width: 0%; animation: fastProgress 2s ease-out infinite;"
+                >
+                </div>
+              </div>
+              <div class="text-xs text-gray-500 mt-2">
+                Gennemsnitstid: 15-30 minutter
+              </div>
+            </div>
+          </div>
+
+          <!-- Smart Analytics -->
+          <div class="text-center">
+            <div class="relative mb-6">
+              <div
+                class="w-24 h-24 bg-gray-900 rounded-2xl mx-auto flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-12 h-12 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  ></path>
+                </svg>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">Smart Analytics</h4>
+              <p class="text-sm text-gray-600">Proaktive anbefalinger</p>
+
+              <!-- Dynamic bars -->
+              <div class="mt-4 space-y-2">
+                <div class="bg-gray-200 rounded-full h-1.5">
+                  <div
+                    class="bg-green-500 h-1.5 rounded-full animate-pulse"
+                    style="width: 85%"
+                  >
+                  </div>
+                </div>
+                <div class="bg-gray-200 rounded-full h-1.5">
+                  <div
+                    class="bg-green-500 h-1.5 rounded-full animate-pulse"
+                    style="width: 92%; animation-delay: 0.5s;"
+                  >
+                  </div>
+                </div>
+              </div>
+              <div class="text-xs text-gray-500 mt-2">Præcision: ~95%</div>
+            </div>
+          </div>
+
+          <!-- Cost Savings -->
+          <div class="text-center">
+            <div class="relative mb-6">
+              <div
+                class="w-24 h-24 bg-gray-900 rounded-2xl mx-auto flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-12 h-12 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                  ></path>
+                </svg>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">
+                Omkostningsbesparelser
+              </h4>
+              <p class="text-sm text-gray-600">Optimeret ressourcebrug</p>
+
+              <!-- Savings indicator -->
+              <div class="mt-4">
+                <div class="text-2xl font-bold text-green-500">-60%</div>
+                <div class="text-xs text-gray-500 mt-1">
+                  Reducerede omkostninger
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Impact Metrics -->
+        <div class="bg-gray-50 rounded-2xl p-6 mt-8">
+          <h4 class="text-lg font-semibold text-gray-900 mb-4 text-center">
+            Forventet impact efter AI-implementering
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div
+                class="text-3xl font-bold text-gray-900 mb-1"
+                id="productivity-impact"
+              >
+                0%
+              </div>
+              <div class="text-sm text-gray-600">Produktivitetsstigning</div>
+            </div>
+            <div class="text-center">
+              <div
+                class="text-3xl font-bold text-gray-900 mb-1"
+                id="accuracy-impact"
+              >
+                0%
+              </div>
+              <div class="text-sm text-gray-600">Højere præcision</div>
+            </div>
+            <div class="text-center">
+              <div
+                class="text-3xl font-bold text-gray-900 mb-1"
+                id="cost-impact"
+              >
+                0%
+              </div>
+              <div class="text-sm text-gray-600">Omkostningsreduktion</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes slowProgress {
+    0% {
+      width: 0%;
+    }
+    50% {
+      width: 40%;
+    }
+    100% {
+      width: 0%;
+    }
+  }
+
+  @keyframes fastProgress {
+    0% {
+      width: 0%;
+    }
+    70% {
+      width: 100%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  @keyframes countUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .slow-progress {
+    transition: width 0.5s ease-in-out;
+  }
+
+  .fast-progress {
+    transition: width 0.3s ease-out;
+  }
+
+  #toggle-slider {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #before-btn.active,
+  #after-btn.active {
+    color: #111827;
+    font-weight: 600;
+  }
+
+  #before-btn:not(.active),
+  #after-btn:not(.active) {
+    color: #6b7280;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("transformation-container");
+    const beforeBtn = document.getElementById("before-btn");
+    const afterBtn = document.getElementById("after-btn");
+    const toggleSlider = document.getElementById("toggle-slider");
+    const beforeState = document.getElementById("before-state");
+    const afterState = document.getElementById("after-state");
+
+    let currentState = "before";
+    let hasAnimated = false;
+
+    // Initialize
+    beforeBtn?.classList.add("active");
+
+    // Toggle functionality
+    const switchTo = (state) => {
+      if (currentState === state) return;
+
+      currentState = state;
+
+      if (state === "before") {
+        toggleSlider.style.transform = "translateX(0)";
+        beforeBtn?.classList.add("active");
+        afterBtn?.classList.remove("active");
+
+        beforeState.style.opacity = "1";
+        beforeState.style.transform = "translateY(0)";
+        afterState.style.opacity = "0";
+        afterState.style.transform = "translateY(20px)";
+      } else {
+        toggleSlider.style.transform = "translateX(100%)";
+        afterBtn?.classList.add("active");
+        beforeBtn?.classList.remove("active");
+
+        beforeState.style.opacity = "0";
+        beforeState.style.transform = "translateY(-20px)";
+        afterState.style.opacity = "1";
+        afterState.style.transform = "translateY(0)";
+
+        // Animate impact numbers
+        if (!hasAnimated) {
+          animateImpactNumbers();
+          hasAnimated = true;
+        }
+      }
+    };
+
+    // Event listeners
+    beforeBtn?.addEventListener("click", () => switchTo("before"));
+    afterBtn?.addEventListener("click", () => switchTo("after"));
+
+    // Auto-switch to "after" when scrolled into view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              switchTo("after");
+            }, 1000);
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    if (container) observer.observe(container);
+
+    // Animate impact numbers
+    const animateImpactNumbers = () => {
+      const impacts = [
+        { id: "productivity-impact", target: 40, suffix: "%" },
+        { id: "accuracy-impact", target: 35, suffix: "%" },
+        { id: "cost-impact", target: 60, suffix: "%" },
+      ];
+
+      impacts.forEach((impact, index) => {
+        setTimeout(() => {
+          const element = document.getElementById(impact.id);
+          if (!element) return;
+
+          let current = 0;
+          const increment = impact.target / 30;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= impact.target) {
+              current = impact.target;
+              clearInterval(timer);
+            }
+            element.textContent = Math.floor(current) + impact.suffix;
+          }, 50);
+        }, index * 200);
+      });
+    };
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") switchTo("before");
+      if (e.key === "ArrowRight") switchTo("after");
+    });
+  });
+</script>

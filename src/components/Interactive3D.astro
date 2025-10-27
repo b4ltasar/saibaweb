@@ -1,0 +1,330 @@
+---
+// Interactive 3D Component for SAIBA
+---
+
+<div id="three-container" class="absolute inset-0 z-0"></div>
+
+<script>
+    import * as THREE from "three";
+
+    class Interactive3D {
+        private scene!: THREE.Scene;
+        private camera!: THREE.PerspectiveCamera;
+        private renderer!: THREE.WebGLRenderer;
+        private container: HTMLElement;
+        public animationId: number | null = null;
+        private particles!: THREE.Points;
+        private coreGeometry!: THREE.Group;
+        private mouseX = 0;
+        private mouseY = 0;
+
+        constructor(container: HTMLElement) {
+            this.container = container;
+            this.init();
+            this.createScene();
+            this.setupEventListeners();
+            this.animate();
+        }
+
+        private init() {
+            // Scene
+            this.scene = new THREE.Scene();
+
+            // Camera
+            this.camera = new THREE.PerspectiveCamera(
+                75,
+                this.container.clientWidth / this.container.clientHeight,
+                0.1,
+                1000,
+            );
+            this.camera.position.z = 5;
+
+            // Renderer
+            this.renderer = new THREE.WebGLRenderer({
+                alpha: true,
+                antialias: true,
+            });
+            this.renderer.setSize(
+                this.container.clientWidth,
+                this.container.clientHeight,
+            );
+            this.renderer.setClearColor(0x000000, 0);
+            this.container.appendChild(this.renderer.domElement);
+        }
+
+        private createScene() {
+            // Create particle system
+            this.createParticles();
+
+            // Create core geometry
+            this.createCoreGeometry();
+
+            // Add lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+            this.scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(1, 1, 1);
+            this.scene.add(directionalLight);
+        }
+
+        private createParticles() {
+            const particleCount = 2000;
+            const positions = new Float32Array(particleCount * 3);
+            const colors = new Float32Array(particleCount * 3);
+
+            for (let i = 0; i < particleCount * 3; i += 3) {
+                // Create a more structured particle distribution
+                const radius = Math.random() * 8 + 2;
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.random() * Math.PI;
+
+                positions[i] = radius * Math.sin(phi) * Math.cos(theta);
+                positions[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
+                positions[i + 2] = radius * Math.cos(phi);
+
+                // Add color variation
+                colors[i] = 0.2 + Math.random() * 0.8; // R
+                colors[i + 1] = 0.8 + Math.random() * 0.2; // G
+                colors[i + 2] = 0.4 + Math.random() * 0.6; // B
+            }
+
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute(
+                "position",
+                new THREE.BufferAttribute(positions, 3),
+            );
+            geometry.setAttribute(
+                "color",
+                new THREE.BufferAttribute(colors, 3),
+            );
+
+            const material = new THREE.PointsMaterial({
+                size: 0.03,
+                transparent: true,
+                opacity: 0.8,
+                vertexColors: true,
+                blending: THREE.AdditiveBlending,
+            });
+
+            this.particles = new THREE.Points(geometry, material);
+            this.scene.add(this.particles);
+        }
+
+        private createCoreGeometry() {
+            this.coreGeometry = new THREE.Group();
+
+            // Central neural network node
+            const sphereGeometry = new THREE.SphereGeometry(0.3, 32, 32);
+            const sphereMaterial = new THREE.MeshPhongMaterial({
+                color: 0x00aaff,
+                transparent: true,
+                opacity: 0.8,
+                wireframe: false,
+                emissive: 0x002244,
+            });
+            const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+            this.coreGeometry.add(sphere);
+
+            // Neural network connections (lines)
+            const connectionMaterial = new THREE.LineBasicMaterial({
+                color: 0x00ff88,
+                transparent: true,
+                opacity: 0.6,
+            });
+
+            for (let i = 0; i < 20; i++) {
+                const points = [];
+                const startRadius = 0.3;
+                const endRadius = 2 + Math.random() * 2;
+
+                const startAngle = Math.random() * Math.PI * 2;
+                const endAngle = Math.random() * Math.PI * 2;
+
+                points.push(
+                    new THREE.Vector3(
+                        startRadius * Math.cos(startAngle),
+                        startRadius * Math.sin(startAngle),
+                        (Math.random() - 0.5) * 0.2,
+                    ),
+                );
+
+                points.push(
+                    new THREE.Vector3(
+                        endRadius * Math.cos(endAngle),
+                        endRadius * Math.sin(endAngle),
+                        (Math.random() - 0.5) * 2,
+                    ),
+                );
+
+                const geometry = new THREE.BufferGeometry().setFromPoints(
+                    points,
+                );
+                const line = new THREE.Line(geometry, connectionMaterial);
+                this.coreGeometry.add(line);
+            }
+
+            // Orbiting data nodes
+            for (let i = 0; i < 8; i++) {
+                const nodeGeometry = new THREE.OctahedronGeometry(0.1);
+                const nodeMaterial = new THREE.MeshPhongMaterial({
+                    color: 0x00ff88,
+                    transparent: true,
+                    opacity: 0.7,
+                    emissive: 0x002200,
+                });
+                const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+
+                const radius = 1.5 + Math.random() * 1.5;
+                const angle = (i / 8) * Math.PI * 2;
+
+                node.position.set(
+                    radius * Math.cos(angle),
+                    radius * Math.sin(angle),
+                    (Math.random() - 0.5) * 2,
+                );
+
+                this.coreGeometry.add(node);
+            }
+
+            this.scene.add(this.coreGeometry);
+        }
+
+        private setupEventListeners() {
+            window.addEventListener("resize", () => this.onWindowResize());
+
+            document.addEventListener("mousemove", (event) => {
+                this.mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                this.mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+            });
+        }
+
+        private onWindowResize() {
+            this.camera.aspect =
+                this.container.clientWidth / this.container.clientHeight;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(
+                this.container.clientWidth,
+                this.container.clientHeight,
+            );
+
+            // Adjust camera position for mobile
+            if (window.innerWidth < 768) {
+                this.camera.position.z = 7;
+            } else {
+                this.camera.position.z = 5;
+            }
+        }
+
+        private animate = () => {
+            this.animationId = requestAnimationFrame(this.animate);
+
+            const time = Date.now() * 0.001;
+
+            // Rotate particles with pulsing effect
+            this.particles.rotation.x = time * 0.05;
+            this.particles.rotation.y = time * 0.03;
+
+            // Pulsing particle effect
+            const positions = this.particles.geometry.attributes.position
+                .array as Float32Array;
+            for (let i = 0; i < positions.length; i += 3) {
+                const originalDistance = Math.sqrt(
+                    positions[i] ** 2 +
+                        positions[i + 1] ** 2 +
+                        positions[i + 2] ** 2,
+                );
+                const pulse = Math.sin(time * 2 + originalDistance * 0.5) * 0.1;
+                const factor = 1 + pulse;
+
+                positions[i] *= factor;
+                positions[i + 1] *= factor;
+                positions[i + 2] *= factor;
+            }
+            this.particles.geometry.attributes.position.needsUpdate = true;
+
+            // Rotate core geometry with mouse interaction
+            this.coreGeometry.rotation.x = time * 0.1 + this.mouseY * 0.2;
+            this.coreGeometry.rotation.y = time * 0.08 + this.mouseX * 0.2;
+
+            // Animate data nodes orbiting
+            this.coreGeometry.children.forEach((child, index) => {
+                if (index > 20) {
+                    // Data nodes start after connections
+                    const nodeIndex = index - 21;
+                    const radius = 1.5 + Math.sin(time + nodeIndex) * 0.3;
+                    const angle = (nodeIndex / 8) * Math.PI * 2 + time * 0.5;
+
+                    child.position.x = radius * Math.cos(angle);
+                    child.position.y = radius * Math.sin(angle);
+                    child.position.z = Math.sin(time * 2 + nodeIndex) * 0.5;
+
+                    child.rotation.x += 0.02;
+                    child.rotation.y += 0.03;
+                }
+            });
+
+            // Pulse central sphere
+            const centralSphere = this.coreGeometry.children[0];
+            if (centralSphere) {
+                const scale = 1 + Math.sin(time * 3) * 0.1;
+                centralSphere.scale.setScalar(scale);
+            }
+
+            this.renderer.render(this.scene, this.camera);
+        };
+
+        public destroy() {
+            if (this.animationId) {
+                cancelAnimationFrame(this.animationId);
+            }
+            this.renderer.dispose();
+            this.container.removeChild(this.renderer.domElement);
+        }
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById("three-container");
+        if (container) {
+            // Check for WebGL support
+            if (!window.WebGLRenderingContext) {
+                console.log("WebGL not supported, skipping 3D animation");
+                return;
+            }
+
+            try {
+                const interactive3D = new Interactive3D(container);
+
+                // Cleanup on page unload
+                window.addEventListener("beforeunload", () => {
+                    interactive3D.destroy();
+                });
+
+                // Pause animation when tab is not visible (performance)
+                document.addEventListener("visibilitychange", () => {
+                    if (document.hidden) {
+                        if (interactive3D.animationId) {
+                            cancelAnimationFrame(interactive3D.animationId);
+                            interactive3D.animationId = null;
+                        }
+                    } else {
+                        interactive3D.animate();
+                    }
+                });
+            } catch (error) {
+                console.log("Failed to initialize 3D animation:", error);
+            }
+        }
+    });
+</script>
+
+<style>
+    #three-container {
+        pointer-events: none;
+    }
+
+    #three-container canvas {
+        display: block;
+    }
+</style>
