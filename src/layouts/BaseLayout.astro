@@ -121,11 +121,18 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
         font-display: swap;
       }
       
-      html { background-color: #ffffff; }
-      body { opacity: 1; }
+      html { 
+        background-color: #0D1224;
+        min-height: 100vh;
+      }
+      body { 
+        opacity: 1;
+        background-color: #0D1224;
+        min-height: 100vh;
+      }
     </style>
   </head>
-  <body class="min-h-screen bg-white text-gray-900 antialiased font-inter" style="background-color: #ffffff;">
+  <body class="min-h-screen bg-white text-gray-900 antialiased font-inter" style="background-color: #0D1224;">
     <slot />
     
     <script>
