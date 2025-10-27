@@ -1,22 +1,5 @@
 @import "tailwindcss";
 
-/* Inter font loading */
-@font-face {
-  font-family: 'Inter Variable';
-  src: url('/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter Variable';
-  src: url('/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
-
 /* Base styles */
 html {
   font-family: 'Inter Variable', system-ui, sans-serif;
