@@ -1,18 +1,16 @@
 import { translations, type Language, defaultLang } from '../i18n';
 
 export function getLangFromUrl(url: URL): Language {
-  // Remove base URL if present
-  const base = import.meta.env.BASE_URL || '/';
-  let pathname = url.pathname;
+  // Get all path segments
+  const segments = url.pathname.split('/').filter(Boolean);
   
-  // Strip base URL from pathname
-  if (base !== '/' && pathname.startsWith(base)) {
-    pathname = pathname.slice(base.length);
+  // Check each segment for a valid language code
+  for (const segment of segments) {
+    if (segment in translations) {
+      return segment as Language;
+    }
   }
   
-  // Get language from path
-  const [, lang] = pathname.split('/');
-  if (lang in translations) return lang as Language;
   return defaultLang;
 }
 
