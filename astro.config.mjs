@@ -4,18 +4,17 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
-// Replace this with your actual domain
-const LIVE_DOMAIN = 'https://yourdomain.com'; // e.g., 'https://saiba.dk'
-
 // https://astro.build/config
 export default defineConfig({
-  // Your custom domain for production, localhost for development
+  // GitHub Pages URL (ændres til custom domain senere)
   site: process.env.NODE_ENV === 'production' 
-    ? LIVE_DOMAIN
+    ? 'https://b4ltasar.github.io'
     : 'http://localhost:4321',
   
-  // No base path needed when using custom domain
-  base: undefined,
+  // Repository navn for GitHub Pages
+  base: process.env.NODE_ENV === 'production' 
+    ? '/saibaweb'
+    : undefined,
   
   vite: {
     plugins: [tailwindcss()]
