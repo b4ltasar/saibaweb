@@ -275,9 +275,16 @@ const services = [
     
     showTeamBtn?.addEventListener("click", () => {
       if (teamCards && teamArrow) {
-        teamCards.classList.toggle("xl:hidden");
-        teamCards.classList.toggle("xl:block");
-        teamArrow.classList.toggle('rotate-180');
+        const isHidden = teamCards.classList.contains("xl:hidden");
+        if (isHidden) {
+          teamCards.classList.remove("xl:hidden");
+          teamCards.classList.add("xl:block");
+          teamArrow.classList.add('rotate-180');
+        } else {
+          teamCards.classList.add("xl:hidden");
+          teamCards.classList.remove("xl:block");
+          teamArrow.classList.remove('rotate-180');
+        }
       }
     });
 
