@@ -113,7 +113,18 @@ const services = [
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="relative py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-gray-100">
+    <section id="services" class="relative py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-gray-100 overflow-hidden">
+      <!-- Subtle Grid Background -->
+      <div class="absolute inset-0 opacity-30" style="mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid-services" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid-services)" />
+        </svg>
+      </div>
       <div class="mx-auto max-w-7xl px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16">
         <div class="text-center mb-16">
           <h2
@@ -137,7 +148,7 @@ const services = [
     </section>
 
     <!-- Process Optimization Section -->
-    <section id="optimization" class="py-24 sm:py-28 lg:py-32 bg-gray-100">
+    <section id="optimization" class="relative py-24 sm:py-28 lg:py-32 bg-gray-100 overflow-hidden">
       <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:px-16">
         <div class="grid grid-cols-1 lg:grid-cols-8 gap-20 items-center">
           <div class="lg:col-span-3">
@@ -226,7 +237,19 @@ const services = [
     </section>
 
     <!-- Gradient Grid Background for bottom sections -->
-    <div class="relative">
+    <div class="relative overflow-hidden">
+      <!-- Subtle Grid Background (mirrored) -->
+      <div class="absolute inset-0 opacity-20" style="mask-image: linear-gradient(to top, transparent 0%, black 10%, black 90%, transparent 100%);">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid-bottom" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid-bottom)" />
+        </svg>
+      </div>
+      
       <GradientGridBackground />
       
       <!-- Partner Logos -->
