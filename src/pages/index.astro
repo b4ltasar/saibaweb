@@ -199,7 +199,7 @@ const services = [
         </div>
 
         <!-- Team Cards -->
-        <div id="team-cards" class="hidden md:block mt-16">
+        <div id="team-cards" class="block md:hidden mt-16">
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 items-stretch">
             <TeamCard
               id="gustav-da"
@@ -277,7 +277,8 @@ const services = [
     
     showTeamBtn?.addEventListener("click", () => {
       if (teamCards && teamArrow) {
-        teamCards.classList.toggle("hidden");
+        teamCards.classList.toggle("md:hidden");
+        teamCards.classList.toggle("md:block");
         teamArrow.classList.toggle('rotate-180');
       }
     });
