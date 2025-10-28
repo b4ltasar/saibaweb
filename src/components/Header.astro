@@ -20,7 +20,8 @@ if (base === '/') base = '';
 const currentPath = Astro.url.pathname.replace(new RegExp(`^${base}/(da|en)`), "") || "/";
 const otherLang = lang === "da" ? "en" : "da";
 // Ensure trailing slash for GitHub Pages compatibility
-const langSwitchUrl = `${base}/${otherLang}/`;
+// Preserve current subpage (e.g. /contact/)
+const langSwitchUrl = `${base}/${otherLang}${currentPath.endsWith('/') ? currentPath : currentPath + '/'}`;
 
 // Always link to home page for navigation (not subpages)
 const homeUrl = `${base}/${lang}/`;
