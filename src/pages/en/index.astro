@@ -190,7 +190,7 @@ const services = [
             </p>
             <button
               id="show-team-btn"
-              class="inline-flex items-center text-white hover:text-gray-200 transition-all duration-300"
+              class="hidden xl:inline-flex items-center text-white hover:text-gray-200 transition-all duration-300"
             >
               <span class="mr-2">TEAM</span>
               <svg id="team-arrow" class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -201,7 +201,7 @@ const services = [
         </div>
 
         <!-- Team Cards -->
-        <div id="team-cards" class="hidden mt-16">
+        <div id="team-cards" class="block xl:hidden mt-16">
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 items-stretch">
             <TeamCard
               id="gustav-en"
@@ -275,15 +275,9 @@ const services = [
     
     showTeamBtn?.addEventListener("click", () => {
       if (teamCards && teamArrow) {
-        if (teamCards.classList.contains("hidden")) {
-          teamCards.classList.remove("hidden");
-          teamCards.classList.add("animate-fade-in");
-          teamArrow.classList.add('rotate-180');
-        } else {
-          teamCards.classList.add("hidden");
-          teamCards.classList.remove("animate-fade-in");
-          teamArrow.classList.remove('rotate-180');
-        }
+        teamCards.classList.toggle("xl:hidden");
+        teamCards.classList.toggle("xl:block");
+        teamArrow.classList.toggle('rotate-180');
       }
     });
 
