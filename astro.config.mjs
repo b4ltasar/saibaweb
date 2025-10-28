@@ -6,13 +6,13 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'static', // VIGTIGT for GitHub Pages
+  output: 'static',
   
-  // GitHub Pages URL (ændres til custom domain senere)
-  site: 'https://b4ltasar.github.io',
+  // Custom domain
+  site: 'https://saiba.dk',
   
-  // Repository navn for GitHub Pages
-  base: '/saibaweb',
+  // No base path needed for custom domain
+  base: '/',
   
   // KRITISK for GitHub Pages routing
   trailingSlash: 'always',
