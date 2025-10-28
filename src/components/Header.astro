@@ -16,6 +16,9 @@ const currentPath = Astro.url.pathname.replace(new RegExp(`^${base}/(da|en)`), "
 const otherLang = lang === "da" ? "en" : "da";
 // Ensure trailing slash for GitHub Pages compatibility
 const langSwitchUrl = `${base}/${otherLang}/`;
+
+// Always link to home page for navigation (not subpages)
+const homeUrl = `${base}/${lang}/`;
 ---
 
 <header
@@ -30,7 +33,7 @@ const langSwitchUrl = `${base}/${otherLang}/`;
       <!-- Logo -->
       <div class="flex-shrink-0">
         <a
-          href={`${base}/${lang}`}
+          href={homeUrl}
           id="logo-link"
           class="block transition-opacity duration-300"
         >
@@ -43,28 +46,28 @@ const langSwitchUrl = `${base}/${otherLang}/`;
         <!-- Navigation Links -->
         <div class="flex items-center space-x-8">
           <a
-            href={`${base}/${lang}#services`}
+            href={`${homeUrl}#services`}
             class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
           >
             <span class="relative z-10">{t("nav.services")}</span>
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </a>
           <a
-            href={`${base}/${lang}#team`}
+            href={`${homeUrl}#team`}
             class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
           >
             <span class="relative z-10">{t("nav.team")}</span>
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </a>
           <a
-            href={`${base}/${lang}#clients`}
+            href={`${homeUrl}#clients`}
             class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
           >
             <span class="relative z-10">{t("nav.clients")}</span>
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </a>
           <a
-            href={`${base}/${lang}#contact`}
+            href={`${homeUrl}#contact`}
             class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
           >
             <span class="relative z-10">{t("nav.contact")}</span>
@@ -158,22 +161,22 @@ const langSwitchUrl = `${base}/${otherLang}/`;
         <!-- Navigation -->
         <div class="p-6 space-y-6">
           <a
-            href={`${base}/${lang}#services`}
+            href={`${homeUrl}#services`}
             class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
           >{t("nav.services")}</a
           >
           <a
-            href={`${base}/${lang}#team`}
+            href={`${homeUrl}#team`}
             class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
           >{t("nav.team")}</a
           >
           <a
-            href={`${base}/${lang}#clients`}
+            href={`${homeUrl}#clients`}
             class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
           >{t("nav.clients")}</a
           >
           <a
-            href={`${base}/${lang}#contact`}
+            href={`${homeUrl}#contact`}
             class="block text-gray-900 text-lg font-medium hover:text-gray-600 transition-colors mobile-nav-link"
           >{t("nav.contact")}</a
           >
