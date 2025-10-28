@@ -296,7 +296,7 @@ const services = [
       const cardId = button.getAttribute('data-target');
       if (!cardId) return;
       
-      const detailsContainer = document.querySelector(`[data-details="${cardId}"] .lg\\:hidden`) as HTMLElement;
+      const detailsContainer = document.querySelector(`[data-details-content="${cardId}"]`) as HTMLElement;
       const arrow = button.querySelector('.team-arrow') as HTMLElement;
       
       if (!detailsContainer || !arrow) return;

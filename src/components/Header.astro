@@ -34,7 +34,7 @@ const homeUrl = `${base}/${lang}/`;
     class="mx-auto max-w-[1400px] px-4 sm:px-8 lg:px-16"
     aria-label="Main navigation"
   >
-    <div class="flex h-[80px] items-center justify-between">
+    <div class="flex h-[60px] sm:h-[70px] lg:h-[80px] items-center justify-between">
       <!-- Logo -->
       <div class="flex-shrink-0">
         <a
@@ -42,7 +42,7 @@ const homeUrl = `${base}/${lang}/`;
           id="logo-link"
           class="block transition-opacity duration-300"
         >
-          <img src={`${base}/${variant === 'dark' ? 'SAIBAblack.svg' : 'SAIBAwhite.svg'}`} alt="SAIBA" class="h-8 w-auto" style="height: 32px !important;" />
+          <img src={`${base}/${variant === 'dark' ? 'SAIBAblack.svg' : 'SAIBAwhite.svg'}`} alt="SAIBA" class="h-6 sm:h-7 lg:h-8 w-auto" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" />
         </a>
       </div>
 
@@ -262,23 +262,15 @@ const homeUrl = `${base}/${lang}/`;
 
       // Special logic for hero section
       if (isInHero) {
-        // In hero section - hide header when scrolling up to avoid collision with hero text
-        if (currentScrollY > lastScrollY) {
-          // Scrolling down in hero - show header
-          if (!isHeaderVisible) {
-            header?.classList.remove("-translate-y-full");
-            isHeaderVisible = true;
-          }
-        } else {
-          // Scrolling up in hero - hide header to avoid collision
-          if (isHeaderVisible && currentScrollY > 50) {
+        // In hero section - hide header to avoid collision with hero text
+        if (currentScrollY > 100) {
+          // Hide header in hero section (both scrolling up and down)
+          if (isHeaderVisible) {
             header?.classList.add("-translate-y-full");
             isHeaderVisible = false;
           }
-        }
-        
-        // Show header when at very top
-        if (currentScrollY <= 50) {
+        } else {
+          // Show header when at very top
           if (!isHeaderVisible) {
             header?.classList.remove("-translate-y-full");
             isHeaderVisible = true;
@@ -315,7 +307,6 @@ const homeUrl = `${base}/${lang}/`;
         // Keep white logo styling
         if (logoImg) {
           logoImg.src = `${base}/SAIBAwhite.svg`;
-          logoImg.style.height = "32px"; // Ensure consistent size
         }
 
         // Language toggle styling for transparent header
@@ -359,7 +350,6 @@ const homeUrl = `${base}/${lang}/`;
         // Switch to dark logo styling
         if (logoImg) {
           logoImg.src = `${base}/SAIBAblack.svg`;
-          logoImg.style.height = "32px"; // Ensure consistent size
         }
 
         // Language toggle styling for solid header
