@@ -125,6 +125,11 @@ body {
   transform: translateX(0);
 }
 
+/* Service cards spotlight effect */
+.services-grid:has(.service-card:hover) .service-card:not(:hover) {
+  opacity: 0.75;
+}
+
 /* Performance optimizations */
 img, video {
   height: auto;
