@@ -1,6 +1,11 @@
 ---
 import { getLangFromUrl, useTranslations } from "../utils/i18n";
 
+export interface Props {
+  variant?: 'default' | 'dark';
+}
+
+const { variant = 'default' } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -23,7 +28,7 @@ const homeUrl = `${base}/${lang}/`;
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300"
+  class={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${variant === 'dark' ? 'bg-white/95 backdrop-blur-md border-b border-gray-200' : ''}`}
 >
   <nav
     class="mx-auto max-w-[1400px] px-4 sm:px-8 lg:px-16"
@@ -37,7 +42,7 @@ const homeUrl = `${base}/${lang}/`;
           id="logo-link"
           class="block transition-opacity duration-300"
         >
-          <img src={`${base}/SAIBAwhite.svg`} alt="SAIBA" class="h-8 w-auto" style="height: 32px !important;" />
+          <img src={`${base}/${variant === 'dark' ? 'SAIBAblack.svg' : 'SAIBAwhite.svg'}`} alt="SAIBA" class="h-8 w-auto" style="height: 32px !important;" />
         </a>
       </div>
 
@@ -47,28 +52,28 @@ const homeUrl = `${base}/${lang}/`;
         <div class="flex items-center space-x-8">
           <a
             href={`${homeUrl}#services`}
-            class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
+            class={`nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group ${variant === 'dark' ? 'text-gray-700 hover:text-gray-900' : 'text-white hover:text-white/80'}`}
           >
             <span class="relative z-10">{t("nav.services")}</span>
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </a>
           <a
             href={`${homeUrl}#team`}
-            class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
+            class={`nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group ${variant === 'dark' ? 'text-gray-700 hover:text-gray-900' : 'text-white hover:text-white/80'}`}
           >
             <span class="relative z-10">{t("nav.team")}</span>
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </a>
           <a
             href={`${homeUrl}#clients`}
-            class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
+            class={`nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group ${variant === 'dark' ? 'text-gray-700 hover:text-gray-900' : 'text-white hover:text-white/80'}`}
           >
             <span class="relative z-10">{t("nav.clients")}</span>
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           </a>
           <a
             href={`${homeUrl}#contact`}
-            class="nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group"
+            class={`nav-link text-xl font-medium transition-colors duration-300 relative overflow-hidden group ${variant === 'dark' ? 'text-gray-700 hover:text-gray-900' : 'text-white hover:text-white/80'}`}
           >
             <span class="relative z-10">{t("nav.contact")}</span>
             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
@@ -86,9 +91,10 @@ const homeUrl = `${base}/${lang}/`;
                   src={`${base}/icons/en-button.svg`}
                   alt="Switch to English"
                   class="h-7 w-auto"
+                  style={variant === 'dark' ? 'filter: brightness(0);' : ''}
                 />
               ) : (
-                <div class="px-3 py-1.5 rounded border border-current text-sm font-medium hover:bg-current hover:text-white">
+                <div class={`px-3 py-1.5 rounded border text-sm font-medium transition-colors ${variant === 'dark' ? 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white' : 'border-white/30 text-white hover:bg-white/10 hover:border-white/50'}`}>
                   DA
                 </div>
               )
@@ -102,7 +108,7 @@ const homeUrl = `${base}/${lang}/`;
         <button
           type="button"
           id="mobile-button"
-          class="mobile-menu-button inline-flex items-center justify-center p-3 rounded-md transition-colors duration-300 text-white hover:text-white/80"
+          class={`mobile-menu-button inline-flex items-center justify-center p-3 rounded-md transition-colors duration-300 ${variant === 'dark' ? 'text-gray-900 hover:text-gray-700' : 'text-white hover:text-white/80'}`}
           aria-controls="mobile-menu"
           aria-expanded="false"
         >
@@ -196,7 +202,7 @@ const homeUrl = `${base}/${lang}/`;
   </nav>
 </header>
 
-<script define:vars={{ base }}>
+<script define:vars={{ base, variant }}>
   document.addEventListener("DOMContentLoaded", () => {
     const header = document.getElementById("header");
     const logoImg = document.getElementById("logo-link")?.querySelector("img");
@@ -245,6 +251,9 @@ const homeUrl = `${base}/${lang}/`;
 
     // Scroll handler
     function handleScroll() {
+      // Skip scroll logic on dark variant
+      if (variant === 'dark') return;
+      
       const currentScrollY = window.scrollY;
       const heroHeight = window.innerHeight; // Approximate hero height
 
