@@ -30,8 +30,8 @@ const { name, details, linkedin, id, image } = Astro.props;
       <h3 class="text-white font-bold text-lg sm:text-xl text-center leading-tight">{name}</h3>
     </div>
     
-    <!-- Expand Button - Always visible below xl -->
-    <div class="mb-4 flex justify-center xl:hidden">
+    <!-- Expand Button - Only on mobile -->
+    <div class="mb-4 flex justify-center md:hidden">
       <button 
         class="team-expand-btn text-gray-400 hover:text-white transition-all duration-300 p-2"
         data-target={id}
@@ -44,10 +44,10 @@ const { name, details, linkedin, id, image } = Astro.props;
       </button>
     </div>
     
-    <!-- Details - Always visible on xl+, expandable below -->
+    <!-- Details - Always visible on md+, expandable on mobile only -->
     <div class="team-details text-white text-sm leading-relaxed mb-4 sm:mb-6 flex-grow">
-      <p class="hidden xl:block">{details}</p>
-      <div class="xl:hidden overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;" data-details-content={id}>
+      <p class="hidden md:block">{details}</p>
+      <div class="md:hidden overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;" data-details-content={id}>
         <p>{details}</p>
       </div>
     </div>
