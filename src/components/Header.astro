@@ -42,7 +42,12 @@ const homeUrl = `${base}/${lang}/`;
           id="logo-link"
           class="block transition-opacity duration-300"
         >
-          <img src={`${base}/${variant === 'dark' ? 'SAIBAblack.svg' : 'SAIBAwhite.svg'}`} alt="SAIBA" class="h-6 sm:h-7 lg:h-8 w-auto" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" />
+          <img 
+            src={`${base}/${variant === 'dark' ? 'SAIBAblack.svg' : 'SAIBAwhite.svg'}`} 
+            alt="SAIBA" 
+            class="h-6 sm:h-7 lg:h-8 w-auto" 
+            style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; transform: translateZ(0); will-change: transform;"
+          />
         </a>
       </div>
 
